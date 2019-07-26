@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'AMKCategories_Example' do
+  pod 'AMKCategories', :path => '../'
+
+  target 'AMKCategories_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
