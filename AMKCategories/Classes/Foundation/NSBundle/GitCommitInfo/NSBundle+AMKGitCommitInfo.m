@@ -6,6 +6,7 @@
 //
 
 #import "NSBundle+AMKGitCommitInfo.h"
+#import <objc/runtime.h>
 
 NSString * _Nonnull const AMKGitCommitSHAInfoKey = @"AMKGitCommitSHA";
 NSString * _Nonnull const AMKGitCommitBranchInfoKey = @"AMKGitCommitBranch";
@@ -60,15 +61,28 @@ NSString * _Nonnull const AMKGitCommitDateInfoKey = @"AMKGitCommitDate";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *gitCommitDateStr = [NSBundle mainBundle].infoDictionary[AMKGitCommitDateInfoKey];
+        NSString *timeZoneString = [gitCommitDateStr componentsSeparatedByString:@"+"].lastObject;
         NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        formatter.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
+        formatter.dateFormat = @"EEE MMM dd HH:mm:ss yyyy Z";
         gitCommitDate = [formatter dateFromString:gitCommitDateStr];
+        gitCommitDate = [gitCommitDate dateByAddingTimeInterval:timeZoneString.integerValue/100*3600];
     });
     return gitCommitDate;
 }
 
 #pragma mark - Public Methods
+
+- (NSString *)amk_gitCommitDateStringWithFormat:(NSString *)dateFormat {
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    });
+    dateFormatter.dateFormat = dateFormat.length ? dateFormat : @"yyyy-MM-dd HH:mm:ss";
+    return [dateFormatter stringFromDate:self.amk_gitCommitDate];
+}
 
 #pragma mark - Private Methods
 

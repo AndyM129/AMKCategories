@@ -32,6 +32,7 @@
     bundleInfo[@"GitCommitBranch"] = NSBundle.mainBundle.amk_gitCommitBranch ?:@"";
     bundleInfo[@"GitCommitUser"] = NSBundle.mainBundle.amk_gitCommitUser ?:@"";
     bundleInfo[@"GitCommitDate"] = NSBundle.mainBundle.amk_gitCommitDate ?:@"";
+    bundleInfo[@"GitCommitLocalDate"] = [NSBundle.mainBundle amk_gitCommitDateStringWithFormat:nil];
     self.textView.text = [bundleInfo description];
 }
 

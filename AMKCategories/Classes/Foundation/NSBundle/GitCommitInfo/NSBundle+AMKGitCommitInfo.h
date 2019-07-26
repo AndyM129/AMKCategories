@@ -20,6 +20,11 @@ FOUNDATION_EXPORT NSString * _Nonnull const AMKGitCommitDateInfoKey;
 @property(nonatomic, strong, readonly, nullable) NSString *amk_gitCommitBranch;     //!< Git 提交所在分支，eg. develop
 @property(nonatomic, strong, readonly, nullable) NSString *amk_gitCommitUser;       //!< Git 提交的用户， eg. andym129
 @property(nonatomic, strong, readonly, nullable) NSDate *amk_gitCommitDate;         //!< Git 提交的日期，eg. Fri Jul 26 16:09:35 2019 +0800
+
+- (NSString *_Nullable)amk_gitCommitDateStringWithFormat:(NSString *_Nullable)dateFormat;
+//// 辅助方法
+//@property(nonatomic, strong, nullable) NSDateFormatter *amk_gitCommitDateFormatter; //!< Git 提交的日期的输出格式，eg.
+//@property(nonatomic, strong, readonly, nullable) NSString *amk_gitCommitDateString; //!< Git 提交的日期字符串，eg.
 @end
 
 

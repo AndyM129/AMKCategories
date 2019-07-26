@@ -1,14 +1,14 @@
 use_frameworks!
-
 platform :ios, '8.0'
 
 target 'AMKCategories_Example' do
-  pod 'AMKCategories', :path => '../'
-  pod 'AMKLocaleDescription', '~> 0.1.0'                    # 控制台本地化输出调试
-
-  target 'AMKCategories_Tests' do
-    inherit! :search_paths
-
+    # 当前工程
+    pod 'AMKCategories', :path => '../'
+    pod 'AMKCategories/Foundation/NSBundle/GitCommitInfo', :path => '../'
     
-  end
+    # 第三方
+    pod 'AMKLocaleDescription'
+    target 'AMKCategories_Tests' do
+      inherit! :search_paths
+    end
 end
