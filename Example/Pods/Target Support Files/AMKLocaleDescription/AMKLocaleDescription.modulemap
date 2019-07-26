@@ -1,0 +1,6 @@
+framework module AMKLocaleDescription {
+  umbrella header "AMKLocaleDescription-umbrella.h"
+
+  export *
+  module * { export * }
+}

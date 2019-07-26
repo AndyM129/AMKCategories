@@ -7,36 +7,39 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'AMKCategories'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of AMKCategories.'
+    s.name             = 'AMKCategories'
+    s.version          = '0.1.0'
+    s.summary          = 'Summary of AMKCategories.'
+    s.description      = <<-DESC
+                          A description of AMKCategories.
+                         DESC
+    s.homepage         = 'https://github.com/AndyM129/AMKCategories'
+    s.license          = { :type => 'MIT', :file => 'LICENSE' }
+    s.author           = { 'Andy Meng' => 'andy_m129@163.com' }
+    s.source           = { :git => 'https://github.com/AndyM129/AMKCategories.git', :tag => s.version.to_s }
+    s.social_media_url = 'http://www.jianshu.com/u/28d89b68984b'
+    s.ios.deployment_target = '8.0'
+    s.default_subspec = 'DefaultSubspec'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+    # 默认子组件
+    s.subspec 'DefaultSubspec' do |defaultSubspec|
+        defaultSubspec.dependency 'AMKCategories/Foundation/NSBundle/VersionInfo'
+    end
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/AndyM129/AMKCategories'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'AndyM129' => 'mengxinxin@bonbonwork.com' }
-  s.source           = { :git => 'https://github.com/AndyM129/AMKCategories.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'AMKCategories/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'AMKCategories' => ['AMKCategories/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    # Foundation 通用扩展
+    s.subspec 'Foundation' do |foundation|
+        # NSBundle 相关扩展
+        foundation.subspec 'NSBundle' do |bundle|
+            # GitCommitInfo Git提交信息（因该扩展 需额外的工程配置，故默认不引入）
+            bundle.subspec 'GitCommitInfo' do |gitCommitInfo|
+                gitCommitInfo.source_files = 'AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.{h,m}'
+                gitCommitInfo.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.h'
+            end
+            # AppVersionInfo 版本信息
+            bundle.subspec 'VersionInfo' do |versionInfo|
+                versionInfo.source_files = 'AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.{h,m}'
+                versionInfo.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.h'
+            end
+        end
+    end
 end

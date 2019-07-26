@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "NSBundle+AMKGitCommitInfo.h"
+#import "NSBundle+AMKAppVersionInfo.h"
 
 FOUNDATION_EXPORT double AMKCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char AMKCategoriesVersionString[];

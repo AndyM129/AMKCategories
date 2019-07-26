@@ -1,22 +1,53 @@
 {
   "name": "AMKCategories",
   "version": "0.1.0",
-  "summary": "A short description of AMKCategories.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Summary of AMKCategories.",
+  "description": "A description of AMKCategories.",
   "homepage": "https://github.com/AndyM129/AMKCategories",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "AndyM129": "mengxinxin@bonbonwork.com"
+    "Andy Meng": "andy_m129@163.com"
   },
   "source": {
     "git": "https://github.com/AndyM129/AMKCategories.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "http://www.jianshu.com/u/28d89b68984b",
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "AMKCategories/Classes/**/*"
+  "default_subspecs": "DefaultSubspec",
+  "subspecs": [
+    {
+      "name": "DefaultSubspec",
+      "dependencies": {
+        "AMKCategories/Foundation": [
+
+        ]
+      }
+    },
+    {
+      "name": "Foundation",
+      "subspecs": [
+        {
+          "name": "NSBundle",
+          "subspecs": [
+            {
+              "name": "GitCommitInfo",
+              "source_files": "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.h"
+            },
+            {
+              "name": "VersionInfo",
+              "source_files": "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.h"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

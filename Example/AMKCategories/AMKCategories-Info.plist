@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AMKGitCommitBranch</key>
+	<string></string>
+	<key>AMKGitCommitDate</key>
+	<string></string>
+	<key>AMKGitCommitSHA</key>
+	<string></string>
+	<key>AMKGitCommitUser</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
