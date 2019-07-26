@@ -22,7 +22,7 @@ pod 'AMKCategories'
 
 ## Author
 
-AndyM129, mengxinxin@bonbonwork.com
+AndyM129, andy_m129@163.com
 
 ## License
 
