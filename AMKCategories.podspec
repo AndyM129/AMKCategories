@@ -30,15 +30,23 @@ Pod::Spec.new do |s|
     s.subspec 'UIKit' do |uikit|
         # UIViewController 相关扩展
         uikit.subspec 'UIViewController' do |viewController|
-            # # LocaleDescription 本地化输出
-            # object.subspec 'LocaleDescription' do |localeDescription|
-            #     localeDescription.source_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}'
-            #     localeDescription.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.h'
-            # end
+            # NavigationControllerWithCallback 导航控制
+            viewController.subspec 'NavigationControllerWithCallback' do |navigationControllerWithCallback|
+                navigationControllerWithCallback.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}'
+                navigationControllerWithCallback.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h'
+                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/NavigationController'
+                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/LifeCircleBlock'
+            end
+            # NavigationController 导航控制
+            viewController.subspec 'NavigationController' do |navigationController|
+                navigationController.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}'
+                navigationController.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h'
+            end
             # LifeCircleBlock 生命周期相关回调
             viewController.subspec 'LifeCircleBlock' do |lifeCircleBlock|
                 lifeCircleBlock.source_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}'
                 lifeCircleBlock.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h'
+                lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
     end

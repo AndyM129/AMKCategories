@@ -22,7 +22,13 @@ PODS:
     - AMKCategories/UIKit/UIViewController (= 0.1.0)
   - AMKCategories/UIKit/UIViewController (0.1.0):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.0)
+    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.0)
+    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.0)
   - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.0)
+  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.0)
+  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.0):
+    - AMKCategories/UIKit/UIViewController/LifeCircleBlock
+    - AMKCategories/UIKit/UIViewController/NavigationController
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
@@ -34,7 +40,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: b7af4f2d6ec5109b3eb21780c8b4c442136389be
+  AMKCategories: e47ba71f5899f427e8ceaded4c38b0b7f85428a8
 
 PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 

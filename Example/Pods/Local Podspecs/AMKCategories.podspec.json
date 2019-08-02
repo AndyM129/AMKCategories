@@ -36,6 +36,24 @@
           "name": "UIViewController",
           "subspecs": [
             {
+              "name": "NavigationControllerWithCallback",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h",
+              "dependencies": {
+                "AMKCategories/UIKit/UIViewController/NavigationController": [
+
+                ],
+                "AMKCategories/UIKit/UIViewController/LifeCircleBlock": [
+
+                ]
+              }
+            },
+            {
+              "name": "NavigationController",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h"
+            },
+            {
               "name": "LifeCircleBlock",
               "source_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h"

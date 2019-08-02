@@ -7,8 +7,7 @@
 //
 
 #import "UIViewController+AMKLifeCircleBlock.h"
-#import <objc/runtime.h>
-
+#import <AMKCategories/NSObject+AMKMethodSwizzling.h>
 
 @implementation UIViewController (AMKLifeCircleBlock)
 
@@ -17,16 +16,11 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        void (^__method_swizzling)(SEL, SEL) = ^(SEL sel, SEL _sel) {
-            Method  method = class_getInstanceMethod(self, sel);
-            Method _method = class_getInstanceMethod(self, _sel);
-            method_exchangeImplementations(method, _method);
-        };
-        __method_swizzling(@selector(viewDidLoad), @selector(amk_viewDidLoad));
-        __method_swizzling(@selector(viewWillAppear:), @selector(amk_viewWillAppear:));
-        __method_swizzling(@selector(viewDidAppear:), @selector(amk_viewDidAppear:));
-        __method_swizzling(@selector(viewWillDisappear:), @selector(amk_viewWillDisappear:));
-        __method_swizzling(@selector(viewDidDisappear:), @selector(amk_viewDidDisappear:));
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidLoad) withMethod:@selector(amk_viewDidLoad)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewWillAppear:) withMethod:@selector(amk_viewWillAppear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidAppear:) withMethod:@selector(amk_viewDidAppear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewWillDisappear:) withMethod:@selector(amk_viewWillDisappear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidDisappear:) withMethod:@selector(amk_viewDidDisappear:)];
     });
 }
 

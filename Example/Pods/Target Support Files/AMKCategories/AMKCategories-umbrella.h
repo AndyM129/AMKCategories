@@ -16,6 +16,8 @@
 #import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
 #import "UIViewController+AMKLifeCircleBlock.h"
+#import "UIViewController+AMKNavigationController.h"
+#import "UIViewController+AMKNavigationControllerWithCallback.h"
 
 FOUNDATION_EXPORT double AMKCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char AMKCategoriesVersionString[];
