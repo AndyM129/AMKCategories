@@ -19,11 +19,6 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
 
 #pragma mark - Init Methods
 
-- (void)AMKAppVersionInfo_NSBundle_dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
-    ((void(*)(id, SEL))objc_msgSend)(self, @selector(AMKAppVersionInfo_NSBundle_dealloc));
-}
-
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -47,6 +42,9 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
         NSString *newSelectorName = [NSString stringWithFormat:@"%@%@%@%@%@", @"AMKDea", @"llocB", @"lock", @"_dea", @"lloc"];
         __instance_method_swizzling(NSSelectorFromString(selectorName), NSSelectorFromString(newSelectorName));
         __class_method_swizzling(@selector(mainBundle), @selector(amk_mainBundle));
+        
+        // 添加 UIApplication 相关通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(amk_applicationWillTerminateNotificationHandler:) name:UIApplicationWillTerminateNotification object:nil];
     });
 }
 
@@ -61,9 +59,6 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
         NSInteger launchingTimes = [[NSUserDefaults standardUserDefaults] integerForKey:AMKLaunchingTimesKey];
         [[NSUserDefaults standardUserDefaults] setInteger:(launchingTimes+1) forKey:AMKLaunchingTimesKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        // 添加 UIApplication 相关通知
-        [[NSNotificationCenter defaultCenter] addObserver:mainBundle selector:@selector(amk_applicationWillTerminateNotificationHandler:) name:UIApplicationWillTerminateNotification object:nil];
     });
     return mainBundle;
 }
@@ -224,9 +219,9 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
 
 #pragma mark - Private Methods
 
-- (void)amk_applicationWillTerminateNotificationHandler:(NSNotification *)note {
-    [[NSUserDefaults standardUserDefaults] setObject:self.amk_currentBundleBuildVersion forKey:AMKBeforeBundleBuildVersionKey];
-    [[NSUserDefaults standardUserDefaults] setObject:self.amk_currentBundleShortVersion forKey:AMKBeforeBundleShortVersionKey];
++ (void)amk_applicationWillTerminateNotificationHandler:(NSNotification *)note {
+    [[NSUserDefaults standardUserDefaults] setObject:self.mainBundle.amk_currentBundleBuildVersion forKey:AMKBeforeBundleBuildVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:self.mainBundle.amk_currentBundleShortVersion forKey:AMKBeforeBundleShortVersionKey];
     [[NSUserDefaults standardUserDefaults] setObject:kAMKBeforeLaunchingDate forKey:AMKBeforeLaunchingDateKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
