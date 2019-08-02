@@ -44,6 +44,21 @@
               "name": "VersionInfo",
               "source_files": "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.h"
+            },
+            {
+              "name": "BundleInfo",
+              "source_files": "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/*.h"
+            }
+          ]
+        },
+        {
+          "name": "NSObject",
+          "subspecs": [
+            {
+              "name": "MethodSwizzling",
+              "source_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.h"
             }
           ]
         }

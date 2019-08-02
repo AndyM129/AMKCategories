@@ -2,12 +2,10 @@
 //  NSBundle+AMKAppVersionInfo.m
 //  AMKCategories
 //
-//  Created by 孟昕欣 on 2019/7/26.
+//  Created by https://github.com/andym129 on 2019/7/26.
 //
 
 #import "NSBundle+AMKAppVersionInfo.h"
-#import <objc/runtime.h>
-#import <objc/message.h>
 
 NSString * const AMKBeforeBundleBuildVersionKey = @"AMKBeforeBundleBuildVersion";
 NSString * const AMKBeforeBundleShortVersionKey = @"AMKBeforeBundleShortVersion";
@@ -22,36 +20,6 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        void (^__instance_method_swizzling)(SEL, SEL) = ^(SEL sel, SEL _sel) {
-            Method method = class_getInstanceMethod(self, sel);
-            Method _method = class_getInstanceMethod(self, _sel);
-            if (class_addMethod(self, sel, method_getImplementation(_method), method_getTypeEncoding(_method))) {
-                class_replaceMethod(self, _sel, method_getImplementation(method), method_getTypeEncoding(method));
-            } else {
-                method_exchangeImplementations(method, _method);
-            }
-        };
-        void (^__class_method_swizzling)(SEL, SEL) = ^(SEL sel, SEL _sel) {
-            Method  method = class_getClassMethod(self, sel);
-            Method _method = class_getClassMethod(self, _sel);
-            method_exchangeImplementations(method, _method);
-        };
-        
-        //  避免因为手动调用该方法引发被拒的可能
-        NSString *selectorName = [NSString stringWithFormat:@"%@%@%@", @"de", @"al", @"loc"];
-        NSString *newSelectorName = [NSString stringWithFormat:@"%@%@%@%@%@", @"AMKDea", @"llocB", @"lock", @"_dea", @"lloc"];
-        __instance_method_swizzling(NSSelectorFromString(selectorName), NSSelectorFromString(newSelectorName));
-        __class_method_swizzling(@selector(mainBundle), @selector(amk_mainBundle));
-        
-        // 添加 UIApplication 相关通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(amk_applicationWillTerminateNotificationHandler:) name:UIApplicationWillTerminateNotification object:nil];
-    });
-}
-
-+ (NSBundle *)amk_mainBundle {
-    NSBundle *mainBundle = [self amk_mainBundle];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
         // 记录启动时间
         kAMKBeforeLaunchingDate = [NSDate date];
         
@@ -59,8 +27,10 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
         NSInteger launchingTimes = [[NSUserDefaults standardUserDefaults] integerForKey:AMKLaunchingTimesKey];
         [[NSUserDefaults standardUserDefaults] setInteger:(launchingTimes+1) forKey:AMKLaunchingTimesKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        // 添加 UIApplication 相关通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(amk_applicationWillTerminateNotificationHandler:) name:UIApplicationWillTerminateNotification object:nil];
     });
-    return mainBundle;
 }
 
 #pragma mark - Properties
@@ -178,44 +148,6 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
 }
 
 #pragma mark - Public Methods
-
-- (NSArray<NSDictionary *> *)amk_bundleURLTypes {
-    NSArray *bundleURLTypes = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"];
-    if ([bundleURLTypes isKindOfClass:NSArray.class]) {
-        return bundleURLTypes;
-    } else {
-        return nil;
-    }
-}
-
-- (NSDictionary *)amk_bundleURLTypeWithKey:(NSString *)key value:(id)value {
-    NSDictionary *bundleURLType = nil;
-    NSArray<NSDictionary *> *bundleURLTypes = [self amk_bundleURLTypes];
-    for (NSDictionary *currentBundleURLType in bundleURLTypes) {
-        if (currentBundleURLType && [currentBundleURLType isKindOfClass:[NSDictionary class]]) {
-            id object = [currentBundleURLType objectForKey:key];
-            if (object && [object isEqual:value]) {
-                bundleURLType = currentBundleURLType;
-                break;
-            }
-        }
-    }
-    return bundleURLType;
-}
-
-- (NSDictionary *)amk_bundleURLTypeWithName:(NSString *)name {
-    NSDictionary *bundleURLType = [self amk_bundleURLTypeWithKey:@"CFBundleURLName" value:name];
-    return [bundleURLType isKindOfClass:NSDictionary.class] ? bundleURLType : nil;;
-}
-
-- (NSArray<NSString *> * _Nullable)amk_bundleURLSchemesOfURLName:(NSString * _Nullable)bundleURLName {
-    NSArray *bundleURLSchemes = nil;
-    NSDictionary *bundleURLType = [self amk_bundleURLTypeWithKey:@"CFBundleURLName" value:bundleURLName];
-    if (bundleURLType && [bundleURLType isKindOfClass:NSDictionary.class]) {
-        bundleURLSchemes = [bundleURLType objectForKey:@"CFBundleURLSchemes"];
-    }
-    return bundleURLSchemes;
-}
 
 #pragma mark - Private Methods
 

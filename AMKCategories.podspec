@@ -40,6 +40,20 @@ Pod::Spec.new do |s|
                 versionInfo.source_files = 'AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.{h,m}'
                 versionInfo.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/*.h'
             end
+            # BundleInfo 包信息
+            bundle.subspec 'BundleInfo' do |bundleInfo|
+                bundleInfo.source_files = 'AMKCategories/Classes/Foundation/NSBundle/BundleInfo/*.{h,m}'
+                bundleInfo.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/BundleInfo/*.h'
+            end
+        end
+
+        # NSObject 相关扩展
+        foundation.subspec 'NSObject' do |object|
+            # MethodSwizzling 方法替换
+            object.subspec 'MethodSwizzling' do |methodSwizzling|
+                methodSwizzling.source_files = 'AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}'
+                methodSwizzling.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.h'
+            end
         end
     end
 end

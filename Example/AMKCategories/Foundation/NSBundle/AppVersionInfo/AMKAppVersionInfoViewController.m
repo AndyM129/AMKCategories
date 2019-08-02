@@ -2,7 +2,7 @@
 //  AMKAppVersionInfoViewController.m
 //  AMKCategories
 //
-//  Created by 孟昕欣 on 2019/7/26.
+//  Created by https://github.com/andym129 on 2019/7/26.
 //  Copyright © 2019 AndyM129. All rights reserved.
 //
 
@@ -26,6 +26,10 @@
     self.title = @"APP版本信息扩展";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    formatter.timeZone = [NSTimeZone systemTimeZone];
+    
     NSMutableDictionary *bundleInfo = [NSMutableDictionary dictionary];
     bundleInfo[@"Bundle ID"] = NSBundle.mainBundle.amk_bundleIdentifier ?:@"";
     bundleInfo[@"Bundle Name"] = NSBundle.mainBundle.amk_bundleName ?:@"";
@@ -35,6 +39,7 @@
     bundleInfo[@"当前版本号"] = NSBundle.mainBundle.amk_currentBundleShortVersion ?:@"";
     bundleInfo[@"上一次启动时的版本号"] = NSBundle.mainBundle.amk_beforeBundleShortVersion ?:@"";
     bundleInfo[@"上一次启动时间"] = NSBundle.mainBundle.amk_beforeLaunchingDate ?:@"";
+    bundleInfo[@"上一次启动时间(系统时区)"] = [formatter stringFromDate:NSBundle.mainBundle.amk_beforeLaunchingDate];
     bundleInfo[@"截止本次启动的启动次数"] = @(NSBundle.mainBundle.amk_launchingTimes);
     bundleInfo[@"是否是安装后第一次启动"] = @(NSBundle.mainBundle.amk_isFirstLaunching);
     bundleInfo[@"是否是升级后第一次启动"] = @(NSBundle.mainBundle.amk_isUpgradedLaunching);

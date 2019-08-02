@@ -4,7 +4,7 @@ platform :ios, '8.0'
 target 'AMKCategories_Example' do
     # 当前工程
     pod 'AMKCategories', :path => '../'
-    pod 'AMKCategories/Foundation/NSBundle/GitCommitInfo', :path => '../'
+    pod 'AMKCategories/Foundation', :path => '../'
     
     # 第三方
     pod 'AMKLocaleDescription'

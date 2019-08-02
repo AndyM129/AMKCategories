@@ -2,7 +2,7 @@
 //  NSBundle+AMKAppVersionInfo.h
 //  AMKCategories
 //
-//  Created by 孟昕欣 on 2019/7/26.
+//  Created by https://github.com/andym129 on 2019/7/26.
 //
 
 #import <Foundation/Foundation.h>
@@ -27,11 +27,6 @@ FOUNDATION_EXPORT NSString * _Nonnull const AMKLaunchingTimesKey;
 @property(nonatomic, assign, readonly) BOOL amk_isFirstLaunching;                               //!< 是否是安装后第一次启动
 @property(nonatomic, assign, readonly) BOOL amk_isUpgradedLaunching;                            //!< 是否是升级后第一次启动
 @property(nonatomic, assign, readonly) BOOL amk_isDowngradedLaunching;                          //!< 是否是降级后第一次启动
-
-- (NSArray<NSDictionary *> * _Nullable)amk_bundleURLTypes;
-- (NSDictionary * _Nullable)amk_bundleURLTypeWithKey:(NSString * _Nullable)key value:(id _Nullable)value;
-- (NSDictionary * _Nullable)amk_bundleURLTypeWithName:(NSString * _Nullable)name;
-- (NSArray<NSString *> * _Nullable)amk_bundleURLSchemesOfURLName:(NSString * _Nullable)bundleURLName;
 @end
 
 

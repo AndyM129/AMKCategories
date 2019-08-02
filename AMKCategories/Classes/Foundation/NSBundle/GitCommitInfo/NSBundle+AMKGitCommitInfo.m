@@ -2,7 +2,7 @@
 //  NSBundle+AMKGitCommitInfo.m
 //  AMKCategories
 //
-//  Created by 孟昕欣 on 2019/7/26.
+//  Created by https://github.com/andym129 on 2019/7/26.
 //
 
 #import "NSBundle+AMKGitCommitInfo.h"

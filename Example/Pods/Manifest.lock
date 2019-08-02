@@ -3,13 +3,24 @@ PODS:
     - AMKCategories/DefaultSubspec (= 0.1.0)
   - AMKCategories/DefaultSubspec (0.1.0):
     - AMKCategories/Foundation/NSBundle/VersionInfo
+  - AMKCategories/Foundation (0.1.0):
+    - AMKCategories/Foundation/NSBundle (= 0.1.0)
+    - AMKCategories/Foundation/NSObject (= 0.1.0)
+  - AMKCategories/Foundation/NSBundle (0.1.0):
+    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.0)
+    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.0)
+    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.0)
+  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.0)
   - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.0)
   - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.0)
+  - AMKCategories/Foundation/NSObject (0.1.0):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.0)
+  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.0)
   - AMKLocaleDescription (0.1.0)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
-  - AMKCategories/Foundation/NSBundle/GitCommitInfo (from `../`)
+  - AMKCategories/Foundation (from `../`)
   - AMKLocaleDescription
 
 SPEC REPOS:
@@ -21,9 +32,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: a448d0a312b5120e1f82b620f8fe41b0feb30244
+  AMKCategories: 0d5a363fd80667f2873ebea768482a9fb76fbf99
   AMKLocaleDescription: 841d83d178fe6a821ea4091f0a820d8873899ffc
 
-PODFILE CHECKSUM: 9683539ab932ccefb006b7b2d23bcc6d572e2ef2
+PODFILE CHECKSUM: 0a5b55d8d68789f6ab00b7caca39ddadf0e09b9c
 
 COCOAPODS: 1.7.0.beta.3

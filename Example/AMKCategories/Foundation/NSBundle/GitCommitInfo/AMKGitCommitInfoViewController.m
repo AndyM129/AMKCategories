@@ -2,7 +2,7 @@
 //  AMKGitCommitInfoViewController.m
 //  AMKCategories_Example
 //
-//  Created by 孟昕欣 on 2019/7/26.
+//  Created by https://github.com/andym129 on 2019/7/26.
 //  Copyright © 2019 AndyM129. All rights reserved.
 //
 
