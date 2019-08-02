@@ -2,7 +2,7 @@
 //  AMKAppDelegate.h
 //  AMKCategories
 //
-//  Created by AndyM129 on 07/26/2019.
+//  Created by https://github.com/andym129 on 07/26/2019.
 //  Copyright (c) 2019 AndyM129. All rights reserved.
 //
 

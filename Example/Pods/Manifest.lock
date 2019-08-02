@@ -18,18 +18,24 @@ PODS:
     - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.0)
   - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.0)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.0)
+  - AMKCategories/UIKit (0.1.0):
+    - AMKCategories/UIKit/UIViewController (= 0.1.0)
+  - AMKCategories/UIKit/UIViewController (0.1.0):
+    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.0)
+  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.0)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
+  - AMKCategories/UIKit (from `../`)
 
 EXTERNAL SOURCES:
   AMKCategories:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 4ea1358516e81e536143c634b100a0fb7a342c3c
+  AMKCategories: b7af4f2d6ec5109b3eb21780c8b4c442136389be
 
-PODFILE CHECKSUM: a061881381a37135ae58612a6183b36f1203cfd6
+PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 
 COCOAPODS: 1.7.0.beta.3

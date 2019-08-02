@@ -30,6 +30,21 @@
       }
     },
     {
+      "name": "UIKit",
+      "subspecs": [
+        {
+          "name": "UIViewController",
+          "subspecs": [
+            {
+              "name": "LifeCircleBlock",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Foundation",
       "subspecs": [
         {

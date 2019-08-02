@@ -26,6 +26,23 @@ Pod::Spec.new do |s|
         defaultSubspec.dependency 'AMKCategories/Foundation/NSBundle/VersionInfo'
     end
 
+    # UIKit 通用扩展
+    s.subspec 'UIKit' do |uikit|
+        # UIViewController 相关扩展
+        uikit.subspec 'UIViewController' do |viewController|
+            # # LocaleDescription 本地化输出
+            # object.subspec 'LocaleDescription' do |localeDescription|
+            #     localeDescription.source_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}'
+            #     localeDescription.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.h'
+            # end
+            # LifeCircleBlock 生命周期相关回调
+            viewController.subspec 'LifeCircleBlock' do |lifeCircleBlock|
+                lifeCircleBlock.source_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}'
+                lifeCircleBlock.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h'
+            end
+        end
+    end
+
     # Foundation 通用扩展
     s.subspec 'Foundation' do |foundation|
         # NSBundle 相关扩展
