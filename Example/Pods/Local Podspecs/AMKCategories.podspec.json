@@ -56,6 +56,11 @@
           "name": "NSObject",
           "subspecs": [
             {
+              "name": "LocaleDescription",
+              "source_files": "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.h"
+            },
+            {
               "name": "MethodSwizzling",
               "source_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.h"

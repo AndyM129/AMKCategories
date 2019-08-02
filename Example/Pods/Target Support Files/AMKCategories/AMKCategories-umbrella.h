@@ -13,6 +13,7 @@
 #import "NSBundle+AMKBundleInfo.h"
 #import "NSBundle+AMKGitCommitInfo.h"
 #import "NSBundle+AMKAppVersionInfo.h"
+#import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
 
 FOUNDATION_EXPORT double AMKCategoriesVersionNumber;

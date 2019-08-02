@@ -49,6 +49,11 @@ Pod::Spec.new do |s|
 
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|
+            # LocaleDescription 本地化输出
+            object.subspec 'LocaleDescription' do |localeDescription|
+                localeDescription.source_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}'
+                localeDescription.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.h'
+            end
             # MethodSwizzling 方法替换
             object.subspec 'MethodSwizzling' do |methodSwizzling|
                 methodSwizzling.source_files = 'AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}'

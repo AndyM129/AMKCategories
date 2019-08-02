@@ -7,7 +7,7 @@ target 'AMKCategories_Example' do
     pod 'AMKCategories/Foundation', :path => '../'
     
     # 第三方
-    pod 'AMKLocaleDescription'
+
     target 'AMKCategories_Tests' do
       inherit! :search_paths
     end

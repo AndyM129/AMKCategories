@@ -14,27 +14,22 @@ PODS:
   - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.0)
   - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.0)
   - AMKCategories/Foundation/NSObject (0.1.0):
+    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.0)
     - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.0)
+  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.0)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.0)
-  - AMKLocaleDescription (0.1.0)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
-  - AMKLocaleDescription
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AMKLocaleDescription
 
 EXTERNAL SOURCES:
   AMKCategories:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 0d5a363fd80667f2873ebea768482a9fb76fbf99
-  AMKLocaleDescription: 841d83d178fe6a821ea4091f0a820d8873899ffc
+  AMKCategories: 4ea1358516e81e536143c634b100a0fb7a342c3c
 
-PODFILE CHECKSUM: 0a5b55d8d68789f6ab00b7caca39ddadf0e09b9c
+PODFILE CHECKSUM: a061881381a37135ae58612a6183b36f1203cfd6
 
 COCOAPODS: 1.7.0.beta.3

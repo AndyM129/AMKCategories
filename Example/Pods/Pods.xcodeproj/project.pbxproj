@@ -7,28 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00C2CD3CEE0CE2ACEACCEE43D899FC98 /* NSObject+AMKMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = B18D95D62A7DF8B5BD3548A7A3E1EEE3 /* NSObject+AMKMethodSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0265364FAE3A5C34EF7C55B536841A05 /* AMKCategories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EFD6A44F6FAAA32D7B16315406C9A6 /* AMKCategories-dummy.m */; };
-		035FBF019EB87128E1AEAF7EEE564003 /* Pods-AMKCategories_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1146B8432C6B2AEFDB2B90F50FCD56 /* Pods-AMKCategories_Example-dummy.m */; };
-		1D1F3ACB1A727021D96ACD55022C159E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		26770B35618700F86E05B84AB2391EAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		313A7D4C6FA80A914F8217FB0BC6C7D8 /* AMKLocaleDescription-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D453DA274A91E90D5A7EC89621D851D8 /* AMKLocaleDescription-dummy.m */; };
-		34ED8C97C18AEAB9E4163D8F112DAEE9 /* AMKCategories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A52A9EF9035FDE0BB5D2C4A12169A5 /* AMKCategories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42151B1F0E11DE6C826D12AE629E3997 /* NSBundle+AMKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D5F4FAA40E47C477204667F0282A54 /* NSBundle+AMKBundleInfo.m */; };
-		4DFE6FAA18A4269B8636939D09594C57 /* NSBundle+AMKBundleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CE0A6BFB6C7C97CAE66F6FBD082EA0C /* NSBundle+AMKBundleInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4E648DA1F3F24DCEA8DC929F815F8C0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		66D3BA80EF539D9D0D71963BB227A321 /* NSObject+AMKMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E06EDAF9A23878E838E2600EA8C03EC /* NSObject+AMKMethodSwizzling.m */; };
-		78F87D351E3FCC7E33C4F099851E6072 /* NSObject+AMKLocaleDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD931EACA8DD15295C86DEF5C67B859 /* NSObject+AMKLocaleDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7A31A6C2B7465F18FBAC611A5330F2E5 /* NSBundle+AMKAppVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BD53D9CD90EC7636C5F375B096BA6F04 /* NSBundle+AMKAppVersionInfo.m */; };
-		7AC8D3060D748A6D12CE5E99E551DBF9 /* NSBundle+AMKGitCommitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 468AB2324E61375D4851C612A838128B /* NSBundle+AMKGitCommitInfo.m */; };
-		8937D966B9BF75D18484716564035382 /* NSBundle+AMKAppVersionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 417EF6ABF0D1155511283A6FBCFF660F /* NSBundle+AMKAppVersionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		000695733958CBFBCD92EE5E5D30F9EE /* NSObject+AMKLocaleDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EE1B15BE3D568DFBE2945571494F61 /* NSObject+AMKLocaleDescription.m */; };
+		13114FEF9D732063240CE7D0E068EA9F /* NSObject+AMKLocaleDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = D80867AC6D2D6970119FA100FC1A1636 /* NSObject+AMKLocaleDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21DCB2DCBCF71BD0880DD4B1440F4E7A /* NSBundle+AMKBundleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = FBB615B79F41751DA7E2C31A31957726 /* NSBundle+AMKBundleInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		398DC060A0A6356DC0323D3E2359167B /* AMKCategories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A52A9EF9035FDE0BB5D2C4A12169A5 /* AMKCategories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CEBEA2537CA3C69D9289A0103B81483 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		76DC810B26C614DF960550DBE625F7DB /* NSObject+AMKMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = F932FA6CBF15DBAED6A2C6A598704172 /* NSObject+AMKMethodSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EBBD8E7720015D0E79B6C745AB09F1F /* Pods-AMKCategories_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BA0E0D326666D4F994F2B601BBD6D /* Pods-AMKCategories_Tests-dummy.m */; };
-		9FA0581E0DEFD4EAB65526DB5D8DFD9E /* Pods-AMKCategories_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A32B687889E77BB4663627F70F59D13 /* Pods-AMKCategories_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1940E178E3ACFCC28F53A4FDB3394B9 /* AMKLocaleDescription-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F6CA250F93B6EFE7AE0821F291E8F8 /* AMKLocaleDescription-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D0A9BBD513100EA42E07224E6F7BAB84 /* NSObject+AMKLocaleDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = E48A4C1769D9A33A9CBAED0D150A5FCE /* NSObject+AMKLocaleDescription.m */; };
+		A3360E6DD6D2FA84B700B7E627BF69BC /* NSBundle+AMKAppVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E31835E345CED7D9B34C11D286055B4E /* NSBundle+AMKAppVersionInfo.m */; };
+		AE61BA207DC7A870B994BB034C01B1FB /* NSBundle+AMKGitCommitInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = C15E15A3DCA1C7EE029A023EDE9CD2FB /* NSBundle+AMKGitCommitInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C146B44F0E601D606BD0921A85A5015F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		C32827C4F022033D43E6051482717FCA /* Pods-AMKCategories_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1146B8432C6B2AEFDB2B90F50FCD56 /* Pods-AMKCategories_Example-dummy.m */; };
+		CB5C74A52E4C03EC36BC0232B9D78042 /* NSBundle+AMKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B8B3979738BB842939A7434A90F7B /* NSBundle+AMKBundleInfo.m */; };
+		D75ED4F96A864384BBCD7A95E2222108 /* NSBundle+AMKGitCommitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 21612B703CAE19E42EBC6CF2B3313845 /* NSBundle+AMKGitCommitInfo.m */; };
+		D86F4BC5B98E557986467012468AB0B7 /* Pods-AMKCategories_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A32B687889E77BB4663627F70F59D13 /* Pods-AMKCategories_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DEB112F6691BFD5FCA12A85E705B5ACE /* Pods-AMKCategories_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 099954F1B66919B347CB932238A472ED /* Pods-AMKCategories_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6384C4D2F1B368F87747DBBE4D1CBC1 /* NSBundle+AMKGitCommitInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7E32248022AB976E840A701C080DF6 /* NSBundle+AMKGitCommitInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61BD0F9EB8BE682904E107DDE64D160 /* AMKCategories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EFD6A44F6FAAA32D7B16315406C9A6 /* AMKCategories-dummy.m */; };
 		EBAF350FD52A3B431970A468E1A9D1F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		F5AEBEA02AE34FB0E013DDF3581ACBDC /* NSObject+AMKMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CD38D536F969E003C4A5357F1F4A4C /* NSObject+AMKMethodSwizzling.m */; };
+		FD7658DF88751F5DBA2582A1CA8E9B0A /* NSBundle+AMKAppVersionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = C850E98E9198B775983C3E9BB611E21E /* NSBundle+AMKAppVersionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,14 +36,7 @@
 			remoteGlobalIDString = A2B0F5005BA0AB7F3DE35226BB29BAB0;
 			remoteInfo = "Pods-AMKCategories_Example";
 		};
-		78B3E97700E32DD85AF678296BF34BDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E0339E484B0A53E91C4EF098CECDA37B;
-			remoteInfo = AMKLocaleDescription;
-		};
-		B79D1355BDDF79B5FCD6D6C486855360 /* PBXContainerItemProxy */ = {
+		E5E22838859EB48E1C8B9A5F7D9387DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -56,73 +46,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0144A0EA74B99E82663937100E148F09 /* AMKCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AMKCategories.framework; path = AMKCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A52A9EF9035FDE0BB5D2C4A12169A5 /* AMKCategories-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-umbrella.h"; sourceTree = "<group>"; };
 		099954F1B66919B347CB932238A472ED /* Pods-AMKCategories_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMKCategories_Tests-umbrella.h"; sourceTree = "<group>"; };
-		0BA7FBFA6B118D0F73FA202D706F1B08 /* AMKLocaleDescription-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AMKLocaleDescription-Info.plist"; sourceTree = "<group>"; };
-		0CE0A6BFB6C7C97CAE66F6FBD082EA0C /* NSBundle+AMKBundleInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKBundleInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.h"; sourceTree = "<group>"; };
 		100B5A8E64E34F20A103EF899954AE90 /* Pods-AMKCategories_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		10E25873F22518B0C74CEB2A9BFE4246 /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1294DDD6A485F069068A88844B2F429B /* AMKCategories.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AMKCategories.modulemap; sourceTree = "<group>"; };
-		1B27AC73F2AFEFCCEED8D6AFF88A9CC0 /* AMKLocaleDescription.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AMKLocaleDescription.framework; path = AMKLocaleDescription.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2090B42C896151119B65D13ADD6B786C /* Pods-AMKCategories_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AMKCategories_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		21175B4453B6B5A0F2B75092A22A9E91 /* Pods-AMKCategories_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AMKCategories_Tests.modulemap"; sourceTree = "<group>"; };
-		21A7CC2156705BDC6B4732ABC870AE3A /* AMKLocaleDescription.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMKLocaleDescription.xcconfig; sourceTree = "<group>"; };
+		21612B703CAE19E42EBC6CF2B3313845 /* NSBundle+AMKGitCommitInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKGitCommitInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/NSBundle+AMKGitCommitInfo.m"; sourceTree = "<group>"; };
 		2B069607FBBDF307CFDE1498DB410F80 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		36EE1B15BE3D568DFBE2945571494F61 /* NSObject+AMKLocaleDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKLocaleDescription.m"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.m"; sourceTree = "<group>"; };
 		3D788390EA625361E284A06D9AFE14D6 /* Pods-AMKCategories_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Tests-Info.plist"; sourceTree = "<group>"; };
 		3E2BA0E0D326666D4F994F2B601BBD6D /* Pods-AMKCategories_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMKCategories_Tests-dummy.m"; sourceTree = "<group>"; };
-		417EF6ABF0D1155511283A6FBCFF660F /* NSBundle+AMKAppVersionInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKAppVersionInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.h"; sourceTree = "<group>"; };
-		43D5F4FAA40E47C477204667F0282A54 /* NSBundle+AMKBundleInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKBundleInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.m"; sourceTree = "<group>"; };
-		468AB2324E61375D4851C612A838128B /* NSBundle+AMKGitCommitInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKGitCommitInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/NSBundle+AMKGitCommitInfo.m"; sourceTree = "<group>"; };
-		4E06EDAF9A23878E838E2600EA8C03EC /* NSObject+AMKMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKMethodSwizzling.m"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.m"; sourceTree = "<group>"; };
-		4FD931EACA8DD15295C86DEF5C67B859 /* NSObject+AMKLocaleDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKLocaleDescription.h"; path = "AMKLocaleDescription/Classes/NSObject+AMKLocaleDescription.h"; sourceTree = "<group>"; };
 		52D156EC3E99B38C6947839690C35BFE /* Pods-AMKCategories_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		5F2F63B22DA0E1C59FD2E4EBC57A0856 /* Pods_AMKCategories_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AMKCategories_Tests.framework; path = "Pods-AMKCategories_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDA08B8F3575FBCB5B7F25F65C56C6 /* Pods-AMKCategories_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AMKCategories_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		67420538A07C6A81ACBC069386E33F36 /* AMKLocaleDescription.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AMKLocaleDescription.modulemap; sourceTree = "<group>"; };
 		70382FEB048C8E6AC3B079CC853229C5 /* Pods-AMKCategories_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Example-Info.plist"; sourceTree = "<group>"; };
-		72F6CA250F93B6EFE7AE0821F291E8F8 /* AMKLocaleDescription-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKLocaleDescription-umbrella.h"; sourceTree = "<group>"; };
 		7BF38BDCC5AABCE3B7B3C4AE5AB602C2 /* Pods-AMKCategories_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7D1146B8432C6B2AEFDB2B90F50FCD56 /* Pods-AMKCategories_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMKCategories_Example-dummy.m"; sourceTree = "<group>"; };
 		8A32B687889E77BB4663627F70F59D13 /* Pods-AMKCategories_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMKCategories_Example-umbrella.h"; sourceTree = "<group>"; };
+		91D771DA01639A9BAB6E77433A5AD360 /* Pods_AMKCategories_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AMKCategories_Example.framework; path = "Pods-AMKCategories_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95EFD6A44F6FAAA32D7B16315406C9A6 /* AMKCategories-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AMKCategories-dummy.m"; sourceTree = "<group>"; };
 		992B15B9D0B88C290F8D91502D7BBC77 /* Pods-AMKCategories_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AMKCategories_Example-frameworks.sh"; sourceTree = "<group>"; };
-		9D7E32248022AB976E840A701C080DF6 /* NSBundle+AMKGitCommitInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKGitCommitInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/NSBundle+AMKGitCommitInfo.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A12B8AFFC102FB4D31A3C20CFA81C6D8 /* Pods-AMKCategories_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A720098BEA7A763B0F02790E8E927984 /* Pods-AMKCategories_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B18D95D62A7DF8B5BD3548A7A3E1EEE3 /* NSObject+AMKMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKMethodSwizzling.h"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.h"; sourceTree = "<group>"; };
-		BD53D9CD90EC7636C5F375B096BA6F04 /* NSBundle+AMKAppVersionInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKAppVersionInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.m"; sourceTree = "<group>"; };
-		BF5A7326F8870F80E6C5F163E60FEC4D /* AMKCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AMKCategories.framework; path = AMKCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C157622BE04231A72B458C33A5160BF3 /* Pods_AMKCategories_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AMKCategories_Example.framework; path = "Pods-AMKCategories_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CD38D536F969E003C4A5357F1F4A4C /* NSObject+AMKMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKMethodSwizzling.m"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.m"; sourceTree = "<group>"; };
+		C15E15A3DCA1C7EE029A023EDE9CD2FB /* NSBundle+AMKGitCommitInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKGitCommitInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/NSBundle+AMKGitCommitInfo.h"; sourceTree = "<group>"; };
+		C850E98E9198B775983C3E9BB611E21E /* NSBundle+AMKAppVersionInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKAppVersionInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.h"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D40DEE27E6A0F999A4A3A731CFF1265C /* AMKCategories.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMKCategories.xcconfig; sourceTree = "<group>"; };
-		D453DA274A91E90D5A7EC89621D851D8 /* AMKLocaleDescription-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AMKLocaleDescription-dummy.m"; sourceTree = "<group>"; };
 		D70EBD7E0A74F90F37D40266A10767D8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		D7E8C8875EE2504B491F81654BFD9333 /* AMKLocaleDescription-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKLocaleDescription-prefix.pch"; sourceTree = "<group>"; };
+		D80867AC6D2D6970119FA100FC1A1636 /* NSObject+AMKLocaleDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKLocaleDescription.h"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.h"; sourceTree = "<group>"; };
 		DED26443E5A6D83EEAE1C6BD6CCB59BC /* Pods-AMKCategories_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AMKCategories_Example.modulemap"; sourceTree = "<group>"; };
-		E48A4C1769D9A33A9CBAED0D150A5FCE /* NSObject+AMKLocaleDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKLocaleDescription.m"; path = "AMKLocaleDescription/Classes/NSObject+AMKLocaleDescription.m"; sourceTree = "<group>"; };
+		E31835E345CED7D9B34C11D286055B4E /* NSBundle+AMKAppVersionInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKAppVersionInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.m"; sourceTree = "<group>"; };
+		E4608C24D9A20D4A9CB3E4C7812A43D4 /* Pods_AMKCategories_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AMKCategories_Tests.framework; path = "Pods-AMKCategories_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA12DFCBDC8F5192A0351E5C8BBCCAD5 /* AMKCategories-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AMKCategories-Info.plist"; sourceTree = "<group>"; };
+		F17B8B3979738BB842939A7434A90F7B /* NSBundle+AMKBundleInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKBundleInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.m"; sourceTree = "<group>"; };
+		F932FA6CBF15DBAED6A2C6A598704172 /* NSObject+AMKMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKMethodSwizzling.h"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.h"; sourceTree = "<group>"; };
+		FBB615B79F41751DA7E2C31A31957726 /* NSBundle+AMKBundleInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKBundleInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.h"; sourceTree = "<group>"; };
 		FCE36BA2AD777AB06EEE249091917698 /* AMKCategories.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AMKCategories.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FE59C35FBE346DA448CE0434E2E015E4 /* AMKCategories-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04A628EA29853653FB3C8ED504B9BA5A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26770B35618700F86E05B84AB2391EAA /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		06D1DB1818246DD00C7C48FB0782F07E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4E648DA1F3F24DCEA8DC929F815F8C0E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		710587E5BA62C4D03DB972454486CD7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,23 +98,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEDC54BED268788466C71E9E5D6155F6 /* Frameworks */ = {
+		823FDF818FF94F1AA2062E37303A5DD5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D1F3ACB1A727021D96ACD55022C159E /* Foundation.framework in Frameworks */,
+				C146B44F0E601D606BD0921A85A5015F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3C0BF1C0581D9159D942A6097DB2157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEBEA2537CA3C69D9289A0103B81483 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DF8AEE27BD457B923F55CE986053AB0 /* Pods */ = {
+		1AE2CEE380EDF1BE957FE1735A4E4B24 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				338CE6D1C56DC9E010E5924D0C1141CE /* AMKLocaleDescription */,
+				C0F19195F435839A5CDB00E76B40A9C9 /* NSBundle */,
+				AA2E6491820DADE955652740D101F088 /* NSObject */,
 			);
-			name = Pods;
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 		1B36E3840CC7721616AD048A3EB8ED94 /* Pod */ = {
@@ -160,24 +136,13 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		28A776FB5664F566E1B1B6998582F03D /* VersionInfo */ = {
+		2A152D84F14DB3D13225A15DEDA34059 /* MethodSwizzling */ = {
 			isa = PBXGroup;
 			children = (
-				417EF6ABF0D1155511283A6FBCFF660F /* NSBundle+AMKAppVersionInfo.h */,
-				BD53D9CD90EC7636C5F375B096BA6F04 /* NSBundle+AMKAppVersionInfo.m */,
+				F932FA6CBF15DBAED6A2C6A598704172 /* NSObject+AMKMethodSwizzling.h */,
+				B5CD38D536F969E003C4A5357F1F4A4C /* NSObject+AMKMethodSwizzling.m */,
 			);
-			name = VersionInfo;
-			sourceTree = "<group>";
-		};
-		2BD3C3D24BB8571D5124682F3D83CCB4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BF5A7326F8870F80E6C5F163E60FEC4D /* AMKCategories.framework */,
-				1B27AC73F2AFEFCCEED8D6AFF88A9CC0 /* AMKLocaleDescription.framework */,
-				C157622BE04231A72B458C33A5160BF3 /* Pods_AMKCategories_Example.framework */,
-				5F2F63B22DA0E1C59FD2E4EBC57A0856 /* Pods_AMKCategories_Tests.framework */,
-			);
-			name = Products;
+			name = MethodSwizzling;
 			sourceTree = "<group>";
 		};
 		2F9C437957CFC329BC9043FF2C760DFB /* Pods-AMKCategories_Example */ = {
@@ -197,47 +162,31 @@
 			path = "Target Support Files/Pods-AMKCategories_Example";
 			sourceTree = "<group>";
 		};
-		338CE6D1C56DC9E010E5924D0C1141CE /* AMKLocaleDescription */ = {
+		35501554749DB836E5A440E524F68A1A /* GitCommitInfo */ = {
 			isa = PBXGroup;
 			children = (
-				4FD931EACA8DD15295C86DEF5C67B859 /* NSObject+AMKLocaleDescription.h */,
-				E48A4C1769D9A33A9CBAED0D150A5FCE /* NSObject+AMKLocaleDescription.m */,
-				526DDC0EAF80FBCE747C57AC6D7D10E1 /* Support Files */,
+				C15E15A3DCA1C7EE029A023EDE9CD2FB /* NSBundle+AMKGitCommitInfo.h */,
+				21612B703CAE19E42EBC6CF2B3313845 /* NSBundle+AMKGitCommitInfo.m */,
 			);
-			name = AMKLocaleDescription;
-			path = AMKLocaleDescription;
+			name = GitCommitInfo;
 			sourceTree = "<group>";
 		};
-		3673029BCE49D1DCE85C2D1938D8EA00 /* NSObject */ = {
+		3AA2EE00CB03CD6295DD55F46585AF81 /* VersionInfo */ = {
 			isa = PBXGroup;
 			children = (
-				B4AE6BB851BCB9092BBE12B5FFF0C434 /* MethodSwizzling */,
+				C850E98E9198B775983C3E9BB611E21E /* NSBundle+AMKAppVersionInfo.h */,
+				E31835E345CED7D9B34C11D286055B4E /* NSBundle+AMKAppVersionInfo.m */,
 			);
-			name = NSObject;
+			name = VersionInfo;
 			sourceTree = "<group>";
 		};
-		387036AE3686E479A52700BBC59996EA /* NSBundle */ = {
+		42E2309FDAFEAAFB29F56E1674638327 /* LocaleDescription */ = {
 			isa = PBXGroup;
 			children = (
-				A67046E94178BCB358074BB38E1A16A1 /* BundleInfo */,
-				FC01F369EF9E835439E1AFA1D2500C89 /* GitCommitInfo */,
-				28A776FB5664F566E1B1B6998582F03D /* VersionInfo */,
+				D80867AC6D2D6970119FA100FC1A1636 /* NSObject+AMKLocaleDescription.h */,
+				36EE1B15BE3D568DFBE2945571494F61 /* NSObject+AMKLocaleDescription.m */,
 			);
-			name = NSBundle;
-			sourceTree = "<group>";
-		};
-		526DDC0EAF80FBCE747C57AC6D7D10E1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				67420538A07C6A81ACBC069386E33F36 /* AMKLocaleDescription.modulemap */,
-				21A7CC2156705BDC6B4732ABC870AE3A /* AMKLocaleDescription.xcconfig */,
-				D453DA274A91E90D5A7EC89621D851D8 /* AMKLocaleDescription-dummy.m */,
-				0BA7FBFA6B118D0F73FA202D706F1B08 /* AMKLocaleDescription-Info.plist */,
-				D7E8C8875EE2504B491F81654BFD9333 /* AMKLocaleDescription-prefix.pch */,
-				72F6CA250F93B6EFE7AE0821F291E8F8 /* AMKLocaleDescription-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AMKLocaleDescription";
+			name = LocaleDescription;
 			sourceTree = "<group>";
 		};
 		578EA1EE3B9064E6BA8C82904D143369 /* Pods-AMKCategories_Tests */ = {
@@ -265,13 +214,13 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6E9C36BB230D8AD78BA1D392D144C701 /* Foundation */ = {
+		6107EA8A93AC3AAE75642AD8DBFBFE68 /* BundleInfo */ = {
 			isa = PBXGroup;
 			children = (
-				387036AE3686E479A52700BBC59996EA /* NSBundle */,
-				3673029BCE49D1DCE85C2D1938D8EA00 /* NSObject */,
+				FBB615B79F41751DA7E2C31A31957726 /* NSBundle+AMKBundleInfo.h */,
+				F17B8B3979738BB842939A7434A90F7B /* NSBundle+AMKBundleInfo.m */,
 			);
-			name = Foundation;
+			name = BundleInfo;
 			sourceTree = "<group>";
 		};
 		6FBD8574691E50E470BD564C5A85E87D /* Support Files */ = {
@@ -296,19 +245,19 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		A67046E94178BCB358074BB38E1A16A1 /* BundleInfo */ = {
+		AA2E6491820DADE955652740D101F088 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				0CE0A6BFB6C7C97CAE66F6FBD082EA0C /* NSBundle+AMKBundleInfo.h */,
-				43D5F4FAA40E47C477204667F0282A54 /* NSBundle+AMKBundleInfo.m */,
+				42E2309FDAFEAAFB29F56E1674638327 /* LocaleDescription */,
+				2A152D84F14DB3D13225A15DEDA34059 /* MethodSwizzling */,
 			);
-			name = BundleInfo;
+			name = NSObject;
 			sourceTree = "<group>";
 		};
 		AC32F608C9E5BC4297579968C86E36E0 /* AMKCategories */ = {
 			isa = PBXGroup;
 			children = (
-				6E9C36BB230D8AD78BA1D392D144C701 /* Foundation */,
+				1AE2CEE380EDF1BE957FE1735A4E4B24 /* Foundation */,
 				1B36E3840CC7721616AD048A3EB8ED94 /* Pod */,
 				6FBD8574691E50E470BD564C5A85E87D /* Support Files */,
 			);
@@ -316,13 +265,14 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		B4AE6BB851BCB9092BBE12B5FFF0C434 /* MethodSwizzling */ = {
+		B5974B429127764B1B638EC20002C31A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B18D95D62A7DF8B5BD3548A7A3E1EEE3 /* NSObject+AMKMethodSwizzling.h */,
-				4E06EDAF9A23878E838E2600EA8C03EC /* NSObject+AMKMethodSwizzling.m */,
+				0144A0EA74B99E82663937100E148F09 /* AMKCategories.framework */,
+				91D771DA01639A9BAB6E77433A5AD360 /* Pods_AMKCategories_Example.framework */,
+				E4608C24D9A20D4A9CB3E4C7812A43D4 /* Pods_AMKCategories_Tests.framework */,
 			);
-			name = MethodSwizzling;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		BD7DE159C96A0828A3B278EE8D6D2A59 /* Development Pods */ = {
@@ -333,14 +283,23 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
+		C0F19195F435839A5CDB00E76B40A9C9 /* NSBundle */ = {
+			isa = PBXGroup;
+			children = (
+				6107EA8A93AC3AAE75642AD8DBFBFE68 /* BundleInfo */,
+				35501554749DB836E5A440E524F68A1A /* GitCommitInfo */,
+				3AA2EE00CB03CD6295DD55F46585AF81 /* VersionInfo */,
+			);
+			name = NSBundle;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				BD7DE159C96A0828A3B278EE8D6D2A59 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				0DF8AEE27BD457B923F55CE986053AB0 /* Pods */,
-				2BD3C3D24BB8571D5124682F3D83CCB4 /* Products */,
+				B5974B429127764B1B638EC20002C31A /* Products */,
 				605CB0F6C2362137035696A7060C494B /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -353,44 +312,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FC01F369EF9E835439E1AFA1D2500C89 /* GitCommitInfo */ = {
-			isa = PBXGroup;
-			children = (
-				9D7E32248022AB976E840A701C080DF6 /* NSBundle+AMKGitCommitInfo.h */,
-				468AB2324E61375D4851C612A838128B /* NSBundle+AMKGitCommitInfo.m */,
-			);
-			name = GitCommitInfo;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		10963CDDD0266D08E681A18A7BDEC460 /* Headers */ = {
+		5EF3C24D6B00BB711F7F7D77E92291C4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA0581E0DEFD4EAB65526DB5D8DFD9E /* Pods-AMKCategories_Example-umbrella.h in Headers */,
+				398DC060A0A6356DC0323D3E2359167B /* AMKCategories-umbrella.h in Headers */,
+				FD7658DF88751F5DBA2582A1CA8E9B0A /* NSBundle+AMKAppVersionInfo.h in Headers */,
+				21DCB2DCBCF71BD0880DD4B1440F4E7A /* NSBundle+AMKBundleInfo.h in Headers */,
+				AE61BA207DC7A870B994BB034C01B1FB /* NSBundle+AMKGitCommitInfo.h in Headers */,
+				13114FEF9D732063240CE7D0E068EA9F /* NSObject+AMKLocaleDescription.h in Headers */,
+				76DC810B26C614DF960550DBE625F7DB /* NSObject+AMKMethodSwizzling.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		404CFB1358B2D7F432C6E51B1E5454A0 /* Headers */ = {
+		CEA3C11D3C2132ED238CA107A5E26BE1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34ED8C97C18AEAB9E4163D8F112DAEE9 /* AMKCategories-umbrella.h in Headers */,
-				8937D966B9BF75D18484716564035382 /* NSBundle+AMKAppVersionInfo.h in Headers */,
-				4DFE6FAA18A4269B8636939D09594C57 /* NSBundle+AMKBundleInfo.h in Headers */,
-				E6384C4D2F1B368F87747DBBE4D1CBC1 /* NSBundle+AMKGitCommitInfo.h in Headers */,
-				00C2CD3CEE0CE2ACEACCEE43D899FC98 /* NSObject+AMKMethodSwizzling.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8F4445CA60FE892EC5011877BEF4F7F7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1940E178E3ACFCC28F53A4FDB3394B9 /* AMKLocaleDescription-umbrella.h in Headers */,
-				78F87D351E3FCC7E33C4F099851E6072 /* NSObject+AMKLocaleDescription.h in Headers */,
+				D86F4BC5B98E557986467012468AB0B7 /* Pods-AMKCategories_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,32 +349,31 @@
 /* Begin PBXNativeTarget section */
 		A2B0F5005BA0AB7F3DE35226BB29BAB0 /* Pods-AMKCategories_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA56C5D624F583FB1904F341A4BE1D1F /* Build configuration list for PBXNativeTarget "Pods-AMKCategories_Example" */;
+			buildConfigurationList = 363D83CAA6CAB86472B46F26F8FCE34B /* Build configuration list for PBXNativeTarget "Pods-AMKCategories_Example" */;
 			buildPhases = (
-				10963CDDD0266D08E681A18A7BDEC460 /* Headers */,
-				D3E1592419D62576B672C926AA218464 /* Sources */,
-				DEDC54BED268788466C71E9E5D6155F6 /* Frameworks */,
-				693733F3B7606925616D40AB38FC9265 /* Resources */,
+				CEA3C11D3C2132ED238CA107A5E26BE1 /* Headers */,
+				89B8CEBF7A3034E7178F26DF124130E5 /* Sources */,
+				823FDF818FF94F1AA2062E37303A5DD5 /* Frameworks */,
+				F05E599A9943AE42149999C187C2AF5B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				56C23F90C20B9AA3CD5BD0D9C8595C57 /* PBXTargetDependency */,
-				6D63DB287684631BACF3B6F8A3FE768F /* PBXTargetDependency */,
+				C2BDD8C1D50A044B9A86B3FAAAD08837 /* PBXTargetDependency */,
 			);
 			name = "Pods-AMKCategories_Example";
 			productName = "Pods-AMKCategories_Example";
-			productReference = C157622BE04231A72B458C33A5160BF3 /* Pods_AMKCategories_Example.framework */;
+			productReference = 91D771DA01639A9BAB6E77433A5AD360 /* Pods_AMKCategories_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A608E7E92F1573BBE98F714CC51C18B5 /* AMKCategories */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD09FBD3A3B698461654A8A649894448 /* Build configuration list for PBXNativeTarget "AMKCategories" */;
+			buildConfigurationList = 220E92A39F9A68AEED6F721D6D18259A /* Build configuration list for PBXNativeTarget "AMKCategories" */;
 			buildPhases = (
-				404CFB1358B2D7F432C6E51B1E5454A0 /* Headers */,
-				1BAC88375FC7C5EFA7B231BCF3660D54 /* Sources */,
-				04A628EA29853653FB3C8ED504B9BA5A /* Frameworks */,
-				D826B7F2AFDE1848E105D1C8EC7CA2A9 /* Resources */,
+				5EF3C24D6B00BB711F7F7D77E92291C4 /* Headers */,
+				909AA542E46DDC652D93B3EA31116758 /* Sources */,
+				D3C0BF1C0581D9159D942A6097DB2157 /* Frameworks */,
+				2A8759DB14B0DF151A90CD9715A4A68C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -440,25 +381,7 @@
 			);
 			name = AMKCategories;
 			productName = AMKCategories;
-			productReference = BF5A7326F8870F80E6C5F163E60FEC4D /* AMKCategories.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E0339E484B0A53E91C4EF098CECDA37B /* AMKLocaleDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 060FC14DBD83F360EDB093EE9B3FED17 /* Build configuration list for PBXNativeTarget "AMKLocaleDescription" */;
-			buildPhases = (
-				8F4445CA60FE892EC5011877BEF4F7F7 /* Headers */,
-				FDF3DC0F182E955E0B35360365E9DA77 /* Sources */,
-				06D1DB1818246DD00C7C48FB0782F07E /* Frameworks */,
-				D734E7BA7F96BCD121DB44F03C639B6C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AMKLocaleDescription;
-			productName = AMKLocaleDescription;
-			productReference = 1B27AC73F2AFEFCCEED8D6AFF88A9CC0 /* AMKLocaleDescription.framework */;
+			productReference = 0144A0EA74B99E82663937100E148F09 /* AMKCategories.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E091450CF3B53C87A685480C39CE1EF8 /* Pods-AMKCategories_Tests */ = {
@@ -477,7 +400,7 @@
 			);
 			name = "Pods-AMKCategories_Tests";
 			productName = "Pods-AMKCategories_Tests";
-			productReference = 5F2F63B22DA0E1C59FD2E4EBC57A0856 /* Pods_AMKCategories_Tests.framework */;
+			productReference = E4608C24D9A20D4A9CB3E4C7812A43D4 /* Pods_AMKCategories_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -497,12 +420,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 2BD3C3D24BB8571D5124682F3D83CCB4 /* Products */;
+			productRefGroup = B5974B429127764B1B638EC20002C31A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A608E7E92F1573BBE98F714CC51C18B5 /* AMKCategories */,
-				E0339E484B0A53E91C4EF098CECDA37B /* AMKLocaleDescription */,
 				A2B0F5005BA0AB7F3DE35226BB29BAB0 /* Pods-AMKCategories_Example */,
 				E091450CF3B53C87A685480C39CE1EF8 /* Pods-AMKCategories_Tests */,
 			);
@@ -510,21 +432,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		693733F3B7606925616D40AB38FC9265 /* Resources */ = {
+		2A8759DB14B0DF151A90CD9715A4A68C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D734E7BA7F96BCD121DB44F03C639B6C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D826B7F2AFDE1848E105D1C8EC7CA2A9 /* Resources */ = {
+		F05E599A9943AE42149999C187C2AF5B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -541,18 +456,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1BAC88375FC7C5EFA7B231BCF3660D54 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0265364FAE3A5C34EF7C55B536841A05 /* AMKCategories-dummy.m in Sources */,
-				7A31A6C2B7465F18FBAC611A5330F2E5 /* NSBundle+AMKAppVersionInfo.m in Sources */,
-				42151B1F0E11DE6C826D12AE629E3997 /* NSBundle+AMKBundleInfo.m in Sources */,
-				7AC8D3060D748A6D12CE5E99E551DBF9 /* NSBundle+AMKGitCommitInfo.m in Sources */,
-				66D3BA80EF539D9D0D71963BB227A321 /* NSObject+AMKMethodSwizzling.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1C61DF969F396A9AC52947DD655A78F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,43 +464,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3E1592419D62576B672C926AA218464 /* Sources */ = {
+		89B8CEBF7A3034E7178F26DF124130E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035FBF019EB87128E1AEAF7EEE564003 /* Pods-AMKCategories_Example-dummy.m in Sources */,
+				C32827C4F022033D43E6051482717FCA /* Pods-AMKCategories_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FDF3DC0F182E955E0B35360365E9DA77 /* Sources */ = {
+		909AA542E46DDC652D93B3EA31116758 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313A7D4C6FA80A914F8217FB0BC6C7D8 /* AMKLocaleDescription-dummy.m in Sources */,
-				D0A9BBD513100EA42E07224E6F7BAB84 /* NSObject+AMKLocaleDescription.m in Sources */,
+				E61BD0F9EB8BE682904E107DDE64D160 /* AMKCategories-dummy.m in Sources */,
+				A3360E6DD6D2FA84B700B7E627BF69BC /* NSBundle+AMKAppVersionInfo.m in Sources */,
+				CB5C74A52E4C03EC36BC0232B9D78042 /* NSBundle+AMKBundleInfo.m in Sources */,
+				D75ED4F96A864384BBCD7A95E2222108 /* NSBundle+AMKGitCommitInfo.m in Sources */,
+				000695733958CBFBCD92EE5E5D30F9EE /* NSObject+AMKLocaleDescription.m in Sources */,
+				F5AEBEA02AE34FB0E013DDF3581ACBDC /* NSObject+AMKMethodSwizzling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		56C23F90C20B9AA3CD5BD0D9C8595C57 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMKCategories;
-			target = A608E7E92F1573BBE98F714CC51C18B5 /* AMKCategories */;
-			targetProxy = B79D1355BDDF79B5FCD6D6C486855360 /* PBXContainerItemProxy */;
-		};
-		6D63DB287684631BACF3B6F8A3FE768F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMKLocaleDescription;
-			target = E0339E484B0A53E91C4EF098CECDA37B /* AMKLocaleDescription */;
-			targetProxy = 78B3E97700E32DD85AF678296BF34BDD /* PBXContainerItemProxy */;
-		};
 		9D7051AA1182B789D79E99AAFBAF0066 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-AMKCategories_Example";
 			target = A2B0F5005BA0AB7F3DE35226BB29BAB0 /* Pods-AMKCategories_Example */;
 			targetProxy = 159CF52E25D579231FA035EB2CB04B68 /* PBXContainerItemProxy */;
+		};
+		C2BDD8C1D50A044B9A86B3FAAAD08837 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMKCategories;
+			target = A608E7E92F1573BBE98F714CC51C18B5 /* AMKCategories */;
+			targetProxy = E5E22838859EB48E1C8B9A5F7D9387DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -661,6 +562,39 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
+		};
+		312BED924291179A86E414CD48795C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10E25873F22518B0C74CEB2A9BFE4246 /* Pods-AMKCategories_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		421ECB1396280A8D83853C3DDBED1700 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -759,70 +693,7 @@
 			};
 			name = Debug;
 		};
-		849434F1A31F661237B67C1F4F5D7D42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21A7CC2156705BDC6B4732ABC870AE3A /* AMKLocaleDescription.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription.modulemap";
-				PRODUCT_MODULE_NAME = AMKLocaleDescription;
-				PRODUCT_NAME = AMKLocaleDescription;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8C9A7CD62810C5E12090EAD5246EF801 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D40DEE27E6A0F999A4A3A731CFF1265C /* AMKCategories.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AMKCategories/AMKCategories-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AMKCategories/AMKCategories-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AMKCategories/AMKCategories.modulemap";
-				PRODUCT_MODULE_NAME = AMKCategories;
-				PRODUCT_NAME = AMKCategories;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A9803DE9727410AD2327E1ED2B684ED8 /* Debug */ = {
+		5B118BF3AD49F3D55087357E6094820F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D40DEE27E6A0F999A4A3A731CFF1265C /* AMKCategories.xcconfig */;
 			buildSettings = {
@@ -853,11 +724,10 @@
 			};
 			name = Debug;
 		};
-		BDCE619DC0D06ABC7F8D962EF847F11B /* Release */ = {
+		6CF5E0C6F5D5175FF4112FCD2D172331 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BF38BDCC5AABCE3B7B3C4AE5AB602C2 /* Pods-AMKCategories_Example.release.xcconfig */;
+			baseConfigurationReference = D40DEE27E6A0F999A4A3A731CFF1265C /* AMKCategories.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -867,58 +737,24 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/AMKCategories/AMKCategories-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AMKCategories/AMKCategories-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/AMKCategories/AMKCategories.modulemap";
+				PRODUCT_MODULE_NAME = AMKCategories;
+				PRODUCT_NAME = AMKCategories;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		C6626AFC85FC68830047C6892F35405D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10E25873F22518B0C74CEB2A9BFE4246 /* Pods-AMKCategories_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		CB82033AADD1C7F660E141660FFFC93E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -954,10 +790,11 @@
 			};
 			name = Release;
 		};
-		E309B25F92B1CAF4F2306FA621A7006D /* Release */ = {
+		F63875F96D61072482D2FBAA8561FA8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21A7CC2156705BDC6B4732ABC870AE3A /* AMKLocaleDescription.xcconfig */;
+			baseConfigurationReference = 7BF38BDCC5AABCE3B7B3C4AE5AB602C2 /* Pods-AMKCategories_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -967,18 +804,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AMKLocaleDescription/AMKLocaleDescription.modulemap";
-				PRODUCT_MODULE_NAME = AMKLocaleDescription;
-				PRODUCT_NAME = AMKLocaleDescription;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -989,11 +827,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		060FC14DBD83F360EDB093EE9B3FED17 /* Build configuration list for PBXNativeTarget "AMKLocaleDescription" */ = {
+		220E92A39F9A68AEED6F721D6D18259A /* Build configuration list for PBXNativeTarget "AMKCategories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				849434F1A31F661237B67C1F4F5D7D42 /* Debug */,
-				E309B25F92B1CAF4F2306FA621A7006D /* Release */,
+				5B118BF3AD49F3D55087357E6094820F /* Debug */,
+				6CF5E0C6F5D5175FF4112FCD2D172331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		363D83CAA6CAB86472B46F26F8FCE34B /* Build configuration list for PBXNativeTarget "Pods-AMKCategories_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312BED924291179A86E414CD48795C0A /* Debug */,
+				F63875F96D61072482D2FBAA8561FA8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1012,24 +859,6 @@
 			buildConfigurations = (
 				481978C9F10F247E6DE20480D92B8AF7 /* Debug */,
 				CB82033AADD1C7F660E141660FFFC93E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD09FBD3A3B698461654A8A649894448 /* Build configuration list for PBXNativeTarget "AMKCategories" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A9803DE9727410AD2327E1ED2B684ED8 /* Debug */,
-				8C9A7CD62810C5E12090EAD5246EF801 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CA56C5D624F583FB1904F341A4BE1D1F /* Build configuration list for PBXNativeTarget "Pods-AMKCategories_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6626AFC85FC68830047C6892F35405D /* Debug */,
-				BDCE619DC0D06ABC7F8D962EF847F11B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
