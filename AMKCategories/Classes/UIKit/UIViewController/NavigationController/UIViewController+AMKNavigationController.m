@@ -85,7 +85,7 @@
     return [objc_getAssociatedObject(self, @selector(amk_presentedWithNavigationController)) boolValue];
 }
 
-- (void)setBde_presentedWithNavigationController:(BOOL)amk_presentedWithNavigationController {
+- (void)setAmk_presentedWithNavigationController:(BOOL)amk_presentedWithNavigationController {
     objc_setAssociatedObject(self, @selector(amk_presentedWithNavigationController), @(amk_presentedWithNavigationController), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
