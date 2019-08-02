@@ -24,7 +24,10 @@
     {
       "name": "DefaultSubspec",
       "dependencies": {
-        "AMKCategories/Foundation/NSBundle/VersionInfo": [
+        "AMKCategories/UIKit": [
+
+        ],
+        "AMKCategories/Foundation": [
 
         ]
       }
@@ -56,7 +59,12 @@
             {
               "name": "LifeCircleBlock",
               "source_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h"
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
             }
           ]
         }

@@ -23,7 +23,8 @@ Pod::Spec.new do |s|
 
     # 默认子组件
     s.subspec 'DefaultSubspec' do |defaultSubspec|
-        defaultSubspec.dependency 'AMKCategories/Foundation/NSBundle/VersionInfo'
+        defaultSubspec.dependency 'AMKCategories/UIKit'
+        defaultSubspec.dependency 'AMKCategories/Foundation'
     end
 
     # UIKit 通用扩展
