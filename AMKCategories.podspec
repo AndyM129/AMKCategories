@@ -72,7 +72,14 @@ Pod::Spec.new do |s|
                 bundleInfo.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/BundleInfo/*.h'
             end
         end
-
+        # NSDictionary 相关扩展
+        foundation.subspec 'NSDictionary' do |dictionary|
+            # ObjectForKey 自定义类型取值
+            dictionary.subspec 'ObjectForKey' do |objectForKey|
+                objectForKey.source_files = 'AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.{h,m}'
+                objectForKey.public_header_files = 'AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.h'
+            end
+        end
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|
             # LocaleDescription 本地化输出

@@ -6,6 +6,7 @@ PODS:
     - AMKCategories/UIKit
   - AMKCategories/Foundation (0.1.0):
     - AMKCategories/Foundation/NSBundle (= 0.1.0)
+    - AMKCategories/Foundation/NSDictionary (= 0.1.0)
     - AMKCategories/Foundation/NSObject (= 0.1.0)
   - AMKCategories/Foundation/NSBundle (0.1.0):
     - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.0)
@@ -14,6 +15,9 @@ PODS:
   - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.0)
   - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.0)
   - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.0)
+  - AMKCategories/Foundation/NSDictionary (0.1.0):
+    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.0)
+  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.0)
   - AMKCategories/Foundation/NSObject (0.1.0):
     - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.0)
     - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.0)
@@ -42,7 +46,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: c579ade0d9eb48bb2f90be9c570504afcaafa894
+  AMKCategories: 3fbd7416e959974ee4d39297bf2c6eac335002ac
 
 PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 

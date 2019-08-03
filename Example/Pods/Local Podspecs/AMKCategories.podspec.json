@@ -94,6 +94,16 @@
           ]
         },
         {
+          "name": "NSDictionary",
+          "subspecs": [
+            {
+              "name": "ObjectForKey",
+              "source_files": "AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.h"
+            }
+          ]
+        },
+        {
           "name": "NSObject",
           "subspecs": [
             {

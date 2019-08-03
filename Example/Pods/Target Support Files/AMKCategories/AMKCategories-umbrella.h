@@ -13,6 +13,7 @@
 #import "NSBundle+AMKBundleInfo.h"
 #import "NSBundle+AMKGitCommitInfo.h"
 #import "NSBundle+AMKAppVersionInfo.h"
+#import "NSDictionary+AMKObjectForKey.h"
 #import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
 #import "UIViewController+AMKLifeCircleBlock.h"
