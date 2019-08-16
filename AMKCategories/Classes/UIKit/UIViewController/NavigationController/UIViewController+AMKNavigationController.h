@@ -57,6 +57,23 @@ typedef NS_ENUM(NSInteger, AMKViewControllerTransitionStyle) {
 /** 以指定的方式前往ViewController */
 - (BOOL)amk_gotoViewController:(UIViewController *)viewController transitionStyle:(AMKViewControllerTransitionStyle)transitionStyle animated:(BOOL)animated;
 
+#pragma mark - UI
+
+/** 默认视图控制器的导航栏底线图片（若为空则走系统默认样式） */
+@property(nonatomic, strong, nullable, class) UIImage *amk_navigationBarShadowImage;
+
+/** 当前视图控制器的导航栏底线图片（若为空则取值同名类属性） */
+@property(nonatomic, strong, nullable) UIImage *amk_navigationBarShadowImage;
+
+/** 导航栏返回按钮 */
+@property(nonatomic, strong, nullable) UIBarButtonItem *amk_backBarButtonItem;
+
+/** 按需添加返回按钮 */
+- (BOOL)amk_addBackBarButtonItemIfNeeded:(BOOL)animated;
+
+/** 按需添加返回按钮被点击 */
+- (void)amk_backBarButtonItemClicked:(UIBarButtonItem *_Nullable)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,38 +1,38 @@
 PODS:
-  - AMKCategories (0.1.0):
-    - AMKCategories/DefaultSubspec (= 0.1.0)
-  - AMKCategories/DefaultSubspec (0.1.0):
+  - AMKCategories (0.1.1):
+    - AMKCategories/DefaultSubspec (= 0.1.1)
+  - AMKCategories/DefaultSubspec (0.1.1):
     - AMKCategories/Foundation
     - AMKCategories/UIKit
-  - AMKCategories/Foundation (0.1.0):
-    - AMKCategories/Foundation/NSBundle (= 0.1.0)
-    - AMKCategories/Foundation/NSDictionary (= 0.1.0)
-    - AMKCategories/Foundation/NSObject (= 0.1.0)
-  - AMKCategories/Foundation/NSBundle (0.1.0):
-    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.0)
-    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.0)
-    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.0)
-  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.0)
-  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.0)
-  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.0)
-  - AMKCategories/Foundation/NSDictionary (0.1.0):
-    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.0)
-  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.0)
-  - AMKCategories/Foundation/NSObject (0.1.0):
-    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.0)
-    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.0)
-  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.0)
-  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.0)
-  - AMKCategories/UIKit (0.1.0):
-    - AMKCategories/UIKit/UIViewController (= 0.1.0)
-  - AMKCategories/UIKit/UIViewController (0.1.0):
-    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.0)
-    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.0)
-    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.0)
-  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.0):
+  - AMKCategories/Foundation (0.1.1):
+    - AMKCategories/Foundation/NSBundle (= 0.1.1)
+    - AMKCategories/Foundation/NSDictionary (= 0.1.1)
+    - AMKCategories/Foundation/NSObject (= 0.1.1)
+  - AMKCategories/Foundation/NSBundle (0.1.1):
+    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.1)
+    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.1)
+    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.1)
+  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.1)
+  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.1)
+  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.1)
+  - AMKCategories/Foundation/NSDictionary (0.1.1):
+    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.1)
+  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.1)
+  - AMKCategories/Foundation/NSObject (0.1.1):
+    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.1)
+    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.1)
+  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.1)
+  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.1)
+  - AMKCategories/UIKit (0.1.1):
+    - AMKCategories/UIKit/UIViewController (= 0.1.1)
+  - AMKCategories/UIKit/UIViewController (0.1.1):
+    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.1)
+    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.1)
+    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.1)
+  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.1):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.0)
-  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.0):
+  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.1)
+  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.1):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
 
@@ -46,7 +46,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 3fbd7416e959974ee4d39297bf2c6eac335002ac
+  AMKCategories: 51cd3b409887305055b841b924f88380cc7afd6a
 
 PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 

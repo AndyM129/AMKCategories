@@ -6,11 +6,22 @@
 //
 
 #import "UIViewController+AMKNavigationController.h"
-#import <objc/runtime.h>
+#import <AMKCategories/NSObject+AMKMethodSwizzling.h>
 
 @implementation UIViewController (AMKNavigationController)
 
 #pragma mark - Init Methods
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidLoad) withMethod:@selector(AMKNavigationController_UIViewController_viewDidLoad)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewWillAppear:) withMethod:@selector(AMKNavigationController_UIViewController_viewWillAppear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidAppear:) withMethod:@selector(AMKNavigationController_UIViewController_viewDidAppear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewWillDisappear:) withMethod:@selector(AMKNavigationController_UIViewController_viewWillDisappear:)];
+        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidDisappear:) withMethod:@selector(AMKNavigationController_UIViewController_viewDidDisappear:)];
+    });
+}
 
 #pragma mark - Properties
 
@@ -89,7 +100,74 @@
     objc_setAssociatedObject(self, @selector(amk_presentedWithNavigationController), @(amk_presentedWithNavigationController), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
++ (UIImage *)amk_navigationBarShadowImage {
+    return objc_getAssociatedObject(UIViewController.class, @selector(amk_navigationBarShadowImage));
+}
+
++ (void)setAmk_navigationBarShadowImage:(UIImage *)amk_navigationBarShadowImage {
+    objc_setAssociatedObject(UIViewController.class, @selector(amk_navigationBarShadowImage), amk_navigationBarShadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIImage *)amk_navigationBarShadowImage {
+    return objc_getAssociatedObject(self, @selector(amk_navigationBarShadowImage));
+}
+
+- (void)setAmk_navigationBarShadowImage:(UIImage *)amk_navigationBarShadowImage {
+    objc_setAssociatedObject(self, @selector(amk_navigationBarShadowImage), amk_navigationBarShadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIBarButtonItem *)amk_backBarButtonItem {
+    UIBarButtonItem *backBarButtonItem = objc_getAssociatedObject(self, @selector(amk_backBarButtonItem));
+    if (!backBarButtonItem) {
+        backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UINavigationBar appearance].backIndicatorImage style:UIBarButtonItemStylePlain target:self action:@selector(amk_backBarButtonItemClicked:)];
+        self.amk_backBarButtonItem = backBarButtonItem;
+    }
+    return backBarButtonItem;
+}
+
+- (void)setAmk_backBarButtonItem:(UIBarButtonItem *)amk_backBarButtonItem {
+    objc_setAssociatedObject(self, @selector(amk_backBarButtonItem), amk_backBarButtonItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+#pragma mark - Life Circle
+
+- (void)AMKNavigationController_UIViewController_viewWillAppear:(BOOL)animated {
+    [self AMKNavigationController_UIViewController_viewWillAppear:animated];
+    [self amk_addBackBarButtonItemIfNeeded:animated];
+    [self.navigationController.navigationBar setShadowImage:self.amk_navigationBarShadowImage?:UIViewController.class.amk_navigationBarShadowImage];
+}
+
+- (void)AMKNavigationController_UIViewController_viewDidAppear:(BOOL)animated {
+    [self AMKNavigationController_UIViewController_viewDidAppear:animated];
+    [self amk_addBackBarButtonItemIfNeeded:animated];
+    [self.navigationController.navigationBar setShadowImage:self.amk_navigationBarShadowImage?:UIViewController.class.amk_navigationBarShadowImage];
+}
+
+- (void)AMKNavigationController_UIViewController_viewWillDisappear:(BOOL)animated {
+    [self AMKNavigationController_UIViewController_viewWillDisappear:animated];
+    [self.navigationController.navigationBar setShadowImage:UIViewController.amk_topViewController.amk_navigationBarShadowImage?:self.class.amk_navigationBarShadowImage];
+}
+
+- (void)AMKNavigationController_UIViewController_viewDidDisappear:(BOOL)animated {
+    [self AMKNavigationController_UIViewController_viewDidDisappear:animated];
+    [self.navigationController.navigationBar setShadowImage:UIViewController.amk_topViewController.amk_navigationBarShadowImage?:self.class.amk_navigationBarShadowImage];
+}
+
 #pragma mark - Public Methods
+
+- (BOOL)amk_addBackBarButtonItemIfNeeded:(BOOL)animated {
+    if (self.navigationController && self.navigationController.viewControllers.count<=1 && self.presentingViewController) {
+        if (!self.navigationItem.leftBarButtonItem) {
+            [self.navigationItem setLeftBarButtonItem:self.amk_backBarButtonItem animated:animated];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)amk_backBarButtonItemClicked:(UIBarButtonItem *)sender {
+    [self amk_goBackAnimated:YES];
+}
 
 + (BOOL)amk_goBackAnimated:(BOOL)animated {
     return [self.amk_topViewController amk_goBackAnimated:animated];
