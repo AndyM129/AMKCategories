@@ -15,7 +15,6 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [UIViewController amk_swizzleInstanceMethod:@selector(viewDidLoad) withMethod:@selector(AMKNavigationController_UIViewController_viewDidLoad)];
         [UIViewController amk_swizzleInstanceMethod:@selector(viewWillAppear:) withMethod:@selector(AMKNavigationController_UIViewController_viewWillAppear:)];
         [UIViewController amk_swizzleInstanceMethod:@selector(viewDidAppear:) withMethod:@selector(AMKNavigationController_UIViewController_viewDidAppear:)];
         [UIViewController amk_swizzleInstanceMethod:@selector(viewWillDisappear:) withMethod:@selector(AMKNavigationController_UIViewController_viewWillDisappear:)];
