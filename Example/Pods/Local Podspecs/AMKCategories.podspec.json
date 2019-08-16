@@ -54,7 +54,12 @@
             {
               "name": "NavigationController",
               "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h"
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
             },
             {
               "name": "LifeCircleBlock",

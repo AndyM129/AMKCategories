@@ -31,7 +31,8 @@ PODS:
     - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.1)
   - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.1):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.1)
+  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.1):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.1):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
@@ -46,7 +47,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 51cd3b409887305055b841b924f88380cc7afd6a
+  AMKCategories: 11708999d659d1a20a3c398a05078666767e9124
 
 PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 

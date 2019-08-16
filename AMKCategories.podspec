@@ -42,6 +42,7 @@ Pod::Spec.new do |s|
             viewController.subspec 'NavigationController' do |navigationController|
                 navigationController.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}'
                 navigationController.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h'
+                navigationController.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
             # LifeCircleBlock 生命周期相关回调
             viewController.subspec 'LifeCircleBlock' do |lifeCircleBlock|
