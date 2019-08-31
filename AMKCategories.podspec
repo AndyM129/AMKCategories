@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
     s.source           = { :git => 'https://github.com/AndyM129/AMKCategories.git', :tag => s.version.to_s }
     s.social_media_url = 'http://www.jianshu.com/u/28d89b68984b'
     s.ios.deployment_target = '8.0'
+    s.osx.deployment_target = '10.10' # minimum SDK with autolayout
+    s.tvos.deployment_target = '9.0' # minimum SDK with autolayout
+    s.requires_arc = true
     s.default_subspec = 'DefaultSubspec'
 
     # 默认子组件
