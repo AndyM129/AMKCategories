@@ -1,6 +1,6 @@
 {
   "name": "AMKCategories",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "Summary of AMKCategories.",
   "description": "A description of AMKCategories.",
   "homepage": "https://github.com/AndyM129/AMKCategories",
@@ -13,12 +13,15 @@
   },
   "source": {
     "git": "https://github.com/AndyM129/AMKCategories.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "social_media_url": "http://www.jianshu.com/u/28d89b68984b",
   "platforms": {
-    "ios": "8.0"
+    "ios": "8.0",
+    "osx": "10.10",
+    "tvos": "9.0"
   },
+  "requires_arc": true,
   "default_subspecs": "DefaultSubspec",
   "subspecs": [
     {
