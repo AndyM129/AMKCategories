@@ -16,6 +16,7 @@
 #import "NSDictionary+AMKObjectForKey.h"
 #import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
+#import "UIView+AMKInteractions.h"
 #import "UIViewController+AMKLifeCircleBlock.h"
 #import "UIViewController+AMKNavigationController.h"
 #import "UIViewController+AMKNavigationControllerWithCallback.h"

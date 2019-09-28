@@ -39,6 +39,20 @@
       "name": "UIKit",
       "subspecs": [
         {
+          "name": "UIView",
+          "subspecs": [
+            {
+              "name": "Interactions",
+              "source_files": "AMKCategories/Classes/UIKit/UIView/Interactions/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "UIViewController",
           "subspecs": [
             {

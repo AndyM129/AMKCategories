@@ -32,6 +32,15 @@ Pod::Spec.new do |s|
 
     # UIKit 通用扩展
     s.subspec 'UIKit' do |uikit|
+        # UIView 视图相关
+        uikit.subspec 'UIView' do |view|
+            # Interactions 交互相关
+            view.subspec 'Interactions' do |interactions|
+                interactions.source_files = 'AMKCategories/Classes/UIKit/UIView/Interactions/*.{h,m}'
+                interactions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+
         # UIViewController 相关扩展
         uikit.subspec 'UIViewController' do |viewController|
             # NavigationControllerWithCallback 导航控制

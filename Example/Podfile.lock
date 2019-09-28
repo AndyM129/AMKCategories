@@ -24,7 +24,12 @@ PODS:
   - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.2)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.2)
   - AMKCategories/UIKit (0.1.2):
+    - AMKCategories/UIKit/UIView (= 0.1.2)
     - AMKCategories/UIKit/UIViewController (= 0.1.2)
+  - AMKCategories/UIKit/UIView (0.1.2):
+    - AMKCategories/UIKit/UIView/Interactions (= 0.1.2)
+  - AMKCategories/UIKit/UIView/Interactions (0.1.2):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIViewController (0.1.2):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.2)
     - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.2)
@@ -47,7 +52,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 1c796b456c5aac62228c18f3a25aeed4a96fe939
+  AMKCategories: 5a72889b927c22b5b7d0be0480d80c0ca1768818
 
 PODFILE CHECKSUM: 86a2d961a2692f3e3fb0dbb570491b9eef4d61ea
 
