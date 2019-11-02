@@ -8,8 +8,8 @@ target 'AMKCategories_Example' do
     pod 'AMKCategories/Foundation', :path => '../'
     
     # 第三方
-
+    pod 'Masonry' , '1.1.0'
     target 'AMKCategories_Tests' do
-      inherit! :search_paths
+        inherit! :search_paths
     end
 end

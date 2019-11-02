@@ -24,6 +24,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		7FBAB8BB745DBF234C020396 /* Pods_AMKCategories_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
 		8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */; };
 		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Example.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		83511D98B77C4517A791752E /* AMKCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AMKCategories.podspec; path = ../AMKCategories.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleBlockExampleViewController.h; sourceTree = "<group>"; };
+		88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleBlockExampleViewController.m; sourceTree = "<group>"; };
 		8881E6F622EB062000CE6D9D /* AMKGitCommitInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKGitCommitInfoViewController.h; sourceTree = "<group>"; };
 		8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
 		8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 				6003F5A6195388D20070C39A /* AMKViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				8872250C236D300B00DA6364 /* UIKit */,
 				8881E6EA22EAF35300CE6D9D /* Foundation */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -201,6 +205,31 @@
 				7DDA7EA524701D5E2B4CDBF7 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		8872250C236D300B00DA6364 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8872250D236D300B00DA6364 /* UIViewController */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8872250D236D300B00DA6364 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8872250E236D300B00DA6364 /* LifeCircleBlock */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		8872250E236D300B00DA6364 /* LifeCircleBlock */ = {
+			isa = PBXGroup;
+			children = (
+				8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */,
+				88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */,
+			);
+			path = LifeCircleBlock;
 			sourceTree = "<group>";
 		};
 		8881E6EA22EAF35300CE6D9D /* Foundation */ = {
@@ -371,10 +400,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,6 +462,7 @@
 				8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */,
 				8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
+				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

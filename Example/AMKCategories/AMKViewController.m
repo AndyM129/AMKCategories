@@ -22,13 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"";
+    self.title = @"AMKCategories";
     self.hidesBottomBarWhenPushed = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    Class DemoViewController = NSClassFromString(@"AMKAppVersionInfoViewController");
-    //Class DemoViewController = NSClassFromString(@"AMKGitCommitInfoViewController");
-    [self.navigationController pushViewController:DemoViewController.new animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
