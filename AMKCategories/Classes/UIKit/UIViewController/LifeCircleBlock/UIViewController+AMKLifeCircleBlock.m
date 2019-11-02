@@ -79,7 +79,6 @@
 
 - (void)amk_viewDidLoad {
     [self amk_viewDidLoad];
-    self.view.clipsToBounds = YES;
     if (self.amk_viewDidLoadBlock) self.amk_viewDidLoadBlock(self);
 }
 
