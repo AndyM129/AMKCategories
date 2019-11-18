@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'AMKCategories'
-    s.version          = '0.1.3'
+    s.version          = '0.1.4'
     s.summary          = 'Summary of AMKCategories.'
     s.description      = <<-DESC
                           A description of AMKCategories.
@@ -36,6 +36,14 @@ Pod::Spec.new do |s|
             view.subspec 'Interactions' do |interactions|
                 interactions.source_files = 'AMKCategories/Classes/UIKit/UIView/Interactions/*.{h,m}'
                 interactions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+
+        # UIImage 相关
+        uikit.subspec 'UIImage' do |image|
+            # Rendering 渲染相关
+            image.subspec 'Rendering' do |rendering|
+                rendering.source_files = 'AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}'
             end
         end
 

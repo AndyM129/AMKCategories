@@ -1,44 +1,48 @@
 PODS:
-  - AMKCategories (0.1.3):
-    - AMKCategories/DefaultSubspec (= 0.1.3)
-  - AMKCategories/DefaultSubspec (0.1.3):
+  - AMKCategories (0.1.4):
+    - AMKCategories/DefaultSubspec (= 0.1.4)
+  - AMKCategories/DefaultSubspec (0.1.4):
     - AMKCategories/Foundation
     - AMKCategories/UIKit
-  - AMKCategories/Foundation (0.1.3):
-    - AMKCategories/Foundation/NSBundle (= 0.1.3)
-    - AMKCategories/Foundation/NSDictionary (= 0.1.3)
-    - AMKCategories/Foundation/NSObject (= 0.1.3)
-  - AMKCategories/Foundation/NSBundle (0.1.3):
-    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.3)
-    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.3)
-    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.3)
-  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.3)
-  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.3)
-  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.3)
-  - AMKCategories/Foundation/NSDictionary (0.1.3):
-    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.3)
-  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.3)
-  - AMKCategories/Foundation/NSObject (0.1.3):
-    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.3)
-    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.3)
-  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.3)
-  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.3)
-  - AMKCategories/UIKit (0.1.3):
-    - AMKCategories/UIKit/UIView (= 0.1.3)
-    - AMKCategories/UIKit/UIViewController (= 0.1.3)
-  - AMKCategories/UIKit/UIView (0.1.3):
-    - AMKCategories/UIKit/UIView/Interactions (= 0.1.3)
-  - AMKCategories/UIKit/UIView/Interactions (0.1.3):
+  - AMKCategories/Foundation (0.1.4):
+    - AMKCategories/Foundation/NSBundle (= 0.1.4)
+    - AMKCategories/Foundation/NSDictionary (= 0.1.4)
+    - AMKCategories/Foundation/NSObject (= 0.1.4)
+  - AMKCategories/Foundation/NSBundle (0.1.4):
+    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.4)
+    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.4)
+    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.4)
+  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.4)
+  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.4)
+  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.4)
+  - AMKCategories/Foundation/NSDictionary (0.1.4):
+    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.4)
+  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.4)
+  - AMKCategories/Foundation/NSObject (0.1.4):
+    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.4)
+    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.4)
+  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.4)
+  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.4)
+  - AMKCategories/UIKit (0.1.4):
+    - AMKCategories/UIKit/UIImage (= 0.1.4)
+    - AMKCategories/UIKit/UIView (= 0.1.4)
+    - AMKCategories/UIKit/UIViewController (= 0.1.4)
+  - AMKCategories/UIKit/UIImage (0.1.4):
+    - AMKCategories/UIKit/UIImage/Rendering (= 0.1.4)
+  - AMKCategories/UIKit/UIImage/Rendering (0.1.4)
+  - AMKCategories/UIKit/UIView (0.1.4):
+    - AMKCategories/UIKit/UIView/Interactions (= 0.1.4)
+  - AMKCategories/UIKit/UIView/Interactions (0.1.4):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController (0.1.3):
-    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.3)
-    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.3)
-    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.3)
-  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.3):
+  - AMKCategories/UIKit/UIViewController (0.1.4):
+    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.4)
+    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.4)
+    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.4)
+  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.4):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.3):
+  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.4):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.3):
+  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.4):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
   - Masonry (1.1.0)
@@ -58,7 +62,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 8ce12655b6e5fd7fd6ed3fd8674154190dc11cb4
+  AMKCategories: 5d43f9458ec88415b5a64f1e255dd9421fcba200
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
