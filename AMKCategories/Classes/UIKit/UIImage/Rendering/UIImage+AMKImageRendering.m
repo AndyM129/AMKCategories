@@ -29,7 +29,7 @@
 
 #pragma mark Alpha
 
-- (UIImage *)bde_imageWithAlpha:(CGFloat)alpha {
+- (UIImage *)amk_imageWithAlpha:(CGFloat)alpha {
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGRect area = CGRectMake(0, 0, self.size.width, self.size.height);
@@ -45,11 +45,11 @@
 
 #pragma mark Tint Color
 
-- (UIImage *)bde_imageWithTintColor:(UIColor *)tintColor {
-    return [self bde_imageWithTintColor:tintColor blendMode:kCGBlendModeDestinationIn];
+- (UIImage *)amk_imageWithTintColor:(UIColor *)tintColor {
+    return [self amk_imageWithTintColor:tintColor blendMode:kCGBlendModeDestinationIn];
 }
 
-- (UIImage *)bde_imageWithTintColor:(UIColor *)tintColor blendMode:(CGBlendMode)blendMode {
+- (UIImage *)amk_imageWithTintColor:(UIColor *)tintColor blendMode:(CGBlendMode)blendMode {
     // We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     [tintColor setFill];
