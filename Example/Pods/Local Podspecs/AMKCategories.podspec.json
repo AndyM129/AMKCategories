@@ -37,6 +37,20 @@
       "name": "UIKit",
       "subspecs": [
         {
+          "name": "UICollectionView",
+          "subspecs": [
+            {
+              "name": "Delegate",
+              "source_files": "AMKCategories/Classes/UIKit/UICollectionView/Delegate/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "UIView",
           "subspecs": [
             {

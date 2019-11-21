@@ -14,3 +14,16 @@
     @import UIKit;
     @import Foundation;
 #endif
+
+#ifndef __OPTIMIZE__
+static NSString *_YDLogTimeStringWithDate(NSDate *date) {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    NSString *timeString = [dateFormatter stringFromDate:date];
+    return timeString;
+}
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s %s Line %d: %s\n", _YDLogTimeStringWithDate(NSDate.date).UTF8String, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...) {}
+#endif

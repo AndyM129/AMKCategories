@@ -24,9 +24,14 @@ PODS:
   - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.4)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.4)
   - AMKCategories/UIKit (0.1.4):
+    - AMKCategories/UIKit/UICollectionView (= 0.1.4)
     - AMKCategories/UIKit/UIImage (= 0.1.4)
     - AMKCategories/UIKit/UIView (= 0.1.4)
     - AMKCategories/UIKit/UIViewController (= 0.1.4)
+  - AMKCategories/UIKit/UICollectionView (0.1.4):
+    - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.4)
+  - AMKCategories/UIKit/UICollectionView/Delegate (0.1.4):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIImage (0.1.4):
     - AMKCategories/UIKit/UIImage/Rendering (= 0.1.4)
   - AMKCategories/UIKit/UIImage/Rendering (0.1.4)
@@ -62,7 +67,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 5d43f9458ec88415b5a64f1e255dd9421fcba200
+  AMKCategories: 988c520740dca2bf2ed00119093ba5781ae9ebc0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

@@ -30,6 +30,15 @@ Pod::Spec.new do |s|
 
     # UIKit 通用扩展
     s.subspec 'UIKit' do |uikit|
+        # UICollectionView 视图相关
+        uikit.subspec 'UICollectionView' do |collectionView|
+            # Delegate 相关
+            collectionView.subspec 'Delegate' do |delegate|
+                delegate.source_files = 'AMKCategories/Classes/UIKit/UICollectionView/Delegate/*.{h,m}'
+                delegate.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
             # Interactions 交互相关

@@ -27,6 +27,7 @@
 		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
 		8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */; };
 		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
+		88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
 		8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
 		8881E6FA22EB06C400CE6D9D /* AMKAppVersionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKAppVersionInfoViewController.h; sourceTree = "<group>"; };
+		88DAB1CD2386957200AB9C17 /* AMKCollectionViewDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCollectionViewDelegateViewController.h; sourceTree = "<group>"; };
+		88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCollectionViewDelegateViewController.m; sourceTree = "<group>"; };
 		90F3B8A8F02453C096611499 /* Pods-AMKCategories_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Tests/Pods-AMKCategories_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E63105028D3AF297ED4988F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CAB58C46835D6A7B2F14173A /* Pods-AMKCategories_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Tests.release.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Tests/Pods-AMKCategories_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,9 +157,9 @@
 			children = (
 				6003F59C195388D20070C39A /* AMKAppDelegate.h */,
 				6003F59D195388D20070C39A /* AMKAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* AMKViewController.h */,
 				6003F5A6195388D20070C39A /* AMKViewController.m */,
+				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				8872250C236D300B00DA6364 /* UIKit */,
@@ -210,6 +213,7 @@
 		8872250C236D300B00DA6364 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				88DAB1CB2386954900AB9C17 /* UICollectionView */,
 				8872250D236D300B00DA6364 /* UIViewController */,
 			);
 			path = UIKit;
@@ -265,6 +269,23 @@
 				8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */,
 			);
 			path = GitCommitInfo;
+			sourceTree = "<group>";
+		};
+		88DAB1CB2386954900AB9C17 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				88DAB1CC2386954900AB9C17 /* Delegate */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		88DAB1CC2386954900AB9C17 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				88DAB1CD2386957200AB9C17 /* AMKCollectionViewDelegateViewController.h */,
+				88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +485,7 @@
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
+				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
