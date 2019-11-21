@@ -18,6 +18,7 @@
 #import "NSObject+AMKMethodSwizzling.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"
+#import "UITableView+AMKTableViewDelegate.h"
 #import "UIView+AMKInteractions.h"
 #import "UIViewController+AMKLifeCircleBlock.h"
 #import "UIViewController+AMKNavigationController.h"

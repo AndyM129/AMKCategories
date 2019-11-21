@@ -16,12 +16,12 @@
 
 @implementation AMKLifeCircleBlockExampleViewController
 
-+ (void)load {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UINavigationController *rootViewController = (UINavigationController *)UIApplication.sharedApplication.delegate.window.rootViewController;
-        [rootViewController pushViewController:AMKLifeCircleBlockExampleViewController.new animated:YES];
-    });
-}
+//+ (void)load {
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        UINavigationController *rootViewController = (UINavigationController *)UIApplication.sharedApplication.delegate.window.rootViewController;
+//        [rootViewController pushViewController:AMKLifeCircleBlockExampleViewController.new animated:YES];
+//    });
+//}
 
 #pragma mark - Life Circle
 

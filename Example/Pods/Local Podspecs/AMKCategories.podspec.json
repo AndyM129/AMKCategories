@@ -51,6 +51,20 @@
           ]
         },
         {
+          "name": "UITableView",
+          "subspecs": [
+            {
+              "name": "Delegate",
+              "source_files": "AMKCategories/Classes/UIKit/UITableView/Delegate/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "UIView",
           "subspecs": [
             {

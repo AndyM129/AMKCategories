@@ -26,6 +26,7 @@ PODS:
   - AMKCategories/UIKit (0.1.4):
     - AMKCategories/UIKit/UICollectionView (= 0.1.4)
     - AMKCategories/UIKit/UIImage (= 0.1.4)
+    - AMKCategories/UIKit/UITableView (= 0.1.4)
     - AMKCategories/UIKit/UIView (= 0.1.4)
     - AMKCategories/UIKit/UIViewController (= 0.1.4)
   - AMKCategories/UIKit/UICollectionView (0.1.4):
@@ -35,6 +36,10 @@ PODS:
   - AMKCategories/UIKit/UIImage (0.1.4):
     - AMKCategories/UIKit/UIImage/Rendering (= 0.1.4)
   - AMKCategories/UIKit/UIImage/Rendering (0.1.4)
+  - AMKCategories/UIKit/UITableView (0.1.4):
+    - AMKCategories/UIKit/UITableView/Delegate (= 0.1.4)
+  - AMKCategories/UIKit/UITableView/Delegate (0.1.4):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIView (0.1.4):
     - AMKCategories/UIKit/UIView/Interactions (= 0.1.4)
   - AMKCategories/UIKit/UIView/Interactions (0.1.4):
@@ -67,7 +72,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 988c520740dca2bf2ed00119093ba5781ae9ebc0
+  AMKCategories: ccc5900c12f17b4222df396f8390ef9f0d272a79
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

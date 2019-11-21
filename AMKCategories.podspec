@@ -39,6 +39,15 @@ Pod::Spec.new do |s|
             end
         end
 
+        # UITableView 视图相关
+        uikit.subspec 'UITableView' do |tableView|
+            # Delegate 相关
+            tableView.subspec 'Delegate' do |delegate|
+                delegate.source_files = 'AMKCategories/Classes/UIKit/UITableView/Delegate/*.{h,m}'
+                delegate.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
             # Interactions 交互相关
