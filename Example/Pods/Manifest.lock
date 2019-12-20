@@ -42,6 +42,7 @@ PODS:
     - AMKCategories/UIKit/UITableView (= 0.1.5)
     - AMKCategories/UIKit/UIView (= 0.1.5)
     - AMKCategories/UIKit/UIViewController (= 0.1.5)
+    - AMKCategories/UIKit/UIWindow (= 0.1.5)
   - AMKCategories/UIKit/UICollectionView (0.1.5):
     - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.5)
   - AMKCategories/UIKit/UICollectionView/Delegate (0.1.5):
@@ -65,29 +66,39 @@ PODS:
     - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIViewController/NavigationController (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
+    - AMKCategories/UIKit/UIWindow/NavigationController
   - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.5):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
+  - AMKCategories/UIKit/UIWindow (0.1.5):
+    - AMKCategories/UIKit/UIWindow/NavigationController (= 0.1.5)
+  - AMKCategories/UIKit/UIWindow/NavigationController (0.1.5)
   - Masonry (1.1.0)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
   - AMKCategories/UIKit (from `../`)
   - Masonry (= 1.1.0)
+  - YYCategories
 
 SPEC REPOS:
   trunk:
     - Masonry
+    - YYCategories
 
 EXTERNAL SOURCES:
   AMKCategories:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 43cfd87859e234f0d1fe9b829dc770a348656e95
+  AMKCategories: a26312c8480bc5f2dc36d1fac6f69517ca93095f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
+PODFILE CHECKSUM: 2441ac3889c051bbd6b5a354559a8dc6d175190d
 
 COCOAPODS: 1.8.4

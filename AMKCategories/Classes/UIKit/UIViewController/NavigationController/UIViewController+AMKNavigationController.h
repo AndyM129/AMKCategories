@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIWindow+AMKNavigationController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,10 +19,10 @@ typedef NS_ENUM(NSInteger, AMKViewControllerTransitionStyle) {
 /** UIViewController切换相关扩展 */
 @interface UIViewController (AMKNavigationController)
 
-/** Top视图控制器 */
+/** UIApplication.sharedApplication.keyWindow  的 Top视图控制器 */
 @property(nonatomic, readonly, class) UIViewController *amk_topViewController;
 
-/** Top视图控制器 */
+/** 所在 Window 的 Top视图控制器 */
 @property(nonatomic, readonly) UIViewController *amk_topViewController;
 
 /** UIViewController.amk_topViewController的前一个视图控制器 */
@@ -32,6 +33,12 @@ typedef NS_ENUM(NSInteger, AMKViewControllerTransitionStyle) {
 
 /** present当前视图控制器时，如果self.navigationController不存在则先创建一个，默认NO */
 @property(nonatomic, assign) BOOL amk_presentedWithNavigationController;
+
+/** 返回上一个ViewController */
+- (BOOL)amk_goBack;
+
+/** 返回 [UIViewController amk_topViewController] 的上一个ViewController */
++ (BOOL)amk_goBack;
 
 /** 返回上一个ViewController */
 - (BOOL)amk_goBackAnimated:(BOOL)animated;

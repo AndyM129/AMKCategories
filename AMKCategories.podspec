@@ -30,6 +30,30 @@ Pod::Spec.new do |s|
 
     # UIKit 通用扩展
     s.subspec 'UIKit' do |uikit|
+        # UIViewController 相关扩展
+        uikit.subspec 'UIViewController' do |viewController|
+            # NavigationControllerWithCallback 导航控制
+            viewController.subspec 'NavigationControllerWithCallback' do |navigationControllerWithCallback|
+                navigationControllerWithCallback.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}'
+                navigationControllerWithCallback.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h'
+                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/NavigationController'
+                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/LifeCircleBlock'
+            end
+            # NavigationController 导航控制
+            viewController.subspec 'NavigationController' do |navigationController|
+                navigationController.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}'
+                navigationController.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h'
+                navigationController.dependency 'AMKCategories/UIKit/UIWindow/NavigationController'
+                navigationController.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+            # LifeCircleBlock 生命周期相关回调
+            viewController.subspec 'LifeCircleBlock' do |lifeCircleBlock|
+                lifeCircleBlock.source_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}'
+                lifeCircleBlock.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h'
+                lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+
         # UICollectionView 视图相关
         uikit.subspec 'UICollectionView' do |collectionView|
             # Delegate 相关
@@ -48,6 +72,15 @@ Pod::Spec.new do |s|
             end
         end
 
+        # UIWindow 相关
+        uikit.subspec 'UIWindow' do |window|
+            # NavigationController 导航控制
+            window.subspec 'NavigationController' do |navigationController|
+                navigationController.source_files = 'AMKCategories/Classes/UIKit/UIWindow/NavigationController/*.{h,m}'
+                navigationController.public_header_files = 'AMKCategories/Classes/UIKit/UIWindow/NavigationController/*.h'
+            end
+        end
+
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
             # Interactions 交互相关
@@ -62,29 +95,6 @@ Pod::Spec.new do |s|
             # Rendering 渲染相关
             image.subspec 'Rendering' do |rendering|
                 rendering.source_files = 'AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}'
-            end
-        end
-
-        # UIViewController 相关扩展
-        uikit.subspec 'UIViewController' do |viewController|
-            # NavigationControllerWithCallback 导航控制
-            viewController.subspec 'NavigationControllerWithCallback' do |navigationControllerWithCallback|
-                navigationControllerWithCallback.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}'
-                navigationControllerWithCallback.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h'
-                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/NavigationController'
-                navigationControllerWithCallback.dependency 'AMKCategories/UIKit/UIViewController/LifeCircleBlock'
-            end
-            # NavigationController 导航控制
-            viewController.subspec 'NavigationController' do |navigationController|
-                navigationController.source_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}'
-                navigationController.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h'
-                navigationController.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
-            end
-            # LifeCircleBlock 生命周期相关回调
-            viewController.subspec 'LifeCircleBlock' do |lifeCircleBlock|
-                lifeCircleBlock.source_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}'
-                lifeCircleBlock.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h'
-                lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
     end

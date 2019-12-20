@@ -37,6 +37,47 @@
       "name": "UIKit",
       "subspecs": [
         {
+          "name": "UIViewController",
+          "subspecs": [
+            {
+              "name": "NavigationControllerWithCallback",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h",
+              "dependencies": {
+                "AMKCategories/UIKit/UIViewController/NavigationController": [
+
+                ],
+                "AMKCategories/UIKit/UIViewController/LifeCircleBlock": [
+
+                ]
+              }
+            },
+            {
+              "name": "NavigationController",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h",
+              "dependencies": {
+                "AMKCategories/UIKit/UIWindow/NavigationController": [
+
+                ],
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            },
+            {
+              "name": "LifeCircleBlock",
+              "source_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "UICollectionView",
           "subspecs": [
             {
@@ -65,6 +106,16 @@
           ]
         },
         {
+          "name": "UIWindow",
+          "subspecs": [
+            {
+              "name": "NavigationController",
+              "source_files": "AMKCategories/Classes/UIKit/UIWindow/NavigationController/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIWindow/NavigationController/*.h"
+            }
+          ]
+        },
+        {
           "name": "UIView",
           "subspecs": [
             {
@@ -84,44 +135,6 @@
             {
               "name": "Rendering",
               "source_files": "AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}"
-            }
-          ]
-        },
-        {
-          "name": "UIViewController",
-          "subspecs": [
-            {
-              "name": "NavigationControllerWithCallback",
-              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/*.h",
-              "dependencies": {
-                "AMKCategories/UIKit/UIViewController/NavigationController": [
-
-                ],
-                "AMKCategories/UIKit/UIViewController/LifeCircleBlock": [
-
-                ]
-              }
-            },
-            {
-              "name": "NavigationController",
-              "source_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/NavigationController/*.h",
-              "dependencies": {
-                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
-
-                ]
-              }
-            },
-            {
-              "name": "LifeCircleBlock",
-              "source_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h",
-              "dependencies": {
-                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
-
-                ]
-              }
             }
           ]
         }

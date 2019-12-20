@@ -25,31 +25,11 @@
 #pragma mark - Properties
 
 + (UIViewController *)amk_topViewController {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(window)]) {
-        UIWindow *sharedApplicationDelegateWindow = (UIWindow *)[[UIApplication sharedApplication].delegate performSelector:@selector(window)];
-        if (sharedApplicationDelegateWindow && [sharedApplicationDelegateWindow isKindOfClass:[UIWindow class]]) {
-            window = sharedApplicationDelegateWindow;
-        }
-    }
-    
-    UIViewController *topViewController = window.rootViewController;
-    while (YES) {
-        if ([topViewController isKindOfClass:[UINavigationController class]]) {
-            topViewController = [(UINavigationController *)topViewController topViewController];
-        } else if ([topViewController isKindOfClass:[UITabBarController class]]) {
-            topViewController = [(UITabBarController *)topViewController selectedViewController];
-        } else if (topViewController.presentedViewController) {
-            topViewController = topViewController.presentedViewController;
-        } else {
-            break;
-        }
-    }
-    return topViewController;
+    return UIWindow.amk_topViewController;
 }
 
 - (UIViewController *)amk_topViewController {
-    return UIViewController.amk_topViewController;
+    return self.view.window.amk_topViewController;
 }
 
 + (UIViewController *)amk_previousViewController {
@@ -168,6 +148,14 @@
     [self amk_goBackAnimated:YES];
 }
 
+- (BOOL)amk_goBack {
+    return [self amk_goBackAnimated:YES];
+}
+
++ (BOOL)amk_goBack {
+    return [self.amk_topViewController amk_goBackAnimated:YES];
+}
+
 + (BOOL)amk_goBackAnimated:(BOOL)animated {
     return [self.amk_topViewController amk_goBackAnimated:animated];
 }
@@ -186,10 +174,6 @@
         return YES;
     }
     return NO;
-}
-
-- (BOOL)amk_goBack {
-    return [self amk_goBackAnimated:YES];
 }
 
 + (BOOL)amk_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

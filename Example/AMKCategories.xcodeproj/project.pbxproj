@@ -28,6 +28,7 @@
 		8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */; };
 		8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */; };
 		8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */; };
+		8880812B23ACDC460082C16B /* AMKNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880812A23ACDC460082C16B /* AMKNavigationControllerViewController.m */; };
 		8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */; };
 		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
 		88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */; };
@@ -79,6 +80,8 @@
 		8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMKEmojiStringViewController.txt; sourceTree = "<group>"; };
 		8880812123ACCE660082C16B /* AMKKeyPathCodingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKKeyPathCodingViewController.h; sourceTree = "<group>"; };
 		8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKKeyPathCodingViewController.m; sourceTree = "<group>"; };
+		8880812923ACDC460082C16B /* AMKNavigationControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKNavigationControllerViewController.h; sourceTree = "<group>"; };
+		8880812A23ACDC460082C16B /* AMKNavigationControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKNavigationControllerViewController.m; sourceTree = "<group>"; };
 		8881E6F622EB062000CE6D9D /* AMKGitCommitInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKGitCommitInfoViewController.h; sourceTree = "<group>"; };
 		8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
 		8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 		8872250D236D300B00DA6364 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8880812823ACDC350082C16B /* NavigationController */,
 				8872250E236D300B00DA6364 /* LifeCircleBlock */,
 			);
 			path = UIViewController;
@@ -281,6 +285,15 @@
 				8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */,
 			);
 			path = KeyPathCoding;
+			sourceTree = "<group>";
+		};
+		8880812823ACDC350082C16B /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8880812923ACDC460082C16B /* AMKNavigationControllerViewController.h */,
+				8880812A23ACDC460082C16B /* AMKNavigationControllerViewController.m */,
+			);
+			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		8881E6EA22EAF35300CE6D9D /* Foundation */ = {
@@ -489,11 +502,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -556,6 +571,7 @@
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
 				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
+				8880812B23ACDC460082C16B /* AMKNavigationControllerViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
