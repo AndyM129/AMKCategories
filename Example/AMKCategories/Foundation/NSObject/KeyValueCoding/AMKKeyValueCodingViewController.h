@@ -1,5 +1,5 @@
 //
-//  AMKKeyPathCodingViewController.h
+//  AMKKeyValueCodingViewController.h
 //  AMKCategories_Example
 //
 //  Created by 孟昕欣 on 2019/12/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AMKKeyPathCodingViewController : UIViewController
+@interface AMKKeyValueCodingViewController : UIViewController
 
 @end
 

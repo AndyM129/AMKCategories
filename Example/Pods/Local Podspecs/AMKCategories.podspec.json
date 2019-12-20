@@ -184,9 +184,9 @@
               "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.h"
             },
             {
-              "name": "KeyPathCoding",
-              "source_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h"
+              "name": "KeyValueCoding",
+              "source_files": "AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/*.h"
             },
             {
               "name": "LocaleDescription",

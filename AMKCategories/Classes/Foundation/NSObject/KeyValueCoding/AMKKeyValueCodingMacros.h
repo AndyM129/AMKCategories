@@ -1,14 +1,14 @@
 //
-//  AMKKeyPathCodingMacros.h
+//  AMKKeyValueCodingMacros.h
 //  AMKCategories
 //
 //  Created by 孟昕欣 on 2019/12/20.
 //
-//  参考：https://github.com/ReactiveCocoa/ReactiveObjC/blob/master/ReactiveObjC/extobjc/EXTKeyPathCoding.h
+//  参考：https://github.com/ReactiveCocoa/ReactiveObjC/blob/master/ReactiveObjC/extobjc/EXTKeyValueCoding.h
 //
 
-#ifndef AMKKeyPathCodingMacros_h
-#define AMKKeyPathCodingMacros_h
+#ifndef AMKKeyValueCodingMacros_h
+#define AMKKeyValueCodingMacros_h
 
 #import <Foundation/Foundation.h>
 #import "AMKMetamacros.h"
@@ -69,4 +69,4 @@ amk_metamacro_if_eq(3, amk_metamacro_argcount(__VA_ARGS__))(amk_collectionKeypat
 
 #define amk_collectionKeypath4(OBJ, PATH, COLLECTION_OBJECT, COLLECTION_PATH) ([[NSString stringWithFormat:@"%s.%s",amk_keypath(OBJ, PATH), amk_keypath(COLLECTION_OBJECT, COLLECTION_PATH)] UTF8String])
 
-#endif /* AMKKeyPathCodingMacros_h */
+#endif /* AMKKeyValueCodingMacros_h */

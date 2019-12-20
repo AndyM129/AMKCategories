@@ -133,10 +133,10 @@ Pod::Spec.new do |s|
                 keyValueObserving.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.{h,m}'
                 keyValueObserving.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.h'
             end
-            # KeyPathCoding
-            object.subspec 'KeyPathCoding' do |keyPathCoding|
-                keyPathCoding.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}'
-                keyPathCoding.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h'
+            # KeyValueCoding
+            object.subspec 'KeyValueCoding' do |keyValueCoding|
+                keyValueCoding.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/*.{h,m}'
+                keyValueCoding.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/*.h'
             end
             # LocaleDescription 本地化输出
             object.subspec 'LocaleDescription' do |localeDescription|

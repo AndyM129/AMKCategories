@@ -7,77 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010D80DF6980C1E07EA3DA84BEB5BA48 /* NSBundle+AMKBundleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F9468A4C44A08012F98DDEE4FDE3FD /* NSBundle+AMKBundleInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04987A5E8CF11B8F76105570644800AD /* Pods-AMKCategories_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 099954F1B66919B347CB932238A472ED /* Pods-AMKCategories_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05A040F35BF1C88F869404E1A940B493 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DF48D82622C6D1FFAC5752C7BB004472 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05EA1447EEA0EB669F8DEE73964A7C60 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F20A7188ABF123273A3C22C4340688AC /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0649D7D002434A44526075661D05305D /* UIViewController+AMKNavigationControllerWithCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E00D9463D67E7172BDA8CA4B77D2B7 /* UIViewController+AMKNavigationControllerWithCallback.m */; };
+		067789D59220774E7093BC805EA43446 /* NSObject+AMKKeyValueCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = C5BD6B169BC7C872DE28DA0B893A9F07 /* NSObject+AMKKeyValueCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		095A815F697FEA73C66B0A14C6E03E59 /* NSObject+AMKKeyValueObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 222FEDD16FC197D4830CF42F05075F4D /* NSObject+AMKKeyValueObserving.m */; };
 		0967598607D521318F69D7D39D517B20 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ABA9DA4A53122DD0382E7C7F6CBEB /* ViewController+MASAdditions.m */; };
-		09695E59007D97D87515C3976AC37C06 /* AMKCategories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA68660045DFE9955E469E4C9469C90 /* AMKCategories-dummy.m */; };
 		098630ECDB64ED7B89F5F687C82B4AC3 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BB2E40FA7314FFFF244B2FD839A658 /* NSArray+MASAdditions.m */; };
+		0AA004ED0F8BC3EAA93B75CEE0749F13 /* NSDictionary+AMKObjectForKey.h in Headers */ = {isa = PBXBuildFile; fileRef = D08EAD59683B071B90DEA9501D53ED97 /* NSDictionary+AMKObjectForKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF1AD35706D90B1A91F291B899EF8C0 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD1AD2192C246BE568B6CFBA7EB9C68 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B058323486923291CA56698E33CAA7D /* NSBundle+AMKBundleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F9468A4C44A08012F98DDEE4FDE3FD /* NSBundle+AMKBundleInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D257D3BAEE62C45CF980BB598545BA7 /* NSObject+AMKMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7768C87BB5C0A782CBE459B8451ED433 /* NSObject+AMKMethodSwizzling.m */; };
+		0DE55EE9EB934DE690645AE32AA6BABB /* NSString+AMKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C34BFCC9205D794D604869269C1C38 /* NSString+AMKEmoji.m */; };
+		0F2364923FF23E57B46B62CF66738767 /* NSBundle+AMKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 377CFE875634A84B78EBAA559F365D15 /* NSBundle+AMKBundleInfo.m */; };
+		195B31D9713370F4FCF340646FFAB96E /* AMKKeyValueCodingMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AE5B02A6BFC53D4D9E4D2551D8B9043 /* AMKKeyValueCodingMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1972E85F0FCD0F3EAF28ED7CD036286E /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E476E5DC364B11085C84F8770A12FD3B /* Masonry-dummy.m */; };
 		1F6F03EC8AC285D25A634CF96C1421E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		1F8B68314DEFC8524CD59A2EE0747899 /* AMKMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DED931CB03EBB4CBC95FB0593B1D43F /* AMKMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23EA03A05B6E2F3FBEFEBA8AF69F8C64 /* NSObject+AMKLocaleDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F74AC554D409CFDB6B5043BC33AF303 /* NSObject+AMKLocaleDescription.m */; };
 		280D36330BAC5715615FF4A8B42D60D6 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 86DFFE3C8ABE515058DCF105EB608F37 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		297A3627CF2F032CBFDC61D1A3786E63 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7B80D58CFA003C25B538A405A341D /* MASViewAttribute.m */; };
-		2DAEBB31EB7C603A29C78D3F022CE52E /* NSObject+AMKKeyPathCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA56631021C4E3A742A744198276AD9 /* NSObject+AMKKeyPathCoding.m */; };
-		2FD983247FF281D2A6BD8A9CB313F3F9 /* NSObject+AMKKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C622E3D0F2B19AC2BA09E5FC43D0AC8 /* NSObject+AMKKeyPathCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3439CEE138C31969E8B4B621E161F78D /* UIViewController+AMKLifeCircleBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFD1A642ED48245E0A0D3BD412D814E /* UIViewController+AMKLifeCircleBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DE079171EC6E00E525E94673F0F6235 /* NSBundle+AMKGitCommitInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA45CB51AA4CAC150F0E93B67A71BF3 /* NSBundle+AMKGitCommitInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		346080C0D1CA23399ADD739D722D7CEF /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = F05C6EDBC8E4591F89BD9F1E17FBFC97 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3862A6352227AFC500E9BE0B099C9876 /* NSObject+AMKKeyValueObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2723251A360373C2AE6BBF1E6D9F91 /* NSObject+AMKKeyValueObserving.m */; };
-		3AB612370CDE83A4B8F2538C7AD03E92 /* NSBundle+AMKBundleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 377CFE875634A84B78EBAA559F365D15 /* NSBundle+AMKBundleInfo.m */; };
+		3B22FDD3653F613274BEF46F79C69009 /* NSObject+AMKMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 576F5CF241E637FC8F470CEDC5E0976B /* NSObject+AMKMethodSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DA5F1D8E51CDD102A871C2F37770C7B /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5718E89E4E5165AA49B980D89CBCF8 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4056A2BD17E2978055890357EC12A39E /* AMKCategories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DCDDB1996E788852B61D4F3B2092E5EA /* AMKCategories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		41C68B383DC8AE384C41569B88356698 /* NSObject+AMKKeyValueObserving.h in Headers */ = {isa = PBXBuildFile; fileRef = DB8C1B4F0A220236D556E8B2217EFA22 /* NSObject+AMKKeyValueObserving.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		454DEC479FBBC70A8BB076AE19ED350B /* UIView+AMKInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = B771BC77783B8A2BF04EBCE9AA2D06A2 /* UIView+AMKInteractions.m */; };
+		43F369C5398BA9855BA4E136442FC6CE /* NSBundle+AMKAppVersionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E5A3ED51D8F2E265D1229C54E44FCC7 /* NSBundle+AMKAppVersionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B0981F9AC628CF5100C50FF4A163A4A /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 896A4BCB5B3DBC78E1CF6EBF5AC2862F /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BE1637846611EB4E77E276894DECB46 /* NSString+AMKEmoji.h in Headers */ = {isa = PBXBuildFile; fileRef = D1522850499C09C7268D34957E0C2092 /* NSString+AMKEmoji.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EA1F32BEA13442D4E89DAF7704DB76B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		57B181DC2A02B2A223340685464C65E6 /* UIViewController+AMKNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B8B6EA9AE27DC91D056BF5000D54CB9 /* UIViewController+AMKNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		588E2302C31A2612A8A25F2887FBA14C /* UIViewController+AMKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB49483DB05ECDA04CE5601D912A6255 /* UIViewController+AMKNavigationController.m */; };
-		5938F2708418B8FA26719131BEA26E42 /* UIImage+AMKImageRendering.h in Headers */ = {isa = PBXBuildFile; fileRef = 506827BB46962B29ECAE55C6A812619B /* UIImage+AMKImageRendering.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5AD8C12DCDDC81F8057353A017432135 /* UICollectionView+AMKCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB0984C2BF82AA65568B3DDDCD686C /* UICollectionView+AMKCollectionViewDelegate.m */; };
+		57F1ED7ED1B8CE340AAC32058BB71E65 /* NSObject+AMKKeyValueObserving.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3FF5159FA4CC596ECA9680B0E98ED8 /* NSObject+AMKKeyValueObserving.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DFD9D5010CF197A2573D2FCC86AE79B /* UICollectionView+AMKCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB0984C2BF82AA65568B3DDDCD686C /* UICollectionView+AMKCollectionViewDelegate.m */; };
+		5ED339145973C9F1FE3E86C9B79D4054 /* UIViewController+AMKNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B8B6EA9AE27DC91D056BF5000D54CB9 /* UIViewController+AMKNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6B2668CB2883E440411DFEC0B26FA4 /* NSBundle+AMKAppVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F61928B4D56E3FD70C8315E88277C5 /* NSBundle+AMKAppVersionInfo.m */; };
 		60D334205ACB473B2B0D94F7C402D7A7 /* Pods-AMKCategories_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A32B687889E77BB4663627F70F59D13 /* Pods-AMKCategories_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		67F56D85794E02CD886362D3BA833024 /* NSString+AMKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C34BFCC9205D794D604869269C1C38 /* NSString+AMKEmoji.m */; };
-		680A3C5313DB1DB561CAE2AA867F4982 /* NSObject+AMKMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A8F1F3D529377122E5EC4B9F16CF48E /* NSObject+AMKMethodSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A6AD3A5BBDBFD0B4AF936BD518EC0B1 /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D4CA7B92265A15B80B1666634FF46C0 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D08367232C2FF1BC5132F6A57847E8B /* UIViewController+AMKNavigationControllerWithCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E00D9463D67E7172BDA8CA4B77D2B7 /* UIViewController+AMKNavigationControllerWithCallback.m */; };
+		7538CF9EBBA3243563620015D468B13E /* UIView+AMKInteractions.h in Headers */ = {isa = PBXBuildFile; fileRef = B809908E676A91DB72B00E9DAC3F1841 /* UIView+AMKInteractions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B2727EE5D693F58D019DB098005101 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9333B00F315696855ADE85C3E6D15 /* MASConstraintMaker.m */; };
-		7B085C7300E89BE824D4C7D606302FC2 /* UIViewController+AMKNavigationControllerWithCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = A023943E087C87BFDB582A54A7CB7F84 /* UIViewController+AMKNavigationControllerWithCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78EF7E6EDC774BA044020133DE9876D6 /* UIImage+AMKImageRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5619568A9CC7664D11DFACFB293ED /* UIImage+AMKImageRendering.m */; };
 		7BFF65958F014760B6AC4742824892EB /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B377289AFAE7DF9945B981F14B4AF95C /* MASCompositeConstraint.m */; };
 		8539B851E01A58467BE49CA3FA77223C /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FADB5EBFADA2A419371CF5E6C927F1E /* MASLayoutConstraint.m */; };
 		863DCCD2F0A21E412C1805F75CEB37F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		8982468D14BCE1CCCD36209298016AD2 /* UITableView+AMKTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A40AD4C972315A7920DD5E6BD592DC90 /* UITableView+AMKTableViewDelegate.m */; };
 		8B92011C9373001132C8148BFC8F50B3 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E780607D798BC01DDE3031621C51501 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D4D1F6E4709EBB13974E95DC1059DDC /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 115A4EA8F789344C790FEA5CDC507FB7 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D65CE579E516BDD5FB36CAA21D693F6 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5709CED54C3B8DC4B50B19520F6771 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		941955A19C40899D275604E6E9C21A6D /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 130F3B92BAB28630295F57E8AAC12EA1 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9B90FAB2CB72CCF9ADE6565B10C9E189 /* NSObject+AMKMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868C01DD55C845C09074ACDD4FAFD9 /* NSObject+AMKMethodSwizzling.m */; };
+		9926327553E3865B1376EF527599AE55 /* AMKMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DED931CB03EBB4CBC95FB0593B1D43F /* AMKMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BCF2068D81F367293F7F6EC1C9B2A90 /* UICollectionView+AMKCollectionViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A20B64A93240BCE44B86EC7E98D4D46F /* UICollectionView+AMKCollectionViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C8DCF3442236CC61A03796ED0168B58 /* UIViewController+AMKLifeCircleBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFD1A642ED48245E0A0D3BD412D814E /* UIViewController+AMKLifeCircleBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CCDABB6D68C9182108846A76DB31DDC /* UIViewController+AMKNavigationControllerWithCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = A023943E087C87BFDB582A54A7CB7F84 /* UIViewController+AMKNavigationControllerWithCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D546E1168C04B0B2EAE005D9275D18B /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D100F47F5FECCA555C616F7D93D7CB4B /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2C9810F053D7B457D4790EB43D84EE2 /* NSBundle+AMKGitCommitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B20BDA4EE482DEAEA158ABCFF16E6984 /* NSBundle+AMKGitCommitInfo.m */; };
 		A35FBEEC7D088AEC05297E8292A32C77 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A0F064F168E6660B03C9639A19329 /* View+MASAdditions.m */; };
-		A4F89D24920303C2AE10A22FBD85B9C1 /* NSBundle+AMKAppVersionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E5A3ED51D8F2E265D1229C54E44FCC7 /* NSBundle+AMKAppVersionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B264D671B79EAC81BE0F023A76101DE3 /* NSDictionary+AMKObjectForKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AB44527D3FEC6D2DD41624FDDBB991 /* NSDictionary+AMKObjectForKey.m */; };
-		B3394DD5DB40339C66FE92BC5024ADBD /* NSBundle+AMKGitCommitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B20BDA4EE482DEAEA158ABCFF16E6984 /* NSBundle+AMKGitCommitInfo.m */; };
-		B713975FB738522954D95FC9A7B51FC5 /* UIImage+AMKImageRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5619568A9CC7664D11DFACFB293ED /* UIImage+AMKImageRendering.m */; };
-		B7B9CEE1F9B2F63ABD6E454B0D39CC33 /* UICollectionView+AMKCollectionViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A20B64A93240BCE44B86EC7E98D4D46F /* UICollectionView+AMKCollectionViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7D645EC004610E8A581E532D28771EC /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4713F6B85A6124DB11F111B072 /* MASViewConstraint.m */; };
+		BFEE76740A55F30CB42CB70B33E4BB8B /* NSObject+AMKKeyValueCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B934AD3239A6360C9D9474DE41DAFB /* NSObject+AMKKeyValueCoding.m */; };
 		C0861ADB4C5FA30F4F9E051F7638A264 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 62890C896C598E9650B511A4A9BA249A /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		C116B7A2132CC24581E62BA46C0E28D9 /* AMKKeyPathCodingMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F61C6F53E1454BF2E2D31C89B6C171F8 /* AMKKeyPathCodingMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C4A19389FC39C5B4CE6F3DF51B381FD2 /* NSObject+AMKLocaleDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC6EF3EFB8A1ABDE72E207FFCED46A4 /* NSObject+AMKLocaleDescription.m */; };
+		C427DCF3D4DA3FB36D6B4D59D4FA0D18 /* NSDictionary+AMKObjectForKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AB44527D3FEC6D2DD41624FDDBB991 /* NSDictionary+AMKObjectForKey.m */; };
+		C58101DCB6B32072F63AEC3258F855E4 /* UIViewController+AMKLifeCircleBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B90478D8613B8283B5DBA066ED3DB4 /* UIViewController+AMKLifeCircleBlock.m */; };
+		CA3C25E91F0B9368207302C6AA2B4771 /* UIViewController+AMKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB49483DB05ECDA04CE5601D912A6255 /* UIViewController+AMKNavigationController.m */; };
+		CD4F5426A18C80AA88BA5B4C9590D01F /* NSString+AMKEmoji.h in Headers */ = {isa = PBXBuildFile; fileRef = D1522850499C09C7268D34957E0C2092 /* NSString+AMKEmoji.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE93C54413259B4AC3683B6EB874D466 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		DEB72E51CBCE0BD8A09C732508A8F00F /* UIViewController+AMKLifeCircleBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B90478D8613B8283B5DBA066ED3DB4 /* UIViewController+AMKLifeCircleBlock.m */; };
-		DF6515BFF6AC345911C5E637910FF1D8 /* UITableView+AMKTableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 74C6CDFD4451280375ACFE76A67CCC1B /* UITableView+AMKTableViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFEF146A140539C68DB5B13669F8B367 /* UITableView+AMKTableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 74C6CDFD4451280375ACFE76A67CCC1B /* UITableView+AMKTableViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09768EBDFB564E7DE796FA30CE6C901 /* UIImage+AMKImageRendering.h in Headers */ = {isa = PBXBuildFile; fileRef = 506827BB46962B29ECAE55C6A812619B /* UIImage+AMKImageRendering.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D84ADEDB28A78657158AD4163CF3C43D /* AMKCategories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DCDDB1996E788852B61D4F3B2092E5EA /* AMKCategories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9477E6BE2B7788AF357F48A1A601F2E /* UITableView+AMKTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A40AD4C972315A7920DD5E6BD592DC90 /* UITableView+AMKTableViewDelegate.m */; };
+		DCA7108876EAE7E36425774F3E948897 /* NSObject+AMKLocaleDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = EEB19D2BEF8885DEA251A3055889CDCC /* NSObject+AMKLocaleDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DED4F7678DE9E8466C576F40C23815E2 /* UIView+AMKInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = B771BC77783B8A2BF04EBCE9AA2D06A2 /* UIView+AMKInteractions.m */; };
 		E51F496BDC6ACADE04FDA059C6CB2342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		E5922A7E80E2648222ED8C030FDEBCD9 /* NSDictionary+AMKObjectForKey.h in Headers */ = {isa = PBXBuildFile; fileRef = D08EAD59683B071B90DEA9501D53ED97 /* NSDictionary+AMKObjectForKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6D00E8559E4FD25E5F785D5F519963D /* NSBundle+AMKGitCommitInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA45CB51AA4CAC150F0E93B67A71BF3 /* NSBundle+AMKGitCommitInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CA20228B3583F41927813EE904CAD3 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C783239D12541FA278CBEBA15780CE4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E866F78446D354688244C6CB24234326 /* UIView+AMKInteractions.h in Headers */ = {isa = PBXBuildFile; fileRef = B809908E676A91DB72B00E9DAC3F1841 /* UIView+AMKInteractions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8DD5D1D406150E1C80AD015271B6848 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1BF5683BFFCF57BA0C385B36CC0BE2 /* MASConstraint.m */; };
 		EAE8B0895956885A752B173683A0D889 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = B47E0CCE07C313DF7CE5A32C063379DF /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EED1AC5F2192F7E33E476D203C34A31B /* AMKCategories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA68660045DFE9955E469E4C9469C90 /* AMKCategories-dummy.m */; };
 		FA4FB7BA0DF093AB5344D2DEE2F8CF2A /* Pods-AMKCategories_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1146B8432C6B2AEFDB2B90F50FCD56 /* Pods-AMKCategories_Example-dummy.m */; };
-		FA504D04A391F1FED783061A442819EE /* NSBundle+AMKAppVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F61928B4D56E3FD70C8315E88277C5 /* NSBundle+AMKAppVersionInfo.m */; };
 		FAFBFA90F7BC3E7CF50F8A5CF0A8B264 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BCF93F338546FCB058B68A5B6F26B32 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FB81F84D017D8D6376D0DC1AB8521FD5 /* NSObject+AMKLocaleDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = D71057E6EC632104F0DEFC024C2BE9C6 /* NSObject+AMKLocaleDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDD7DD5831C6670D1A2D66CBE665BD68 /* Pods-AMKCategories_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BA0E0D326666D4F994F2B601BBD6D /* Pods-AMKCategories_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -111,31 +111,30 @@
 		025EB543E67AF6218FBFEFBEC406E598 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
 		071ABA9DA4A53122DD0382E7C7F6CBEB /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		099954F1B66919B347CB932238A472ED /* Pods-AMKCategories_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMKCategories_Tests-umbrella.h"; sourceTree = "<group>"; };
+		0AE5B02A6BFC53D4D9E4D2551D8B9043 /* AMKKeyValueCodingMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMKKeyValueCodingMacros.h; path = AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/AMKKeyValueCodingMacros.h; sourceTree = "<group>"; };
 		0F5718E89E4E5165AA49B980D89CBCF8 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
-		0FA56631021C4E3A742A744198276AD9 /* NSObject+AMKKeyPathCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKKeyPathCoding.m"; path = "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/NSObject+AMKKeyPathCoding.m"; sourceTree = "<group>"; };
 		0FFD1A642ED48245E0A0D3BD412D814E /* UIViewController+AMKLifeCircleBlock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AMKLifeCircleBlock.h"; path = "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/UIViewController+AMKLifeCircleBlock.h"; sourceTree = "<group>"; };
 		100B5A8E64E34F20A103EF899954AE90 /* Pods-AMKCategories_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		10E25873F22518B0C74CEB2A9BFE4246 /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		115A4EA8F789344C790FEA5CDC507FB7 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		130F3B92BAB28630295F57E8AAC12EA1 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		1A8F1F3D529377122E5EC4B9F16CF48E /* NSObject+AMKMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKMethodSwizzling.h"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.h"; sourceTree = "<group>"; };
 		1E780607D798BC01DDE3031621C51501 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		1F1BF5683BFFCF57BA0C385B36CC0BE2 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2090B42C896151119B65D13ADD6B786C /* Pods-AMKCategories_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AMKCategories_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		21175B4453B6B5A0F2B75092A22A9E91 /* Pods-AMKCategories_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AMKCategories_Tests.modulemap"; sourceTree = "<group>"; };
+		222FEDD16FC197D4830CF42F05075F4D /* NSObject+AMKKeyValueObserving.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKKeyValueObserving.m"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/NSObject+AMKKeyValueObserving.m"; sourceTree = "<group>"; };
+		27B934AD3239A6360C9D9474DE41DAFB /* NSObject+AMKKeyValueCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKKeyValueCoding.m"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/NSObject+AMKKeyValueCoding.m"; sourceTree = "<group>"; };
 		2A1481DC2AD48EA2314B056DADAEDF9D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		2EFF8E1582FFF6FE1DA47250CD4DE161 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		36D9333B00F315696855ADE85C3E6D15 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		377CFE875634A84B78EBAA559F365D15 /* NSBundle+AMKBundleInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKBundleInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.m"; sourceTree = "<group>"; };
 		3BCF93F338546FCB058B68A5B6F26B32 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
-		3C2723251A360373C2AE6BBF1E6D9F91 /* NSObject+AMKKeyValueObserving.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKKeyValueObserving.m"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/NSObject+AMKKeyValueObserving.m"; sourceTree = "<group>"; };
 		3D788390EA625361E284A06D9AFE14D6 /* Pods-AMKCategories_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Tests-Info.plist"; sourceTree = "<group>"; };
 		3E2BA0E0D326666D4F994F2B601BBD6D /* Pods-AMKCategories_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMKCategories_Tests-dummy.m"; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		492535D5F6B68A9B388BA884F326BCDC /* Pods_AMKCategories_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AMKCategories_Tests.framework; path = "Pods-AMKCategories_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C622E3D0F2B19AC2BA09E5FC43D0AC8 /* NSObject+AMKKeyPathCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKKeyPathCoding.h"; path = "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/NSObject+AMKKeyPathCoding.h"; sourceTree = "<group>"; };
 		4DED931CB03EBB4CBC95FB0593B1D43F /* AMKMetamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMKMetamacros.h; path = AMKCategories/Classes/Foundation/Macros/Metamacros/AMKMetamacros.h; sourceTree = "<group>"; };
 		4E5709CED54C3B8DC4B50B19520F6771 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		506827BB46962B29ECAE55C6A812619B /* UIImage+AMKImageRendering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AMKImageRendering.h"; path = "AMKCategories/Classes/UIKit/UIImage/Rendering/UIImage+AMKImageRendering.h"; sourceTree = "<group>"; };
@@ -143,14 +142,16 @@
 		535219594BC82A42F144C0EDF7EAE453 /* AMKCategories-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AMKCategories-Info.plist"; sourceTree = "<group>"; };
 		53C5619568A9CC7664D11DFACFB293ED /* UIImage+AMKImageRendering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+AMKImageRendering.m"; path = "AMKCategories/Classes/UIKit/UIImage/Rendering/UIImage+AMKImageRendering.m"; sourceTree = "<group>"; };
 		561865BBFB940A8FB938BF7AEA2D2DD3 /* AMKCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AMKCategories.framework; path = AMKCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		576F5CF241E637FC8F470CEDC5E0976B /* NSObject+AMKMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKMethodSwizzling.h"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.h"; sourceTree = "<group>"; };
+		5C3FF5159FA4CC596ECA9680B0E98ED8 /* NSObject+AMKKeyValueObserving.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKKeyValueObserving.h"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/NSObject+AMKKeyValueObserving.h"; sourceTree = "<group>"; };
 		5FADB5EBFADA2A419371CF5E6C927F1E /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		62890C896C598E9650B511A4A9BA249A /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		63BDA08B8F3575FBCB5B7F25F65C56C6 /* Pods-AMKCategories_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AMKCategories_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		66AB44527D3FEC6D2DD41624FDDBB991 /* NSDictionary+AMKObjectForKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+AMKObjectForKey.m"; path = "AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/NSDictionary+AMKObjectForKey.m"; sourceTree = "<group>"; };
 		6CA45CB51AA4CAC150F0E93B67A71BF3 /* NSBundle+AMKGitCommitInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKGitCommitInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/NSBundle+AMKGitCommitInfo.h"; sourceTree = "<group>"; };
-		6F868C01DD55C845C09074ACDD4FAFD9 /* NSObject+AMKMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKMethodSwizzling.m"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.m"; sourceTree = "<group>"; };
 		70382FEB048C8E6AC3B079CC853229C5 /* Pods-AMKCategories_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AMKCategories_Example-Info.plist"; sourceTree = "<group>"; };
 		74C6CDFD4451280375ACFE76A67CCC1B /* UITableView+AMKTableViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+AMKTableViewDelegate.h"; path = "AMKCategories/Classes/UIKit/UITableView/Delegate/UITableView+AMKTableViewDelegate.h"; sourceTree = "<group>"; };
+		7768C87BB5C0A782CBE459B8451ED433 /* NSObject+AMKMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKMethodSwizzling.m"; path = "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/NSObject+AMKMethodSwizzling.m"; sourceTree = "<group>"; };
 		7BF38BDCC5AABCE3B7B3C4AE5AB602C2 /* Pods-AMKCategories_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7D1146B8432C6B2AEFDB2B90F50FCD56 /* Pods-AMKCategories_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMKCategories_Example-dummy.m"; sourceTree = "<group>"; };
 		7E90D2D94EACBC244B2B070633FCBA29 /* AMKCategories.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMKCategories.xcconfig; sourceTree = "<group>"; };
@@ -160,13 +161,13 @@
 		8A32B687889E77BB4663627F70F59D13 /* Pods-AMKCategories_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMKCategories_Example-umbrella.h"; sourceTree = "<group>"; };
 		8D4CA7B92265A15B80B1666634FF46C0 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		8E5A3ED51D8F2E265D1229C54E44FCC7 /* NSBundle+AMKAppVersionInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKAppVersionInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.h"; sourceTree = "<group>"; };
-		8FC6EF3EFB8A1ABDE72E207FFCED46A4 /* NSObject+AMKLocaleDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKLocaleDescription.m"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.m"; sourceTree = "<group>"; };
 		94450B1622527FC3CAA5F53728D68E3D /* AMKCategories-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-prefix.pch"; sourceTree = "<group>"; };
 		992B15B9D0B88C290F8D91502D7BBC77 /* Pods-AMKCategories_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AMKCategories_Example-frameworks.sh"; sourceTree = "<group>"; };
 		9B8B6EA9AE27DC91D056BF5000D54CB9 /* UIViewController+AMKNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AMKNavigationController.h"; path = "AMKCategories/Classes/UIKit/UIViewController/NavigationController/UIViewController+AMKNavigationController.h"; sourceTree = "<group>"; };
 		9C783239D12541FA278CBEBA15780CE4 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		9CD1AD2192C246BE568B6CFBA7EB9C68 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F74AC554D409CFDB6B5043BC33AF303 /* NSObject+AMKLocaleDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AMKLocaleDescription.m"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.m"; sourceTree = "<group>"; };
 		A023943E087C87BFDB582A54A7CB7F84 /* UIViewController+AMKNavigationControllerWithCallback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AMKNavigationControllerWithCallback.h"; path = "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/UIViewController+AMKNavigationControllerWithCallback.h"; sourceTree = "<group>"; };
 		A12B8AFFC102FB4D31A3C20CFA81C6D8 /* Pods-AMKCategories_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMKCategories_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A17EAC4713F6B85A6124DB11F111B072 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
@@ -181,15 +182,14 @@
 		B7F9468A4C44A08012F98DDEE4FDE3FD /* NSBundle+AMKBundleInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+AMKBundleInfo.h"; path = "AMKCategories/Classes/Foundation/NSBundle/BundleInfo/NSBundle+AMKBundleInfo.h"; sourceTree = "<group>"; };
 		B809908E676A91DB72B00E9DAC3F1841 /* UIView+AMKInteractions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+AMKInteractions.h"; path = "AMKCategories/Classes/UIKit/UIView/Interactions/UIView+AMKInteractions.h"; sourceTree = "<group>"; };
 		C1B90478D8613B8283B5DBA066ED3DB4 /* UIViewController+AMKLifeCircleBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AMKLifeCircleBlock.m"; path = "AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/UIViewController+AMKLifeCircleBlock.m"; sourceTree = "<group>"; };
+		C5BD6B169BC7C872DE28DA0B893A9F07 /* NSObject+AMKKeyValueCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKKeyValueCoding.h"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueCoding/NSObject+AMKKeyValueCoding.h"; sourceTree = "<group>"; };
 		C6BB2E40FA7314FFFF244B2FD839A658 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
 		CEA68660045DFE9955E469E4C9469C90 /* AMKCategories-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AMKCategories-dummy.m"; sourceTree = "<group>"; };
 		CFBB0984C2BF82AA65568B3DDDCD686C /* UICollectionView+AMKCollectionViewDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+AMKCollectionViewDelegate.m"; path = "AMKCategories/Classes/UIKit/UICollectionView/Delegate/UICollectionView+AMKCollectionViewDelegate.m"; sourceTree = "<group>"; };
 		D08EAD59683B071B90DEA9501D53ED97 /* NSDictionary+AMKObjectForKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+AMKObjectForKey.h"; path = "AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/NSDictionary+AMKObjectForKey.h"; sourceTree = "<group>"; };
 		D100F47F5FECCA555C616F7D93D7CB4B /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		D1522850499C09C7268D34957E0C2092 /* NSString+AMKEmoji.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+AMKEmoji.h"; path = "AMKCategories/Classes/Foundation/NSString/Emoji/NSString+AMKEmoji.h"; sourceTree = "<group>"; };
-		D71057E6EC632104F0DEFC024C2BE9C6 /* NSObject+AMKLocaleDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKLocaleDescription.h"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.h"; sourceTree = "<group>"; };
 		D9F61928B4D56E3FD70C8315E88277C5 /* NSBundle+AMKAppVersionInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+AMKAppVersionInfo.m"; path = "AMKCategories/Classes/Foundation/NSBundle/AppVersionInfo/NSBundle+AMKAppVersionInfo.m"; sourceTree = "<group>"; };
-		DB8C1B4F0A220236D556E8B2217EFA22 /* NSObject+AMKKeyValueObserving.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKKeyValueObserving.h"; path = "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/NSObject+AMKKeyValueObserving.h"; sourceTree = "<group>"; };
 		DCDDB1996E788852B61D4F3B2092E5EA /* AMKCategories-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-umbrella.h"; sourceTree = "<group>"; };
 		DED26443E5A6D83EEAE1C6BD6CCB59BC /* Pods-AMKCategories_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AMKCategories_Example.modulemap"; sourceTree = "<group>"; };
 		DF48D82622C6D1FFAC5752C7BB004472 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
@@ -199,9 +199,9 @@
 		E6225045F2DF7AF603D15E0A59933930 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		E6E00D9463D67E7172BDA8CA4B77D2B7 /* UIViewController+AMKNavigationControllerWithCallback.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AMKNavigationControllerWithCallback.m"; path = "AMKCategories/Classes/UIKit/UIViewController/NavigationControllerWithCallback/UIViewController+AMKNavigationControllerWithCallback.m"; sourceTree = "<group>"; };
 		EB49483DB05ECDA04CE5601D912A6255 /* UIViewController+AMKNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AMKNavigationController.m"; path = "AMKCategories/Classes/UIKit/UIViewController/NavigationController/UIViewController+AMKNavigationController.m"; sourceTree = "<group>"; };
+		EEB19D2BEF8885DEA251A3055889CDCC /* NSObject+AMKLocaleDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AMKLocaleDescription.h"; path = "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/NSObject+AMKLocaleDescription.h"; sourceTree = "<group>"; };
 		F05C6EDBC8E4591F89BD9F1E17FBFC97 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		F20A7188ABF123273A3C22C4340688AC /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		F61C6F53E1454BF2E2D31C89B6C171F8 /* AMKKeyPathCodingMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMKKeyPathCodingMacros.h; path = AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/AMKKeyPathCodingMacros.h; sourceTree = "<group>"; };
 		F7C34BFCC9205D794D604869269C1C38 /* NSString+AMKEmoji.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+AMKEmoji.m"; path = "AMKCategories/Classes/Foundation/NSString/Emoji/NSString+AMKEmoji.m"; sourceTree = "<group>"; };
 		FE7A0F064F168E6660B03C9639A19329 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,22 +306,13 @@
 			name = UITableView;
 			sourceTree = "<group>";
 		};
-		1EAB4E33BEE791ECC2E280ED6708393A /* KeyValueObserving */ = {
-			isa = PBXGroup;
-			children = (
-				DB8C1B4F0A220236D556E8B2217EFA22 /* NSObject+AMKKeyValueObserving.h */,
-				3C2723251A360373C2AE6BBF1E6D9F91 /* NSObject+AMKKeyValueObserving.m */,
-			);
-			name = KeyValueObserving;
-			sourceTree = "<group>";
-		};
 		21EDDCD1358D774D8B5A20A9A3C5CEDF /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
 				049F3150D6FE8CA49EFC7B68B103B639 /* Macros */,
 				C893E3A77CB1DF58FF023F2047FE19AC /* NSBundle */,
 				C488C53C86F5C8528DF8E7F1C8A214C7 /* NSDictionary */,
-				60C79AF142A9272EB248F0E0AEEAB944 /* NSObject */,
+				A546C2D54F7C859F32243267F638A0F9 /* NSObject */,
 				14744535B320A265A5BF7DC8CA95D0A0 /* NSString */,
 			);
 			name = Foundation;
@@ -371,24 +362,6 @@
 			name = Rendering;
 			sourceTree = "<group>";
 		};
-		440B2B3808AF3BE87874FA69B32C85B0 /* MethodSwizzling */ = {
-			isa = PBXGroup;
-			children = (
-				1A8F1F3D529377122E5EC4B9F16CF48E /* NSObject+AMKMethodSwizzling.h */,
-				6F868C01DD55C845C09074ACDD4FAFD9 /* NSObject+AMKMethodSwizzling.m */,
-			);
-			name = MethodSwizzling;
-			sourceTree = "<group>";
-		};
-		4F82562B08CD9D841F5C4D1B3ECCAEB7 /* LocaleDescription */ = {
-			isa = PBXGroup;
-			children = (
-				D71057E6EC632104F0DEFC024C2BE9C6 /* NSObject+AMKLocaleDescription.h */,
-				8FC6EF3EFB8A1ABDE72E207FFCED46A4 /* NSObject+AMKLocaleDescription.m */,
-			);
-			name = LocaleDescription;
-			sourceTree = "<group>";
-		};
 		578EA1EE3B9064E6BA8C82904D143369 /* Pods-AMKCategories_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,17 +393,6 @@
 				578EA1EE3B9064E6BA8C82904D143369 /* Pods-AMKCategories_Tests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		60C79AF142A9272EB248F0E0AEEAB944 /* NSObject */ = {
-			isa = PBXGroup;
-			children = (
-				8EDCC7365B5871577C5E561F355E24E9 /* KeyPathCoding */,
-				1EAB4E33BEE791ECC2E280ED6708393A /* KeyValueObserving */,
-				4F82562B08CD9D841F5C4D1B3ECCAEB7 /* LocaleDescription */,
-				440B2B3808AF3BE87874FA69B32C85B0 /* MethodSwizzling */,
-			);
-			name = NSObject;
 			sourceTree = "<group>";
 		};
 		641727D7EBF7D099C436C5885417E360 /* Masonry */ = {
@@ -476,6 +438,15 @@
 			name = Delegate;
 			sourceTree = "<group>";
 		};
+		70E1F725CE95C564D05FEF26081E1C1F /* MethodSwizzling */ = {
+			isa = PBXGroup;
+			children = (
+				576F5CF241E637FC8F470CEDC5E0976B /* NSObject+AMKMethodSwizzling.h */,
+				7768C87BB5C0A782CBE459B8451ED433 /* NSObject+AMKMethodSwizzling.m */,
+			);
+			name = MethodSwizzling;
+			sourceTree = "<group>";
+		};
 		7529FD53BCE26816CCD46658378AAF1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,16 +465,6 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		8EDCC7365B5871577C5E561F355E24E9 /* KeyPathCoding */ = {
-			isa = PBXGroup;
-			children = (
-				F61C6F53E1454BF2E2D31C89B6C171F8 /* AMKKeyPathCodingMacros.h */,
-				4C622E3D0F2B19AC2BA09E5FC43D0AC8 /* NSObject+AMKKeyPathCoding.h */,
-				0FA56631021C4E3A742A744198276AD9 /* NSObject+AMKKeyPathCoding.m */,
-			);
-			name = KeyPathCoding;
-			sourceTree = "<group>";
-		};
 		9B3FC31657A43BF1ACF1D5B1EB0C300F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +474,16 @@
 				492535D5F6B68A9B388BA884F326BCDC /* Pods_AMKCategories_Tests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9B52FFAFB02AE884ECFDED08006C2E4D /* KeyValueCoding */ = {
+			isa = PBXGroup;
+			children = (
+				0AE5B02A6BFC53D4D9E4D2551D8B9043 /* AMKKeyValueCodingMacros.h */,
+				C5BD6B169BC7C872DE28DA0B893A9F07 /* NSObject+AMKKeyValueCoding.h */,
+				27B934AD3239A6360C9D9474DE41DAFB /* NSObject+AMKKeyValueCoding.m */,
+			);
+			name = KeyValueCoding;
 			sourceTree = "<group>";
 		};
 		9F0410FA0C2F231C909D0B8465FB8CC4 /* Metamacros */ = {
@@ -530,6 +501,26 @@
 				B771BC77783B8A2BF04EBCE9AA2D06A2 /* UIView+AMKInteractions.m */,
 			);
 			name = Interactions;
+			sourceTree = "<group>";
+		};
+		A546C2D54F7C859F32243267F638A0F9 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				9B52FFAFB02AE884ECFDED08006C2E4D /* KeyValueCoding */,
+				EBB40032216B47002FBA3C6385C0EF79 /* KeyValueObserving */,
+				A6D7B05EE27793B6BB05C338DDB87C19 /* LocaleDescription */,
+				70E1F725CE95C564D05FEF26081E1C1F /* MethodSwizzling */,
+			);
+			name = NSObject;
+			sourceTree = "<group>";
+		};
+		A6D7B05EE27793B6BB05C338DDB87C19 /* LocaleDescription */ = {
+			isa = PBXGroup;
+			children = (
+				EEB19D2BEF8885DEA251A3055889CDCC /* NSObject+AMKLocaleDescription.h */,
+				9F74AC554D409CFDB6B5043BC33AF303 /* NSObject+AMKLocaleDescription.m */,
+			);
+			name = LocaleDescription;
 			sourceTree = "<group>";
 		};
 		AC7B8A3C60197269694F87DA3F007945 /* Delegate */ = {
@@ -680,6 +671,15 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		EBB40032216B47002FBA3C6385C0EF79 /* KeyValueObserving */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FF5159FA4CC596ECA9680B0E98ED8 /* NSObject+AMKKeyValueObserving.h */,
+				222FEDD16FC197D4830CF42F05075F4D /* NSObject+AMKKeyValueObserving.m */,
+			);
+			name = KeyValueObserving;
+			sourceTree = "<group>";
+		};
 		ED24FDE97FC004C8CC0F4E3C48AACB74 /* GitCommitInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,37 +692,37 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0C175A04E9F28EF5F07DFDED9E6D9AD0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4056A2BD17E2978055890357EC12A39E /* AMKCategories-umbrella.h in Headers */,
-				C116B7A2132CC24581E62BA46C0E28D9 /* AMKKeyPathCodingMacros.h in Headers */,
-				1F8B68314DEFC8524CD59A2EE0747899 /* AMKMetamacros.h in Headers */,
-				A4F89D24920303C2AE10A22FBD85B9C1 /* NSBundle+AMKAppVersionInfo.h in Headers */,
-				010D80DF6980C1E07EA3DA84BEB5BA48 /* NSBundle+AMKBundleInfo.h in Headers */,
-				E6D00E8559E4FD25E5F785D5F519963D /* NSBundle+AMKGitCommitInfo.h in Headers */,
-				E5922A7E80E2648222ED8C030FDEBCD9 /* NSDictionary+AMKObjectForKey.h in Headers */,
-				2FD983247FF281D2A6BD8A9CB313F3F9 /* NSObject+AMKKeyPathCoding.h in Headers */,
-				41C68B383DC8AE384C41569B88356698 /* NSObject+AMKKeyValueObserving.h in Headers */,
-				FB81F84D017D8D6376D0DC1AB8521FD5 /* NSObject+AMKLocaleDescription.h in Headers */,
-				680A3C5313DB1DB561CAE2AA867F4982 /* NSObject+AMKMethodSwizzling.h in Headers */,
-				4BE1637846611EB4E77E276894DECB46 /* NSString+AMKEmoji.h in Headers */,
-				B7B9CEE1F9B2F63ABD6E454B0D39CC33 /* UICollectionView+AMKCollectionViewDelegate.h in Headers */,
-				5938F2708418B8FA26719131BEA26E42 /* UIImage+AMKImageRendering.h in Headers */,
-				DF6515BFF6AC345911C5E637910FF1D8 /* UITableView+AMKTableViewDelegate.h in Headers */,
-				E866F78446D354688244C6CB24234326 /* UIView+AMKInteractions.h in Headers */,
-				3439CEE138C31969E8B4B621E161F78D /* UIViewController+AMKLifeCircleBlock.h in Headers */,
-				57B181DC2A02B2A223340685464C65E6 /* UIViewController+AMKNavigationController.h in Headers */,
-				7B085C7300E89BE824D4C7D606302FC2 /* UIViewController+AMKNavigationControllerWithCallback.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0CDC446D0F18C1178D124D58E2749550 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				60D334205ACB473B2B0D94F7C402D7A7 /* Pods-AMKCategories_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C7190359D17F46AF23AE776BFB920E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D84ADEDB28A78657158AD4163CF3C43D /* AMKCategories-umbrella.h in Headers */,
+				195B31D9713370F4FCF340646FFAB96E /* AMKKeyValueCodingMacros.h in Headers */,
+				9926327553E3865B1376EF527599AE55 /* AMKMetamacros.h in Headers */,
+				43F369C5398BA9855BA4E136442FC6CE /* NSBundle+AMKAppVersionInfo.h in Headers */,
+				0B058323486923291CA56698E33CAA7D /* NSBundle+AMKBundleInfo.h in Headers */,
+				2DE079171EC6E00E525E94673F0F6235 /* NSBundle+AMKGitCommitInfo.h in Headers */,
+				0AA004ED0F8BC3EAA93B75CEE0749F13 /* NSDictionary+AMKObjectForKey.h in Headers */,
+				067789D59220774E7093BC805EA43446 /* NSObject+AMKKeyValueCoding.h in Headers */,
+				57F1ED7ED1B8CE340AAC32058BB71E65 /* NSObject+AMKKeyValueObserving.h in Headers */,
+				DCA7108876EAE7E36425774F3E948897 /* NSObject+AMKLocaleDescription.h in Headers */,
+				3B22FDD3653F613274BEF46F79C69009 /* NSObject+AMKMethodSwizzling.h in Headers */,
+				CD4F5426A18C80AA88BA5B4C9590D01F /* NSString+AMKEmoji.h in Headers */,
+				9BCF2068D81F367293F7F6EC1C9B2A90 /* UICollectionView+AMKCollectionViewDelegate.h in Headers */,
+				D09768EBDFB564E7DE796FA30CE6C901 /* UIImage+AMKImageRendering.h in Headers */,
+				CFEF146A140539C68DB5B13669F8B367 /* UITableView+AMKTableViewDelegate.h in Headers */,
+				7538CF9EBBA3243563620015D468B13E /* UIView+AMKInteractions.h in Headers */,
+				9C8DCF3442236CC61A03796ED0168B58 /* UIViewController+AMKLifeCircleBlock.h in Headers */,
+				5ED339145973C9F1FE3E86C9B79D4054 /* UIViewController+AMKNavigationController.h in Headers */,
+				9CCDABB6D68C9182108846A76DB31DDC /* UIViewController+AMKNavigationControllerWithCallback.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,8 +802,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9892F880EFABCBA6F130C653D066E4F0 /* Build configuration list for PBXNativeTarget "AMKCategories" */;
 			buildPhases = (
-				0C175A04E9F28EF5F07DFDED9E6D9AD0 /* Headers */,
-				2AEEEDD793D34A45EB4F2E77C8006410 /* Sources */,
+				70C7190359D17F46AF23AE776BFB920E /* Headers */,
+				3605848348133E2C2981DB39E658CE58 /* Sources */,
 				E29FAB83D5277F7B5B4074FFBE17079F /* Frameworks */,
 				51D121863FA557E21E4F1C731C30C0A8 /* Resources */,
 			);
@@ -915,27 +915,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AEEEDD793D34A45EB4F2E77C8006410 /* Sources */ = {
+		3605848348133E2C2981DB39E658CE58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09695E59007D97D87515C3976AC37C06 /* AMKCategories-dummy.m in Sources */,
-				FA504D04A391F1FED783061A442819EE /* NSBundle+AMKAppVersionInfo.m in Sources */,
-				3AB612370CDE83A4B8F2538C7AD03E92 /* NSBundle+AMKBundleInfo.m in Sources */,
-				B3394DD5DB40339C66FE92BC5024ADBD /* NSBundle+AMKGitCommitInfo.m in Sources */,
-				B264D671B79EAC81BE0F023A76101DE3 /* NSDictionary+AMKObjectForKey.m in Sources */,
-				2DAEBB31EB7C603A29C78D3F022CE52E /* NSObject+AMKKeyPathCoding.m in Sources */,
-				3862A6352227AFC500E9BE0B099C9876 /* NSObject+AMKKeyValueObserving.m in Sources */,
-				C4A19389FC39C5B4CE6F3DF51B381FD2 /* NSObject+AMKLocaleDescription.m in Sources */,
-				9B90FAB2CB72CCF9ADE6565B10C9E189 /* NSObject+AMKMethodSwizzling.m in Sources */,
-				67F56D85794E02CD886362D3BA833024 /* NSString+AMKEmoji.m in Sources */,
-				5AD8C12DCDDC81F8057353A017432135 /* UICollectionView+AMKCollectionViewDelegate.m in Sources */,
-				B713975FB738522954D95FC9A7B51FC5 /* UIImage+AMKImageRendering.m in Sources */,
-				8982468D14BCE1CCCD36209298016AD2 /* UITableView+AMKTableViewDelegate.m in Sources */,
-				454DEC479FBBC70A8BB076AE19ED350B /* UIView+AMKInteractions.m in Sources */,
-				DEB72E51CBCE0BD8A09C732508A8F00F /* UIViewController+AMKLifeCircleBlock.m in Sources */,
-				588E2302C31A2612A8A25F2887FBA14C /* UIViewController+AMKNavigationController.m in Sources */,
-				0649D7D002434A44526075661D05305D /* UIViewController+AMKNavigationControllerWithCallback.m in Sources */,
+				EED1AC5F2192F7E33E476D203C34A31B /* AMKCategories-dummy.m in Sources */,
+				5F6B2668CB2883E440411DFEC0B26FA4 /* NSBundle+AMKAppVersionInfo.m in Sources */,
+				0F2364923FF23E57B46B62CF66738767 /* NSBundle+AMKBundleInfo.m in Sources */,
+				A2C9810F053D7B457D4790EB43D84EE2 /* NSBundle+AMKGitCommitInfo.m in Sources */,
+				C427DCF3D4DA3FB36D6B4D59D4FA0D18 /* NSDictionary+AMKObjectForKey.m in Sources */,
+				BFEE76740A55F30CB42CB70B33E4BB8B /* NSObject+AMKKeyValueCoding.m in Sources */,
+				095A815F697FEA73C66B0A14C6E03E59 /* NSObject+AMKKeyValueObserving.m in Sources */,
+				23EA03A05B6E2F3FBEFEBA8AF69F8C64 /* NSObject+AMKLocaleDescription.m in Sources */,
+				0D257D3BAEE62C45CF980BB598545BA7 /* NSObject+AMKMethodSwizzling.m in Sources */,
+				0DE55EE9EB934DE690645AE32AA6BABB /* NSString+AMKEmoji.m in Sources */,
+				5DFD9D5010CF197A2573D2FCC86AE79B /* UICollectionView+AMKCollectionViewDelegate.m in Sources */,
+				78EF7E6EDC774BA044020133DE9876D6 /* UIImage+AMKImageRendering.m in Sources */,
+				D9477E6BE2B7788AF357F48A1A601F2E /* UITableView+AMKTableViewDelegate.m in Sources */,
+				DED4F7678DE9E8466C576F40C23815E2 /* UIView+AMKInteractions.m in Sources */,
+				C58101DCB6B32072F63AEC3258F855E4 /* UIViewController+AMKLifeCircleBlock.m in Sources */,
+				CA3C25E91F0B9368207302C6AA2B4771 /* UIViewController+AMKNavigationController.m in Sources */,
+				6D08367232C2FF1BC5132F6A57847E8B /* UIViewController+AMKNavigationControllerWithCallback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

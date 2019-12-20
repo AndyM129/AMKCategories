@@ -1,13 +1,13 @@
 //
-//  AMKKeyPathCodingViewController.m
+//  AMKKeyValueCodingViewController.m
 //  AMKCategories_Example
 //
 //  Created by 孟昕欣 on 2019/12/20.
 //  Copyright © 2019 AndyM129. All rights reserved.
 //
 
-#import "AMKKeyPathCodingViewController.h"
-#import <AMKCategories/NSObject+AMKKeyPathCoding.h>
+#import "AMKKeyValueCodingViewController.h"
+#import <AMKCategories/NSObject+AMKKeyValueCoding.h>
 
 @interface Employee : NSObject
 @property(nonatomic, strong, nullable, readwrite) NSString *firstName;
@@ -19,8 +19,8 @@
 @end
 @implementation Department @end
 
-@interface AMKKeyPathCodingViewController () @end
-@implementation AMKKeyPathCodingViewController
+@interface AMKKeyValueCodingViewController () @end
+@implementation AMKKeyValueCodingViewController
 
 + (void)load {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
