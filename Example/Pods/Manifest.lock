@@ -5,10 +5,14 @@ PODS:
     - AMKCategories/Foundation
     - AMKCategories/UIKit
   - AMKCategories/Foundation (0.1.5):
+    - AMKCategories/Foundation/Macros (= 0.1.5)
     - AMKCategories/Foundation/NSBundle (= 0.1.5)
     - AMKCategories/Foundation/NSDictionary (= 0.1.5)
     - AMKCategories/Foundation/NSObject (= 0.1.5)
     - AMKCategories/Foundation/NSString (= 0.1.5)
+  - AMKCategories/Foundation/Macros (0.1.5):
+    - AMKCategories/Foundation/Macros/Metamacros (= 0.1.5)
+  - AMKCategories/Foundation/Macros/Metamacros (0.1.5)
   - AMKCategories/Foundation/NSBundle (0.1.5):
     - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.5)
     - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.5)
@@ -20,8 +24,12 @@ PODS:
     - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.5)
   - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.5)
   - AMKCategories/Foundation/NSObject (0.1.5):
+    - AMKCategories/Foundation/NSObject/KeyPathCoding (= 0.1.5)
+    - AMKCategories/Foundation/NSObject/KeyValueObserving (= 0.1.5)
     - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.5)
     - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.5)
+  - AMKCategories/Foundation/NSObject/KeyPathCoding (0.1.5)
+  - AMKCategories/Foundation/NSObject/KeyValueObserving (0.1.5)
   - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.5)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.5)
   - AMKCategories/Foundation/NSString (0.1.5):
@@ -77,7 +85,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: f6fba8174773a8a44930ddef4cea4128217d8dda
+  AMKCategories: 43cfd87859e234f0d1fe9b829dc770a348656e95
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

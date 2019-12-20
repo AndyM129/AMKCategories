@@ -128,6 +128,16 @@ Pod::Spec.new do |s|
         end
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|
+            # KeyValueObserving
+            object.subspec 'KeyValueObserving' do |keyValueObserving|
+                keyValueObserving.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.{h,m}'
+                keyValueObserving.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.h'
+            end
+            # KeyPathCoding
+            object.subspec 'KeyPathCoding' do |keyPathCoding|
+                keyPathCoding.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}'
+                keyPathCoding.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h'
+            end
             # LocaleDescription 本地化输出
             object.subspec 'LocaleDescription' do |localeDescription|
                 localeDescription.source_files = 'AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}'
@@ -137,6 +147,14 @@ Pod::Spec.new do |s|
             object.subspec 'MethodSwizzling' do |methodSwizzling|
                 methodSwizzling.source_files = 'AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}'
                 methodSwizzling.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.h'
+            end
+        end
+        # Macros 宏指令
+        foundation.subspec 'Macros' do |macros|
+            # metamacros
+            macros.subspec 'Metamacros' do |metamacros|
+                metamacros.source_files = 'AMKCategories/Classes/Foundation/Macros/Metamacros/*.{h,m}'
+                metamacros.public_header_files = 'AMKCategories/Classes/Foundation/Macros/Metamacros/*.h'
             end
         end
     end

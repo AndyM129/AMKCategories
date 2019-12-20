@@ -179,6 +179,16 @@
           "name": "NSObject",
           "subspecs": [
             {
+              "name": "KeyValueObserving",
+              "source_files": "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyValueObserving/*.h"
+            },
+            {
+              "name": "KeyPathCoding",
+              "source_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h"
+            },
+            {
               "name": "LocaleDescription",
               "source_files": "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/Foundation/NSObject/LocaleDescription/*.h"
@@ -187,6 +197,16 @@
               "name": "MethodSwizzling",
               "source_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/Foundation/NSObject/MethodSwizzling/*.h"
+            }
+          ]
+        },
+        {
+          "name": "Macros",
+          "subspecs": [
+            {
+              "name": "Metamacros",
+              "source_files": "AMKCategories/Classes/Foundation/Macros/Metamacros/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/Macros/Metamacros/*.h"
             }
           ]
         }

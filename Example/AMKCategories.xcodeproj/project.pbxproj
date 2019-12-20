@@ -27,6 +27,7 @@
 		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
 		8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */; };
 		8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */; };
+		8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */; };
 		8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */; };
 		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
 		88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */; };
@@ -76,6 +77,8 @@
 		8880810E23ACC68F0082C16B /* AMKEmojiStringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKEmojiStringViewController.h; sourceTree = "<group>"; };
 		8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKEmojiStringViewController.m; sourceTree = "<group>"; };
 		8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMKEmojiStringViewController.txt; sourceTree = "<group>"; };
+		8880812123ACCE660082C16B /* AMKKeyPathCodingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKKeyPathCodingViewController.h; sourceTree = "<group>"; };
+		8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKKeyPathCodingViewController.m; sourceTree = "<group>"; };
 		8881E6F622EB062000CE6D9D /* AMKGitCommitInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKGitCommitInfoViewController.h; sourceTree = "<group>"; };
 		8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
 		8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
@@ -263,9 +266,27 @@
 			path = Emoji;
 			sourceTree = "<group>";
 		};
+		8880811F23ACCE530082C16B /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				8880812023ACCE530082C16B /* KeyPathCoding */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		8880812023ACCE530082C16B /* KeyPathCoding */ = {
+			isa = PBXGroup;
+			children = (
+				8880812123ACCE660082C16B /* AMKKeyPathCodingViewController.h */,
+				8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */,
+			);
+			path = KeyPathCoding;
+			sourceTree = "<group>";
+		};
 		8881E6EA22EAF35300CE6D9D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				8880811F23ACCE530082C16B /* NSObject */,
 				8880810C23ACC65E0082C16B /* NSString */,
 				8881E6EB22EAF35300CE6D9D /* NSBundle */,
 			);
@@ -530,6 +551,7 @@
 				8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
+				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
