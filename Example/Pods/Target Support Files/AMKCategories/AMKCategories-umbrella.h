@@ -16,6 +16,7 @@
 #import "NSDictionary+AMKObjectForKey.h"
 #import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
+#import "NSString+AMKEmoji.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"
 #import "UITableView+AMKTableViewDelegate.h"

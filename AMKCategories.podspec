@@ -117,6 +117,15 @@ Pod::Spec.new do |s|
                 objectForKey.public_header_files = 'AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.h'
             end
         end
+        # NSString 相关扩展
+        foundation.subspec 'NSString' do |string|
+            # Emoji 相关
+            string.subspec 'Emoji' do |emoji|
+                emoji.source_files = 'AMKCategories/Classes/Foundation/NSString/Emoji/*.{h,m}'
+                emoji.public_header_files = 'AMKCategories/Classes/Foundation/NSString/Emoji/*.h'
+                emoji.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|
             # LocaleDescription 本地化输出

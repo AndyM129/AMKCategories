@@ -161,6 +161,21 @@
           ]
         },
         {
+          "name": "NSString",
+          "subspecs": [
+            {
+              "name": "Emoji",
+              "source_files": "AMKCategories/Classes/Foundation/NSString/Emoji/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSString/Emoji/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "NSObject",
           "subspecs": [
             {
