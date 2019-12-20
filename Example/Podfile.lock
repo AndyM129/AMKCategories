@@ -1,63 +1,63 @@
 PODS:
-  - AMKCategories (0.1.4):
-    - AMKCategories/DefaultSubspec (= 0.1.4)
-  - AMKCategories/DefaultSubspec (0.1.4):
+  - AMKCategories (0.1.5):
+    - AMKCategories/DefaultSubspec (= 0.1.5)
+  - AMKCategories/DefaultSubspec (0.1.5):
     - AMKCategories/Foundation
     - AMKCategories/UIKit
-  - AMKCategories/Foundation (0.1.4):
-    - AMKCategories/Foundation/NSBundle (= 0.1.4)
-    - AMKCategories/Foundation/NSDictionary (= 0.1.4)
-    - AMKCategories/Foundation/NSObject (= 0.1.4)
-    - AMKCategories/Foundation/NSString (= 0.1.4)
-  - AMKCategories/Foundation/NSBundle (0.1.4):
-    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.4)
-    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.4)
-    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.4)
-  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.4)
-  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.4)
-  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.4)
-  - AMKCategories/Foundation/NSDictionary (0.1.4):
-    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.4)
-  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.4)
-  - AMKCategories/Foundation/NSObject (0.1.4):
-    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.4)
-    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.4)
-  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.4)
-  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.4)
-  - AMKCategories/Foundation/NSString (0.1.4):
-    - AMKCategories/Foundation/NSString/Emoji (= 0.1.4)
-  - AMKCategories/Foundation/NSString/Emoji (0.1.4):
+  - AMKCategories/Foundation (0.1.5):
+    - AMKCategories/Foundation/NSBundle (= 0.1.5)
+    - AMKCategories/Foundation/NSDictionary (= 0.1.5)
+    - AMKCategories/Foundation/NSObject (= 0.1.5)
+    - AMKCategories/Foundation/NSString (= 0.1.5)
+  - AMKCategories/Foundation/NSBundle (0.1.5):
+    - AMKCategories/Foundation/NSBundle/BundleInfo (= 0.1.5)
+    - AMKCategories/Foundation/NSBundle/GitCommitInfo (= 0.1.5)
+    - AMKCategories/Foundation/NSBundle/VersionInfo (= 0.1.5)
+  - AMKCategories/Foundation/NSBundle/BundleInfo (0.1.5)
+  - AMKCategories/Foundation/NSBundle/GitCommitInfo (0.1.5)
+  - AMKCategories/Foundation/NSBundle/VersionInfo (0.1.5)
+  - AMKCategories/Foundation/NSDictionary (0.1.5):
+    - AMKCategories/Foundation/NSDictionary/ObjectForKey (= 0.1.5)
+  - AMKCategories/Foundation/NSDictionary/ObjectForKey (0.1.5)
+  - AMKCategories/Foundation/NSObject (0.1.5):
+    - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.5)
+    - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.5)
+  - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.5)
+  - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.5)
+  - AMKCategories/Foundation/NSString (0.1.5):
+    - AMKCategories/Foundation/NSString/Emoji (= 0.1.5)
+  - AMKCategories/Foundation/NSString/Emoji (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit (0.1.4):
-    - AMKCategories/UIKit/UICollectionView (= 0.1.4)
-    - AMKCategories/UIKit/UIImage (= 0.1.4)
-    - AMKCategories/UIKit/UITableView (= 0.1.4)
-    - AMKCategories/UIKit/UIView (= 0.1.4)
-    - AMKCategories/UIKit/UIViewController (= 0.1.4)
-  - AMKCategories/UIKit/UICollectionView (0.1.4):
-    - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.4)
-  - AMKCategories/UIKit/UICollectionView/Delegate (0.1.4):
+  - AMKCategories/UIKit (0.1.5):
+    - AMKCategories/UIKit/UICollectionView (= 0.1.5)
+    - AMKCategories/UIKit/UIImage (= 0.1.5)
+    - AMKCategories/UIKit/UITableView (= 0.1.5)
+    - AMKCategories/UIKit/UIView (= 0.1.5)
+    - AMKCategories/UIKit/UIViewController (= 0.1.5)
+  - AMKCategories/UIKit/UICollectionView (0.1.5):
+    - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.5)
+  - AMKCategories/UIKit/UICollectionView/Delegate (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIImage (0.1.4):
-    - AMKCategories/UIKit/UIImage/Rendering (= 0.1.4)
-  - AMKCategories/UIKit/UIImage/Rendering (0.1.4)
-  - AMKCategories/UIKit/UITableView (0.1.4):
-    - AMKCategories/UIKit/UITableView/Delegate (= 0.1.4)
-  - AMKCategories/UIKit/UITableView/Delegate (0.1.4):
+  - AMKCategories/UIKit/UIImage (0.1.5):
+    - AMKCategories/UIKit/UIImage/Rendering (= 0.1.5)
+  - AMKCategories/UIKit/UIImage/Rendering (0.1.5)
+  - AMKCategories/UIKit/UITableView (0.1.5):
+    - AMKCategories/UIKit/UITableView/Delegate (= 0.1.5)
+  - AMKCategories/UIKit/UITableView/Delegate (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIView (0.1.4):
-    - AMKCategories/UIKit/UIView/Interactions (= 0.1.4)
-  - AMKCategories/UIKit/UIView/Interactions (0.1.4):
+  - AMKCategories/UIKit/UIView (0.1.5):
+    - AMKCategories/UIKit/UIView/Interactions (= 0.1.5)
+  - AMKCategories/UIKit/UIView/Interactions (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController (0.1.4):
-    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.4)
-    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.4)
-    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.4)
-  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.4):
+  - AMKCategories/UIKit/UIViewController (0.1.5):
+    - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.5)
+    - AMKCategories/UIKit/UIViewController/NavigationController (= 0.1.5)
+    - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (= 0.1.5)
+  - AMKCategories/UIKit/UIViewController/LifeCircleBlock (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.4):
+  - AMKCategories/UIKit/UIViewController/NavigationController (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
-  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.4):
+  - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.5):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
   - Masonry (1.1.0)
@@ -77,7 +77,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: cac04b587af1a4e420bfcdfac81122bb3dd7cf77
+  AMKCategories: f6fba8174773a8a44930ddef4cea4128217d8dda
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
