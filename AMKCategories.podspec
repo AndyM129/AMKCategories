@@ -137,6 +137,7 @@ Pod::Spec.new do |s|
             object.subspec 'KeyPathCoding' do |keyPathCoding|
                 keyPathCoding.source_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}'
                 keyPathCoding.public_header_files = 'AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h'
+                keyPathCoding.dependency 'AMKCategories/Foundation/Macros/Metamacros'
             end
             # LocaleDescription 本地化输出
             object.subspec 'LocaleDescription' do |localeDescription|

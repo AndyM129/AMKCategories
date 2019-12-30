@@ -186,7 +186,12 @@
             {
               "name": "KeyPathCoding",
               "source_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h"
+              "public_header_files": "AMKCategories/Classes/Foundation/NSObject/KeyPathCoding/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/Macros/Metamacros": [
+
+                ]
+              }
             },
             {
               "name": "LocaleDescription",

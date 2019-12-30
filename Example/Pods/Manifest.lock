@@ -28,7 +28,8 @@ PODS:
     - AMKCategories/Foundation/NSObject/KeyValueObserving (= 0.1.5)
     - AMKCategories/Foundation/NSObject/LocaleDescription (= 0.1.5)
     - AMKCategories/Foundation/NSObject/MethodSwizzling (= 0.1.5)
-  - AMKCategories/Foundation/NSObject/KeyPathCoding (0.1.5)
+  - AMKCategories/Foundation/NSObject/KeyPathCoding (0.1.5):
+    - AMKCategories/Foundation/Macros/Metamacros
   - AMKCategories/Foundation/NSObject/KeyValueObserving (0.1.5)
   - AMKCategories/Foundation/NSObject/LocaleDescription (0.1.5)
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.5)
@@ -85,7 +86,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 43cfd87859e234f0d1fe9b829dc770a348656e95
+  AMKCategories: 3869bbff36bb7a150cbf478d9fa0eb37cb2dcdd0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
