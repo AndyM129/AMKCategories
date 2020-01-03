@@ -7,9 +7,6 @@
 
 #import "UIDevice+AMKDeviceSystemInfo.h"
 
-#import <AppKit/AppKit.h>
-
-
 @implementation UIDevice (AMKDeviceSystemInfo)
 
 @end

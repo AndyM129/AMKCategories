@@ -22,11 +22,10 @@ FOUNDATION_EXPORT NSString * _Nonnull const AMKLaunchingTimesKey;
 @property(nonatomic, strong, readonly, nullable) NSString *amk_beforeBundleBuildVersion;        //!< 上一次启动时的构建版本号
 @property(nonatomic, strong, readonly, nonnull) NSString *amk_currentBundleShortVersion;        //!< 当前版本号
 @property(nonatomic, strong, readonly, nullable) NSString *amk_beforeBundleShortVersion;        //!< 上一次启动时的版本号
+@property(nonatomic, strong, readonly, nonnull) NSString *amk_currentBundleLongVersion;         //!< 当前完整的版本号（shortVersion + buildVersion）
 @property(nonatomic, strong, readonly, nullable) NSDate *amk_beforeLaunchingDate;               //!< 上一次启动时间
 @property(nonatomic, assign, readonly) NSInteger amk_launchingTimes;                            //!< 截止本次启动的启动次数
 @property(nonatomic, assign, readonly) BOOL amk_isFirstLaunching;                               //!< 是否是安装后第一次启动
 @property(nonatomic, assign, readonly) BOOL amk_isUpgradedLaunching;                            //!< 是否是升级后第一次启动
 @property(nonatomic, assign, readonly) BOOL amk_isDowngradedLaunching;                          //!< 是否是降级后第一次启动
 @end
-
-

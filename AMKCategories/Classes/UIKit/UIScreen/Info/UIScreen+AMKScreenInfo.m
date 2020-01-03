@@ -7,9 +7,6 @@
 
 #import "UIScreen+AMKScreenInfo.h"
 
-#import <AppKit/AppKit.h>
-
-
 @implementation UIScreen (AMKScreenInfo)
 
 @end

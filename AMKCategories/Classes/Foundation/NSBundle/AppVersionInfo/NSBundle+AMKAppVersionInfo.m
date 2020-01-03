@@ -24,9 +24,9 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
         kAMKBeforeLaunchingDate = [NSDate date];
         
         // 更新 NSUserDefaults
-        NSInteger launchingTimes = [[NSUserDefaults standardUserDefaults] integerForKey:AMKLaunchingTimesKey];
-        [[NSUserDefaults standardUserDefaults] setInteger:(launchingTimes+1) forKey:AMKLaunchingTimesKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSInteger launchingTimes = [NSUserDefaults.standardUserDefaults integerForKey:AMKLaunchingTimesKey];
+        [NSUserDefaults.standardUserDefaults setInteger:(launchingTimes+1) forKey:AMKLaunchingTimesKey];
+        [NSUserDefaults.standardUserDefaults synchronize];
         
         // 添加 UIApplication 相关通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(amk_applicationWillTerminateNotificationHandler:) name:UIApplicationWillTerminateNotification object:nil];
@@ -39,7 +39,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *bundleIdentifier = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        bundleIdentifier = [NSBundle mainBundle].infoDictionary[@"CFBundleIdentifier"];
+        bundleIdentifier = self.infoDictionary[@"CFBundleIdentifier"];
     });
     return bundleIdentifier;
 }
@@ -48,7 +48,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *bundleName = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        bundleName = [NSBundle mainBundle].infoDictionary[@"CFBundleName"];
+        bundleName = self.infoDictionary[@"CFBundleName"];
     });
     return bundleName;
 }
@@ -57,7 +57,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *bundleDisplayName = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        bundleDisplayName = [NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"];
+        bundleDisplayName = self.infoDictionary[@"CFBundleDisplayName"];
     });
     return bundleDisplayName;
 }
@@ -66,7 +66,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *currentBundleBuildVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        currentBundleBuildVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+        currentBundleBuildVersion = self.infoDictionary[@"CFBundleVersion"];
     });
     return currentBundleBuildVersion;
 }
@@ -75,7 +75,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *beforeBundleBuildVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        beforeBundleBuildVersion = [[NSUserDefaults standardUserDefaults] stringForKey:AMKBeforeBundleBuildVersionKey];
+        beforeBundleBuildVersion = [NSUserDefaults.standardUserDefaults stringForKey:AMKBeforeBundleBuildVersionKey];
     });
     return beforeBundleBuildVersion;
 }
@@ -84,7 +84,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *currentBundleShortVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        currentBundleShortVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+        currentBundleShortVersion = self.infoDictionary[@"CFBundleShortVersionString"];
     });
     return currentBundleShortVersion;
 }
@@ -93,16 +93,25 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSString *beforeBundleShortVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        beforeBundleShortVersion = [[NSUserDefaults standardUserDefaults] stringForKey:AMKBeforeBundleShortVersionKey];
+        beforeBundleShortVersion = [NSUserDefaults.standardUserDefaults stringForKey:AMKBeforeBundleShortVersionKey];
     });
     return beforeBundleShortVersion;
+}
+
+- (NSString *)amk_currentBundleLongVersion {
+    static NSString *currentBundleLongVersion = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        currentBundleLongVersion = [NSString stringWithFormat:@"%@.%@", self.amk_currentBundleShortVersion, self.amk_currentBundleBuildVersion];
+    });
+    return currentBundleLongVersion;
 }
 
 - (NSDate *)amk_beforeLaunchingDate {
     static NSDate *beforeLaunchingDate = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        beforeLaunchingDate = [[NSUserDefaults standardUserDefaults] objectForKey:AMKBeforeLaunchingDateKey];
+        beforeLaunchingDate = [NSUserDefaults.standardUserDefaults objectForKey:AMKBeforeLaunchingDateKey];
     });
     return beforeLaunchingDate;
 }
@@ -111,7 +120,7 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
     static NSInteger launchingTimes = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        launchingTimes = MAX(0, [[NSUserDefaults standardUserDefaults] integerForKey:AMKLaunchingTimesKey]);
+        launchingTimes = MAX(0, [NSUserDefaults.standardUserDefaults integerForKey:AMKLaunchingTimesKey]);
     });
     return launchingTimes;
 }
@@ -152,10 +161,10 @@ static NSDate *kAMKBeforeLaunchingDate = nil;
 #pragma mark - Private Methods
 
 + (void)amk_applicationWillTerminateNotificationHandler:(NSNotification *)note {
-    [[NSUserDefaults standardUserDefaults] setObject:self.mainBundle.amk_currentBundleBuildVersion forKey:AMKBeforeBundleBuildVersionKey];
-    [[NSUserDefaults standardUserDefaults] setObject:self.mainBundle.amk_currentBundleShortVersion forKey:AMKBeforeBundleShortVersionKey];
-    [[NSUserDefaults standardUserDefaults] setObject:kAMKBeforeLaunchingDate forKey:AMKBeforeLaunchingDateKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [NSUserDefaults.standardUserDefaults setObject:self.mainBundle.amk_currentBundleBuildVersion forKey:AMKBeforeBundleBuildVersionKey];
+    [NSUserDefaults.standardUserDefaults setObject:self.mainBundle.amk_currentBundleShortVersion forKey:AMKBeforeBundleShortVersionKey];
+    [NSUserDefaults.standardUserDefaults setObject:kAMKBeforeLaunchingDate forKey:AMKBeforeLaunchingDateKey];
+    [NSUserDefaults.standardUserDefaults synchronize];
 }
 
 #pragma mark - Notifications
