@@ -87,6 +87,32 @@ Pod::Spec.new do |s|
                 lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
+
+        # UIScreen 相关
+        uikit.subspec 'UIScreen' do |screen|
+            # Info 相关
+            screen.subspec 'Info' do |info|
+                info.source_files = 'AMKCategories/Classes/UIKit/UIScreen/Info/*.{h,m}'
+                info.public_header_files = 'AMKCategories/Classes/UIKit/UIScreen/Info/*.h'
+            end
+        end
+
+        # UIDevice 相关
+        uikit.subspec 'UIDevice' do |device|
+            # Info 相关
+            device.subspec 'Info' do |info|
+                # System 系统相关
+                info.subspec 'System' do |system|
+                    system.source_files = 'AMKCategories/Classes/UIKit/UIDevice/Info/System/*.{h,m}'
+                    system.public_header_files = 'AMKCategories/Classes/UIKit/UIDevice/Info/System/*.h'
+                end
+                # Hardware 硬件相关
+                info.subspec 'Hardware' do |hardware|
+                    hardware.source_files = 'AMKCategories/Classes/UIKit/UIDevice/Info/Hardware/*.{h,m}'
+                    hardware.public_header_files = 'AMKCategories/Classes/UIKit/UIDevice/Info/Hardware/*.h'
+                end
+            end
+        end
     end
 
     # Foundation 通用扩展

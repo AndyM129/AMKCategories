@@ -39,7 +39,9 @@ PODS:
     - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit (0.1.5):
     - AMKCategories/UIKit/UICollectionView (= 0.1.5)
+    - AMKCategories/UIKit/UIDevice (= 0.1.5)
     - AMKCategories/UIKit/UIImage (= 0.1.5)
+    - AMKCategories/UIKit/UIScreen (= 0.1.5)
     - AMKCategories/UIKit/UITableView (= 0.1.5)
     - AMKCategories/UIKit/UIView (= 0.1.5)
     - AMKCategories/UIKit/UIViewController (= 0.1.5)
@@ -47,9 +49,19 @@ PODS:
     - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.5)
   - AMKCategories/UIKit/UICollectionView/Delegate (0.1.5):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
+  - AMKCategories/UIKit/UIDevice (0.1.5):
+    - AMKCategories/UIKit/UIDevice/Info (= 0.1.5)
+  - AMKCategories/UIKit/UIDevice/Info (0.1.5):
+    - AMKCategories/UIKit/UIDevice/Info/Hardware (= 0.1.5)
+    - AMKCategories/UIKit/UIDevice/Info/System (= 0.1.5)
+  - AMKCategories/UIKit/UIDevice/Info/Hardware (0.1.5)
+  - AMKCategories/UIKit/UIDevice/Info/System (0.1.5)
   - AMKCategories/UIKit/UIImage (0.1.5):
     - AMKCategories/UIKit/UIImage/Rendering (= 0.1.5)
   - AMKCategories/UIKit/UIImage/Rendering (0.1.5)
+  - AMKCategories/UIKit/UIScreen (0.1.5):
+    - AMKCategories/UIKit/UIScreen/Info (= 0.1.5)
+  - AMKCategories/UIKit/UIScreen/Info (0.1.5)
   - AMKCategories/UIKit/UITableView (0.1.5):
     - AMKCategories/UIKit/UITableView/Delegate (= 0.1.5)
   - AMKCategories/UIKit/UITableView/Delegate (0.1.5):
@@ -86,7 +98,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 3869bbff36bb7a150cbf478d9fa0eb37cb2dcdd0
+  AMKCategories: cbb4436eae8126ce560688b3a9bf7fbd52ac5e67
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

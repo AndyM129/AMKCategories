@@ -124,6 +124,36 @@
               }
             }
           ]
+        },
+        {
+          "name": "UIScreen",
+          "subspecs": [
+            {
+              "name": "Info",
+              "source_files": "AMKCategories/Classes/UIKit/UIScreen/Info/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIScreen/Info/*.h"
+            }
+          ]
+        },
+        {
+          "name": "UIDevice",
+          "subspecs": [
+            {
+              "name": "Info",
+              "subspecs": [
+                {
+                  "name": "System",
+                  "source_files": "AMKCategories/Classes/UIKit/UIDevice/Info/System/*.{h,m}",
+                  "public_header_files": "AMKCategories/Classes/UIKit/UIDevice/Info/System/*.h"
+                },
+                {
+                  "name": "Hardware",
+                  "source_files": "AMKCategories/Classes/UIKit/UIDevice/Info/Hardware/*.{h,m}",
+                  "public_header_files": "AMKCategories/Classes/UIKit/UIDevice/Info/Hardware/*.h"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
