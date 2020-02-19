@@ -1,6 +1,6 @@
 {
   "name": "AMKCategories",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "summary": "Summary of AMKCategories.",
   "description": "A description of AMKCategories.",
   "homepage": "https://github.com/AndyM129/AMKCategories",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/AndyM129/AMKCategories.git",
-    "tag": "0.1.5"
+    "tag": "0.1.6"
   },
   "social_media_url": "http://www.jianshu.com/u/28d89b68984b",
   "platforms": {
@@ -56,6 +56,20 @@
             {
               "name": "Delegate",
               "source_files": "AMKCategories/Classes/UIKit/UITableView/Delegate/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "UILabel",
+          "subspecs": [
+            {
+              "name": "Drawing",
+              "source_files": "AMKCategories/Classes/UIKit/UILabel/Drawing/*.{h,m}",
               "dependencies": {
                 "AMKCategories/Foundation/NSObject/MethodSwizzling": [
 

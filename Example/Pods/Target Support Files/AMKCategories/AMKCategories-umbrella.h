@@ -23,6 +23,7 @@
 #import "NSString+AMKEmoji.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"
+#import "UILabel+AMKLabelDrawing.h"
 #import "UITableView+AMKTableViewDelegate.h"
 #import "UIView+AMKInteractions.h"
 #import "UIViewController+AMKLifeCircleBlock.h"

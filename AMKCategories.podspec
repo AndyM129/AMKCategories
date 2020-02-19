@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'AMKCategories'
-    s.version          = '0.1.5'
+    s.version          = '0.1.6'
     s.summary          = 'Summary of AMKCategories.'
     s.description      = <<-DESC
                           A description of AMKCategories.
@@ -38,7 +38,6 @@ Pod::Spec.new do |s|
                 delegate.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
-
         # UITableView 视图相关
         uikit.subspec 'UITableView' do |tableView|
             # Delegate 相关
@@ -47,7 +46,14 @@ Pod::Spec.new do |s|
                 delegate.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
-
+        # UILabel 相关
+        uikit.subspec 'UILabel' do |label|
+            # Drawing 内容绘制相关
+            label.subspec 'Drawing' do |drawing|
+                drawing.source_files = 'AMKCategories/Classes/UIKit/UILabel/Drawing/*.{h,m}'
+                drawing.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
             # Interactions 交互相关
@@ -56,7 +62,6 @@ Pod::Spec.new do |s|
                 interactions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
-
         # UIImage 相关
         uikit.subspec 'UIImage' do |image|
             # Rendering 渲染相关
@@ -64,7 +69,6 @@ Pod::Spec.new do |s|
                 rendering.source_files = 'AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}'
             end
         end
-
         # UIViewController 相关扩展
         uikit.subspec 'UIViewController' do |viewController|
             # NavigationControllerWithCallback 导航控制
