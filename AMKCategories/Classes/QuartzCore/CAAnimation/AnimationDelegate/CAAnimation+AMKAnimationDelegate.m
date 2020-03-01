@@ -14,6 +14,14 @@
 
 #pragma mark - Properties
 
+- (BOOL)amk_isAnimating {
+    return [objc_getAssociatedObject(self, @selector(amk_isAnimating)) boolValue];
+}
+
+- (void)setAmk_animating:(BOOL)amk_animating {
+    objc_setAssociatedObject(self, @selector(amk_animating), [NSNumber numberWithBool:amk_animating], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void (^)(CAAnimation * _Nullable))amk_animationDidStartBlock {
     return objc_getAssociatedObject(self, @selector(amk_animationDidStartBlock));
 }
@@ -45,10 +53,12 @@
 #pragma mark CAAnimationDelegate
 
 - (void)animationDidStart:(CAAnimation *)anim {
+    self.amk_animating = YES;
     self.amk_animationDidStartBlock==nil ?: self.amk_animationDidStartBlock(anim);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    self.amk_animating = NO;
     self.amk_animationDidStopBlock==nil ?: self.amk_animationDidStopBlock(anim, flag);
 }
 
