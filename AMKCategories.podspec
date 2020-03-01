@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
     # 默认子组件
     s.subspec 'DefaultSubspec' do |defaultSubspec|
         defaultSubspec.dependency 'AMKCategories/UIKit'
+        defaultSubspec.dependency 'AMKCategories/QuartzCore'
         defaultSubspec.dependency 'AMKCategories/Foundation'
     end
 
@@ -89,6 +90,17 @@ Pod::Spec.new do |s|
                 lifeCircleBlock.source_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.{h,m}'
                 lifeCircleBlock.public_header_files = 'AMKCategories/Classes/UIKit/UIViewController/LifeCircleBlock/*.h'
                 lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+    end
+    
+    # QuartzCore 通用扩展
+    s.subspec 'QuartzCore' do |quartzCore|
+        # CAAnimation 动画相关
+        quartzCore.subspec 'CAAnimation' do |animation|
+            # AnimationDelegate 代理
+            animation.subspec 'AnimationDelegate' do |animationDelegate|
+                animationDelegate.source_files = 'AMKCategories/Classes/QuartzCore/CAAnimation/AnimationDelegate/*.{h,m,mm}'
             end
         end
     end

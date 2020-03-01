@@ -3,6 +3,7 @@ PODS:
     - AMKCategories/DefaultSubspec (= 0.1.6)
   - AMKCategories/DefaultSubspec (0.1.6):
     - AMKCategories/Foundation
+    - AMKCategories/QuartzCore
     - AMKCategories/UIKit
   - AMKCategories/Foundation (0.1.6):
     - AMKCategories/Foundation/Macros (= 0.1.6)
@@ -37,6 +38,11 @@ PODS:
     - AMKCategories/Foundation/NSString/Emoji (= 0.1.6)
   - AMKCategories/Foundation/NSString/Emoji (0.1.6):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
+  - AMKCategories/QuartzCore (0.1.6):
+    - AMKCategories/QuartzCore/CAAnimation (= 0.1.6)
+  - AMKCategories/QuartzCore/CAAnimation (0.1.6):
+    - AMKCategories/QuartzCore/CAAnimation/AnimationDelegate (= 0.1.6)
+  - AMKCategories/QuartzCore/CAAnimation/AnimationDelegate (0.1.6)
   - AMKCategories/UIKit (0.1.6):
     - AMKCategories/UIKit/UICollectionView (= 0.1.6)
     - AMKCategories/UIKit/UIImage (= 0.1.6)
@@ -91,7 +97,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 374e456a4889cdb96d46c4a9b8883c9ced4ffbca
+  AMKCategories: d93dfe1636155a5526de8f668acf1ea6315c5598
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

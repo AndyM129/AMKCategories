@@ -28,6 +28,9 @@
         "AMKCategories/UIKit": [
 
         ],
+        "AMKCategories/QuartzCore": [
+
+        ],
         "AMKCategories/Foundation": [
 
         ]
@@ -136,6 +139,20 @@
 
                 ]
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuartzCore",
+      "subspecs": [
+        {
+          "name": "CAAnimation",
+          "subspecs": [
+            {
+              "name": "AnimationDelegate",
+              "source_files": "AMKCategories/Classes/QuartzCore/CAAnimation/AnimationDelegate/*.{h,m,mm}"
             }
           ]
         }
