@@ -70,6 +70,10 @@ Pod::Spec.new do |s|
         end
         # UIImage 相关
         uikit.subspec 'UIImage' do |image|
+            # Resizing 尺寸调整相关
+            image.subspec 'Resizing' do |resizing|
+                resizing.source_files = 'AMKCategories/Classes/UIKit/UIImage/Resizing/*.{h,m}'
+            end
             # Rendering 渲染相关
             image.subspec 'Rendering' do |rendering|
                 rendering.source_files = 'AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}'

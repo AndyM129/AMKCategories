@@ -108,6 +108,10 @@
           "name": "UIImage",
           "subspecs": [
             {
+              "name": "Resizing",
+              "source_files": "AMKCategories/Classes/UIKit/UIImage/Resizing/*.{h,m}"
+            },
+            {
               "name": "Rendering",
               "source_files": "AMKCategories/Classes/UIKit/UIImage/Rendering/*.{h,m}"
             }

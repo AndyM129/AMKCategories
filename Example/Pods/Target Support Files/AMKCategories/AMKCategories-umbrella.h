@@ -24,6 +24,7 @@
 #import "CAAnimation+AMKAnimationDelegate.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"
+#import "UIImage+AMKImageResizing.h"
 #import "UILabel+AMKLabelDrawing.h"
 #import "UITableView+AMKTableViewDelegate.h"
 #import "UIView+AMKInteractions.h"
