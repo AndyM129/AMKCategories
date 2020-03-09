@@ -62,6 +62,11 @@ Pod::Spec.new do |s|
                 interactions.source_files = 'AMKCategories/Classes/UIKit/UIView/Interactions/*.{h,m}'
                 interactions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
+            # The position of the view in the z-axis.
+            view.subspec 'ViewLevel' do |viewLevel|
+                viewLevel.source_files = 'AMKCategories/Classes/UIKit/UIView/ViewLevel/*.{h,m}'
+                viewLevel.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
         end
         # UIImage 相关
         uikit.subspec 'UIImage' do |image|

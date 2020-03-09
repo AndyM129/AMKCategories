@@ -67,7 +67,10 @@ PODS:
     - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIView (0.1.6):
     - AMKCategories/UIKit/UIView/Interactions (= 0.1.6)
+    - AMKCategories/UIKit/UIView/ViewLevel (= 0.1.6)
   - AMKCategories/UIKit/UIView/Interactions (0.1.6):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
+  - AMKCategories/UIKit/UIView/ViewLevel (0.1.6):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
   - AMKCategories/UIKit/UIViewController (0.1.6):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock (= 0.1.6)
@@ -97,7 +100,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: d93dfe1636155a5526de8f668acf1ea6315c5598
+  AMKCategories: d9b83e8e741e024401107073d9917b5180c7d7b5
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

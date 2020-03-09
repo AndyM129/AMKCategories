@@ -92,6 +92,15 @@
 
                 ]
               }
+            },
+            {
+              "name": "ViewLevel",
+              "source_files": "AMKCategories/Classes/UIKit/UIView/ViewLevel/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
             }
           ]
         },
