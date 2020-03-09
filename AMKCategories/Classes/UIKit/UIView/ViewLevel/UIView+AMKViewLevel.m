@@ -35,7 +35,7 @@ const AMKViewLevel AMKViewLevelHigh = 10000.f;
 
 - (AMKViewLevel)amk_viewLevel {
     NSNumber *viewLevel = objc_getAssociatedObject(self, @selector(amk_viewLevel));
-    return [viewLevel integerValue];
+    return [viewLevel floatValue];
 }
 
 - (void)setAmk_viewLevel:(AMKViewLevel)amk_viewLevel {
