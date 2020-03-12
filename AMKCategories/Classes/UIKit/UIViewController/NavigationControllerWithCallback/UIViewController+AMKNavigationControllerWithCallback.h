@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)amk_presentViewController:(UIViewController *_Nullable)viewController animated:(BOOL)animated completion:(void (^_Nullable)(UIViewController *_Nullable viewController))completion;
 
 /** 以指定的方式前往ViewController */
-+ (BOOL)amk_gotoViewController:(UIViewController *_Nullable)viewController transitionStyle:(AMKViewControllerTransitionStyle)transitionStyle  animated:(BOOL)animated completion:(void (^_Nullable)(UIViewController *_Nullable viewController))completion;
++ (BOOL)amk_gotoViewController:(UIViewController *_Nullable)viewController transitionStyle:(AMKViewControllerTransitionStyle)transitionStyle  animated:(BOOL)animated completion:(void (^_Nullable)(__kindof UIViewController *_Nullable viewController))completion;
 
 /** 以指定的方式前往ViewController */
-- (BOOL)amk_gotoViewController:(UIViewController *_Nullable)viewController transitionStyle:(AMKViewControllerTransitionStyle)transitionStyle  animated:(BOOL)animated completion:(void (^_Nullable)(UIViewController *_Nullable viewController))completion;
+- (BOOL)amk_gotoViewController:(UIViewController *_Nullable)viewController transitionStyle:(AMKViewControllerTransitionStyle)transitionStyle  animated:(BOOL)animated completion:(void (^_Nullable)(__kindof UIViewController *_Nullable viewController))completion;
 
 @end
 
