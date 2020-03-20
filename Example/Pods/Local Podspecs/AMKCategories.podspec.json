@@ -1,6 +1,6 @@
 {
   "name": "AMKCategories",
-  "version": "0.1.6",
+  "version": "0.1.6.1",
   "summary": "Summary of AMKCategories.",
   "description": "A description of AMKCategories.",
   "homepage": "https://github.com/AndyM129/AMKCategories",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/AndyM129/AMKCategories.git",
-    "tag": "0.1.6"
+    "tag": "0.1.6.1"
   },
   "social_media_url": "http://www.jianshu.com/u/28d89b68984b",
   "platforms": {

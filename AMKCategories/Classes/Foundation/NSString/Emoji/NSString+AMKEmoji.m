@@ -25,6 +25,7 @@
 
 /// 修复 Emoji 符号被截断的问题，参考：https://blog.csdn.net/BUG_delete/article/details/90694630
 - (NSString *)AMKEmoji_NSString_substringToIndex:(NSUInteger)to {
+    if (to<=0) return [self AMKEmoji_NSString_substringToIndex:to];
     if (self.length <= to) return self;
     
     NSRange rangeIndex = [self rangeOfComposedCharacterSequenceAtIndex:to];
