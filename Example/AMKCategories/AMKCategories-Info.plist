@@ -37,6 +37,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>以便于保存照片到您的相册</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>以便于保存照片到您的相册</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

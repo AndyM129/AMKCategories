@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,3 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
+@interface WKWebView (YYAdd)
+
+/**
+ Create a snapshot image of the complete view hierarchy.
+ */
+- (nullable UIImage *)snapshotImage;
+
+@end
