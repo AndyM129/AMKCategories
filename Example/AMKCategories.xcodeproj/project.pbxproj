@@ -25,6 +25,7 @@
 		7FBAB8BB745DBF234C020396 /* Pods_AMKCategories_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		885BBD25245689400000FFC9 /* AMKWKWebViewScreenshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885BBD24245689400000FFC9 /* AMKWKWebViewScreenshotViewController.m */; };
+		885BBD2824569E040000FFC9 /* AMKScreenshotPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885BBD2724569E040000FFC9 /* AMKScreenshotPreviewViewController.m */; };
 		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
 		8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */; };
 		8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */; };
@@ -75,6 +76,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		885BBD23245689400000FFC9 /* AMKWKWebViewScreenshotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKWKWebViewScreenshotViewController.h; sourceTree = "<group>"; };
 		885BBD24245689400000FFC9 /* AMKWKWebViewScreenshotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKWKWebViewScreenshotViewController.m; sourceTree = "<group>"; };
+		885BBD2624569E040000FFC9 /* AMKScreenshotPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKScreenshotPreviewViewController.h; sourceTree = "<group>"; };
+		885BBD2724569E040000FFC9 /* AMKScreenshotPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKScreenshotPreviewViewController.m; sourceTree = "<group>"; };
 		8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleBlockExampleViewController.h; sourceTree = "<group>"; };
 		88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleBlockExampleViewController.m; sourceTree = "<group>"; };
 		8880810E23ACC68F0082C16B /* AMKEmojiStringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKEmojiStringViewController.h; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 			children = (
 				885BBD23245689400000FFC9 /* AMKWKWebViewScreenshotViewController.h */,
 				885BBD24245689400000FFC9 /* AMKWKWebViewScreenshotViewController.m */,
+				885BBD2624569E040000FFC9 /* AMKScreenshotPreviewViewController.h */,
+				885BBD2724569E040000FFC9 /* AMKScreenshotPreviewViewController.m */,
 			);
 			path = Screenshot;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
+				885BBD2824569E040000FFC9 /* AMKScreenshotPreviewViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
 				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				885BBD25245689400000FFC9 /* AMKWKWebViewScreenshotViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "AMKWKWebViewScreenshotViewController.h"
 #import <AMKCategories/WKWebView+AMKScreenshot.h>
 #import <AMKCategories/UIImage+AMKImageRendering.h>
+#import "AMKScreenshotPreviewViewController.h"
 
 @interface AMKWKWebViewScreenshotViewController ()
 @property(nonatomic, strong, nullable, readwrite) WKWebView *webView;
@@ -88,19 +89,11 @@
 #pragma mark - Private Methods
 
 - (void)didClickRightBarButtonItem:(id)sender {
-    UIImage *image = [UIImage amk_imageWithColor:[UIColor grayColor] size:CGSizeMake(300, 1000) cornerRadius:0];
-
-    UIViewController *viewController = [UIViewController.alloc init];
-    viewController.title = @"预览";
-    viewController.view.backgroundColor = [UIColor colorWithWhite:.9 alpha:1];
-    UIImageView *imageView = [UIImageView.alloc init];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.image = image;
-    [viewController.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    [self.webView snaplongWebViewWithMaxHeight:0 finsih:^(UIImage *image){
+        AMKScreenshotPreviewViewController *viewController = [AMKScreenshotPreviewViewController.alloc init];
+        viewController.image = image;
+        [UIViewController amk_pushViewController:viewController animated:YES];
     }];
-    [UIViewController amk_pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Notifications

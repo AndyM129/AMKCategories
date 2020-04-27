@@ -10,4 +10,6 @@
 /// WKWebView 截图相关
 @interface WKWebView (AMKScreenshot)
 
+- (void)snaplongWebViewWithMaxHeight:(CGFloat)maxheigtht finsih:(void (^_Nullable)(UIImage *_Nullable image))finishBlock;
+
 @end
