@@ -24,9 +24,22 @@ Pod::Spec.new do |s|
 
     # 默认子组件
     s.subspec 'DefaultSubspec' do |defaultSubspec|
+        defaultSubspec.dependency 'AMKCategories/WebKit'
         defaultSubspec.dependency 'AMKCategories/UIKit'
         defaultSubspec.dependency 'AMKCategories/QuartzCore'
         defaultSubspec.dependency 'AMKCategories/Foundation'
+    end
+    
+    # WebKit 相关
+    s.subspec 'WebKit' do |webKit|
+        # WKWebView 视图相关
+        webKit.subspec 'WKWebView' do |webView|
+            # Screenshot 截屏
+            webView.subspec 'Screenshot' do |screenshot|
+                screenshot.source_files = 'AMKCategories/Classes/WebKit/WKWebView/Screenshot/*.{h,m}'
+                screenshot.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
     end
 
     # UIKit 通用扩展

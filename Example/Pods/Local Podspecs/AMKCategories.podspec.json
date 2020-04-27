@@ -25,6 +25,9 @@
     {
       "name": "DefaultSubspec",
       "dependencies": {
+        "AMKCategories/WebKit": [
+
+        ],
         "AMKCategories/UIKit": [
 
         ],
@@ -35,6 +38,25 @@
 
         ]
       }
+    },
+    {
+      "name": "WebKit",
+      "subspecs": [
+        {
+          "name": "WKWebView",
+          "subspecs": [
+            {
+              "name": "Screenshot",
+              "source_files": "AMKCategories/Classes/WebKit/WKWebView/Screenshot/*.{h,m}",
+              "dependencies": {
+                "AMKCategories/Foundation/NSObject/MethodSwizzling": [
+
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "UIKit",

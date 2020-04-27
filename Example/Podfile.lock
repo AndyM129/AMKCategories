@@ -5,6 +5,7 @@ PODS:
     - AMKCategories/Foundation
     - AMKCategories/QuartzCore
     - AMKCategories/UIKit
+    - AMKCategories/WebKit
   - AMKCategories/Foundation (0.1.6.1):
     - AMKCategories/Foundation/Macros (= 0.1.6.1)
     - AMKCategories/Foundation/NSBundle (= 0.1.6.1)
@@ -85,6 +86,12 @@ PODS:
   - AMKCategories/UIKit/UIViewController/NavigationControllerWithCallback (0.1.6.1):
     - AMKCategories/UIKit/UIViewController/LifeCircleBlock
     - AMKCategories/UIKit/UIViewController/NavigationController
+  - AMKCategories/WebKit (0.1.6.1):
+    - AMKCategories/WebKit/WKWebView (= 0.1.6.1)
+  - AMKCategories/WebKit/WKWebView (0.1.6.1):
+    - AMKCategories/WebKit/WKWebView/Screenshot (= 0.1.6.1)
+  - AMKCategories/WebKit/WKWebView/Screenshot (0.1.6.1):
+    - AMKCategories/Foundation/NSObject/MethodSwizzling
   - Masonry (1.1.0)
 
 DEPENDENCIES:
@@ -102,7 +109,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: 82e4443ec8446fa0c2575dadc283860a15271853
+  AMKCategories: 11c396af4860fb9a5dfd810856d1fca9d74bdfc2
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

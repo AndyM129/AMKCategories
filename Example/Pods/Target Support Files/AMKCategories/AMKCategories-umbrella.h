@@ -32,6 +32,7 @@
 #import "UIViewController+AMKLifeCircleBlock.h"
 #import "UIViewController+AMKNavigationController.h"
 #import "UIViewController+AMKNavigationControllerWithCallback.h"
+#import "WKWebView+AMKScreenshot.h"
 
 FOUNDATION_EXPORT double AMKCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char AMKCategoriesVersionString[];
