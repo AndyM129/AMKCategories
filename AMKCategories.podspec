@@ -31,6 +31,17 @@ Pod::Spec.new do |s|
 
     # UIKit 通用扩展
     s.subspec 'UIKit' do |uikit|
+        # UIWindow 相关扩展
+        uikit.subspec 'UIWindow' do |window|
+            # ReleaseMode 相关扩展
+            window.subspec 'ReleaseMode' do |releaseMode|
+                releaseMode.source_files = 'AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.{h,m}'
+                releaseMode.public_header_files = 'AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.h'
+                releaseMode.dependency 'AMKCategories/UIKit/UIApplication/ReleaseMode'
+                releaseMode.dependency 'AMKCategories/UIKit/UILabel/Drawing'
+                releaseMode.dependency 'AMKCategories/UIKit/UIView/ViewLevel'
+            end
+        end
         # UICollectionView 视图相关
         uikit.subspec 'UICollectionView' do |collectionView|
             # Delegate 相关
@@ -101,6 +112,15 @@ Pod::Spec.new do |s|
                 lifeCircleBlock.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
+        # UIApplication 相关扩展
+        uikit.subspec 'UIApplication' do |application|
+            # ReleaseMode 相关扩展
+            application.subspec 'ReleaseMode' do |releaseMode|
+                releaseMode.source_files = 'AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.{h,m}'
+                releaseMode.public_header_files = 'AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.h'
+                releaseMode.dependency 'AMKCategories/Foundation/NSBundle/MobileProvision'
+            end
+        end
     end
     
     # QuartzCore 通用扩展
@@ -118,6 +138,11 @@ Pod::Spec.new do |s|
     s.subspec 'Foundation' do |foundation|
         # NSBundle 相关扩展
         foundation.subspec 'NSBundle' do |bundle|
+            # MobileProvision 证书信息
+            bundle.subspec 'MobileProvision' do |mobileProvision|
+                mobileProvision.source_files = 'AMKCategories/Classes/Foundation/NSBundle/MobileProvision/*.{h,m}'
+                mobileProvision.public_header_files = 'AMKCategories/Classes/Foundation/NSBundle/MobileProvision/*.h'
+            end
             # GitCommitInfo Git提交信息（因该扩展 需额外的工程配置，故默认不引入）
             bundle.subspec 'GitCommitInfo' do |gitCommitInfo|
                 gitCommitInfo.source_files = 'AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.{h,m}'

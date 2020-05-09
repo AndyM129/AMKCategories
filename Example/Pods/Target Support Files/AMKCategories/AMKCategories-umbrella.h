@@ -13,6 +13,7 @@
 #import "AMKMetamacros.h"
 #import "NSBundle+AMKBundleInfo.h"
 #import "NSBundle+AMKGitCommitInfo.h"
+#import "NSBundle+AMKMobileProvision.h"
 #import "NSBundle+AMKAppVersionInfo.h"
 #import "NSDictionary+AMKObjectForKey.h"
 #import "AMKKeyPathCodingMacros.h"
@@ -22,6 +23,7 @@
 #import "NSObject+AMKMethodSwizzling.h"
 #import "NSString+AMKEmoji.h"
 #import "CAAnimation+AMKAnimationDelegate.h"
+#import "UIApplication+AMKReleaseMode.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"
 #import "UIImage+AMKImageResizing.h"
@@ -32,6 +34,7 @@
 #import "UIViewController+AMKLifeCircleBlock.h"
 #import "UIViewController+AMKNavigationController.h"
 #import "UIViewController+AMKNavigationControllerWithCallback.h"
+#import "UIWindow+AMKReleaseMode.h"
 
 FOUNDATION_EXPORT double AMKCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char AMKCategoriesVersionString[];

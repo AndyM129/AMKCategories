@@ -1,0 +1,87 @@
+//
+//  UIWindow+AMKReleaseMode.m
+//  AMKCategories
+//
+//  Created by 孟昕欣 on 2020/5/9.
+//
+
+#import "UIWindow+AMKReleaseMode.h"
+#import <AMKCategories/UILabel+AMKLabelDrawing.h>
+#import <objc/runtime.h>
+
+const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
+
+/// 包释放模式
+@interface UIWindow (_AMKReleaseMode)
+
+@end
+
+@implementation UIWindow (AMKReleaseMode)
+
+#pragma mark - Init Methods
+
+#pragma mark - Properties
+
+- (UILabel *)amk_releaseModeCornerMarkLabel {
+    UILabel *releaseModeCornerMarkLabel = objc_getAssociatedObject(self, @selector(amk_releaseModeCornerMarkLabel));
+    if (!releaseModeCornerMarkLabel) {
+        releaseModeCornerMarkLabel = [UILabel.alloc init];
+        releaseModeCornerMarkLabel.frame = CGRectMake(0, 0, 70, 12);
+        releaseModeCornerMarkLabel.center = CGPointMake(CGRectGetMaxX(self.bounds), 0);
+        releaseModeCornerMarkLabel.hidden = YES;
+        releaseModeCornerMarkLabel.alpha = 0.65;
+        releaseModeCornerMarkLabel.layer.shadowOffset = CGSizeMake(0, 0);
+        releaseModeCornerMarkLabel.layer.shadowOpacity = 0.5;
+        releaseModeCornerMarkLabel.layer.shadowColor = UIColor.blackColor.CGColor;
+        releaseModeCornerMarkLabel.layer.shadowRadius = 10;
+        releaseModeCornerMarkLabel.transform = CGAffineTransformMakeRotation(45 * M_PI / 180.0);
+        releaseModeCornerMarkLabel.layer.anchorPoint = CGPointMake(0.5, -1.5);
+        releaseModeCornerMarkLabel.textColor = [UIColor whiteColor];
+        releaseModeCornerMarkLabel.textAlignment = NSTextAlignmentCenter;
+        releaseModeCornerMarkLabel.backgroundColor = [UIColor colorWithRed:0.86 green:0.22 blue:0.19 alpha:1.00];
+        releaseModeCornerMarkLabel.adjustsFontSizeToFitWidth = YES;
+        releaseModeCornerMarkLabel.amk_contentInset = UIEdgeInsetsMake(2, 15, 3, 15);
+        releaseModeCornerMarkLabel.amk_viewLevel = AMKViewLevelReleaseModeCornerMarkLabel;
+        releaseModeCornerMarkLabel.font = [UIFont boldSystemFontOfSize:12];
+        releaseModeCornerMarkLabel.text = UIApplication.sharedApplication.amk_localizedReleaseModeString;
+        [self addSubview:releaseModeCornerMarkLabel];
+        objc_setAssociatedObject(self, @selector(amk_releaseModeCornerMarkLabel), releaseModeCornerMarkLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return releaseModeCornerMarkLabel;
+}
+
+#pragma mark - Layout Subviews
+
+#pragma mark - Public Methods
+
+#pragma mark - Private Methods
+
+#pragma mark - Notifications
+
+#pragma mark - KVO
+
+#pragma mark - Delegate
+
+#pragma mark - Override
+
+#pragma mark - Helper Methods
+
+@end
+
+//#if defined(DEBUG)
+//
+//@implementation UIWindow (AMKReleaseModeTests)
+//
+//+ (void)load {
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self test_amk_releaseModeCornerMarkLabel];
+//    });
+//}
+//
+//+ (void)test_amk_releaseModeCornerMarkLabel {
+//    UIApplication.sharedApplication.delegate.window.amk_releaseModeCornerMarkLabel.hidden = NO;
+//}
+//
+//@end
+//
+//#endif

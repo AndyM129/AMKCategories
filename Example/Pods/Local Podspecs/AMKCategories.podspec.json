@@ -40,6 +40,27 @@
       "name": "UIKit",
       "subspecs": [
         {
+          "name": "UIWindow",
+          "subspecs": [
+            {
+              "name": "ReleaseMode",
+              "source_files": "AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.h",
+              "dependencies": {
+                "AMKCategories/UIKit/UIApplication/ReleaseMode": [
+
+                ],
+                "AMKCategories/UIKit/UILabel/Drawing": [
+
+                ],
+                "AMKCategories/UIKit/UIView/ViewLevel": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "UICollectionView",
           "subspecs": [
             {
@@ -154,6 +175,21 @@
               }
             }
           ]
+        },
+        {
+          "name": "UIApplication",
+          "subspecs": [
+            {
+              "name": "ReleaseMode",
+              "source_files": "AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.h",
+              "dependencies": {
+                "AMKCategories/Foundation/NSBundle/MobileProvision": [
+
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -177,6 +213,11 @@
         {
           "name": "NSBundle",
           "subspecs": [
+            {
+              "name": "MobileProvision",
+              "source_files": "AMKCategories/Classes/Foundation/NSBundle/MobileProvision/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSBundle/MobileProvision/*.h"
+            },
             {
               "name": "GitCommitInfo",
               "source_files": "AMKCategories/Classes/Foundation/NSBundle/GitCommitInfo/*.{h,m}",
