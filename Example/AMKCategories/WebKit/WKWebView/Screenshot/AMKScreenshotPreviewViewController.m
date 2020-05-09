@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:.9 alpha:1];
-
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithTitle:@"快速浏览" style:UIBarButtonItemStylePlain target:self action:@selector(didClickQuickLookBarButtonItem:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,6 +88,12 @@
 #pragma mark - Public Methods
 
 #pragma mark - Private Methods
+
+- (void)didClickQuickLookBarButtonItem:(id)sender {
+    [UIView animateWithDuration:self.scrollView.contentSize.height/self.view.bounds.size.height*0.3 animations:^{
+        self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentSize.height-self.scrollView.bounds.size.height);
+    }];
+}
 
 #pragma mark - Notifications
 

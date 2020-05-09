@@ -441,7 +441,7 @@
 				ORGANIZATIONNAME = AndyM129;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 9X349G8KD4;
+						DevelopmentTeam = Y4A3CFNL3H;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -720,7 +720,7 @@
 			baseConfigurationReference = 807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9X349G8KD4;
+				DEVELOPMENT_TEAM = Y4A3CFNL3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
@@ -738,7 +738,7 @@
 			baseConfigurationReference = 7BC29A4F4330E05DB5324258 /* Pods-AMKCategories_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9X349G8KD4;
+				DEVELOPMENT_TEAM = Y4A3CFNL3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
