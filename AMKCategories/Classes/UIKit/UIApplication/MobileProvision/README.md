@@ -57,9 +57,9 @@ pod 'AMKCategories/UIKit/UIApplication/MobileProvision'
 
 ### ReleaseMode 角标
 
-| ![SimulatorScreenShot_133522](README.assets/SimulatorScreenShot_133522.png) | ![SimulatorScreenShot_133639](README.assets/SimulatorScreenShot_133639.png) | ![SimulatorScreenShot_133704](README.assets/SimulatorScreenShot_133704.png) | ![SimulatorScreenShot_133722](README.assets/SimulatorScreenShot_133722.png) | ![SimulatorScreenShot_133739](README.assets/SimulatorScreenShot_133739.png) | ![SimulatorScreenShot_133754](README.assets/SimulatorScreenShot_133754.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Unknown                                                      | Sim                                                          | Dev                                                          | AdHoc                                                        | AppStore                                                     | Enterprise                                                   |
+| ![SimulatorScreenShot_133754](README.assets/SimulatorScreenShot_133754.png) | ![SimulatorScreenShot_133522](README.assets/SimulatorScreenShot_133522.png) | ![SimulatorScreenShot_133704](README.assets/SimulatorScreenShot_133704.png) | ![SimulatorScreenShot_133639](README.assets/SimulatorScreenShot_133639.png) | ![SimulatorScreenShot_133722](README.assets/SimulatorScreenShot_133722.png) | ![SimulatorScreenShot_133739](README.assets/SimulatorScreenShot_133739.png)           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| Unknown                                                      | Sim                                                          | Dev                                                          | AdHoc                                                        | AppStore                                                     | Enterprise |
 
 ```objective-c
 [UIApplication.sharedApplication setAmk_releaseModeCornerMarkEnable:YES];
@@ -69,17 +69,16 @@ pod 'AMKCategories/UIKit/UIApplication/MobileProvision'
 
 * MobileProvision 剩余有效时间少于指定天数（可配）时，会弹窗提示，并支持下次启动时“不再提醒”
 
-| 中文                                    | 其他                                    |
-| ---- | ---- |
 | ![IMG_0930](README.assets/IMG_0930.PNG) | ![IMG_0927](README.assets/IMG_0927.PNG) |
-
+| ---- | ---- |
+| 中文                                    | 其他                                    |
 
 
 * 若 MobileProvision 剩余有效时间少于7天时，会强制弹窗提示（忽略“不再提醒”的选项）
 
-| 中文                                    | 其他语言                                  |
-| ---- | ---- |
 | ![IMG_0929](README.assets/IMG_0929.PNG) | ![IMG_0928](README.assets/IMG_0928.PNG) |
+| ---- | ---- |
+| 中文                                    | 其他                                    |
 
 ```objective-c
 [UIApplication.sharedApplication amk_showAlertIfMobileProvisionWillExpireInDays:30];
