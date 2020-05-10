@@ -55,8 +55,8 @@ PODS:
     - AMKCategories/UIKit/UIViewController (= 0.1.6.1)
     - AMKCategories/UIKit/UIWindow (= 0.1.6.1)
   - AMKCategories/UIKit/UIApplication (0.1.6.1):
-    - AMKCategories/UIKit/UIApplication/ReleaseMode (= 0.1.6.1)
-  - AMKCategories/UIKit/UIApplication/ReleaseMode (0.1.6.1):
+    - AMKCategories/UIKit/UIApplication/MobileProvision (= 0.1.6.1)
+  - AMKCategories/UIKit/UIApplication/MobileProvision (0.1.6.1):
     - AMKCategories/Foundation/NSBundle/MobileProvision
   - AMKCategories/UIKit/UICollectionView (0.1.6.1):
     - AMKCategories/UIKit/UICollectionView/Delegate (= 0.1.6.1)
@@ -96,7 +96,7 @@ PODS:
   - AMKCategories/UIKit/UIWindow (0.1.6.1):
     - AMKCategories/UIKit/UIWindow/ReleaseMode (= 0.1.6.1)
   - AMKCategories/UIKit/UIWindow/ReleaseMode (0.1.6.1):
-    - AMKCategories/UIKit/UIApplication/ReleaseMode
+    - AMKCategories/UIKit/UIApplication/MobileProvision
     - AMKCategories/UIKit/UILabel/Drawing
     - AMKCategories/UIKit/UIView/ViewLevel
   - Masonry (1.1.0)
@@ -116,7 +116,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMKCategories: fd65299f0032af26535a346194cf7350a6c63940
+  AMKCategories: 3fdde54ff04909f290c5e6eeaa2f23df799c9f57
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642

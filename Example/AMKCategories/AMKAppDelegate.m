@@ -13,7 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [UINavigationBar.appearance setTranslucent:NO];
-    application.delegate.window.amk_releaseModeCornerMarkLabel.hidden = application.amk_releaseMode==AMKUIApplicationReleaseModeAppStore ? YES : NO;
+    [application amk_showAlertIfMobileProvisionWillExpireInDays:999];
+    [application setAmk_releaseModeCornerMarkEnable:YES];
     return YES;
 }
 

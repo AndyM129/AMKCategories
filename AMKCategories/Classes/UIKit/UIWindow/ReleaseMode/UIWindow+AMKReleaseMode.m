@@ -14,6 +14,9 @@ const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
 /// 包释放模式
 @interface UIWindow (_AMKReleaseMode)
 
+/// 包释放模式 角标
+@property(nonatomic, strong, nullable, readonly) UILabel *amk_releaseModeCornerMarkLabel;
+
 @end
 
 @implementation UIWindow (AMKReleaseMode)
@@ -59,6 +62,18 @@ const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
 
 #pragma mark - Layout Subviews
 
+- (BOOL)amk_releaseModeCornerMarkEnable {
+    return !self.amk_releaseModeCornerMarkLabel.hidden;
+}
+
+- (void)setAmk_releaseModeCornerMarkEnable:(BOOL)amk_releaseModeCornerMarkEnable {
+    
+//    application.delegate.window.amk_releaseModeCornerMarkLabel.hidden = application.amk_releaseMode==AMKUIApplicationReleaseModeAppStore ? YES : NO;
+    
+    
+    self.amk_releaseModeCornerMarkLabel.hidden = !amk_releaseModeCornerMarkEnable;
+}
+
 #pragma mark - Public Methods
 
 #pragma mark - Private Methods
@@ -72,6 +87,18 @@ const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
 #pragma mark - Override
 
 #pragma mark - Helper Methods
+
+@end
+
+@implementation UIApplication (AMKReleaseMode)
+
+- (BOOL)amk_releaseModeCornerMarkEnable {
+    return !self.delegate.window.amk_releaseModeCornerMarkLabel.hidden;
+}
+
+- (void)setAmk_releaseModeCornerMarkEnable:(BOOL)amk_releaseModeCornerMarkEnable {
+    self.delegate.window.amk_releaseModeCornerMarkLabel.hidden = !amk_releaseModeCornerMarkEnable;
+}
 
 @end
 

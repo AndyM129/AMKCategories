@@ -47,7 +47,7 @@
               "source_files": "AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.h",
               "dependencies": {
-                "AMKCategories/UIKit/UIApplication/ReleaseMode": [
+                "AMKCategories/UIKit/UIApplication/MobileProvision": [
 
                 ],
                 "AMKCategories/UIKit/UILabel/Drawing": [
@@ -180,9 +180,9 @@
           "name": "UIApplication",
           "subspecs": [
             {
-              "name": "ReleaseMode",
-              "source_files": "AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.{h,m}",
-              "public_header_files": "AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.h",
+              "name": "MobileProvision",
+              "source_files": "AMKCategories/Classes/UIKit/UIApplication/MobileProvision/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/UIKit/UIApplication/MobileProvision/*.h",
               "dependencies": {
                 "AMKCategories/Foundation/NSBundle/MobileProvision": [
 

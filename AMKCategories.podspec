@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
             window.subspec 'ReleaseMode' do |releaseMode|
                 releaseMode.source_files = 'AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.{h,m}'
                 releaseMode.public_header_files = 'AMKCategories/Classes/UIKit/UIWindow/ReleaseMode/*.h'
-                releaseMode.dependency 'AMKCategories/UIKit/UIApplication/ReleaseMode'
+                releaseMode.dependency 'AMKCategories/UIKit/UIApplication/MobileProvision'
                 releaseMode.dependency 'AMKCategories/UIKit/UILabel/Drawing'
                 releaseMode.dependency 'AMKCategories/UIKit/UIView/ViewLevel'
             end
@@ -114,11 +114,11 @@ Pod::Spec.new do |s|
         end
         # UIApplication 相关扩展
         uikit.subspec 'UIApplication' do |application|
-            # ReleaseMode 相关扩展
-            application.subspec 'ReleaseMode' do |releaseMode|
-                releaseMode.source_files = 'AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.{h,m}'
-                releaseMode.public_header_files = 'AMKCategories/Classes/UIKit/UIApplication/ReleaseMode/*.h'
-                releaseMode.dependency 'AMKCategories/Foundation/NSBundle/MobileProvision'
+            # MobileProvision 相关扩展
+            application.subspec 'MobileProvision' do |mobileProvision|
+                mobileProvision.source_files = 'AMKCategories/Classes/UIKit/UIApplication/MobileProvision/*.{h,m}'
+                mobileProvision.public_header_files = 'AMKCategories/Classes/UIKit/UIApplication/MobileProvision/*.h'
+                mobileProvision.dependency 'AMKCategories/Foundation/NSBundle/MobileProvision'
             end
         end
     end
