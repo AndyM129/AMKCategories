@@ -26,8 +26,6 @@ const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
     UILabel *releaseModeCornerMarkLabel = objc_getAssociatedObject(self, @selector(amk_releaseModeCornerMarkLabel));
     if (!releaseModeCornerMarkLabel) {
         releaseModeCornerMarkLabel = [UILabel.alloc init];
-        releaseModeCornerMarkLabel.frame = CGRectMake(0, 0, 70, 12);
-        releaseModeCornerMarkLabel.center = CGPointMake(CGRectGetMaxX(self.bounds), 0);
         releaseModeCornerMarkLabel.hidden = YES;
         releaseModeCornerMarkLabel.alpha = 0.65;
         releaseModeCornerMarkLabel.layer.shadowOffset = CGSizeMake(0, 0);
@@ -45,6 +43,15 @@ const AMKViewLevel AMKViewLevelReleaseModeCornerMarkLabel = 99999.f;
         releaseModeCornerMarkLabel.font = [UIFont boldSystemFontOfSize:12];
         releaseModeCornerMarkLabel.text = UIApplication.sharedApplication.amk_localizedReleaseModeString;
         [self addSubview:releaseModeCornerMarkLabel];
+        
+        // 添加约束
+        // releaseModeCornerMarkLabel.frame = CGRectMake(0, 0, 70, 12);
+        // releaseModeCornerMarkLabel.center = CGPointMake(CGRectGetMaxX(self.bounds), 0);
+        releaseModeCornerMarkLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:releaseModeCornerMarkLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:70]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:releaseModeCornerMarkLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:12]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:releaseModeCornerMarkLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:releaseModeCornerMarkLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
         objc_setAssociatedObject(self, @selector(amk_releaseModeCornerMarkLabel), releaseModeCornerMarkLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return releaseModeCornerMarkLabel;
