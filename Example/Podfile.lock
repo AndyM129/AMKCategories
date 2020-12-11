@@ -100,6 +100,7 @@ PODS:
     - AMKCategories/UIKit/UILabel/Drawing
     - AMKCategories/UIKit/UIView/ViewLevel
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -109,11 +110,13 @@ DEPENDENCIES:
   - AMKCategories/Foundation (from `../`)
   - AMKCategories/UIKit (from `../`)
   - Masonry (= 1.1.0)
+  - MBProgressHUD (~> 1.2.0)
   - YYCategories (= 1.0.4)
 
 SPEC REPOS:
   trunk:
     - Masonry
+    - MBProgressHUD
     - YYCategories
 
 EXTERNAL SOURCES:
@@ -123,8 +126,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AMKCategories: e13601ad2a030a8c479f005279263795cbe3f9ea
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 526b2659d8f8a5c58523c43fc1dbbed584b5c196
+PODFILE CHECKSUM: 630d06433259795cb7f3e72b6ae9d08d0f460b12
 
 COCOAPODS: 1.9.3

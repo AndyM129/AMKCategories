@@ -18,6 +18,7 @@ struct WidgetExtentionDemo: WidgetBundle {
         WidgetExtentionDemo_1()
         WidgetExtentionDemo_2()
         WidgetExtentionDemo_3()
+        WidgetExtentionDemo_4()
     }
 }
 
@@ -39,15 +40,15 @@ struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
     }
-
+    
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
         completion(entry)
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
@@ -55,7 +56,7 @@ struct Provider: TimelineProvider {
             let entry = SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
             entries.append(entry)
         }
-
+        
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -71,12 +72,12 @@ struct WidgetExtentionDemoEntryView_1 : View {
 
 struct WidgetExtentionDemo_1: Widget {
     let kind: String = "WidgetExtentionDemo_1"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetExtentionDemoEntryView_1(entry: entry)
         }
-        .configurationDisplayName("时间组件")
+        .configurationDisplayName("Example")
         .description("This is an example widget.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
@@ -93,7 +94,7 @@ struct WidgetExtentionDemoEntryView_2 : View {
     var body: some View {
         Text(entry.date, style: .time)
         Text(entry.text)
-
+        
         switch family {
         case .systemSmall: // 小尺寸
             Text(verbatim: "小尺寸")
@@ -112,8 +113,8 @@ struct WidgetExtentionDemo_2: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetExtentionDemoEntryView_2(entry: entry)
         }
-        .configurationDisplayName("时间组件")
-        .description("This is an example widget.")
+        .configurationDisplayName("定制UI")
+        .description("针对不同尺寸的 Widget 设置不同的 View")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
@@ -143,8 +144,73 @@ struct WidgetExtentionDemo_3: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetExtentionDemoEntryView_3(entry: entry)
         }
-        .configurationDisplayName("拍照搜题")
-        .description("This is an example widget.")
+        .configurationDisplayName("文库大学生版")
+        .description("搜题快人一步，轻松解决问题")
         .supportedFamilies([.systemSmall])
+    }
+}
+
+//MARK: - 示例 4: 金刚位
+
+struct WidgetExtentionDemoEntryView_4 : View {
+    var entry: Provider.Entry
+    var imageSize = CGSize(width: 70, height: 70)
+    var title = Font.subheadline
+    var titleOffsetY :CGFloat = -5
+    
+    var body: some View {
+        HStack{
+            Spacer()
+            Link(destination: URL(string: "amkcategories://categories.andym129.github.io?func=sign&title=签到打卡".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!){
+                VStack{
+                    Image("wkn_online_topitem_sign")
+                        .resizable()
+                        .frame(maxWidth: imageSize.width, maxHeight: imageSize.height, alignment: .center)
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                    
+                    Text("签到打卡").font(.subheadline).offset(y: titleOffsetY)
+                }
+            }
+            Spacer()
+            Link(destination: URL(string: "amkcategories://categories.andym129.github.io?func=scan&title=扫扫看看".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!){
+                VStack{
+                    Image("wkn_online_topitem_scan")
+                        .resizable()
+                        .frame(maxWidth: imageSize.width, maxHeight: imageSize.height, alignment: .center)
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                    Text("扫扫看看").font(.subheadline).offset(y: titleOffsetY)
+                }
+            }
+            Spacer()
+            Link(destination: URL(string: "amkcategories://categories.andym129.github.io?func=vip&title=文库会员".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!){
+                VStack{
+                    Image("wkn_online_topitem_vip")
+                        .resizable()
+                        .frame(maxWidth: imageSize.width, maxHeight: imageSize.height, alignment: .center)
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                    Text("文库会员").font(.subheadline).offset(y: titleOffsetY)
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
+struct WidgetExtentionDemo_4: Widget {
+    let kind: String = "WidgetExtentionDemo_4"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView_4(entry: entry)
+        }
+        .configurationDisplayName("百度文库")
+        .description("专业权威资料库")
+        .supportedFamilies([.systemMedium])
     }
 }

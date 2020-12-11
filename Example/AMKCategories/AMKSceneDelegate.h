@@ -13,3 +13,9 @@
 
 @end
 
+
+@interface NSString (Query)
+
+- (NSDictionary*)queryDictionaryUsingEncoding:(NSStringEncoding)encoding;
+
+@end

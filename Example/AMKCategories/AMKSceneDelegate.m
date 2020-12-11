@@ -58,6 +58,48 @@
 - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts API_AVAILABLE(ios(13.0)) {
     UIOpenURLContext * context = URLContexts.allObjects.firstObject;
     NSLog(@"%@", context.URL);
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.8];
+    hud.bezelView.layer.shadowColor = [UIColor colorWithRed:102/255.0 green:108/255.0 blue:125/255.0 alpha:1/1.0].CGColor;
+    hud.bezelView.layer.shadowOffset = CGSizeMake(0, 5);
+    hud.bezelView.layer.shadowOpacity = 0.2;
+    hud.bezelView.layer.shadowRadius = 10;
+    hud.bezelView.layer.masksToBounds = NO;
+    hud.bezelView.clipsToBounds = NO;
+    hud.label.text = [context.URL.absoluteString queryDictionaryUsingEncoding:NSUTF8StringEncoding][@"title"]?:@"外部调起";
+    hud.label.textColor = [UIColor whiteColor];
+    hud.detailsLabel.text = context.URL.absoluteString?:@"";
+    hud.detailsLabel.textColor = [UIColor whiteColor];
+    [hud hideAnimated:YES afterDelay:3];
 }
+
+@end
+
+@implementation NSString (Query)
+
+- (NSDictionary*)queryDictionaryUsingEncoding:(NSStringEncoding)encoding {
+    NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
+    NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
+    NSScanner* scanner = [[NSScanner alloc] initWithString:self];
+    while (![scanner isAtEnd]) {
+        NSString* pairString = nil;
+        [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];
+        [scanner scanCharactersFromSet:delimiterSet intoString:NULL];
+        NSArray* kvPair = [pairString componentsSeparatedByString:@"="];
+        if (kvPair.count == 2) {
+            NSString* key = [[kvPair objectAtIndex:0]
+                             stringByReplacingPercentEscapesUsingEncoding:encoding];
+            NSString* value = [[kvPair objectAtIndex:1]
+                               stringByReplacingPercentEscapesUsingEncoding:encoding];
+            [pairs setObject:value forKey:key];
+        }
+    }
+    
+    return [NSDictionary dictionaryWithDictionary:pairs];
+}
+
 
 @end
