@@ -9,10 +9,30 @@
 import WidgetKit
 import SwiftUI
 
-// 切换生效的代码
-let WidgetExtentionDemoEntryView = WidgetExtentionDemoEntryView_2.self
+//MARK: - 通用部分: 多Widget组件实现
 
-//MARK: - 通用部分
+@main
+struct WidgetExtentionDemo: WidgetBundle {
+    @WidgetBundleBuilder
+    var body: some Widget {
+        WidgetExtentionDemo_1()
+        WidgetExtentionDemo_2()
+        WidgetExtentionDemo_3()
+    }
+}
+
+struct WidgetExtentionDemo_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetExtentionDemoEntryView_1(entry: SimpleEntry(date: Date()))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
+
+//MARK: - 示例 1: 时间文本
+
+struct SimpleEntry: TimelineEntry {
+    let date: Date
+}
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -40,37 +60,24 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-}
-
-@main
-struct WidgetExtentionDemo: Widget {
-    let kind: String = "WidgetExtentionDemo"
-
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            WidgetExtentionDemoEntryView.init(entry: entry)
-        }
-        .configurationDisplayName("AMKCategories")
-        .description("This is an example widget.")
-    }
-}
-
-struct WidgetExtentionDemo_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetExtentionDemoEntryView.init(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
-
-//MARK: - 示例 1: 文本
-
 struct WidgetExtentionDemoEntryView_1 : View {
     var entry: Provider.Entry
     
     var body: some View {
         Text(entry.date, style: .time)
+    }
+}
+
+struct WidgetExtentionDemo_1: Widget {
+    let kind: String = "WidgetExtentionDemo_1"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView_1(entry: entry)
+        }
+        .configurationDisplayName("时间组件")
+        .description("This is an example widget.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
 
@@ -85,20 +92,8 @@ struct WidgetExtentionDemoEntryView_2 : View {
     var body: some View {
         switch family {
         case .systemSmall: // 小尺寸
-            ZStack{
-                Image("拍照搜题")
-                    .resizable()
-                    .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
-                    .aspectRatio(contentMode: .fill)
-                //Text("")
-                //    .foregroundColor(Color.white)
-                //    .lineLimit(4)
-                //    .font(.system(size: 14))
-                //    .padding(.horizontal)
-            }
-            .widgetURL(URL(string: "跳转链接"))
+            Text(entry.date, style: .time)
+            Text(verbatim: "小尺寸")
         case .systemMedium: // 中尺寸
             Text(entry.date, style: .time)
             Text(verbatim: "中尺寸")
@@ -106,5 +101,48 @@ struct WidgetExtentionDemoEntryView_2 : View {
             Text(entry.date, style: .time)
             Text(verbatim: "大尺寸")
         }
+    }
+}
+
+struct WidgetExtentionDemo_2: Widget {
+    let kind: String = "WidgetExtentionDemo_2"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView_2(entry: entry)
+        }
+        .configurationDisplayName("时间组件")
+        .description("This is an example widget.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    }
+}
+
+//MARK: - 示例 3: supportedFamilies
+
+struct WidgetExtentionDemoEntryView_3 : View {
+    var entry: Provider.Entry
+    
+    var body: some View {
+        ZStack{
+            Image("拍照搜题")
+                .resizable()
+                .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .aspectRatio(contentMode: .fill)
+        }
+    }
+}
+
+struct WidgetExtentionDemo_3: Widget {
+    let kind: String = "WidgetExtentionDemo_3"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView_3(entry: entry)
+        }
+        .configurationDisplayName("拍照搜题")
+        .description("This is an example widget.")
+        .supportedFamilies([.systemSmall])
     }
 }
