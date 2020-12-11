@@ -42,8 +42,38 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetExtentionDemoEntryView : View {
     var entry: Provider.Entry
 
+//    var body: some View {
+//        Text(entry.date, style: .time)
+//    }
+    
+    //针对不同尺寸的 Widget 设置不同的 View
+    @Environment(\.widgetFamily) var family // 尺寸环境变量
+    
+    @ViewBuilder
     var body: some View {
-        Text(entry.date, style: .time)
+        switch family {
+        case .systemSmall: // 小尺寸
+            ZStack{
+                Image("拍照搜题")
+                    .resizable()
+                    .frame(minWidth: .infinity, maxWidth: .infinity, minHeight: .infinity, maxHeight: .infinity, alignment: .center)
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .aspectRatio(contentMode: .fill)
+//                Text("")
+//                    .foregroundColor(Color.white)
+//                    .lineLimit(4)
+//                    .font(.system(size: 14))
+//                    .padding(.horizontal)
+            }
+            .widgetURL(URL(string: "跳转链接"))
+        case .systemMedium: // 中尺寸
+            Text(entry.date, style: .time)
+            Text(verbatim: "中尺寸")
+        default: // 大尺寸
+            Text(entry.date, style: .time)
+            Text(verbatim: "大尺寸")
+        }
     }
 }
 
@@ -55,7 +85,7 @@ struct WidgetExtentionDemo: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetExtentionDemoEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName("AMKCategories")
         .description("This is an example widget.")
     }
 }
