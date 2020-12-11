@@ -1,17 +1,17 @@
 //
-//  SceneDelegate.m
+//  AMKSceneDelegate.m
 //  AMKCategories
 //
 //  Created by 孟昕欣 on 2020/12/11.
 //
 
-#import "SceneDelegate.h"
+#import "AMKSceneDelegate.h"
 
-@interface SceneDelegate ()
+@interface AMKSceneDelegate ()
 
 @end
 
-@implementation SceneDelegate
+@implementation AMKSceneDelegate
 
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions API_AVAILABLE(ios(13.0)) {

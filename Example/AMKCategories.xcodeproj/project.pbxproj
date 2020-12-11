@@ -24,7 +24,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		7FBAB8BB745DBF234C020396 /* Pods_AMKCategories_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		8828FF6425836D8500B67C30 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8828FF6225836D8500B67C30 /* SceneDelegate.m */; };
+		8828FF6425836D8500B67C30 /* AMKSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8828FF6225836D8500B67C30 /* AMKSceneDelegate.m */; };
 		88672A8D25831E12003CC36B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88672A8C25831E12003CC36B /* WidgetKit.framework */; };
 		88672A8F25831E12003CC36B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88672A8E25831E12003CC36B /* SwiftUI.framework */; };
 		88672A9225831E12003CC36B /* WidgetExtentionDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88672A9125831E12003CC36B /* WidgetExtentionDemo.swift */; };
@@ -99,8 +99,8 @@
 		807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Example.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		83511D98B77C4517A791752E /* AMKCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AMKCategories.podspec; path = ../AMKCategories.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8828FF6225836D8500B67C30 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		8828FF6325836D8500B67C30 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		8828FF6225836D8500B67C30 /* AMKSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKSceneDelegate.m; sourceTree = "<group>"; };
+		8828FF6325836D8500B67C30 /* AMKSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKSceneDelegate.h; sourceTree = "<group>"; };
 		88672A8B25831E12003CC36B /* WidgetExtentionDemo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtentionDemo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		88672A8C25831E12003CC36B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		88672A8E25831E12003CC36B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -214,8 +214,8 @@
 		6003F593195388D20070C39A /* Example for AMKCategories */ = {
 			isa = PBXGroup;
 			children = (
-				8828FF6325836D8500B67C30 /* SceneDelegate.h */,
-				8828FF6225836D8500B67C30 /* SceneDelegate.m */,
+				8828FF6325836D8500B67C30 /* AMKSceneDelegate.h */,
+				8828FF6225836D8500B67C30 /* AMKSceneDelegate.m */,
 				6003F59C195388D20070C39A /* AMKAppDelegate.h */,
 				6003F59D195388D20070C39A /* AMKAppDelegate.m */,
 				6003F5A5195388D20070C39A /* AMKViewController.h */,
@@ -655,7 +655,7 @@
 				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
-				8828FF6425836D8500B67C30 /* SceneDelegate.m in Sources */,
+				8828FF6425836D8500B67C30 /* AMKSceneDelegate.m in Sources */,
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
 				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
