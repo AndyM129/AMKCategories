@@ -100,16 +100,21 @@ PODS:
     - AMKCategories/UIKit/UILabel/Drawing
     - AMKCategories/UIKit/UIView/ViewLevel
   - Masonry (1.1.0)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
   - AMKCategories/UIKit (from `../`)
   - Masonry (= 1.1.0)
+  - YYCategories (= 1.0.4)
 
 SPEC REPOS:
   trunk:
     - Masonry
+    - YYCategories
 
 EXTERNAL SOURCES:
   AMKCategories:
@@ -118,7 +123,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AMKCategories: e13601ad2a030a8c479f005279263795cbe3f9ea
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
+PODFILE CHECKSUM: 526b2659d8f8a5c58523c43fc1dbbed584b5c196
 
 COCOAPODS: 1.9.3

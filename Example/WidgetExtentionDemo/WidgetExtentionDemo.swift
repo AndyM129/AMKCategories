@@ -11,7 +11,7 @@ import SwiftUI
 
 //MARK: - 通用部分: 多Widget组件实现
 
-@main
+@main // 组件包这里最多提供 5 个 Widget，也就是最多可以存在 15 个小组件。
 struct WidgetExtentionDemo: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
@@ -23,7 +23,7 @@ struct WidgetExtentionDemo: WidgetBundle {
 
 struct WidgetExtentionDemo_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetExtentionDemoEntryView_1(entry: SimpleEntry(date: Date()))
+        WidgetExtentionDemoEntryView_1(entry: SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? ""))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
@@ -32,15 +32,16 @@ struct WidgetExtentionDemo_Previews: PreviewProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let text: String
 }
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+        SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+        let entry = SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
         completion(entry)
     }
 
@@ -51,7 +52,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
+            let entry = SimpleEntry(date: Date(), text: UserDefaults(suiteName: "group.io.github.andym129.AMKCategories")?.string(forKey: "widget") ?? "")
             entries.append(entry)
         }
 
@@ -90,15 +91,15 @@ struct WidgetExtentionDemoEntryView_2 : View {
     
     @ViewBuilder
     var body: some View {
+        Text(entry.date, style: .time)
+        Text(entry.text)
+
         switch family {
         case .systemSmall: // 小尺寸
-            Text(entry.date, style: .time)
             Text(verbatim: "小尺寸")
         case .systemMedium: // 中尺寸
-            Text(entry.date, style: .time)
             Text(verbatim: "中尺寸")
         default: // 大尺寸
-            Text(entry.date, style: .time)
             Text(verbatim: "大尺寸")
         }
     }
@@ -131,9 +132,7 @@ struct WidgetExtentionDemoEntryView_3 : View {
                 .edgesIgnoringSafeArea(.all)
                 .aspectRatio(contentMode: .fill)
         }
-        .widgetURL(URL(string: "widget://test/widgetImage"))
-//        .widgetURL(URL(string: "amkcategories://andym129.github.io.AMKCategories?func=拍照搜题"))
-//        .widgetURL(URL(string: "拍照搜题"))
+        .widgetURL(URL(string: "amkcategories://categories.andym129.github.io?func=photo_search"))
     }
 }
 
