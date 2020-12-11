@@ -9,6 +9,11 @@
 import WidgetKit
 import SwiftUI
 
+// 切换生效的代码
+let WidgetExtentionDemoEntryView = WidgetExtentionDemoEntryView_2.self
+
+//MARK: - 通用部分
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
@@ -39,14 +44,41 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
 }
 
-struct WidgetExtentionDemoEntryView : View {
-    var entry: Provider.Entry
+@main
+struct WidgetExtentionDemo: Widget {
+    let kind: String = "WidgetExtentionDemo"
 
-//    var body: some View {
-//        Text(entry.date, style: .time)
-//    }
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView.init(entry: entry)
+        }
+        .configurationDisplayName("AMKCategories")
+        .description("This is an example widget.")
+    }
+}
+
+struct WidgetExtentionDemo_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetExtentionDemoEntryView.init(entry: SimpleEntry(date: Date()))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
+
+//MARK: - 示例 1: 文本
+
+struct WidgetExtentionDemoEntryView_1 : View {
+    var entry: Provider.Entry
     
-    //针对不同尺寸的 Widget 设置不同的 View
+    var body: some View {
+        Text(entry.date, style: .time)
+    }
+}
+
+//MARK: - 示例 2: 针对不同尺寸的 Widget 设置不同的 View
+
+struct WidgetExtentionDemoEntryView_2 : View {
+    var entry: Provider.Entry
+    
     @Environment(\.widgetFamily) var family // 尺寸环境变量
     
     @ViewBuilder
@@ -56,15 +88,15 @@ struct WidgetExtentionDemoEntryView : View {
             ZStack{
                 Image("拍照搜题")
                     .resizable()
-                    .frame(minWidth: .infinity, maxWidth: .infinity, minHeight: .infinity, maxHeight: .infinity, alignment: .center)
+                    .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                     .aspectRatio(contentMode: .fill)
-//                Text("")
-//                    .foregroundColor(Color.white)
-//                    .lineLimit(4)
-//                    .font(.system(size: 14))
-//                    .padding(.horizontal)
+                //Text("")
+                //    .foregroundColor(Color.white)
+                //    .lineLimit(4)
+                //    .font(.system(size: 14))
+                //    .padding(.horizontal)
             }
             .widgetURL(URL(string: "跳转链接"))
         case .systemMedium: // 中尺寸
@@ -74,25 +106,5 @@ struct WidgetExtentionDemoEntryView : View {
             Text(entry.date, style: .time)
             Text(verbatim: "大尺寸")
         }
-    }
-}
-
-@main
-struct WidgetExtentionDemo: Widget {
-    let kind: String = "WidgetExtentionDemo"
-
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            WidgetExtentionDemoEntryView(entry: entry)
-        }
-        .configurationDisplayName("AMKCategories")
-        .description("This is an example widget.")
-    }
-}
-
-struct WidgetExtentionDemo_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetExtentionDemoEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
