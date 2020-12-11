@@ -131,6 +131,9 @@ struct WidgetExtentionDemoEntryView_3 : View {
                 .edgesIgnoringSafeArea(.all)
                 .aspectRatio(contentMode: .fill)
         }
+        .widgetURL(URL(string: "widget://test/widgetImage"))
+//        .widgetURL(URL(string: "amkcategories://andym129.github.io.AMKCategories?func=拍照搜题"))
+//        .widgetURL(URL(string: "拍照搜题"))
     }
 }
 
