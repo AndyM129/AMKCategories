@@ -105,6 +105,7 @@
 		8828FF6E2583730000B67C30 /* AMKCategories_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AMKCategories_Example.entitlements; sourceTree = "<group>"; };
 		8828FF742583749500B67C30 /* AMKWidgetExtentionDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKWidgetExtentionDemoViewController.h; sourceTree = "<group>"; };
 		8828FF752583749500B67C30 /* AMKWidgetExtentionDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKWidgetExtentionDemoViewController.m; sourceTree = "<group>"; };
+		8828FF8E258738D200B67C30 /* WidgetExtentionDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtentionDemo.entitlements; sourceTree = "<group>"; };
 		88672A8B25831E12003CC36B /* WidgetExtentionDemo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtentionDemo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		88672A8C25831E12003CC36B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		88672A8E25831E12003CC36B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -305,6 +306,7 @@
 		88672A9025831E12003CC36B /* WidgetExtentionDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8828FF8E258738D200B67C30 /* WidgetExtentionDemo.entitlements */,
 				88672A9125831E12003CC36B /* WidgetExtentionDemo.swift */,
 				88672A9325831E13003CC36B /* Assets.xcassets */,
 				88672A9525831E13003CC36B /* Info.plist */,
@@ -932,6 +934,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtentionDemo/WidgetExtentionDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9X349G8KD4;
@@ -976,6 +979,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtentionDemo/WidgetExtentionDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
