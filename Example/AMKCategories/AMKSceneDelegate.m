@@ -69,7 +69,7 @@
     hud.bezelView.layer.shadowRadius = 10;
     hud.bezelView.layer.masksToBounds = NO;
     hud.bezelView.clipsToBounds = NO;
-    hud.label.text = [context.URL.absoluteString queryDictionaryUsingEncoding:NSUTF8StringEncoding][@"title"]?:@"外部调起";
+    hud.label.text = [context.URL.query queryDictionaryUsingEncoding:NSUTF8StringEncoding][@"title"]?:@"外部调起";
     hud.label.textColor = [UIColor whiteColor];
     hud.detailsLabel.text = context.URL.absoluteString?:@"";
     hud.detailsLabel.textColor = [UIColor whiteColor];

@@ -19,6 +19,7 @@ struct WidgetExtentionDemo: WidgetBundle {
         WidgetExtentionDemo_2()
         WidgetExtentionDemo_3()
         WidgetExtentionDemo_4()
+        WidgetExtentionDemo_5()
     }
 }
 
@@ -208,6 +209,69 @@ struct WidgetExtentionDemo_4: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetExtentionDemoEntryView_4(entry: entry)
+        }
+        .configurationDisplayName("百度文库")
+        .description("专业权威资料库")
+        .supportedFamilies([.systemMedium])
+    }
+}
+
+//MARK: - 示例 5: 常用功能
+
+struct WidgetExtentionDemoEntryView_5 : View {
+    let debug = false
+    var entry: Provider.Entry
+    var imageSize = CGSize(width: 25, height: 25)
+    var title = Font.system(size: 12)
+    var titleOffsetY :CGFloat = 0
+    var items = ["拍照搜题", "拍照翻译", "语音速记", "格式转换", "图转文字", "文库书城", "课后答案", "高考题库", "名师资料", "全部功能"]
+    
+    var body: some View {
+        VStack{
+            HStack(alignment: .top, spacing: 0, content: {
+                ForEach(0..<5, id:\.self){ index in
+                    Spacer()
+                    Link(destination: URL(string: "amkcategories://categories.andym129.github.io?title=\(self.items[index])".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!){
+                        VStack{
+                            Image("AllFunc_\(self.items[index])")
+                                .resizable()
+                                .frame(maxWidth: imageSize.width, maxHeight: imageSize.height, alignment: .center)
+                                .scaledToFill()
+                                .edgesIgnoringSafeArea(.all)
+                                .aspectRatio(contentMode: .fill)
+                            Text(self.items[index]).font(title).offset(y: titleOffsetY)
+                        }.border(Color.gray, width: debug ? 1 : 0)
+                    }
+                }
+                Spacer()
+            })
+            HStack(alignment: .top, spacing: 0, content: {
+                ForEach(5..<items.count, id:\.self){ index in
+                    Spacer()
+                    Link(destination: URL(string: "amkcategories://categories.andym129.github.io?title=\(self.items[index])".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!){
+                        VStack{
+                            Image("AllFunc_\(self.items[index])")
+                                .resizable()
+                                .frame(maxWidth: imageSize.width, maxHeight: imageSize.height, alignment: .center)
+                                .scaledToFill()
+                                .edgesIgnoringSafeArea(.all)
+                                .aspectRatio(contentMode: .fill)
+                            Text(self.items[index]).font(title).offset(y: titleOffsetY)
+                        }.border(Color.gray, width: debug ? 1 : 0)
+                    }
+                }
+                Spacer()
+            })
+        }
+    }
+}
+
+struct WidgetExtentionDemo_5: Widget {
+    let kind: String = "WidgetExtentionDemo_5"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            WidgetExtentionDemoEntryView_5(entry: entry)
         }
         .configurationDisplayName("百度文库")
         .description("专业权威资料库")
