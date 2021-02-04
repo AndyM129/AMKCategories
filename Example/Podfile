@@ -9,6 +9,7 @@ target 'AMKCategories_Example' do
     
     # 第三方
     pod 'Masonry' , '1.1.0'
+    pod 'XcodeCoverage'
     target 'AMKCategories_Tests' do
         inherit! :search_paths
     end

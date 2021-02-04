@@ -375,6 +375,7 @@
 				6003F588195388D20070C39A /* Resources */,
 				0339446CF268EB01D0D72985 /* [CP] Embed Pods Frameworks */,
 				8881E6FC22EB1F1700CE6D9D /* Git Script */,
+				8863099925C7D7C8009010A4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -415,7 +416,7 @@
 				ORGANIZATIONNAME = AndyM129;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 9X349G8KD4;
+						DevelopmentTeam = TGLMB8BDP2;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -529,6 +530,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8863099925C7D7C8009010A4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Pods/XcodeCoverage/exportenv.sh\n";
 		};
 		8881E6FC22EB1F1700CE6D9D /* Git Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -692,13 +710,20 @@
 			baseConfigurationReference = 807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9X349G8KD4;
+				DEVELOPMENT_TEAM = TGLMB8BDP2;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"COVERAGE=1",
+				);
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = andym129.github.io.AMKCategories;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.dev.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
@@ -710,13 +735,20 @@
 			baseConfigurationReference = 7BC29A4F4330E05DB5324258 /* Pods-AMKCategories_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9X349G8KD4;
+				DEVELOPMENT_TEAM = TGLMB8BDP2;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"COVERAGE=1",
+				);
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = andym129.github.io.AMKCategories;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.dev.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;

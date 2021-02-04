@@ -100,16 +100,19 @@ PODS:
     - AMKCategories/UIKit/UILabel/Drawing
     - AMKCategories/UIKit/UIView/ViewLevel
   - Masonry (1.1.0)
+  - XcodeCoverage (1.4.0)
 
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
   - AMKCategories/UIKit (from `../`)
   - Masonry (= 1.1.0)
+  - XcodeCoverage
 
 SPEC REPOS:
   trunk:
     - Masonry
+    - XcodeCoverage
 
 EXTERNAL SOURCES:
   AMKCategories:
@@ -118,7 +121,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AMKCategories: e13601ad2a030a8c479f005279263795cbe3f9ea
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  XcodeCoverage: 443974d56f4f83c759f8850a6285561361e3e79b
 
-PODFILE CHECKSUM: 0956f5e05775c4e0c1f9305c9fd8bf5521041642
+PODFILE CHECKSUM: 4442fe7151f349828562c7ee5ed06fb877b1f7ec
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

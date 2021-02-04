@@ -28,6 +28,31 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+    
+# if  COVERAGE
+#   if !TARGET_IPHONE_SIMULATOR
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    documentsDirectory = [documentsDirectory stringByAppendingFormat:@"/TestCoverageFiles/%@", NSDate.date];
+    setenv("GCOV_PREFIX", [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding], 1);
+    setenv("GCOV_PREFIX_STRIP","13", 1);
+    NSLog(@"GCOV PATH: %@", documentsDirectory);
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSError *error = nil;
+        NSArray *pathForDirectories = [NSFileManager.defaultManager contentsOfDirectoryAtPath:[documentsDirectory stringByAppendingFormat:@"/arm64"] error:&error];
+        NSLog(@"pathForDirectories = %@", pathForDirectories);
+    });
+#   endif
+    
+    extern void __gcov_flush(void);
+    __gcov_flush();
+# endif
+    
+    int a = 5;
+    if (a == 6) {
+        NSLog(@"6666666");
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -44,5 +69,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end
