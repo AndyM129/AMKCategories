@@ -22,8 +22,9 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		7FBAB8BB745DBF234C020396 /* Pods_AMKCategories_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		8861B39A284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */; };
+		8861B39D284F91D90054127F /* AMKContentHuggingPriorityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */; };
 		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
 		8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */; };
 		8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */; };
@@ -45,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMKCategories_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		446577AC5A75A400E40E7472 /* Pods_AMKCategories_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMKCategories_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* AMKCategories_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMKCategories_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,6 +72,10 @@
 		807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Example.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		83511D98B77C4517A791752E /* AMKCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AMKCategories.podspec; path = ../AMKCategories.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8861B398284F8DFC0054127F /* AMKContentHuggingPriorityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityViewController.h; sourceTree = "<group>"; };
+		8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityViewController.m; sourceTree = "<group>"; };
+		8861B39B284F91D90054127F /* AMKContentHuggingPriorityControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityControl.h; sourceTree = "<group>"; };
+		8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityControl.m; sourceTree = "<group>"; };
 		8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleBlockExampleViewController.h; sourceTree = "<group>"; };
 		88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleBlockExampleViewController.m; sourceTree = "<group>"; };
 		8880810E23ACC68F0082C16B /* AMKEmojiStringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKEmojiStringViewController.h; sourceTree = "<group>"; };
@@ -87,9 +91,7 @@
 		88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCollectionViewDelegateViewController.m; sourceTree = "<group>"; };
 		88DAB1D52386B9EE00AB9C17 /* AMKTableViewDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKTableViewDelegateViewController.h; sourceTree = "<group>"; };
 		88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKTableViewDelegateViewController.m; sourceTree = "<group>"; };
-		90F3B8A8F02453C096611499 /* Pods-AMKCategories_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Tests/Pods-AMKCategories_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E63105028D3AF297ED4988F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CAB58C46835D6A7B2F14173A /* Pods-AMKCategories_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Tests.release.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Tests/Pods-AMKCategories_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,6 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				7FBAB8BB745DBF234C020396 /* Pods_AMKCategories_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +124,6 @@
 			children = (
 				807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */,
 				7BC29A4F4330E05DB5324258 /* Pods-AMKCategories_Example.release.xcconfig */,
-				90F3B8A8F02453C096611499 /* Pods-AMKCategories_Tests.debug.xcconfig */,
-				CAB58C46835D6A7B2F14173A /* Pods-AMKCategories_Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -158,7 +157,6 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				446577AC5A75A400E40E7472 /* Pods_AMKCategories_Example.framework */,
-				02C9CD9D27BEB288EEB0A520 /* Pods_AMKCategories_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,9 +227,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		8861B396284F8D940054127F /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8861B397284F8DEB0054127F /* ContentHuggingPriority */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		8861B397284F8DEB0054127F /* ContentHuggingPriority */ = {
+			isa = PBXGroup;
+			children = (
+				8861B398284F8DFC0054127F /* AMKContentHuggingPriorityViewController.h */,
+				8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */,
+				8861B39B284F91D90054127F /* AMKContentHuggingPriorityControl.h */,
+				8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */,
+			);
+			path = ContentHuggingPriority;
+			sourceTree = "<group>";
+		};
 		8872250C236D300B00DA6364 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8861B396284F8D940054127F /* UIView */,
 				88DAB1CB2386954900AB9C17 /* UICollectionView */,
 				88DAB1D32386B9D100AB9C17 /* UITableView */,
 				8872250D236D300B00DA6364 /* UIViewController */,
@@ -389,7 +407,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "AMKCategories_Tests" */;
 			buildPhases = (
-				6F30712E89F37BE72DCFBDFA /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
@@ -497,37 +514,17 @@
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6F30712E89F37BE72DCFBDFA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AMKCategories_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8881E6FC22EB1F1700CE6D9D /* Git Script */ = {
@@ -560,11 +557,13 @@
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
+				8861B39D284F91D90054127F /* AMKContentHuggingPriorityControl.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
 				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				8861B39A284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,7 +724,6 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90F3B8A8F02453C096611499 /* Pods-AMKCategories_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -750,7 +748,6 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAB58C46835D6A7B2F14173A /* Pods-AMKCategories_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

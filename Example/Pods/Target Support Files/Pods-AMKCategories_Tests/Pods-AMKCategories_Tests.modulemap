@@ -1,6 +1,0 @@
-framework module Pods_AMKCategories_Tests {
-  umbrella header "Pods-AMKCategories_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
