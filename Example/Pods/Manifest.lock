@@ -45,6 +45,10 @@ PODS:
   - AMKCategories/QuartzCore/CAAnimation (0.1.7):
     - AMKCategories/QuartzCore/CAAnimation/AnimationDelegate (= 0.1.7)
   - AMKCategories/QuartzCore/CAAnimation/AnimationDelegate (0.1.7)
+  - AMKCategories/ThirdPart (0.1.7):
+    - AMKCategories/ThirdPart/MBProgressHUD (= 0.1.7)
+  - AMKCategories/ThirdPart/MBProgressHUD (0.1.7):
+    - MBProgressHUD
   - AMKCategories/UIKit (0.1.7):
     - AMKCategories/UIKit/UIApplication (= 0.1.7)
     - AMKCategories/UIKit/UICollectionView (= 0.1.7)
@@ -99,7 +103,11 @@ PODS:
     - AMKCategories/UIKit/UIApplication/MobileProvision
     - AMKCategories/UIKit/UILabel/Drawing
     - AMKCategories/UIKit/UIView/ViewLevel
+  - AMKStackView (1.0.0):
+    - Masonry
+    - YYCategories
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -107,24 +115,32 @@ PODS:
 DEPENDENCIES:
   - AMKCategories (from `../`)
   - AMKCategories/Foundation (from `../`)
+  - AMKCategories/ThirdPart (from `../`)
   - AMKCategories/UIKit (from `../`)
+  - AMKStackView
   - Masonry
+  - MBProgressHUD (from `../PrivatePods/MBProgressHUD`)
   - YYCategories
 
 SPEC REPOS:
   trunk:
+    - AMKStackView
     - Masonry
     - YYCategories
 
 EXTERNAL SOURCES:
   AMKCategories:
     :path: "../"
+  MBProgressHUD:
+    :path: "../PrivatePods/MBProgressHUD"
 
 SPEC CHECKSUMS:
-  AMKCategories: e13601ad2a030a8c479f005279263795cbe3f9ea
+  AMKCategories: 3d35842adf4baae03302f843a62a79d3a4f78952
+  AMKStackView: 90cf0fe693007f8c050e9ed2c9789ce44e1298f6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 81cfc510382828962d6fd893c003d1b2beee386c
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: d836db3cbd444381e071414182ca338550b02bce
+PODFILE CHECKSUM: cc52d1226368b5cdc0665afff9de2ec61d3a7a93
 
 COCOAPODS: 1.10.1

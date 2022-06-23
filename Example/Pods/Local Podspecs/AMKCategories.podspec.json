@@ -17,7 +17,7 @@
   },
   "social_media_url": "http://www.jianshu.com/u/28d89b68984b",
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "requires_arc": true,
   "default_subspecs": "DefaultSubspec",
@@ -35,6 +35,20 @@
 
         ]
       }
+    },
+    {
+      "name": "ThirdPart",
+      "subspecs": [
+        {
+          "name": "MBProgressHUD",
+          "source_files": "AMKCategories/Classes/ThirdPart/MBProgressHUD/*.{h,m,mm}",
+          "dependencies": {
+            "MBProgressHUD": [
+
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "UIKit",

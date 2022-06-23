@@ -33,6 +33,7 @@
 		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
 		88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */; };
 		88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */; };
+		88E5129B286361480056813A /* AMKMBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCollectionViewDelegateViewController.m; sourceTree = "<group>"; };
 		88DAB1D52386B9EE00AB9C17 /* AMKTableViewDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKTableViewDelegateViewController.h; sourceTree = "<group>"; };
 		88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKTableViewDelegateViewController.m; sourceTree = "<group>"; };
+		88E51299286361480056813A /* AMKMBProgressHUDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMBProgressHUDViewController.h; sourceTree = "<group>"; };
+		88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMBProgressHUDViewController.m; sourceTree = "<group>"; };
 		9E63105028D3AF297ED4988F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +176,7 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				8872250C236D300B00DA6364 /* UIKit */,
 				8881E6EA22EAF35300CE6D9D /* Foundation */,
+				88E5129328635C930056813A /* ThirdPart */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for AMKCategories";
@@ -380,6 +384,23 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
+		88E5129328635C930056813A /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				88E512982863610E0056813A /* MBProgressHUD */,
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		88E512982863610E0056813A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				88E51299286361480056813A /* AMKMBProgressHUDViewController.h */,
+				88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -513,12 +534,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/AMKStackView/AMKStackView.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKStackView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 			);
@@ -558,6 +583,7 @@
 				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
 				8861B39D284F91D90054127F /* AMKContentHuggingPriorityControl.m in Sources */,
+				88E5129B286361480056813A /* AMKMBProgressHUDViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
 				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
 				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,

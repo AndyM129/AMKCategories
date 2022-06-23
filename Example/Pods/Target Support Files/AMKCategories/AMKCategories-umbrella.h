@@ -23,6 +23,8 @@
 #import "NSObject+AMKMethodSwizzling.h"
 #import "NSString+AMKEmoji.h"
 #import "CAAnimation+AMKAnimationDelegate.h"
+#import "MBProgressHUD+AMKCategories.h"
+#import "MBProgressHUD+AMKCustomView.h"
 #import "UIApplication+AMKMobileProvision.h"
 #import "UICollectionView+AMKCollectionViewDelegate.h"
 #import "UIImage+AMKImageRendering.h"

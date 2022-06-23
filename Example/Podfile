@@ -1,13 +1,16 @@
 use_frameworks!
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'AMKCategories_Example' do
     # 当前工程
     pod 'AMKCategories', :path => '../'
     pod 'AMKCategories/UIKit', :path => '../'
     pod 'AMKCategories/Foundation', :path => '../'
+    pod 'AMKCategories/ThirdPart', :path => '../'
     
     # 第三方
     pod 'Masonry'
     pod 'YYCategories'
+    pod 'AMKStackView'
+    pod 'MBProgressHUD', :path => '../PrivatePods/MBProgressHUD'
 end
