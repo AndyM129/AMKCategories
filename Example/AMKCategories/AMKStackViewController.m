@@ -14,6 +14,12 @@
 
 @implementation AMKStackViewController
 
++ (void)load {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIViewController amk_pushViewController:self.new animated:YES];
+    });
+}
+
 #pragma mark - Dealloc
 
 - (void)dealloc {
@@ -35,6 +41,47 @@
     [super viewDidLoad];
     self.view.backgroundColor = self.view.backgroundColor?:[UIColor whiteColor];
     
+    __weak __typeof__(self)weakSelf = self;
+    
+    // 示例1
+    [self.stackView addArrangedSeparatorWithTitle:@"直接用 UIPasteboard 粘贴" color:nil size:12];
+    [self.stackView addArrangedSubview:({
+        UITextField *textField = [UITextField.alloc init];
+        textField.tag = 1;
+        textField.height = 40;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+        textField.clearButtonMode = UITextFieldViewModeAlways;
+        textField;
+    })];
+    [self.stackView addArrangedButton:@"UIPasteboard - 粘贴" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        UITextField *textField = [weakSelf.view viewWithTag:1];
+        textField.text = [UIPasteboard.generalPasteboard string];
+    }];
+    
+    // 示例2
+    if (@available(iOS 16.0, *)) {
+        [self.stackView addArrangedSeparatorWithTitle:nil color:UIColor.clearColor size:60];
+        [self.stackView addArrangedSeparatorWithTitle:@"通过 UIPasteControl 粘贴" color:nil size:12];
+        [self.stackView addArrangedSubview:({
+            UITextField *textField = [UITextField.alloc init];
+            textField.tag = 2;
+            textField.height = 40;
+            textField.borderStyle = UITextBorderStyleRoundedRect;
+            textField.clearButtonMode = UITextFieldViewModeAlways;
+            textField;
+        })];
+        [self.stackView addArrangedSubview:({
+            UIPasteControlConfiguration *configuration = [UIPasteControlConfiguration.alloc init];
+            //configuration.baseBackgroundColor = UIColor.orangeColor;
+            //configuration.baseForegroundColor = UIColor.redColor;
+            //configuration.cornerStyle = UIButtonConfigurationCornerStyleCapsule;
+            //configuration.displayMode = UIPasteControlDisplayModeIconAndLabel;
+            UIPasteControl *pasteControl = [UIPasteControl.alloc initWithConfiguration:configuration];
+            pasteControl.target = [weakSelf.view viewWithTag:2];
+            pasteControl.height = 40;
+            pasteControl;
+        })];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,9 +117,12 @@
 
 #pragma mark - Layout Subviews
 
-#pragma mark - Public Methods
+#pragma mark - Action Methods
 
-#pragma mark - Private Methods
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
 
 #pragma mark - Notifications
 
