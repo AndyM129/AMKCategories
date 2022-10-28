@@ -1,5 +1,5 @@
 //
-//  AMKViewController.h
+//  AMKRootViewController.h
 //  AMKCategories
 //
 //  Created by https://github.com/andym129 on 07/26/2019.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface AMKViewController : UIViewController
+@interface AMKRootViewController : UIViewController
 
 @end

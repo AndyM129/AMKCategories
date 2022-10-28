@@ -14,7 +14,7 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* AMKAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* AMKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* AMKViewController.m */; };
+		6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* AMKRootViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,21 +22,21 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		8812EFDC2878654D00370522 /* AMKCustomProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFDB2878654D00370522 /* AMKCustomProgressViewController.m */; };
-		8812EFDF287865B200370522 /* AMKCustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFDE287865B200370522 /* AMKCustomProgressView.m */; };
+		8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D947290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m */; };
+		8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D948290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m */; };
+		8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D94B290BB4BA005DC5C1 /* AMKCustomProgressView.m */; };
+		8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D94C290BB4BA005DC5C1 /* AMKCustomProgressViewController.m */; };
+		8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D952290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m */; };
+		8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D955290BB4BA005DC5C1 /* AMKLifeCircleBlockExampleViewController.m */; };
+		8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D959290BB4BA005DC5C1 /* AMKTableViewDelegateViewController.m */; };
+		8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D960290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.m */; };
+		8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D963290BB4BA005DC5C1 /* AMKAppVersionInfoViewController.m */; };
+		8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D967290BB4BA005DC5C1 /* AMKEmojiStringViewController.m */; };
+		8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8806D968290BB4BA005DC5C1 /* AMKEmojiStringViewController.txt */; };
+		8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D96C290BB4BA005DC5C1 /* AMKKeyPathCodingViewController.m */; };
+		8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */; };
+		8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
-		8861B39A284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */; };
-		8861B39D284F91D90054127F /* AMKContentHuggingPriorityControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */; };
-		88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */; };
-		8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */; };
-		8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */; };
-		8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */; };
-		8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */; };
-		8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */; };
-		88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */; };
-		88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */; };
-		88E5129B286361480056813A /* AMKMBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +61,8 @@
 		6003F59B195388D20070C39A /* AMKCategories-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* AMKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* AMKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* AMKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* AMKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* AMKRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRootViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* AMKRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRootViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* AMKCategories_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMKCategories_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -75,34 +75,35 @@
 		7DDA7EA524701D5E2B4CDBF7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMKCategories_Example.debug.xcconfig"; path = "Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		83511D98B77C4517A791752E /* AMKCategories.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AMKCategories.podspec; path = ../AMKCategories.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8812EFDA2878654D00370522 /* AMKCustomProgressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomProgressViewController.h; sourceTree = "<group>"; };
-		8812EFDB2878654D00370522 /* AMKCustomProgressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomProgressViewController.m; sourceTree = "<group>"; };
-		8812EFDD287865B200370522 /* AMKCustomProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomProgressView.h; sourceTree = "<group>"; };
-		8812EFDE287865B200370522 /* AMKCustomProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomProgressView.m; sourceTree = "<group>"; };
+		8806D946290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityViewController.h; sourceTree = "<group>"; };
+		8806D947290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityControl.m; sourceTree = "<group>"; };
+		8806D948290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityViewController.m; sourceTree = "<group>"; };
+		8806D949290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityControl.h; sourceTree = "<group>"; };
+		8806D94B290BB4BA005DC5C1 /* AMKCustomProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKCustomProgressView.m; sourceTree = "<group>"; };
+		8806D94C290BB4BA005DC5C1 /* AMKCustomProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKCustomProgressViewController.m; sourceTree = "<group>"; };
+		8806D94D290BB4BA005DC5C1 /* AMKCustomProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKCustomProgressView.h; sourceTree = "<group>"; };
+		8806D94E290BB4BA005DC5C1 /* AMKCustomProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKCustomProgressViewController.h; sourceTree = "<group>"; };
+		8806D951290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKCollectionViewDelegateViewController.h; sourceTree = "<group>"; };
+		8806D952290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKCollectionViewDelegateViewController.m; sourceTree = "<group>"; };
+		8806D955290BB4BA005DC5C1 /* AMKLifeCircleBlockExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleBlockExampleViewController.m; sourceTree = "<group>"; };
+		8806D956290BB4BA005DC5C1 /* AMKLifeCircleBlockExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleBlockExampleViewController.h; sourceTree = "<group>"; };
+		8806D959290BB4BA005DC5C1 /* AMKTableViewDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKTableViewDelegateViewController.m; sourceTree = "<group>"; };
+		8806D95A290BB4BA005DC5C1 /* AMKTableViewDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKTableViewDelegateViewController.h; sourceTree = "<group>"; };
+		8806D960290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
+		8806D961290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKGitCommitInfoViewController.h; sourceTree = "<group>"; };
+		8806D963290BB4BA005DC5C1 /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
+		8806D964290BB4BA005DC5C1 /* AMKAppVersionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKAppVersionInfoViewController.h; sourceTree = "<group>"; };
+		8806D967290BB4BA005DC5C1 /* AMKEmojiStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKEmojiStringViewController.m; sourceTree = "<group>"; };
+		8806D968290BB4BA005DC5C1 /* AMKEmojiStringViewController.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AMKEmojiStringViewController.txt; sourceTree = "<group>"; };
+		8806D969290BB4BA005DC5C1 /* AMKEmojiStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKEmojiStringViewController.h; sourceTree = "<group>"; };
+		8806D96C290BB4BA005DC5C1 /* AMKKeyPathCodingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKKeyPathCodingViewController.m; sourceTree = "<group>"; };
+		8806D96D290BB4BA005DC5C1 /* AMKKeyPathCodingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKKeyPathCodingViewController.h; sourceTree = "<group>"; };
+		8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKMBProgressHUDViewController.m; sourceTree = "<group>"; };
+		8806D972290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKMBProgressHUDViewController.h; sourceTree = "<group>"; };
+		8806D983290BB57D005DC5C1 /* AMKRootExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRootExampleModel.h; sourceTree = "<group>"; };
+		8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRootExampleModel.m; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
-		8861B398284F8DFC0054127F /* AMKContentHuggingPriorityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityViewController.h; sourceTree = "<group>"; };
-		8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityViewController.m; sourceTree = "<group>"; };
-		8861B39B284F91D90054127F /* AMKContentHuggingPriorityControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKContentHuggingPriorityControl.h; sourceTree = "<group>"; };
-		8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKContentHuggingPriorityControl.m; sourceTree = "<group>"; };
-		8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleBlockExampleViewController.h; sourceTree = "<group>"; };
-		88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleBlockExampleViewController.m; sourceTree = "<group>"; };
-		8880810E23ACC68F0082C16B /* AMKEmojiStringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKEmojiStringViewController.h; sourceTree = "<group>"; };
-		8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKEmojiStringViewController.m; sourceTree = "<group>"; };
-		8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AMKEmojiStringViewController.txt; sourceTree = "<group>"; };
-		8880812123ACCE660082C16B /* AMKKeyPathCodingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKKeyPathCodingViewController.h; sourceTree = "<group>"; };
-		8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKKeyPathCodingViewController.m; sourceTree = "<group>"; };
-		8881E6F622EB062000CE6D9D /* AMKGitCommitInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKGitCommitInfoViewController.h; sourceTree = "<group>"; };
-		8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKGitCommitInfoViewController.m; sourceTree = "<group>"; };
-		8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKAppVersionInfoViewController.m; sourceTree = "<group>"; };
-		8881E6FA22EB06C400CE6D9D /* AMKAppVersionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKAppVersionInfoViewController.h; sourceTree = "<group>"; };
-		88DAB1CD2386957200AB9C17 /* AMKCollectionViewDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCollectionViewDelegateViewController.h; sourceTree = "<group>"; };
-		88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCollectionViewDelegateViewController.m; sourceTree = "<group>"; };
-		88DAB1D52386B9EE00AB9C17 /* AMKTableViewDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKTableViewDelegateViewController.h; sourceTree = "<group>"; };
-		88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKTableViewDelegateViewController.m; sourceTree = "<group>"; };
-		88E51299286361480056813A /* AMKMBProgressHUDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMBProgressHUDViewController.h; sourceTree = "<group>"; };
-		88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMBProgressHUDViewController.m; sourceTree = "<group>"; };
 		9E63105028D3AF297ED4988F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,16 +179,10 @@
 			children = (
 				6003F59C195388D20070C39A /* AMKAppDelegate.h */,
 				6003F59D195388D20070C39A /* AMKAppDelegate.m */,
-				6003F5A5195388D20070C39A /* AMKViewController.h */,
-				6003F5A6195388D20070C39A /* AMKViewController.m */,
-				8812EFE02878661700370522 /* AMKStackViewController.h */,
-				8812EFE12878661800370522 /* AMKStackViewController.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				8806D942290BB4BA005DC5C1 /* Modules */,
+				8806D981290BB531005DC5C1 /* Commons */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				8872250C236D300B00DA6364 /* UIKit */,
-				8881E6EA22EAF35300CE6D9D /* Foundation */,
-				88E5129328635C930056813A /* ThirdPart */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for AMKCategories";
@@ -235,194 +230,257 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		8812EFD9287864EC00370522 /* CustomProgressView */ = {
+		8806D942290BB4BA005DC5C1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				8812EFDA2878654D00370522 /* AMKCustomProgressViewController.h */,
-				8812EFDB2878654D00370522 /* AMKCustomProgressViewController.m */,
-				8812EFDD287865B200370522 /* AMKCustomProgressView.h */,
-				8812EFDE287865B200370522 /* AMKCustomProgressView.m */,
+				8806D973290BB4BA005DC5C1 /* Root */,
+				8806D943290BB4BA005DC5C1 /* UIKit */,
+				8806D95B290BB4BA005DC5C1 /* Foundation */,
+				8806D96F290BB4BA005DC5C1 /* ThirdPart */,
 			);
-			name = CustomProgressView;
-			path = AMKCategories/UIKit/UIView/CustomProgressView;
-			sourceTree = SOURCE_ROOT;
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8806D943290BB4BA005DC5C1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8806D944290BB4BA005DC5C1 /* UIView */,
+				8806D94F290BB4BA005DC5C1 /* UICollectionView */,
+				8806D953290BB4BA005DC5C1 /* UIViewController */,
+				8806D957290BB4BA005DC5C1 /* UITableView */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8806D944290BB4BA005DC5C1 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8806D945290BB4BA005DC5C1 /* ContentHuggingPriority */,
+				8806D94A290BB4BA005DC5C1 /* CustomProgressView */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		8806D945290BB4BA005DC5C1 /* ContentHuggingPriority */ = {
+			isa = PBXGroup;
+			children = (
+				8806D946290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.h */,
+				8806D948290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m */,
+				8806D949290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.h */,
+				8806D947290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m */,
+			);
+			path = ContentHuggingPriority;
+			sourceTree = "<group>";
+		};
+		8806D94A290BB4BA005DC5C1 /* CustomProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				8806D94B290BB4BA005DC5C1 /* AMKCustomProgressView.m */,
+				8806D94C290BB4BA005DC5C1 /* AMKCustomProgressViewController.m */,
+				8806D94D290BB4BA005DC5C1 /* AMKCustomProgressView.h */,
+				8806D94E290BB4BA005DC5C1 /* AMKCustomProgressViewController.h */,
+			);
+			path = CustomProgressView;
+			sourceTree = "<group>";
+		};
+		8806D94F290BB4BA005DC5C1 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8806D950290BB4BA005DC5C1 /* Delegate */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		8806D950290BB4BA005DC5C1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8806D951290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.h */,
+				8806D952290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		8806D953290BB4BA005DC5C1 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8806D954290BB4BA005DC5C1 /* LifeCircleBlock */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		8806D954290BB4BA005DC5C1 /* LifeCircleBlock */ = {
+			isa = PBXGroup;
+			children = (
+				8806D955290BB4BA005DC5C1 /* AMKLifeCircleBlockExampleViewController.m */,
+				8806D956290BB4BA005DC5C1 /* AMKLifeCircleBlockExampleViewController.h */,
+			);
+			path = LifeCircleBlock;
+			sourceTree = "<group>";
+		};
+		8806D957290BB4BA005DC5C1 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				8806D958290BB4BA005DC5C1 /* Delegate */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		8806D958290BB4BA005DC5C1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8806D959290BB4BA005DC5C1 /* AMKTableViewDelegateViewController.m */,
+				8806D95A290BB4BA005DC5C1 /* AMKTableViewDelegateViewController.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		8806D95B290BB4BA005DC5C1 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				8806D95C290BB4BA005DC5C1 /* NSDictionary */,
+				8806D95E290BB4BA005DC5C1 /* NSBundle */,
+				8806D965290BB4BA005DC5C1 /* NSString */,
+				8806D96A290BB4BA005DC5C1 /* NSObject */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		8806D95C290BB4BA005DC5C1 /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				8806D95D290BB4BA005DC5C1 /* Database */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		8806D95D290BB4BA005DC5C1 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		8806D95E290BB4BA005DC5C1 /* NSBundle */ = {
+			isa = PBXGroup;
+			children = (
+				8806D95F290BB4BA005DC5C1 /* GitCommitInfo */,
+				8806D962290BB4BA005DC5C1 /* AppVersionInfo */,
+			);
+			path = NSBundle;
+			sourceTree = "<group>";
+		};
+		8806D95F290BB4BA005DC5C1 /* GitCommitInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8806D960290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.m */,
+				8806D961290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.h */,
+			);
+			path = GitCommitInfo;
+			sourceTree = "<group>";
+		};
+		8806D962290BB4BA005DC5C1 /* AppVersionInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8806D963290BB4BA005DC5C1 /* AMKAppVersionInfoViewController.m */,
+				8806D964290BB4BA005DC5C1 /* AMKAppVersionInfoViewController.h */,
+			);
+			path = AppVersionInfo;
+			sourceTree = "<group>";
+		};
+		8806D965290BB4BA005DC5C1 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				8806D966290BB4BA005DC5C1 /* Emoji */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		8806D966290BB4BA005DC5C1 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				8806D967290BB4BA005DC5C1 /* AMKEmojiStringViewController.m */,
+				8806D968290BB4BA005DC5C1 /* AMKEmojiStringViewController.txt */,
+				8806D969290BB4BA005DC5C1 /* AMKEmojiStringViewController.h */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
+		8806D96A290BB4BA005DC5C1 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				8806D96B290BB4BA005DC5C1 /* KeyPathCoding */,
+				8806D96E290BB4BA005DC5C1 /* KeyValueCoding */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		8806D96B290BB4BA005DC5C1 /* KeyPathCoding */ = {
+			isa = PBXGroup;
+			children = (
+				8806D96C290BB4BA005DC5C1 /* AMKKeyPathCodingViewController.m */,
+				8806D96D290BB4BA005DC5C1 /* AMKKeyPathCodingViewController.h */,
+			);
+			path = KeyPathCoding;
+			sourceTree = "<group>";
+		};
+		8806D96E290BB4BA005DC5C1 /* KeyValueCoding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KeyValueCoding;
+			sourceTree = "<group>";
+		};
+		8806D96F290BB4BA005DC5C1 /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				8806D970290BB4BA005DC5C1 /* MBProgressHUD */,
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		8806D970290BB4BA005DC5C1 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */,
+				8806D972290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		8806D973290BB4BA005DC5C1 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5A5195388D20070C39A /* AMKRootViewController.h */,
+				6003F5A6195388D20070C39A /* AMKRootViewController.m */,
+				8806D983290BB57D005DC5C1 /* AMKRootExampleModel.h */,
+				8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		8806D981290BB531005DC5C1 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				8806D982290BB53B005DC5C1 /* ViewControllers */,
+			);
+			name = Commons;
+			path = Modules/Commons;
+			sourceTree = "<group>";
+		};
+		8806D982290BB53B005DC5C1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8812EFE02878661700370522 /* AMKStackViewController.h */,
+				8812EFE12878661800370522 /* AMKStackViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
 		};
 		8840B8D4246660CB005BBA39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		8861B396284F8D940054127F /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				8861B397284F8DEB0054127F /* ContentHuggingPriority */,
-				8812EFD9287864EC00370522 /* CustomProgressView */,
-			);
-			path = UIView;
-			sourceTree = "<group>";
-		};
-		8861B397284F8DEB0054127F /* ContentHuggingPriority */ = {
-			isa = PBXGroup;
-			children = (
-				8861B398284F8DFC0054127F /* AMKContentHuggingPriorityViewController.h */,
-				8861B399284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m */,
-				8861B39B284F91D90054127F /* AMKContentHuggingPriorityControl.h */,
-				8861B39C284F91D90054127F /* AMKContentHuggingPriorityControl.m */,
-			);
-			path = ContentHuggingPriority;
-			sourceTree = "<group>";
-		};
-		8872250C236D300B00DA6364 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				8861B396284F8D940054127F /* UIView */,
-				88DAB1CB2386954900AB9C17 /* UICollectionView */,
-				88DAB1D32386B9D100AB9C17 /* UITableView */,
-				8872250D236D300B00DA6364 /* UIViewController */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
-		8872250D236D300B00DA6364 /* UIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8872250E236D300B00DA6364 /* LifeCircleBlock */,
-			);
-			path = UIViewController;
-			sourceTree = "<group>";
-		};
-		8872250E236D300B00DA6364 /* LifeCircleBlock */ = {
-			isa = PBXGroup;
-			children = (
-				8872250F236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.h */,
-				88722510236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m */,
-			);
-			path = LifeCircleBlock;
-			sourceTree = "<group>";
-		};
-		8880810C23ACC65E0082C16B /* NSString */ = {
-			isa = PBXGroup;
-			children = (
-				8880810D23ACC65E0082C16B /* Emoji */,
-			);
-			path = NSString;
-			sourceTree = "<group>";
-		};
-		8880810D23ACC65E0082C16B /* Emoji */ = {
-			isa = PBXGroup;
-			children = (
-				8880810E23ACC68F0082C16B /* AMKEmojiStringViewController.h */,
-				8880810F23ACC68F0082C16B /* AMKEmojiStringViewController.m */,
-				8880811123ACC71C0082C16B /* AMKEmojiStringViewController.txt */,
-			);
-			path = Emoji;
-			sourceTree = "<group>";
-		};
-		8880811F23ACCE530082C16B /* NSObject */ = {
-			isa = PBXGroup;
-			children = (
-				8880812023ACCE530082C16B /* KeyPathCoding */,
-			);
-			path = NSObject;
-			sourceTree = "<group>";
-		};
-		8880812023ACCE530082C16B /* KeyPathCoding */ = {
-			isa = PBXGroup;
-			children = (
-				8880812123ACCE660082C16B /* AMKKeyPathCodingViewController.h */,
-				8880812223ACCE660082C16B /* AMKKeyPathCodingViewController.m */,
-			);
-			path = KeyPathCoding;
-			sourceTree = "<group>";
-		};
-		8881E6EA22EAF35300CE6D9D /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				8880811F23ACCE530082C16B /* NSObject */,
-				8880810C23ACC65E0082C16B /* NSString */,
-				8881E6EB22EAF35300CE6D9D /* NSBundle */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		8881E6EB22EAF35300CE6D9D /* NSBundle */ = {
-			isa = PBXGroup;
-			children = (
-				8881E6EC22EAF35300CE6D9D /* AppVersionInfo */,
-				8881E6F522EB05F500CE6D9D /* GitCommitInfo */,
-			);
-			path = NSBundle;
-			sourceTree = "<group>";
-		};
-		8881E6EC22EAF35300CE6D9D /* AppVersionInfo */ = {
-			isa = PBXGroup;
-			children = (
-				8881E6FA22EB06C400CE6D9D /* AMKAppVersionInfoViewController.h */,
-				8881E6F922EB06C400CE6D9D /* AMKAppVersionInfoViewController.m */,
-			);
-			path = AppVersionInfo;
-			sourceTree = "<group>";
-		};
-		8881E6F522EB05F500CE6D9D /* GitCommitInfo */ = {
-			isa = PBXGroup;
-			children = (
-				8881E6F622EB062000CE6D9D /* AMKGitCommitInfoViewController.h */,
-				8881E6F722EB062000CE6D9D /* AMKGitCommitInfoViewController.m */,
-			);
-			path = GitCommitInfo;
-			sourceTree = "<group>";
-		};
-		88DAB1CB2386954900AB9C17 /* UICollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				88DAB1CC2386954900AB9C17 /* Delegate */,
-			);
-			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		88DAB1CC2386954900AB9C17 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				88DAB1CD2386957200AB9C17 /* AMKCollectionViewDelegateViewController.h */,
-				88DAB1CE2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		88DAB1D32386B9D100AB9C17 /* UITableView */ = {
-			isa = PBXGroup;
-			children = (
-				88DAB1D42386B9D100AB9C17 /* Delegate */,
-			);
-			path = UITableView;
-			sourceTree = "<group>";
-		};
-		88DAB1D42386B9D100AB9C17 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				88DAB1D52386B9EE00AB9C17 /* AMKTableViewDelegateViewController.h */,
-				88DAB1D62386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		88E5129328635C930056813A /* ThirdPart */ = {
-			isa = PBXGroup;
-			children = (
-				88E512982863610E0056813A /* MBProgressHUD */,
-			);
-			path = ThirdPart;
-			sourceTree = "<group>";
-		};
-		88E512982863610E0056813A /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				88E51299286361480056813A /* AMKMBProgressHUDViewController.h */,
-				88E5129A286361480056813A /* AMKMBProgressHUDViewController.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,10 +567,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				8880811223ACC71C0082C16B /* AMKEmojiStringViewController.txt in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,22 +658,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8812EFDC2878654D00370522 /* AMKCustomProgressViewController.m in Sources */,
+				8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */,
+				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
+				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
+				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
-				8881E6FB22EB06C400CE6D9D /* AMKAppVersionInfoViewController.m in Sources */,
-				8881E6F822EB062000CE6D9D /* AMKGitCommitInfoViewController.m in Sources */,
+				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
+				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
-				88722511236D304000DA6364 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
-				8880812323ACCE660082C16B /* AMKKeyPathCodingViewController.m in Sources */,
-				8861B39D284F91D90054127F /* AMKContentHuggingPriorityControl.m in Sources */,
-				88E5129B286361480056813A /* AMKMBProgressHUDViewController.m in Sources */,
-				6003F5A7195388D20070C39A /* AMKViewController.m in Sources */,
-				8880811023ACC68F0082C16B /* AMKEmojiStringViewController.m in Sources */,
-				88DAB1D72386B9EE00AB9C17 /* AMKTableViewDelegateViewController.m in Sources */,
-				8812EFDF287865B200370522 /* AMKCustomProgressView.m in Sources */,
-				88DAB1CF2386957200AB9C17 /* AMKCollectionViewDelegateViewController.m in Sources */,
+				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
+				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
+				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
+				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
+				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
+				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
+				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				8861B39A284F8DFC0054127F /* AMKContentHuggingPriorityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +757,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -732,7 +790,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -748,7 +806,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -766,7 +824,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
