@@ -74,6 +74,7 @@
     if (!_examples) {
         _examples = @[].mutableCopy;
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKContentHuggingPriorityViewController" title:@"UIView：抗拉伸 / 抗压缩"]];
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKMJRefreshViewController" title:@"MJRefresh：为您推荐xx条新内容" detail:@"类似头条，下拉刷新时结束之前，会先显示「为您推荐xx条新内容」"]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKStackViewController" title:@"示例" detail:@"这是描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"]];
     }
     return _examples;
@@ -104,6 +105,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className];
     if (!cell) cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:UITableViewCell.className];
     cell.textLabel.text = example.title;
+    cell.detailTextLabel.numberOfLines = 0;
     cell.detailTextLabel.text = example.detail;
     cell.detailTextLabel.textColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
     return cell;
@@ -111,9 +113,9 @@
 
 #pragma mark UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewAutomaticDimension;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

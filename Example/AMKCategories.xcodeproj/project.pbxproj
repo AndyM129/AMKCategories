@@ -37,6 +37,8 @@
 		8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */; };
 		8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
+		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
+		88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,10 @@
 		8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRootExampleModel.m; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
+		88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMJRefreshViewController.h; sourceTree = "<group>"; };
+		88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMJRefreshViewController.m; sourceTree = "<group>"; };
+		88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeaderToastView.h; sourceTree = "<group>"; };
+		88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeaderToastView.m; sourceTree = "<group>"; };
 		9E63105028D3AF297ED4988F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -433,6 +439,7 @@
 		8806D96F290BB4BA005DC5C1 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				88EEBDE929151FD10049AED5 /* MJRefresh */,
 				8806D970290BB4BA005DC5C1 /* MBProgressHUD */,
 			);
 			path = ThirdPart;
@@ -441,8 +448,8 @@
 		8806D970290BB4BA005DC5C1 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */,
 				8806D972290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.h */,
+				8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -481,6 +488,17 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		88EEBDE929151FD10049AED5 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */,
+				88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */,
+				88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */,
+				88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,6 +635,7 @@
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/AMKStackView/AMKStackView.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 			);
@@ -625,6 +644,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKStackView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 			);
@@ -659,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */,
+				88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */,
 				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
@@ -669,6 +690,7 @@
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
 				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
+				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,

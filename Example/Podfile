@@ -13,4 +13,5 @@ target 'AMKCategories_Example' do
     pod 'YYCategories'
     pod 'AMKStackView'
     pod 'MBProgressHUD', :path => '../PrivatePods/MBProgressHUD'
+    pod 'MJRefresh', '3.7.5'
 end
