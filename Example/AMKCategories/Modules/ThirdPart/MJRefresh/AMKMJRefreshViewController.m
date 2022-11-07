@@ -7,12 +7,11 @@
 //
 
 #import "AMKMJRefreshViewController.h"
-#import "AMKRefreshHeaderToastView.h"
-#import <MJRefresh/MJRefresh.h>
+#import "AMKRefreshHeader.h"
 
 @interface AMKMJRefreshViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, nullable) UITableView *tableView;
-@property (nonatomic, strong, readwrite, nullable) MJRefreshHeader *refreshHeader;
+@property (nonatomic, strong, readwrite, nullable) AMKRefreshHeader *refreshHeader;
 @end
 
 @implementation AMKMJRefreshViewController
@@ -36,12 +35,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadBarButtonItemClicked:)];
     self.view.backgroundColor = self.view.backgroundColor ?: [UIColor whiteColor];
     [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.tableView.mj_header beginRefreshing];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,30 +83,16 @@
     return _tableView;
 }
 
-- (MJRefreshHeader *)refreshHeader {
+- (AMKRefreshHeader *)refreshHeader {
     if (!_refreshHeader) {
         __weak __typeof__(self)weakSelf = self;
-        _refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                NSInteger tag = @"toastView".hash;
-                __weak AMKRefreshHeaderToastView *weakToastView = [weakSelf.tableView.mj_header viewWithTag:tag];
-                if (!weakToastView) {
-                    AMKRefreshHeaderToastView *toastView = [AMKRefreshHeaderToastView.alloc initWithFrame:weakSelf.tableView.mj_header.bounds];
-                    toastView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-                    toastView.tag = tag;
-                    toastView.alpha = 0;
-                    toastView.backgroundColor = weakSelf.tableView.backgroundColor;
-                    [weakSelf.tableView.mj_header addSubview:toastView];
-                    weakToastView = toastView;
-                }
-                [weakToastView show:YES animated:YES completion:^(AMKRefreshHeaderToastView * _Nonnull toastView) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [weakSelf.tableView.mj_header endRefreshingWithCompletionBlock:^{
-                            [weakToastView show:NO animated:NO completion:nil];
-                        }];
-                    });
-                }];
-            });
+        _refreshHeader = [AMKRefreshHeader headerWithRefreshingBlock:^{
+            NSLog(@"刷新场景：%ld", weakSelf.refreshHeader.scene);
+            [weakSelf.refreshHeader performSelector:@selector(endRefreshing) afterDelay:0.5];
+        }];
+        [_refreshHeader setWillEndRefreshingBlock:^NSTimeInterval(AMKRefreshHeader * _Nullable refreshHeader) {
+            refreshHeader.toastView.titleLabel.text = [NSString stringWithFormat:@"测试：为您推荐%u条新内容", (arc4random()%20 + 5)];
+            return 1.0;
         }];
     }
     return _refreshHeader;
@@ -111,9 +102,11 @@
 
 #pragma mark - Layout Subviews
 
-#pragma mark - Public Methods
+#pragma mark - Action Methods
 
-#pragma mark - Private Methods
+- (void)reloadBarButtonItemClicked:(id)sender {
+    [(AMKRefreshHeader *)self.tableView.mj_header beginRefreshingWithScene:AMKRefreshSceneReloadBarButtonItemClicked completionBlock:nil];
+}
 
 #pragma mark - Notifications
 
@@ -135,6 +128,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.2];
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [(AMKRefreshHeader *)self.tableView.mj_header beginRefreshingWithScene:AMKRefreshSceneTableViewCellClicked completionBlock:nil];
 }
 
 #pragma mark - Helper Methods

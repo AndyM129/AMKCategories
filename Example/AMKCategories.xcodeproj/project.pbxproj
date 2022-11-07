@@ -37,6 +37,7 @@
 		8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D971290BB4BA005DC5C1 /* AMKMBProgressHUDViewController.m */; };
 		8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
+		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
 		88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,8 @@
 		8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRootExampleModel.m; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
+		885C55202918AD58007482B8 /* AMKRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeader.h; sourceTree = "<group>"; };
+		885C55212918AD58007482B8 /* AMKRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeader.m; sourceTree = "<group>"; };
 		88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMJRefreshViewController.h; sourceTree = "<group>"; };
 		88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMJRefreshViewController.m; sourceTree = "<group>"; };
 		88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeaderToastView.h; sourceTree = "<group>"; };
@@ -495,6 +498,8 @@
 			children = (
 				88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */,
 				88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */,
+				885C55202918AD58007482B8 /* AMKRefreshHeader.h */,
+				885C55212918AD58007482B8 /* AMKRefreshHeader.m */,
 				88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */,
 				88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */,
 			);
@@ -688,6 +693,7 @@
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
+				885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */,
 				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,

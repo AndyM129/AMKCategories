@@ -70,9 +70,20 @@
     return YES;
 }
 
+- (void)didAddSubview:(UIView *)subview {
+    [super didAddSubview:subview];
+    if (self.superview) {
+        UIColor *backgroundColor = self.superview.backgroundColor;
+        if (!backgroundColor || backgroundColor == UIColor.clearColor) {
+            backgroundColor = self.superview.superview.backgroundColor;
+        }
+        self.backgroundColor = backgroundColor;
+    }
+}
+
 - (void)updateConstraints {
     [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(15);
+        make.centerY.mas_equalTo(self);
         make.centerX.mas_equalTo(self);
         make.height.mas_equalTo(30);
     }];
@@ -95,6 +106,7 @@
 
 - (void)show:(BOOL)willShow animated:(BOOL)animated completion:(AMKRefreshHeaderToastViewCompletionBlock)completion {
     !CGRectEqualToRect(CGRectZero, self.contentView.frame) ?: [self layoutSubviews];
+    !willShow ?: [self.superview bringSubviewToFront:self];
     !willShow ?: [self.contentView setTransform:CGAffineTransformMakeTranslation(0, self.contentView.frame.size.height/3)];
     [UIView animateWithDuration:(animated ? 0.3 : 0) delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.alpha = willShow ? 1 : 0;
