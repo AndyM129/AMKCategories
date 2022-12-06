@@ -38,6 +38,7 @@
 		8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
+		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
 		88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,8 @@
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
 		885C55202918AD58007482B8 /* AMKRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeader.h; sourceTree = "<group>"; };
 		885C55212918AD58007482B8 /* AMKRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeader.m; sourceTree = "<group>"; };
+		887F1026293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKUIPasteboardAlertExampleViewController.h; sourceTree = "<group>"; };
+		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMJRefreshViewController.h; sourceTree = "<group>"; };
 		88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMJRefreshViewController.m; sourceTree = "<group>"; };
 		88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeaderToastView.h; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 			children = (
 				8806D944290BB4BA005DC5C1 /* UIView */,
 				8806D94F290BB4BA005DC5C1 /* UICollectionView */,
+				887F1024293F3BE300253DE8 /* UIPasteboard */,
 				8806D953290BB4BA005DC5C1 /* UIViewController */,
 				8806D957290BB4BA005DC5C1 /* UITableView */,
 			);
@@ -493,6 +497,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		887F1024293F3BE300253DE8 /* UIPasteboard */ = {
+			isa = PBXGroup;
+			children = (
+				887F1025293F3BE300253DE8 /* Alert */,
+			);
+			path = UIPasteboard;
+			sourceTree = "<group>";
+		};
+		887F1025293F3BE300253DE8 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				887F1026293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.h */,
+				887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		88EEBDE929151FD10049AED5 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,18 +660,22 @@
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/AMKStackView/AMKStackView.framework",
+				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/MirrorKit/MirrorKit.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKStackView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MirrorKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +714,7 @@
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
+				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,

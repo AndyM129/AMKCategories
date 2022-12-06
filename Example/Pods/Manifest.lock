@@ -106,8 +106,10 @@ PODS:
   - AMKStackView (1.0.0):
     - Masonry
     - YYCategories
+  - Aspects (1.4.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
+  - MirrorKit (1.3.0)
   - MJRefresh (3.7.5)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -119,8 +121,10 @@ DEPENDENCIES:
   - AMKCategories/ThirdPart (from `../`)
   - AMKCategories/UIKit (from `../`)
   - AMKStackView
+  - Aspects (from `../PrivatePods/Aspects`)
   - Masonry
   - MBProgressHUD (from `../PrivatePods/MBProgressHUD`)
+  - MirrorKit (from `../PrivatePods/MirrorKit`)
   - MJRefresh (= 3.7.5)
   - YYCategories
 
@@ -134,17 +138,23 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AMKCategories:
     :path: "../"
+  Aspects:
+    :path: "../PrivatePods/Aspects"
   MBProgressHUD:
     :path: "../PrivatePods/MBProgressHUD"
+  MirrorKit:
+    :path: "../PrivatePods/MirrorKit"
 
 SPEC CHECKSUMS:
   AMKCategories: fc87eb896636efd6c118d68c2494b923cb9316b7
   AMKStackView: 90cf0fe693007f8c050e9ed2c9789ce44e1298f6
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 81cfc510382828962d6fd893c003d1b2beee386c
+  MirrorKit: 0d180f88faaae3782e95e0b210d6d39b854370a3
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: d666c813921b92b6e7dcbe8cdbb9e28e0062e4ea
+PODFILE CHECKSUM: 6ff6bbe194ce325ec27b2d629e820312e5f9c3d1
 
 COCOAPODS: 1.10.1
