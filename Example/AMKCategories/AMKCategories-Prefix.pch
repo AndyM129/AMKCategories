@@ -15,18 +15,17 @@
     @import Foundation;
 #endif
 
-#ifndef __OPTIMIZE__
-static NSString *_YDLogTimeStringWithDate(NSDate *date) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+static NSString *_AMKELogTimeStringWithDate(NSDate *date) {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateStyle:NSDateFormatterFullStyle];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
     NSString *timeString = [dateFormatter stringFromDate:date];
     return timeString;
 }
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s %s Line %d: %s\n", _YDLogTimeStringWithDate(NSDate.date).UTF8String, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(...) {}
-#endif
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s %s Line %d: %s\n", _AMKELogTimeStringWithDate(NSDate.date).UTF8String, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#pragma clang diagnostic pop
 
 #import <AMKStackView/AMKStackView.h>
 #import <AMKCategories/UIViewController+AMKNavigationControllerWithCallback.h>
@@ -34,3 +33,5 @@ static NSString *_YDLogTimeStringWithDate(NSDate *date) {
 #import <YYCategories.h>
 #import <MirrorKit/MirrorKit.h>
 #import <Aspects/Aspects.h>
+
+#import "NSObject+AMKERuntimeInfo.h"
