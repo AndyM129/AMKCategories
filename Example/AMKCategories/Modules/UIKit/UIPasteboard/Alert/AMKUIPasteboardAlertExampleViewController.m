@@ -14,11 +14,11 @@
 
 @implementation AMKUIPasteboardAlertExampleViewController
 
-+ (void)load {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIViewController amk_pushViewController:self.new animated:YES];
-    });
-}
+//+ (void)load {
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [UIViewController amk_pushViewController:self.new animated:YES];
+//    });
+//}
 
 #pragma mark - Dealloc
 
@@ -69,6 +69,10 @@
             textField.height = 40;
             textField.borderStyle = UITextBorderStyleRoundedRect;
             textField.clearButtonMode = UITextFieldViewModeAlways;
+            [NSNotificationCenter.defaultCenter addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+                UITextField *textField = (UITextField *)note.object;
+                NSLog(@"读取到了剪贴板：%@", textField.text);
+            }];
             textField;
         })];
         [self.stackView addArrangedSubview:({
@@ -89,35 +93,57 @@
     
     // 示例3
     if (@available(iOS 16.0, *)) {
+        NSSet *patterns = [NSSet setWithArray:@[
+            UIPasteboardDetectionPatternProbableWebURL,
+            UIPasteboardDetectionPatternProbableWebSearch,
+            UIPasteboardDetectionPatternNumber,
+            UIPasteboardDetectionPatternLink,
+            UIPasteboardDetectionPatternPhoneNumber,
+            UIPasteboardDetectionPatternEmailAddress,
+            UIPasteboardDetectionPatternPostalAddress,
+            UIPasteboardDetectionPatternCalendarEvent,
+            UIPasteboardDetectionPatternShipmentTrackingNumber,
+            UIPasteboardDetectionPatternFlightNumber,
+        ]];
+
         [self.stackView addArrangedSeparatorWithTitle:nil color:UIColor.clearColor size:60];
         [self.stackView addArrangedSeparatorWithTitle:@"检测 UIPasteboard 内容" color:nil size:12];
+        
+        // UIPasteboardDetectionPatternProbableWebURL、UIPasteboardDetectionPatternLink
         [self.stackView addArrangedButton:@"bdwenku://wenku/operation?type=2&source=xxx&url=xxx" controlEvents:UIControlEventTouchUpInside block:^(UIButton *sender) {
             UIPasteboard.generalPasteboard.string = sender.currentTitle;
         }];
+        
+        // UIPasteboardDetectionPatternProbableWebURL、UIPasteboardDetectionPatternLink
         [self.stackView addArrangedButton:@"度口令：#bdwenku://wenku/operation?type=2&source=xxx&url=xxx#" controlEvents:UIControlEventTouchUpInside block:^(UIButton *sender) {
             UIPasteboard.generalPasteboard.string = sender.currentTitle;
         }];
+        
+        // UIPasteboardDetectionPatternProbableWebSearch
         [self.stackView addArrangedButton:@"eyJyZWZlciI6IjEwMjgyMDBvX3drd2ViNzYxNDEiLCJkb2NfaWQiOiJjNjg5ZDQ2M2ZiYjA2OWRjNTAyMmFhZWE5OThmY2MyMmJkZDE0M2QxIiwicm91dGVyIjoiYmR3ZW5rdTovL3dlbmt1L29wZXJhdGlvbj90eXBlPTEwOCZmcm9tPXdrc3Qmd2tzdF9yZWZlcj0xMDI4MjAwbyZkb2NfaWQ9YzY4OWQ0NjNmYmIwNjlkYzUwMjJhYWVhOTk4ZmNjMjJiZGQxNDNkMSZjYXJyeT0lN0IlMjJmcm9tJTIyJTNBJTIybWluaWFwcCUyMiUyQyUyMmRvY0lkJTIyJTNBJTIyYzY4OWQ0NjNmYmIwNjlkYzUwMjJhYWVhOTk4ZmNjMjJiZGQxNDNkMSUyMiUyQyUyMndvcmQlMjIlM0ElMjIlRTUlODUlQTUlRTUlODUlOUElRTclOTQlQjMlRTglQUYlQjclMjIlN0QiLCJmcm9tIjoid2Vua3VhcHAifQ==" controlEvents:UIControlEventTouchUpInside block:^(UIButton *sender) {
             UIPasteboard.generalPasteboard.string = sender.currentTitle;
         }];
+        
+        // UIPasteboardDetectionPatternProbableWebURL
         [self.stackView addArrangedButton:@"bdwenku://?eyJyZWZlciI6IjEwMjgyMDBvX3drd2ViNzYxNDEiLCJkb2NfaWQiOiJjNjg5ZDQ2M2ZiYjA2OWRjNTAyMmFhZWE5OThmY2MyMmJkZDE0M2QxIiwicm91dGVyIjoiYmR3ZW5rdTovL3dlbmt1L29wZXJhdGlvbj90eXBlPTEwOCZmcm9tPXdrc3Qmd2tzdF9yZWZlcj0xMDI4MjAwbyZkb2NfaWQ9YzY4OWQ0NjNmYmIwNjlkYzUwMjJhYWVhOTk4ZmNjMjJiZGQxNDNkMSZjYXJyeT0lN0IlMjJmcm9tJTIyJTNBJTIybWluaWFwcCUyMiUyQyUyMmRvY0lkJTIyJTNBJTIyYzY4OWQ0NjNmYmIwNjlkYzUwMjJhYWVhOTk4ZmNjMjJiZGQxNDNkMSUyMiUyQyUyMndvcmQlMjIlM0ElMjIlRTUlODUlQTUlRTUlODUlOUElRTclOTQlQjMlRTglQUYlQjclMjIlN0QiLCJmcm9tIjoid2Vua3VhcHAifQ==" controlEvents:UIControlEventTouchUpInside block:^(UIButton *sender) {
             UIPasteboard.generalPasteboard.string = sender.currentTitle;
         }];
+        
         [self.stackView addArrangedButton:@"检测匹配的模式（无弹窗）" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-            NSSet *patterns = [NSSet setWithArray:@[UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternLink, UIPasteboardDetectionPatternProbableWebURL]];
             [UIPasteboard.generalPasteboard detectPatternsForPatterns:patterns completionHandler:^(NSSet<UIPasteboardDetectionPattern> *set, NSError *error) {
                 NSLog(@"%@, %@", set, error);
                 [weakSelf showAlertWithTitle:@"检测结果" content:error?:set];
             }];
         }];
         [self.stackView addArrangedButton:@"检测匹配的模式&值（会弹窗）" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-            NSSet *patterns = [NSSet setWithArray:@[UIPasteboardDetectionPatternNumber, UIPasteboardDetectionPatternLink, UIPasteboardDetectionPatternProbableWebURL]];
             [UIPasteboard.generalPasteboard detectValuesForPatterns:patterns completionHandler:^(NSDictionary<UIPasteboardDetectionPattern,id> *dict, NSError *error) {
                 NSLog(@"%@, %@", dict, error);
                 [weakSelf showAlertWithTitle:@"检测结果" content:error?:dict];
             }];
         }];
     }
+    
+    [self test_2];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -181,8 +207,10 @@
 #pragma clang diagnostic ignored "-Wunguarded-availability"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
+/// ❌ 不行
+/// 暂未找到「模拟点击 UIPasteControl」的方法
 - (void)test_1 {
-    return;
+    //return;
     
     UIPasteControl *pasteControl = (UIPasteControl *)[self.view viewWithTag:@"pasteControlOfExample2".hash];
     [self test_1_hookPasteControl:pasteControl];
@@ -190,12 +218,27 @@
 }
 
 - (void)test_1_hookPasteControl:(UIPasteControl *)pasteControl {
+    // pasteControl.shouldTrack => YES
     [pasteControl aspect_hookSelector:@selector(shouldTrack) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
         BOOL returnValue = YES;
         [aspectInfo.originalInvocation setReturnValue:&returnValue];
     } error:nil];
+    
+    // pasteControl.setHighlighted: <= NO
+    [pasteControl aspect_hookSelector:@selector(setHighlighted:) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
+        BOOL argument = NO;
+        [aspectInfo.originalInvocation setArgument:&argument atIndex:2];
+        [aspectInfo.originalInvocation invoke];
+    } error:nil];
 
+    // pasteControl.isInternallyEnabled => YES
     [pasteControl aspect_hookSelector:@selector(isInternallyEnabled) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
+        BOOL returnValue = YES;
+        [aspectInfo.originalInvocation setReturnValue:&returnValue];
+    } error:nil];
+    
+    // pasteControl._secureController._slotView.userInteractionEnabled => YES
+    [[pasteControl valueForKeyPath:@"_secureController._slotView"] aspect_hookSelector:@selector(userInteractionEnabled) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
         BOOL returnValue = YES;
         [aspectInfo.originalInvocation setReturnValue:&returnValue];
     } error:nil];
@@ -211,15 +254,62 @@
 - (void)test_1_pasteButtonClicked:(UIPasteControl *)pasteControl {
     [pasteControl sendActionsForControlEvents:UIControlEventTouchUpInside];
 
-    MKMirror *reflection = [MKMirror reflect:pasteControl]; // works for classes too
-    NSArray *properties = reflection.properties;
-    NSArray *instanceVariables = reflection.instanceVariables;
-    NSArray *methods = reflection.methods;
+//    MKMirror *reflection = [MKMirror reflect:pasteControl]; // works for classes too
+//    NSArray *properties = reflection.properties;
+//    NSArray *instanceVariables = reflection.instanceVariables;
+//    NSArray *methods = reflection.methods;
+//
+//    NSLog(@"properties = %@", properties);
+//    NSLog(@"instanceVariables = %@", instanceVariables);
+//    NSLog(@"methods = %@", methods);
+//    NSLog(@"");
+    
+//    NSLog(@"UIPasteControl.amke_runtimeInfo: ");
+//    [UIPasteControl amke_runtimeInfo];
+    
+    NSLog(@"\n\n");
+    NSLog(@"pasteControl.amke_runtimeInfo: ");
+    [pasteControl amke_runtimeInfo];
+    
+}
 
-    NSLog(@"properties = %@", properties);
-    NSLog(@"instanceVariables = %@", instanceVariables);
-    NSLog(@"methods = %@", methods);
-    NSLog(@"");
+#pragma mark 方案2：添加一个全屏大小、不可见的「UIPasteControl」，使得用户触摸屏幕时 触发点击，以避开剪贴板权限弹窗
+
+/// ❌ 不行
+/// 只要触发 UIPasteControl ，就会调起键盘 —— 要想不调起键盘，得让输入框 canBecomeFirstResponder 返回 NO，但这会让 UIPasteControl 失效，无法再给文本框赋值剪贴板内容
+- (void)test_2 {
+    return;
+    
+    UITextField *invisibleTextField = [UITextField.alloc init];
+    //[invisibleTextField aspect_hookSelector:@selector(canBecomeFirstResponder) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
+    //    BOOL returnValue = NO;
+    //    [aspectInfo.originalInvocation setReturnValue:&returnValue];
+    //} error:nil];
+    [NSNotificationCenter.defaultCenter addObserverForName:UITextFieldTextDidChangeNotification object:invisibleTextField queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        UITextField *textField = (UITextField *)note.object;
+        NSLog(@"读取到了剪贴板：%@", textField.text);
+    }];
+    [self.view addSubview:invisibleTextField];
+    [invisibleTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.bottom.mas_equalTo(self.view).multipliedBy(10);
+    }];
+    
+    UIPasteControlConfiguration *configuration = [UIPasteControlConfiguration.alloc init];
+    configuration.baseBackgroundColor = UIColor.clearColor;
+    configuration.baseForegroundColor = UIColor.clearColor;
+    configuration.cornerStyle = UIButtonConfigurationCornerStyleCapsule;
+    configuration.displayMode = UIPasteControlDisplayModeLabelOnly;
+
+    UIPasteControl *pasteControl = [UIPasteControl.alloc initWithConfiguration:configuration];
+    pasteControl.target = invisibleTextField;
+    [self.view addSubview:pasteControl];
+    [pasteControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    }];
+
+    [(UIView *)[pasteControl valueForKeyPath:@"_secureController._slotView"] mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.bottom.mas_equalTo(pasteControl).multipliedBy(10);
+    }];
 }
 
 #pragma clang diagnostic pop

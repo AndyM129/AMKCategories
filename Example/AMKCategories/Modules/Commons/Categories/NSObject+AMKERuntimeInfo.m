@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+#define AMKERuntimeInfoLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String])
+
 @implementation NSObject (AMKERuntimeInfo)
 
 + (void)amke_runtimeInfo {
@@ -21,7 +23,7 @@
     }
     free(ivars); // 释放
     
-    NSLog(@"=========================================================");
+    AMKERuntimeInfoLog(@"=========================================================");
     
     unsigned int methCount = 0;
     Method *meths = class_copyMethodList([self class], &methCount);
@@ -40,7 +42,7 @@
 
 - (void)amke_runtimeInfoForKeyPath:(NSString *)keyPath {
     id object = keyPath.length ? [self valueForKeyPath:keyPath] : self;
-    NSLog(@"========================【 %@ %@ %@） 】=================================", keyPath.length?keyPath:@"", keyPath.length?@":":@"", [NSString stringWithFormat:@"<%@ %p>", NSStringFromClass([object class]), object]);
+    AMKERuntimeInfoLog(@"========================【 %@ %@ %@） 】=================================", keyPath.length?keyPath:@"", keyPath.length?@":":@"", [NSString stringWithFormat:@"<%@ %p>", NSStringFromClass([object class]), object]);
     
     unsigned int count = 0;
     Ivar *ivars = class_copyIvarList([object class], &count); // 拷贝出所胡的成员变量列表
@@ -49,22 +51,22 @@
         NSString *name = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
         NSString *type = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
         id value = [type hasPrefix:@"{?="] ? type : [object valueForKey:name];
-        NSLog(@"%@ = %@", name, value); // 打印成员变量信息
+        AMKERuntimeInfoLog(@"%@ = %@", name, value); // 打印成员变量信息
     }
     free(ivars); // 释放
     
-    NSLog(@"----------------------------------------------------------------");
+    AMKERuntimeInfoLog(@"----------------------------------------------------------------");
     unsigned int methCount = 0;
     Method *meths = class_copyMethodList([self class], &methCount);
     for(int i = 0; i < methCount; i++) {
         Method meth = meths[i];
         SEL sel = method_getName(meth);
         NSString *name = NSStringFromSelector(sel);
-        NSLog(@"%@", name);
+        AMKERuntimeInfoLog(@"%@", name);
     }
     free(meths);
     
-    printf("\n\n");
+    AMKERuntimeInfoLog(@"\n\n");
 }
 
 - (id)valueForUndefinedKey:(NSString *)key {

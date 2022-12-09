@@ -14,6 +14,7 @@ target 'AMKCategories_Example' do
     pod 'AMKStackView'
     pod 'MBProgressHUD', :path => '../PrivatePods/MBProgressHUD'
     pod 'MJRefresh', '3.7.5'
-    pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'
+#    pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'
     pod 'Aspects', :path => '../PrivatePods/Aspects'
+    pod 'FLEX'
 end

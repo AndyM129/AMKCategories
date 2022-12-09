@@ -9,6 +9,7 @@
 #import "AMKAppDelegate.h"
 #import "AMKRootViewController.h"
 #import <AMKCategories/UIWindow+AMKReleaseMode.h>
+#import <FLEX/FLEX.h>
 
 @implementation AMKAppDelegate
 
@@ -41,7 +42,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-
+    [FLEXManager.sharedManager showExplorer];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
