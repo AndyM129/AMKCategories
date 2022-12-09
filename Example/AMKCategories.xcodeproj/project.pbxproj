@@ -388,8 +388,8 @@
 		8806D95F290BB4BA005DC5C1 /* GitCommitInfo */ = {
 			isa = PBXGroup;
 			children = (
-				8806D960290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.m */,
 				8806D961290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.h */,
+				8806D960290BB4BA005DC5C1 /* AMKGitCommitInfoViewController.m */,
 			);
 			path = GitCommitInfo;
 			sourceTree = "<group>";
@@ -712,7 +712,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#最后一次提交的SHA\ngit_sha=$(git rev-parse HEAD)\n\n#当前的分支\ngit_branch=$(git symbolic-ref --short -q HEAD)\n\n#最后一次提交的作者\ngit_last_commit_user=$(git log -1 --pretty=format:'%an')\n\n#最后一次提交的时间\ngit_last_commit_date=$(git log -1 --format='%cd')\n\ninfo_plist=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :'AMKGitCommitSHA'       '${git_sha}'\"                \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'AMKGitCommitBranch'    '${git_branch}'\"                 \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'AMKGitCommitUser'      ${git_last_commit_user}\"       \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'AMKGitCommitDate'      '${git_last_commit_date}'\"       \"${info_plist}\"\n";
+			shellScript = "# 存入的文件 \ninfo_plist=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Info.plist\"\n\n# 最后一次提交的SHA：获取、删除后重新添加\ngit_sha=$(git rev-parse HEAD)\necho \"git_sha = ${git_sha}\"\n/usr/libexec/PlistBuddy -c \"Delete :AMKGitCommitSHA\" \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Add :AMKGitCommitSHA string '${git_sha}'\" \"${info_plist}\"\n\n# 当前的分支：获取、删除后重新添加\ngit_branch=$(git symbolic-ref --short -q HEAD)\necho \"git_branch = ${git_branch}\"\n/usr/libexec/PlistBuddy -c \"Delete :AMKGitCommitBranch\" \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Add :AMKGitCommitBranch string '${git_branch}'\" \"${info_plist}\"\n\n# 最后一次提交的作者\ngit_last_commit_user=$(git log -1 --pretty=format:'%an')\necho \"git_last_commit_user = ${git_last_commit_user}\"\n/usr/libexec/PlistBuddy -c \"Delete :AMKGitCommitUser\" \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Add :AMKGitCommitUser string '${git_last_commit_user}'\" \"${info_plist}\"\n\n# 最后一次提交的时间，示例：2022-12-09 18:31:01 +0800\ngit_last_commit_date=$(git log -1 --format='%cd' --date=iso8601)\necho \"git_last_commit_date = ${git_last_commit_date}\"\n/usr/libexec/PlistBuddy -c \"Delete :AMKGitCommitDate\" \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Add :AMKGitCommitDate string '${git_last_commit_date}'\" \"${info_plist}\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

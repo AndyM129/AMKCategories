@@ -63,7 +63,7 @@ NSString * _Nonnull const AMKGitCommitDateInfoKey = @"AMKGitCommitDate";
         NSString *gitCommitDateStr = [NSBundle mainBundle].infoDictionary[AMKGitCommitDateInfoKey];
         NSString *timeZoneString = [gitCommitDateStr componentsSeparatedByString:@"+"].lastObject;
         NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = @"EEE MMM dd HH:mm:ss yyyy Z";
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
         gitCommitDate = [formatter dateFromString:gitCommitDateStr];
         gitCommitDate = [gitCommitDate dateByAddingTimeInterval:timeZoneString.integerValue/100*3600];
     });

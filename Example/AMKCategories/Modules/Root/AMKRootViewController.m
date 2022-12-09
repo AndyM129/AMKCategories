@@ -73,6 +73,7 @@
 - (NSMutableArray<AMKRootExampleModel *> *)examples {
     if (!_examples) {
         _examples = @[].mutableCopy;
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKGitCommitInfoViewController" title:@"Git提交信息"]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKContentHuggingPriorityViewController" title:@"UIView：抗拉伸 / 抗压缩"]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKMJRefreshViewController" title:@"MJRefresh：为您推荐xx条新内容" detail:@"类似头条，下拉刷新时结束之前，会先显示「为您推荐xx条新内容」"]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKUIPasteboardAlertExampleViewController" title:@"UIPasteboard：iOS16+ 权限弹窗优化" detail:@""]];
