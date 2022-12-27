@@ -108,6 +108,7 @@ PODS:
     - YYCategories
   - Aspects (1.4.1)
   - FLEX (4.7.0)
+  - lottie-ios (2.5.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
@@ -123,6 +124,7 @@ DEPENDENCIES:
   - AMKStackView
   - Aspects (from `../PrivatePods/Aspects`)
   - FLEX
+  - lottie-ios (= 2.5.3)
   - Masonry
   - MBProgressHUD (from `../PrivatePods/MBProgressHUD`)
   - MJRefresh (= 3.7.5)
@@ -132,6 +134,7 @@ SPEC REPOS:
   trunk:
     - AMKStackView
     - FLEX
+    - lottie-ios
     - Masonry
     - MJRefresh
     - YYCategories
@@ -149,11 +152,12 @@ SPEC CHECKSUMS:
   AMKStackView: 90cf0fe693007f8c050e9ed2c9789ce44e1298f6
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   FLEX: bdc9ac7d4a239e3d04c298c01221203257d63a80
+  lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 81cfc510382828962d6fd893c003d1b2beee386c
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: ebaa5e907ef51142c41f7537d25b02021ba18969
+PODFILE CHECKSUM: 5f0aca6cc1059bd5dc4ac07ed52fe61daad0f4af
 
 COCOAPODS: 1.10.1

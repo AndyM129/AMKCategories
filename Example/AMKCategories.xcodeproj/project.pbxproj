@@ -40,6 +40,9 @@
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
+		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
+		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
+		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
 		88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */; };
 /* End PBXBuildFile section */
@@ -115,6 +118,11 @@
 		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		887F16AA2941929400253DE8 /* NSObject+AMKERuntimeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMKERuntimeInfo.h"; sourceTree = "<group>"; };
 		887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AMKERuntimeInfo.m"; sourceTree = "<group>"; };
+		88CC95D62959C00D00C0AD26 /* AMKLottieExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLottieExampleViewController.h; sourceTree = "<group>"; };
+		88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLottieExampleViewController.m; sourceTree = "<group>"; };
+		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
+		88CC95DF2959D90500C0AD26 /* WKNVipBenefitsAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVipBenefitsAnimationView.h; sourceTree = "<group>"; };
+		88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVipBenefitsAnimationView.m; sourceTree = "<group>"; };
 		88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMJRefreshViewController.h; sourceTree = "<group>"; };
 		88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMJRefreshViewController.m; sourceTree = "<group>"; };
 		88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeaderToastView.h; sourceTree = "<group>"; };
@@ -449,6 +457,7 @@
 		8806D96F290BB4BA005DC5C1 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				88CC95D52959BFEB00C0AD26 /* Lottie */,
 				88EEBDE929151FD10049AED5 /* MJRefresh */,
 				8806D970290BB4BA005DC5C1 /* MBProgressHUD */,
 			);
@@ -525,6 +534,26 @@
 				887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		88CC95D52959BFEB00C0AD26 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				88CC95D62959C00D00C0AD26 /* AMKLottieExampleViewController.h */,
+				88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */,
+				88CC95DF2959D90500C0AD26 /* WKNVipBenefitsAnimationView.h */,
+				88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */,
+				88CC95D92959C53B00C0AD26 /* Resources */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		88CC95D92959C53B00C0AD26 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				88CC95DA2959C53B00C0AD26 /* christmas.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		88EEBDE929151FD10049AED5 /* MJRefresh */ = {
@@ -628,6 +657,7 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +709,7 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -690,6 +721,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -727,8 +759,10 @@
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
+				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
+				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,

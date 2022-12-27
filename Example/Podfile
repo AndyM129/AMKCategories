@@ -17,4 +17,5 @@ target 'AMKCategories_Example' do
 #    pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'
     pod 'Aspects', :path => '../PrivatePods/Aspects'
     pod 'FLEX'
+    pod 'lottie-ios', '2.5.3'
 end
