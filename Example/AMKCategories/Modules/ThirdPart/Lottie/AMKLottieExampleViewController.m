@@ -8,6 +8,7 @@
 
 #import "AMKLottieExampleViewController.h"
 #import "WKNVipBenefitsAnimationView.h"
+#import <AMKCategories/CAAnimation+AMKAnimationDelegate.h>
 #import <Lottie/Lottie.h>
 
 static NSInteger kAnimationBackgroundViewTag = 1000;
@@ -46,6 +47,7 @@ static NSInteger kAnimationBackgroundViewTag = 1000;
     self.view.backgroundColor = self.view.backgroundColor?:[UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithTitle:@"移除动画" style:UIBarButtonItemStylePlain target:self action:nil];
     
+    //[self test_0];
     [self test_1];
     [self test_2];
     [self test_3];
@@ -85,6 +87,51 @@ static NSInteger kAnimationBackgroundViewTag = 1000;
 #pragma mark - Layout Subviews
 
 #pragma mark - Tests
+
+- (void)test_0 {
+    __weak __typeof__(self)weakSelf = self;
+    [self.stackView addArrangedButton:@"基础动画" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        UIView *animationView = [UIView.alloc initWithFrame:CGRectMake(0, 0, 150, 150)];
+        animationView.center = weakSelf.view.center;
+        animationView.backgroundColor = UIColor.orangeColor;
+        [weakSelf.view addSubview:animationView];
+        __weak UIView *weakAnimationView = animationView;
+        
+//        // 位移动画
+//        CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+//        positionAnimation.fromValue = [NSValue valueWithCGPoint:animationView.layer.position];
+//        positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointZero];
+//        positionAnimation.duration = 1;
+//        positionAnimation.fillMode = kCAFillModeForwards;
+//        positionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//        positionAnimation.repeatCount = 1; //CGFLOAT_MAX;
+//        positionAnimation.removedOnCompletion = NO;
+//        [positionAnimation setAmk_animationDidStopBlock:^(CAAnimation * _Nullable animation, BOOL finished) {
+//            [weakAnimationView removeFromSuperview];
+//        }];
+//        [animationView.layer addAnimation:positionAnimation forKey:@"positionAnimation"];
+        
+//        // 旋转动画：抖动
+//        CAKeyframeAnimation *shakeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+//        shakeAnimation.values = @[@(0/360.0*M_PI), @(-20/180.0*M_PI), @(20/180.0*M_PI), @(-20/180.0*M_PI), @(20/180.0*M_PI), @(0/360.0*M_PI)];
+//        shakeAnimation.keyTimes = @[@(0), @(0.1), @(0.2), @(0.3), @(0.4), @(0.5), @(1)];
+//        shakeAnimation.fillMode = kCAFillModeForwards;
+//        shakeAnimation.duration = 1.0;
+//        shakeAnimation.fillMode = kCAFillModeForwards;
+//        shakeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//        shakeAnimation.repeatCount = CGFLOAT_MAX;
+//        shakeAnimation.removedOnCompletion = YES;
+//        [shakeAnimation setAmk_animationDidStopBlock:^(CAAnimation * _Nullable animation, BOOL finished) {
+//            [weakAnimationView removeFromSuperview];
+//        }];
+//        [animationView.layer addAnimation:shakeAnimation forKey:@"shakeAnimation"];
+        
+        // 移除按钮
+        [weakSelf.navigationItem.rightBarButtonItem setActionBlock:^(UIBarButtonItem *barButtonItem) {
+            [weakAnimationView removeFromSuperview];
+        }];
+    }];
+}
 
 - (void)test_1 {
     __weak __typeof__(self)weakSelf = self;
