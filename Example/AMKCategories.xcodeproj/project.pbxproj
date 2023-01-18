@@ -40,6 +40,10 @@
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
+		888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F052977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.m */; };
+		888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F082977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.m */; };
+		888D8F0D2977EE0F00B8F26F /* NSURLRequest+AMKOfflineLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F092977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.m */; };
+		888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */; };
 		88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */; };
 		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
@@ -122,6 +126,13 @@
 		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		887F16AA2941929400253DE8 /* NSObject+AMKERuntimeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMKERuntimeInfo.h"; sourceTree = "<group>"; };
 		887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AMKERuntimeInfo.m"; sourceTree = "<group>"; };
+		888D8F052977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+AMKOfflineLoading.m"; sourceTree = "<group>"; };
+		888D8F062977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+AMKOfflineLoading.h"; sourceTree = "<group>"; };
+		888D8F072977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMKOfflineLoadingWebViewController.h; sourceTree = "<group>"; };
+		888D8F082977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMKOfflineLoadingWebViewController.m; sourceTree = "<group>"; };
+		888D8F092977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+AMKOfflineLoading.m"; sourceTree = "<group>"; };
+		888D8F0A2977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+AMKOfflineLoading.h"; sourceTree = "<group>"; };
+		888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WebOfflineLoading.xcassets; sourceTree = "<group>"; };
 		88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarController.h; sourceTree = "<group>"; };
 		88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarController.m; sourceTree = "<group>"; };
 		88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarItemViewController.h; sourceTree = "<group>"; };
@@ -269,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				8806D973290BB4BA005DC5C1 /* Root */,
+				888D8F032977EE0E00B8F26F /* WebKit */,
 				8806D943290BB4BA005DC5C1 /* UIKit */,
 				8806D95B290BB4BA005DC5C1 /* Foundation */,
 				8806D96F290BB4BA005DC5C1 /* ThirdPart */,
@@ -549,6 +561,28 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		888D8F032977EE0E00B8F26F /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				888D8F042977EE0E00B8F26F /* OfflineLoading */,
+			);
+			path = WebKit;
+			sourceTree = "<group>";
+		};
+		888D8F042977EE0E00B8F26F /* OfflineLoading */ = {
+			isa = PBXGroup;
+			children = (
+				888D8F072977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.h */,
+				888D8F082977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.m */,
+				888D8F0A2977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.h */,
+				888D8F052977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.m */,
+				888D8F062977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.h */,
+				888D8F092977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.m */,
+				888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */,
+			);
+			path = OfflineLoading;
+			sourceTree = "<group>";
+		};
 		88A05410295D95ED001B2CCE /* UITabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +726,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
+				888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */,
 			);
@@ -796,9 +831,11 @@
 				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
 				88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */,
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
+				888D8F0D2977EE0F00B8F26F /* NSURLRequest+AMKOfflineLoading.m in Sources */,
 				88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
+				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
@@ -812,6 +849,7 @@
 				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
+				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
