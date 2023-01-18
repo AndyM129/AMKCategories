@@ -44,6 +44,9 @@
 		888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F082977EE0E00B8F26F /* AMKOfflineLoadingWebViewController.m */; };
 		888D8F0D2977EE0F00B8F26F /* NSURLRequest+AMKOfflineLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F092977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.m */; };
 		888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */; };
+		888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */; };
+		888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */; };
+		888D8F182977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
 		88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */; };
 		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
@@ -133,6 +136,10 @@
 		888D8F092977EE0E00B8F26F /* NSURLRequest+AMKOfflineLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+AMKOfflineLoading.m"; sourceTree = "<group>"; };
 		888D8F0A2977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+AMKOfflineLoading.h"; sourceTree = "<group>"; };
 		888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WebOfflineLoading.xcassets; sourceTree = "<group>"; };
+		888D8F112977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKBundleResourceRequestExampleViewController.h; sourceTree = "<group>"; };
+		888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKBundleResourceRequestExampleViewController.m; sourceTree = "<group>"; };
+		888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BundleResourceRequest.xcassets; sourceTree = "<group>"; };
+		888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = amk_bundle_resource_request_example_3.jpeg; sourceTree = "<group>"; };
 		88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarController.h; sourceTree = "<group>"; };
 		88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarController.m; sourceTree = "<group>"; };
 		88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarItemViewController.h; sourceTree = "<group>"; };
@@ -412,6 +419,7 @@
 		8806D95E290BB4BA005DC5C1 /* NSBundle */ = {
 			isa = PBXGroup;
 			children = (
+				888D8F102977EF8900B8F26F /* BundleResourceRequest */,
 				8806D95F290BB4BA005DC5C1 /* GitCommitInfo */,
 				8806D962290BB4BA005DC5C1 /* AppVersionInfo */,
 			);
@@ -583,6 +591,25 @@
 			path = OfflineLoading;
 			sourceTree = "<group>";
 		};
+		888D8F102977EF8900B8F26F /* BundleResourceRequest */ = {
+			isa = PBXGroup;
+			children = (
+				888D8F112977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.h */,
+				888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */,
+				888D8F162977F32B00B8F26F /* Resource */,
+			);
+			path = BundleResourceRequest;
+			sourceTree = "<group>";
+		};
+		888D8F162977F32B00B8F26F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */,
+				888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		88A05410295D95ED001B2CCE /* UITabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +714,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AMK;
+				KnownAssetTags = (
+					MyInitialInstallResources,
+					MyOnDemandResources,
+					MyPrefetchResources,
+				);
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = AndyM129;
 				TargetAttributes = {
@@ -726,8 +758,10 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
+				888D8F182977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg in Resources */,
 				888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */,
 				88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -851,6 +885,7 @@
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
+				888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
@@ -985,11 +1020,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TGLMB8BDP2;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = MyInitialInstallResources;
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = MyPrefetchResources;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1003,11 +1041,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TGLMB8BDP2;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMKCategories/AMKCategories-Prefix.pch";
 				INFOPLIST_FILE = "AMKCategories/AMKCategories-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = MyInitialInstallResources;
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = MyPrefetchResources;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

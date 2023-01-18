@@ -80,6 +80,7 @@
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKUIPasteboardAlertExampleViewController" title:@"UIPasteboard：iOS16+ 权限弹窗优化" detail:@""]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKLottieExampleViewController" title:@"Lottie 动画示例" detail:@""]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKLifeCircleTabBarController" title:@"TabBarController viewDidAppear 探索" detail:@""]];
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKBundleResourceRequestExampleViewController" title:@"ODR：On-Demand Resources (iOS, tvOS) 调研" detail:@"iOS 官方包体积优化方案"]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKStackViewController" title:@"示例" detail:@"这是描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"]];
     }
     return _examples;
