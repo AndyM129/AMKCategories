@@ -107,6 +107,7 @@ PODS:
     - Masonry
     - YYCategories
   - Aspects (1.4.1)
+  - FDFullscreenPopGesture (1.1)
   - FLEX (4.7.0)
   - lottie-ios (2.5.3)
   - Masonry (1.1.0)
@@ -123,6 +124,7 @@ DEPENDENCIES:
   - AMKCategories/UIKit (from `../`)
   - AMKStackView
   - Aspects (from `../PrivatePods/Aspects`)
+  - FDFullscreenPopGesture
   - FLEX
   - lottie-ios (= 2.5.3)
   - Masonry
@@ -133,6 +135,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AMKStackView
+    - FDFullscreenPopGesture
     - FLEX
     - lottie-ios
     - Masonry
@@ -151,6 +154,7 @@ SPEC CHECKSUMS:
   AMKCategories: fc87eb896636efd6c118d68c2494b923cb9316b7
   AMKStackView: 90cf0fe693007f8c050e9ed2c9789ce44e1298f6
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FLEX: bdc9ac7d4a239e3d04c298c01221203257d63a80
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -158,6 +162,6 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 5f0aca6cc1059bd5dc4ac07ed52fe61daad0f4af
+PODFILE CHECKSUM: e432ff4f4a7f3f8f43c7ed55d7fcbdc8ce2c06e8
 
 COCOAPODS: 1.10.1

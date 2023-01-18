@@ -34,6 +34,9 @@ typedef NS_ENUM(NSInteger, AMKViewControllerTransitionStyle) {
 @property(nonatomic, assign) BOOL amk_presentedWithNavigationController;
 
 /** 返回上一个ViewController */
+- (BOOL)amk_goBack;
+
+/** 返回上一个ViewController */
 - (BOOL)amk_goBackAnimated:(BOOL)animated;
 
 /** 返回 [UIViewController amk_topViewController] 的上一个ViewController */

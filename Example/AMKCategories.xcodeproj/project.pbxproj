@@ -40,6 +40,10 @@
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
+		88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */; };
+		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
+		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
+		88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */; };
 		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
 		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
 		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
@@ -118,6 +122,14 @@
 		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		887F16AA2941929400253DE8 /* NSObject+AMKERuntimeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMKERuntimeInfo.h"; sourceTree = "<group>"; };
 		887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AMKERuntimeInfo.m"; sourceTree = "<group>"; };
+		88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarController.h; sourceTree = "<group>"; };
+		88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarController.m; sourceTree = "<group>"; };
+		88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarItemViewController.h; sourceTree = "<group>"; };
+		88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarItemViewController.m; sourceTree = "<group>"; };
+		88A05418295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarSubViewController.h; sourceTree = "<group>"; };
+		88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarSubViewController.m; sourceTree = "<group>"; };
+		88A0541B295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarBaseViewController.h; sourceTree = "<group>"; };
+		88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarBaseViewController.m; sourceTree = "<group>"; };
 		88CC95D62959C00D00C0AD26 /* AMKLottieExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLottieExampleViewController.h; sourceTree = "<group>"; };
 		88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLottieExampleViewController.m; sourceTree = "<group>"; };
 		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
@@ -271,6 +283,7 @@
 				8806D94F290BB4BA005DC5C1 /* UICollectionView */,
 				887F1024293F3BE300253DE8 /* UIPasteboard */,
 				8806D953290BB4BA005DC5C1 /* UIViewController */,
+				88A05410295D95ED001B2CCE /* UITabBarController */,
 				8806D957290BB4BA005DC5C1 /* UITableView */,
 			);
 			path = UIKit;
@@ -536,6 +549,29 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		88A05410295D95ED001B2CCE /* UITabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				88A05411295D95FC001B2CCE /* LifeCircle */,
+			);
+			path = UITabBarController;
+			sourceTree = "<group>";
+		};
+		88A05411295D95FC001B2CCE /* LifeCircle */ = {
+			isa = PBXGroup;
+			children = (
+				88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */,
+				88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */,
+				88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */,
+				88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */,
+				88A05418295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.h */,
+				88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */,
+				88A0541B295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.h */,
+				88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */,
+			);
+			path = LifeCircle;
+			sourceTree = "<group>";
+		};
 		88CC95D52959BFEB00C0AD26 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +740,7 @@
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/AMKStackView/AMKStackView.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -716,6 +753,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKStackView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -756,7 +794,9 @@
 				8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */,
 				88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */,
 				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
+				88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */,
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
+				88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
@@ -774,9 +814,11 @@
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
+				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

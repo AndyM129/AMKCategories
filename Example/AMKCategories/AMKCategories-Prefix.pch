@@ -27,6 +27,7 @@ static NSString *_AMKELogTimeStringWithDate(NSDate *date) {
 #define NSLog(FORMAT, ...) fprintf(stderr,"%s %s Line %d: %s\n", _AMKELogTimeStringWithDate(NSDate.date).UTF8String, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #pragma clang diagnostic pop
 
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import <AMKStackView/AMKStackView.h>
 #import <AMKCategories/UIViewController+AMKNavigationControllerWithCallback.h>
 #import <Masonry/Masonry.h>
