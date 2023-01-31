@@ -46,7 +46,7 @@
 		888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F0E2977EE6C00B8F26F /* WebOfflineLoading.xcassets */; };
 		888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */; };
 		888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */; };
-		888D8F182977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
+		888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
 		88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */; };
 		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
@@ -139,7 +139,7 @@
 		888D8F112977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKBundleResourceRequestExampleViewController.h; sourceTree = "<group>"; };
 		888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKBundleResourceRequestExampleViewController.m; sourceTree = "<group>"; };
 		888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BundleResourceRequest.xcassets; sourceTree = "<group>"; };
-		888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = amk_bundle_resource_request_example_3.jpeg; sourceTree = "<group>"; };
+		888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MyOnDemandResources_1.jpeg; sourceTree = "<group>"; };
 		88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarController.h; sourceTree = "<group>"; };
 		88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarController.m; sourceTree = "<group>"; };
 		88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarItemViewController.h; sourceTree = "<group>"; };
@@ -605,7 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */,
-				888D8F172977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg */,
+				888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -758,7 +758,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
-				888D8F182977F34B00B8F26F /* amk_bundle_resource_request_example_3.jpeg in Resources */,
+				888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */,
 				888D8F0F2977EE6C00B8F26F /* WebOfflineLoading.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */,
