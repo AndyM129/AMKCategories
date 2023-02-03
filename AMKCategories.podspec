@@ -184,6 +184,11 @@ Pod::Spec.new do |s|
                 emoji.public_header_files = 'AMKCategories/Classes/Foundation/NSString/Emoji/*.h'
                 emoji.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
+            # VersionComparison 版本比较
+            string.subspec 'VersionComparison' do |versionComparison|
+                versionComparison.source_files = 'AMKCategories/Classes/Foundation/NSString/VersionComparison/*.{h,m}'
+                versionComparison.public_header_files = 'AMKCategories/Classes/Foundation/NSString/VersionComparison/*.h'
+            end
         end
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|

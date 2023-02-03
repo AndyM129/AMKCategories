@@ -38,8 +38,10 @@ PODS:
   - AMKCategories/Foundation/NSObject/MethodSwizzling (0.1.8)
   - AMKCategories/Foundation/NSString (0.1.8):
     - AMKCategories/Foundation/NSString/Emoji (= 0.1.8)
+    - AMKCategories/Foundation/NSString/VersionComparison (= 0.1.8)
   - AMKCategories/Foundation/NSString/Emoji (0.1.8):
     - AMKCategories/Foundation/NSObject/MethodSwizzling
+  - AMKCategories/Foundation/NSString/VersionComparison (0.1.8)
   - AMKCategories/QuartzCore (0.1.8):
     - AMKCategories/QuartzCore/CAAnimation (= 0.1.8)
   - AMKCategories/QuartzCore/CAAnimation (0.1.8):
@@ -151,7 +153,7 @@ EXTERNAL SOURCES:
     :path: "../PrivatePods/MBProgressHUD"
 
 SPEC CHECKSUMS:
-  AMKCategories: fc87eb896636efd6c118d68c2494b923cb9316b7
+  AMKCategories: b697226f647775687749c915d706a67b4c6884c5
   AMKStackView: 90cf0fe693007f8c050e9ed2c9789ce44e1298f6
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
