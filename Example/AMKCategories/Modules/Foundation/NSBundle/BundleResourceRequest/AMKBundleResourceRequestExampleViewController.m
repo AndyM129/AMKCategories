@@ -27,14 +27,14 @@
 #pragma mark - Dealloc
 
 - (void)dealloc {
-    
+    [_resourceRequest removeObserverBlocks];
 }
 
 #pragma mark - Init Methods
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.title = NSStringFromClass(self.class);
+        self.title = @"On-Demand Resources";
     }
     return self;
 }
@@ -45,15 +45,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = self.view.backgroundColor?:[UIColor whiteColor];
     
-    // 示例：
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 132: ❌ 加载资源：amk_bundle_resource_request_example_1 => size=0*0
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 137: ❌ 加载资源：amk_bundle_resource_request_example_2 => size=0*0
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 143: ❌ 加载资源：amk_bundle_resource_request_example_3 => size=0*0
-    // -[AMKBundleResourceRequestExampleViewController accessingResourcesIfNeeded]_block_invoke_2 Line 112: ✅ 检查请求的标签资源是否全部都已经在设备中保存了：["MyPrefetchResources","MyOnDemandResources","MyInitialInstallResources"] => 1
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 132: ✅ 加载资源：amk_bundle_resource_request_example_1 => size=20000*20000
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 137: ✅ 加载资源：amk_bundle_resource_request_example_2 => size=20000*20000
-    // -[AMKBundleResourceRequestExampleViewController useResources] Line 143: ✅ 加载资源：amk_bundle_resource_request_example_3 => size=20000*11256
-
     __weak __typeof__(self)weakSelf = self;
     [self.stackView addArrangedButton:@"检查资源" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
         [weakSelf conditionallyBeginAccessingResourcesWithCompletionHandler:nil];
@@ -109,6 +100,10 @@
     if (!_resourceRequest) {
         NSSet *tags = [NSSet.alloc initWithObjects:@"MyInitialInstallResources", @"MyPrefetchResources", @"MyOnDemandResources", nil];
         _resourceRequest = [NSBundleResourceRequest.alloc initWithTags:tags];
+        _resourceRequest.loadingPriority = 1.0;
+        [_resourceRequest addObserverBlockForKeyPath:@"progress.fractionCompleted" block:^(NSBundleResourceRequest *resourceRequest, NSNumber *oldVal, NSNumber *newVal) {
+            AMKBundleResourceRequestLog(@"%@ 请求标签资源：%@ => %.2f%%", @"🌐", resourceRequest.tags.allObjects.jsonStringEncoded, newVal.doubleValue * 100);
+        }];
     }
     return _resourceRequest;
 }
