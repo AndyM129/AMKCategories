@@ -189,6 +189,11 @@ Pod::Spec.new do |s|
                 versionComparison.source_files = 'AMKCategories/Classes/Foundation/NSString/VersionComparison/*.{h,m}'
                 versionComparison.public_header_files = 'AMKCategories/Classes/Foundation/NSString/VersionComparison/*.h'
             end
+            # URL 相关
+            string.subspec 'URL' do |url|
+                url.source_files = 'AMKCategories/Classes/Foundation/NSString/URL/*.{h,m}'
+                url.public_header_files = 'AMKCategories/Classes/Foundation/NSString/URL/*.h'
+            end
         end
         # NSObject 相关扩展
         foundation.subspec 'NSObject' do |object|

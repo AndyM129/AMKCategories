@@ -10,8 +10,11 @@ target 'AMKCategories_Example' do
     
     # 第三方
     pod 'Masonry'
+    pod 'YYModel'
+    pod 'YYText'
     pod 'YYCategories'
     pod 'AMKStackView'
+    pod 'AFNetworking', '3.2.1'
     pod 'MBProgressHUD', :path => '../PrivatePods/MBProgressHUD'
     pod 'MJRefresh', '3.7.5'
 #    pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'

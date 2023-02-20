@@ -22,6 +22,7 @@
 #import "NSObject+AMKLocaleDescription.h"
 #import "NSObject+AMKMethodSwizzling.h"
 #import "NSString+AMKEmoji.h"
+#import "NSString+AMKURL.h"
 #import "NSString+AMKVersionComparison.h"
 #import "CAAnimation+AMKAnimationDelegate.h"
 #import "MBProgressHUD+AMKCategories.h"

@@ -276,6 +276,11 @@
               "name": "VersionComparison",
               "source_files": "AMKCategories/Classes/Foundation/NSString/VersionComparison/*.{h,m}",
               "public_header_files": "AMKCategories/Classes/Foundation/NSString/VersionComparison/*.h"
+            },
+            {
+              "name": "URL",
+              "source_files": "AMKCategories/Classes/Foundation/NSString/URL/*.{h,m}",
+              "public_header_files": "AMKCategories/Classes/Foundation/NSString/URL/*.h"
             }
           ]
         },
