@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     s.author           = { 'Andy Meng' => 'andy_m129@163.com' }
     s.source           = { :git => 'https://github.com/AndyM129/AMKCategories.git', :tag => s.version.to_s }
     s.social_media_url = 'http://www.jianshu.com/u/28d89b68984b'
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '11.0'
     s.requires_arc = true
     s.default_subspec = 'DefaultSubspec'
 
