@@ -1,6 +1,0 @@
-framework module AMKCategories {
-  umbrella header "AMKCategories-umbrella.h"
-
-  export *
-  module * { export * }
-}
