@@ -54,6 +54,8 @@
 		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
 		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
 		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
+		88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */; };
+		88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB692A1E42270063DFB9 /* AMKAiWebViewController.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
 		88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDF4291527530049AED5 /* AMKRefreshHeaderToastView.m */; };
 /* End PBXBuildFile section */
@@ -153,6 +155,10 @@
 		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
 		88CC95DF2959D90500C0AD26 /* WKNVipBenefitsAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVipBenefitsAnimationView.h; sourceTree = "<group>"; };
 		88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVipBenefitsAnimationView.m; sourceTree = "<group>"; };
+		88E4BB652A1E42110063DFB9 /* AMKAiRootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiRootController.h; sourceTree = "<group>"; };
+		88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKAiRootController.m; sourceTree = "<group>"; };
+		88E4BB682A1E42270063DFB9 /* AMKAiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiWebViewController.h; sourceTree = "<group>"; };
+		88E4BB692A1E42270063DFB9 /* AMKAiWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKAiWebViewController.m; sourceTree = "<group>"; };
 		88EEBDEA29151FF90049AED5 /* AMKMJRefreshViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKMJRefreshViewController.h; sourceTree = "<group>"; };
 		88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKMJRefreshViewController.m; sourceTree = "<group>"; };
 		88EEBDF3291527530049AED5 /* AMKRefreshHeaderToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeaderToastView.h; sourceTree = "<group>"; };
@@ -233,6 +239,7 @@
 				6003F59C195388D20070C39A /* AMKAppDelegate.h */,
 				6003F59D195388D20070C39A /* AMKAppDelegate.m */,
 				8806D942290BB4BA005DC5C1 /* Modules */,
+				88E4BB642A1E41C60063DFB9 /* AI */,
 				8806D981290BB531005DC5C1 /* Commons */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -653,6 +660,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		88E4BB642A1E41C60063DFB9 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				88E4BB652A1E42110063DFB9 /* AMKAiRootController.h */,
+				88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */,
+				88E4BB682A1E42270063DFB9 /* AMKAiWebViewController.h */,
+				88E4BB692A1E42270063DFB9 /* AMKAiWebViewController.m */,
+			);
+			name = AI;
+			path = Modules/AI;
+			sourceTree = "<group>";
+		};
 		88EEBDE929151FD10049AED5 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +915,8 @@
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
+				88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */,
+				88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */,
 			);
