@@ -39,6 +39,7 @@
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
+		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
@@ -131,6 +132,8 @@
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
 		8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNEditReaderNewTransitioning.m; sourceTree = "<group>"; };
+		8831D7F82A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKScreenRightEdgePanGestureRecognizerExampleViewController.h; sourceTree = "<group>"; };
+		8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKScreenRightEdgePanGestureRecognizerExampleViewController.m; sourceTree = "<group>"; };
 		885C55202918AD58007482B8 /* AMKRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeader.h; sourceTree = "<group>"; };
 		885C55212918AD58007482B8 /* AMKRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeader.m; sourceTree = "<group>"; };
 		887F1026293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKUIPasteboardAlertExampleViewController.h; sourceTree = "<group>"; };
@@ -311,6 +314,7 @@
 		8806D943290BB4BA005DC5C1 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8831D7F62A53C49A00BABB4D /* UIScreenEdgePanGestureRecognizer */,
 				8806D944290BB4BA005DC5C1 /* UIView */,
 				8806D94F290BB4BA005DC5C1 /* UICollectionView */,
 				887F1024293F3BE300253DE8 /* UIPasteboard */,
@@ -559,6 +563,23 @@
 				8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */,
 			);
 			path = Transitioning;
+			sourceTree = "<group>";
+		};
+		8831D7F62A53C49A00BABB4D /* UIScreenEdgePanGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				8831D7F72A53C4A400BABB4D /* ScreenRightEdgePanGestureRecognizer */,
+			);
+			path = UIScreenEdgePanGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		8831D7F72A53C4A400BABB4D /* ScreenRightEdgePanGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				8831D7F82A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.h */,
+				8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */,
+			);
+			path = ScreenRightEdgePanGestureRecognizer;
 			sourceTree = "<group>";
 		};
 		8840B8D4246660CB005BBA39 /* Resources */ = {
@@ -916,6 +937,7 @@
 				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
+				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
