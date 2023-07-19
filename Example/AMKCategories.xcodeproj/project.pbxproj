@@ -57,6 +57,7 @@
 		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
 		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
 		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
+		88CE2C2F2A66384D003BB866 /* AMKSubStringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE2C2E2A66384D003BB866 /* AMKSubStringViewController.swift */; };
 		88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */; };
 		88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB692A1E42270063DFB9 /* AMKAiWebViewController.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
@@ -164,6 +165,8 @@
 		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
 		88CC95DF2959D90500C0AD26 /* WKNVipBenefitsAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVipBenefitsAnimationView.h; sourceTree = "<group>"; };
 		88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVipBenefitsAnimationView.m; sourceTree = "<group>"; };
+		88CE2C2D2A66384C003BB866 /* AMKCategories-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMKCategories-Bridging-Header.h"; sourceTree = "<group>"; };
+		88CE2C2E2A66384D003BB866 /* AMKSubStringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKSubStringViewController.swift; sourceTree = "<group>"; };
 		88E4BB652A1E42110063DFB9 /* AMKAiRootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiRootController.h; sourceTree = "<group>"; };
 		88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKAiRootController.m; sourceTree = "<group>"; };
 		88E4BB682A1E42270063DFB9 /* AMKAiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiWebViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				6003F595195388D20070C39A /* AMKCategories-Info.plist */,
+				88CE2C2D2A66384C003BB866 /* AMKCategories-Bridging-Header.h */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* AMKCategories-Prefix.pch */,
@@ -465,6 +469,7 @@
 		8806D965290BB4BA005DC5C1 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				88CE2C2C2A66381A003BB866 /* SubString */,
 				8806D966290BB4BA005DC5C1 /* Emoji */,
 			);
 			path = NSString;
@@ -699,6 +704,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		88CE2C2C2A66381A003BB866 /* SubString */ = {
+			isa = PBXGroup;
+			children = (
+				88CE2C2E2A66384D003BB866 /* AMKSubStringViewController.swift */,
+			);
+			path = SubString;
+			sourceTree = "<group>";
+		};
 		88E4BB642A1E41C60063DFB9 /* AI */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +795,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = TGLMB8BDP2;
+						LastSwiftMigration = 1430;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -936,6 +950,7 @@
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
 				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
+				88CE2C2F2A66384D003BB866 /* AMKSubStringViewController.swift in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
@@ -1088,6 +1103,7 @@
 			baseConfigurationReference = 807350553AC9FD96BD8711DB /* Pods-AMKCategories_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TGLMB8BDP2;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1099,6 +1115,8 @@
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = MyPrefetchResources;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AMKCategories/AMKCategories-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1109,6 +1127,7 @@
 			baseConfigurationReference = 7BC29A4F4330E05DB5324258 /* Pods-AMKCategories_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TGLMB8BDP2;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1120,6 +1139,7 @@
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = MyPrefetchResources;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.andym129.AMKCategories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AMKCategories/AMKCategories-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1128,6 +1148,7 @@
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -1152,6 +1173,7 @@
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
