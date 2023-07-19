@@ -21,9 +21,13 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '11.0'
     s.requires_arc = true
     s.default_subspec = 'DefaultSubspec'
+    # s.public_header_files = 'AMKCategories/Classes/AMKCategories.h'
+    # s.prefix_header_file = 'AMKCategories/Classes/AMKCategories.pch'
 
     # 默认子组件
     s.subspec 'DefaultSubspec' do |defaultSubspec|
+        # defaultSubspec.source_files = "AMKCategories/Classes/AMKCategories.h"
+        # defaultSubspec.public_header_files = "AMKCategories/Classes/AMKCategories.h"
         defaultSubspec.dependency 'AMKCategories/UIKit'
         defaultSubspec.dependency 'AMKCategories/QuartzCore'
         defaultSubspec.dependency 'AMKCategories/Foundation'
@@ -176,6 +180,14 @@ Pod::Spec.new do |s|
                 objectForKey.public_header_files = 'AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.h'
             end
         end
+        # String 相关扩展
+        # foundation.subspec 'String' do |string|
+        #     # Conveniences 相关
+        #     string.subspec 'Conveniences' do |conveniences|
+        #         conveniences.source_files = 'AMKCategories/Classes/Foundation/String/Conveniences/*.swift'
+        #         conveniences.public_header_files = 'AMKCategories/Classes/Foundation/String/Conveniences/*.swift'
+        #     end
+        # end
         # NSString 相关扩展
         foundation.subspec 'NSString' do |string|
             # Emoji 相关
