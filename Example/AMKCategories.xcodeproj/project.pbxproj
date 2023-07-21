@@ -42,6 +42,8 @@
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
 		8844042C2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8844042B2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m */; };
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
+		886F3E012A6A37690059C0B4 /* AMK8250MainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E002A6A37690059C0B4 /* AMK8250MainWebViewController.m */; };
+		886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
 		888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F052977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.m */; };
@@ -141,6 +143,10 @@
 		8844042B2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCrashByInvalidUpdateCollectionViewController.m; sourceTree = "<group>"; };
 		885C55202918AD58007482B8 /* AMKRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeader.h; sourceTree = "<group>"; };
 		885C55212918AD58007482B8 /* AMKRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeader.m; sourceTree = "<group>"; };
+		886F3DFF2A6A37690059C0B4 /* AMK8250MainWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8250MainWebViewController.h; sourceTree = "<group>"; };
+		886F3E002A6A37690059C0B4 /* AMK8250MainWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8250MainWebViewController.m; sourceTree = "<group>"; };
+		886F3E022A6A37A90059C0B4 /* AMK8250PresentedWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8250PresentedWebViewController.h; sourceTree = "<group>"; };
+		886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8250PresentedWebViewController.m; sourceTree = "<group>"; };
 		887F1026293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKUIPasteboardAlertExampleViewController.h; sourceTree = "<group>"; };
 		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		887F16AA2941929400253DE8 /* NSObject+AMKERuntimeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMKERuntimeInfo.h"; sourceTree = "<group>"; };
@@ -612,6 +618,17 @@
 			path = CrashByInvalidUpdate;
 			sourceTree = "<group>";
 		};
+		886F3DFE2A6A36FB0059C0B4 /* wk8250 */ = {
+			isa = PBXGroup;
+			children = (
+				886F3DFF2A6A37690059C0B4 /* AMK8250MainWebViewController.h */,
+				886F3E002A6A37690059C0B4 /* AMK8250MainWebViewController.m */,
+				886F3E022A6A37A90059C0B4 /* AMK8250PresentedWebViewController.h */,
+				886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */,
+			);
+			path = wk8250;
+			sourceTree = "<group>";
+		};
 		887F1024293F3BE300253DE8 /* UIPasteboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				888D8F042977EE0E00B8F26F /* OfflineLoading */,
+				886F3DFE2A6A36FB0059C0B4 /* wk8250 */,
 			);
 			path = WebKit;
 			sourceTree = "<group>";
@@ -958,6 +976,8 @@
 			files = (
 				8806D980290BB4BB005DC5C1 /* AMKMBProgressHUDViewController.m in Sources */,
 				88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */,
+				886F3E012A6A37690059C0B4 /* AMK8250MainWebViewController.m in Sources */,
+				886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */,
 				8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */,
 				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
 				88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */,
