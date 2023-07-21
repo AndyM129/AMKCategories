@@ -16,7 +16,7 @@
 
 @interface AMK8250PresentedWebViewController ()
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
-@property (nonatomic, weak, readwrite, nullable) UIPanGestureRecognizer *panGestureRecognizerOfPresentingViewControllerWebView;
+@property (nonatomic, weak, readwrite, nullable) AMK8250MainWebViewController *presentingMainWebViewController;
 @end
 
 @implementation AMK8250PresentedWebViewController
@@ -59,7 +59,7 @@
     if (!isViewAppeared) {
         AMK8250MainWebViewController *viewController = (id)self.amk_previousViewController;
         if ([viewController isKindOfClass:AMK8250MainWebViewController.class]) {
-            self.panGestureRecognizerOfPresentingViewControllerWebView = viewController.webView.scrollView.panGestureRecognizer;
+            self.presentingMainWebViewController = viewController;
         }
     }
 }
@@ -71,7 +71,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     if (!self.presentingViewController) {
-        self.panGestureRecognizerOfPresentingViewControllerWebView = nil;
+        self.presentingMainWebViewController = nil;
     }
 }
 
@@ -88,13 +88,15 @@
     return _webView;
 }
 
-- (void)setPanGestureRecognizerOfPresentingViewControllerWebView:(UIPanGestureRecognizer *)panGestureRecognizerOfPresentingViewControllerWebView {
-    if (_panGestureRecognizerOfPresentingViewControllerWebView) {
-        [self.webView.scrollView removeGestureRecognizer:_panGestureRecognizerOfPresentingViewControllerWebView];
-    }
-    _panGestureRecognizerOfPresentingViewControllerWebView = panGestureRecognizerOfPresentingViewControllerWebView;
-    if (_panGestureRecognizerOfPresentingViewControllerWebView) {
-        [self.webView.scrollView addGestureRecognizer:_panGestureRecognizerOfPresentingViewControllerWebView];
+- (void)setPresentingMainWebViewController:(AMK8250MainWebViewController *)presentingMainWebViewController {
+    if (_presentingMainWebViewController != presentingMainWebViewController) {
+        if (_presentingMainWebViewController) {
+            [_presentingMainWebViewController.webView.scrollView addGestureRecognizer:_presentingMainWebViewController.webView.scrollView.panGestureRecognizer];
+        }
+        _presentingMainWebViewController = presentingMainWebViewController;
+        if (_presentingMainWebViewController) {
+            [self.webView.scrollView addGestureRecognizer:_presentingMainWebViewController.webView.scrollView.panGestureRecognizer];
+        }
     }
 }
 
