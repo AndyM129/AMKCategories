@@ -9,14 +9,16 @@
 #import "AMK8250PresentedWebViewController.h"
 #import "AMK8250MainWebViewController.h"
 #import <WebKit/WebKit.h>
+#import <Aspects/Aspects.h>
 
 @interface AMK8250MainWebViewController (AMK8250PresentedWebViewController)
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @end
 
-@interface AMK8250PresentedWebViewController ()
+@interface AMK8250PresentedWebViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @property (nonatomic, weak, readwrite, nullable) AMK8250MainWebViewController *presentingMainWebViewController;
+@property (nonatomic, strong, readwrite, nullable) UILabel *mainContentSchematicView;
 @end
 
 @implementation AMK8250PresentedWebViewController
@@ -88,14 +90,55 @@
     return _webView;
 }
 
+- (UILabel *)mainContentSchematicView {
+    if (!_mainContentSchematicView) {
+        _mainContentSchematicView = [UILabel.alloc init];
+        _mainContentSchematicView.userInteractionEnabled = NO;
+        _mainContentSchematicView.numberOfLines = 0;
+        _mainContentSchematicView.textAlignment = NSTextAlignmentCenter;
+        _mainContentSchematicView.font = [UIFont boldSystemFontOfSize:30];
+        _mainContentSchematicView.text = @"AI生成弹窗区域\n\n不可滑动编辑器";
+        _mainContentSchematicView.textColor = [UIColor.redColor colorWithAlphaComponent:0.25];
+        _mainContentSchematicView.layer.borderWidth = 2;
+        _mainContentSchematicView.layer.borderColor = _mainContentSchematicView.textColor.CGColor;
+        _mainContentSchematicView.layer.backgroundColor = [_mainContentSchematicView.textColor colorWithAlphaComponent:0.3].CGColor;
+        _mainContentSchematicView.frame = ({
+            CGRect frame = CGRectZero;
+            frame.size.width = self.view.width;
+            frame.size.height = self.view.height * 0.55;
+            frame.origin.y = self.view.height - frame.size.height;
+            frame;
+        });
+    }
+    return _mainContentSchematicView;
+}
+
 - (void)setPresentingMainWebViewController:(AMK8250MainWebViewController *)presentingMainWebViewController {
+    static void *kAspectTokenKey = &kAspectTokenKey;
+
     if (_presentingMainWebViewController != presentingMainWebViewController) {
-        if (_presentingMainWebViewController) {
+        if (_presentingMainWebViewController && [self getAssociatedValueForKey:kAspectTokenKey]) {
+            [[self getAssociatedValueForKey:kAspectTokenKey] remove];
+            [self setAssociateValue:nil withKey:kAspectTokenKey];
             [_presentingMainWebViewController.webView.scrollView addGestureRecognizer:_presentingMainWebViewController.webView.scrollView.panGestureRecognizer];
         }
         _presentingMainWebViewController = presentingMainWebViewController;
         if (_presentingMainWebViewController) {
-            [self.webView.scrollView addGestureRecognizer:_presentingMainWebViewController.webView.scrollView.panGestureRecognizer];
+            NSError *error;
+            __weak __typeof__(self)weakSelf = self;
+            id<AspectToken> aspectToken = [(NSObject *)_presentingMainWebViewController.webView.scrollView.panGestureRecognizer.delegate aspect_hookSelector:@selector(gestureRecognizerShouldBegin:) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
+                UIPanGestureRecognizer *panGestureRecognizer = aspectInfo.arguments.firstObject;
+                BOOL returnValue = CGRectContainsPoint(weakSelf.mainContentSchematicView.frame, [panGestureRecognizer locationInView:panGestureRecognizer.view]) ? NO : YES;
+                NSLog(@"returnValue = %@ ==> %@", @(returnValue), panGestureRecognizer);
+                [aspectInfo.originalInvocation setReturnValue:&returnValue];
+            } error:&error];
+            
+            if (error) {
+                NSLog(@"❌ %@", error);
+            } else {
+                [self setAssociateValue:aspectToken withKey:kAspectTokenKey];
+                [self.webView.scrollView addGestureRecognizer:_presentingMainWebViewController.webView.scrollView.panGestureRecognizer];
+            }
         }
     }
 }
@@ -106,6 +149,7 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    [self.view insertSubview:self.mainContentSchematicView aboveSubview:self.webView];
     self.webView.frame = self.view.bounds;
 }
 
@@ -128,6 +172,13 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
+
+#pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"%@", gestureRecognizer);
+    return YES;
+}
 
 #pragma mark - Helper Methods
 
