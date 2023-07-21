@@ -7,10 +7,16 @@
 //
 
 #import "AMK8250PresentedWebViewController.h"
+#import "AMK8250MainWebViewController.h"
 #import <WebKit/WebKit.h>
+
+@interface AMK8250MainWebViewController (AMK8250PresentedWebViewController)
+@property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
+@end
 
 @interface AMK8250PresentedWebViewController ()
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
+@property (nonatomic, weak, readwrite, nullable) UIPanGestureRecognizer *panGestureRecognizerOfPresentingViewControllerWebView;
 @end
 
 @implementation AMK8250PresentedWebViewController
@@ -47,7 +53,15 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    BOOL isViewAppeared = self.amk_isViewAppeared;
     [super viewDidAppear:animated];
+    
+    if (!isViewAppeared) {
+        AMK8250MainWebViewController *viewController = (id)self.amk_previousViewController;
+        if ([viewController isKindOfClass:AMK8250MainWebViewController.class]) {
+            self.panGestureRecognizerOfPresentingViewControllerWebView = viewController.webView.scrollView.panGestureRecognizer;
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -56,6 +70,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    if (!self.presentingViewController) {
+        self.panGestureRecognizerOfPresentingViewControllerWebView = nil;
+    }
 }
 
 #pragma mark - Getters & Setters
@@ -69,6 +86,16 @@
         [self.view addSubview:_webView];
     }
     return _webView;
+}
+
+- (void)setPanGestureRecognizerOfPresentingViewControllerWebView:(UIPanGestureRecognizer *)panGestureRecognizerOfPresentingViewControllerWebView {
+    if (_panGestureRecognizerOfPresentingViewControllerWebView) {
+        [self.webView.scrollView removeGestureRecognizer:_panGestureRecognizerOfPresentingViewControllerWebView];
+    }
+    _panGestureRecognizerOfPresentingViewControllerWebView = panGestureRecognizerOfPresentingViewControllerWebView;
+    if (_panGestureRecognizerOfPresentingViewControllerWebView) {
+        [self.webView.scrollView addGestureRecognizer:_panGestureRecognizerOfPresentingViewControllerWebView];
+    }
 }
 
 #pragma mark - Data & Networking
