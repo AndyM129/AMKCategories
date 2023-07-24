@@ -10,6 +10,7 @@
 #import "AMK8250MainWebViewController.h"
 #import <WebKit/WebKit.h>
 #import <Aspects/Aspects.h>
+#import <AMKCategories/WKWebView+AMKTextSelection.h>
 
 @interface AMK8250MainWebViewController (AMK8250PresentedWebViewController)
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
@@ -85,6 +86,18 @@
         _webView.backgroundColor = UIColor.clearColor;
         _webView.opaque = false;
         _webView.scrollView.bounces = NO;
+        [_webView setAmk_textSelectionViewLayoutSubviewsBlock:^(WKWebView * _Nullable webView, UIView * _Nullable textSelectionView) {
+            CAShapeLayer *layerMask = textSelectionView.layer.mask ?: [CAShapeLayer layer];
+            if ([layerMask isKindOfClass:CAShapeLayer.class]) {
+                CGRect frame = textSelectionView.bounds;
+                frame.size.height = 250 + 10 * 2;
+                frame.origin.y = textSelectionView.bounds.size.height - frame.size.height - 10 - 50;
+               
+                layerMask.path = [UIBezierPath bezierPathWithRect:frame].CGPath;
+                textSelectionView.layer.mask = layerMask;
+                textSelectionView.layer.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.5].CGColor;
+            }
+        }];
         [self.view addSubview:_webView];
     }
     return _webView;

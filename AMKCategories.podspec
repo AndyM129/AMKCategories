@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
     # 默认子组件
     s.subspec 'DefaultSubspec' do |defaultSubspec|
+        defaultSubspec.dependency 'AMKCategories/WebKit'
         defaultSubspec.dependency 'AMKCategories/UIKit'
         defaultSubspec.dependency 'AMKCategories/QuartzCore'
         defaultSubspec.dependency 'AMKCategories/Foundation'
@@ -35,6 +36,18 @@ Pod::Spec.new do |s|
         thirdPart.subspec 'MBProgressHUD' do |progressHUD|
             progressHUD.source_files = 'AMKCategories/Classes/ThirdPart/MBProgressHUD/*.{h,m,mm}'
             progressHUD.dependency 'MBProgressHUD'
+        end
+    end
+    
+    # WebKit 通用扩展
+    s.subspec 'WebKit' do |webKit|
+        # WKWebView 提示相关
+        webKit.subspec 'WKWebView' do |webView|
+            # TextSelection 提示相关
+            webView.subspec 'TextSelection' do |textSelection|
+                textSelection.source_files = 'AMKCategories/Classes/WebKit/WKWebView/TextSelection/*.{h,m,mm}'
+                textSelection.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
         end
     end
 
@@ -86,6 +99,14 @@ Pod::Spec.new do |s|
             view.subspec 'ViewLevel' do |viewLevel|
                 viewLevel.source_files = 'AMKCategories/Classes/UIKit/UIView/ViewLevel/*.{h,m}'
                 viewLevel.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+            end
+        end
+        # UIResponder 相关
+        uikit.subspec 'UIResponder' do |responder|
+            # Interactions 交互相关
+            responder.subspec 'ResponderStandardEditActions' do |standardEditActions|
+                standardEditActions.source_files = 'AMKCategories/Classes/UIKit/UIResponder/ResponderStandardEditActions/*.{h,m}'
+                standardEditActions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
         # UIImage 相关

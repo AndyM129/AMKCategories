@@ -1,48 +1,50 @@
+////
+////  UIView+UITextSelectionView.m
+////  AMKCategories_Example
+////
+////  Created by Meng Xinxin on 2023/7/24.
+////  Copyright © 2023 AndyM129. All rights reserved.
+////
 //
-//  UIView+UITextSelectionView.m
-//  AMKCategories_Example
+//#import "UIView+UITextSelectionView.h"
+//#import <AMKCategories/NSObject+AMKMethodSwizzling.h>
+//#import <WebKit/WebKit.h>
 //
-//  Created by Meng Xinxin on 2023/7/24.
-//  Copyright © 2023 AndyM129. All rights reserved.
+//@implementation WKWebView (UITextSelectionView)
 //
-
-#import "UIView+UITextSelectionView.h"
-#import <AMKCategories/NSObject+AMKMethodSwizzling.h>
-#import <WebKit/WebKit.h>
-
-@implementation UIView (UITextSelectionView)
-
-+ (void)load {
-    Class UITextSelectionView = NSClassFromString(@"UITextSelectionView");
-    [UITextSelectionView amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(UITextSelectionView_UIView_layoutSubviews)];
-}
-
-- (void)UITextSelectionView_UIView_layoutSubviews {
-    [self UITextSelectionView_UIView_layoutSubviews];
-    
-    WKWebView *webView = (id)[self amk_nextResponderWithClass:WKWebView.class];
-    if (webView && (!self.layer.mask || [self.layer.mask isKindOfClass:CAShapeLayer.class])) {
-        CGRect frame = self.bounds;
-        frame.size.height = 250 + 10 * 2; // 见 wk8250_wkeditorhelper.html 中 #dialog #content 的高度
-        frame.origin.y = self.bounds.size.height - frame.size.height - 10 - 50;
-        
-        CAShapeLayer *layerMask = self.layer.mask ?: [CAShapeLayer layer];
-        layerMask.path = [UIBezierPath bezierPathWithRect:frame].CGPath;
-        self.layer.mask = layerMask;
-        self.layer.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.5].CGColor;
-    }
-}
-
-@end
-
-@implementation UIResponder (WKCategories)
-
-- (UIResponder *)amk_nextResponderWithClass:(Class)Class {
-    UIResponder *nextResponder = self;
-    while (nextResponder && ![nextResponder isKindOfClass:Class]) {
-        nextResponder = nextResponder.nextResponder;
-    }
-    return nextResponder;
-}
-
-@end
+//+ (void)load {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [NSClassFromString(@"UITextSelectionView") amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(UITextSelectionView_UIView_layoutSubviews)];
+//    });
+//}
+//
+//#pragma mark - Getters & Setters
+//
+//- (AMKWKWebViewTextSelectionViewLayoutSubviewsBlock)amk_textSelectionViewLayoutSubviewsBlock {
+//    return objc_getAssociatedObject(self, @selector(amk_textSelectionViewLayoutSubviewsBlock));
+//}
+//
+//- (void)setAmk_textSelectionViewLayoutSubviewsBlock:(AMKWKWebViewTextSelectionViewLayoutSubviewsBlock)amk_textSelectionViewLayoutSubviewsBlock {
+//    objc_setAssociatedObject(self, @selector(amk_textSelectionViewLayoutSubviewsBlock), amk_textSelectionViewLayoutSubviewsBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+//}
+//
+//#pragma mark - Data & Networking
+//
+//#pragma mark - Layout Subviews
+//
+//- (void)UITextSelectionView_UIView_layoutSubviews {
+//    [self UITextSelectionView_UIView_layoutSubviews];
+//    !self.amk_textSelectionViewLayoutSubviewsBlock ?: self.amk_textSelectionViewLayoutSubviewsBlock(self);
+//}
+//
+//#pragma mark - Action Methods
+//
+//#pragma mark - Notifications
+//
+//#pragma mark - KVO
+//
+//#pragma mark - Protocol
+//
+//#pragma mark - Helper Methods
+//
+//@end

@@ -1,21 +1,18 @@
+////
+////  UIView+UITextSelectionView.h
+////  AMKCategories_Example
+////
+////  Created by Meng Xinxin on 2023/7/24.
+////  Copyright © 2023 AndyM129. All rights reserved.
+////
 //
-//  UIView+UITextSelectionView.h
-//  AMKCategories_Example
+//#import <WebKit/WebKit.h>
 //
-//  Created by Meng Xinxin on 2023/7/24.
-//  Copyright © 2023 AndyM129. All rights reserved.
+//typedef void(^AMKWKWebViewTextSelectionViewLayoutSubviewsBlock)(UIView *_Nullable textSelectionView);
 //
-
-#import <UIKit/UIKit.h>
-
-@interface UIView (UITextSelectionView)
-
-@end
-
-
-@interface UIResponder (WKCategories)
-
-/// 返回响应者链中 指定类型的响应对象
-- (UIResponder *_Nullable)amk_nextResponderWithClass:(Class _Nullable)Class;
-
-@end
+//@interface WKWebView (UITextSelectionView)
+//
+///// 子视图 `WKWebView > WKScrollView > UIView > UITextSelectionView` 执行 `-layoutSubviews` 方法时的回调
+//@property (nonatomic, copy, readwrite, nullable) AMKWKWebViewTextSelectionViewLayoutSubviewsBlock amk_textSelectionViewLayoutSubviewsBlock;
+//
+//@end
