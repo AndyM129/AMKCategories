@@ -47,7 +47,7 @@
 #   pragma clang diagnostic ignored "-Wunguarded-availability"
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithBarButtonSystemItem:UIBarButtonSystemItemClose target:self action:@selector(clickCloseBarButtonItem:)];
 #   pragma clang diagnostic pop
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/wkeditorhelper"]]];
+    [self.webView loadHTMLString:[NSString stringWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"wk8250_wkeditorhelper" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
