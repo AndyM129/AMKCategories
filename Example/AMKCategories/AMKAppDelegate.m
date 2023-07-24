@@ -84,3 +84,21 @@
 #pragma mark - Helper Methods
 
 @end
+
+#pragma mark -
+#pragma mark -
+
+#if __has_include(<LookinServer/LookinServer.h>)
+
+@implementation NSObject (LookinConfig)
+
++ (BOOL)lookin_shouldCaptureImageOfView:(UIView *)view {
+    NSArray *noShowViews = @[
+        NSClassFromString(@"FLEXWindow"),
+    ];
+    return [noShowViews containsObject:view.class] ? NO : YES;
+}
+
+@end
+
+#endif

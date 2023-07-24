@@ -22,4 +22,5 @@ target 'AMKCategories_Example' do
     pod 'FLEX'
     pod 'lottie-ios', '2.5.3'
     pod 'FDFullscreenPopGesture'
+    pod 'LookinServer', :configurations => ['Debug']
 end
