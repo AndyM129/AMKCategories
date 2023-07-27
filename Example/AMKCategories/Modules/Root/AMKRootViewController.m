@@ -84,6 +84,7 @@
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKAiRootController" title:@"AIGC" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKCustomTransitioningViewController" title:@"自定义转场" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKScreenRightEdgePanGestureRecognizerExampleViewController" title:@"屏幕右侧边缘手势 示例" detail:nil]];
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8250MainWebViewController" title:@"WKWebView 长按选中文字 选区控制 示例" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKCategories_Example.AMKSubStringViewController" title:@"【Swift】SubString 相关处理" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKStackViewController" title:@"示例" detail:@"这是描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"]];
     }

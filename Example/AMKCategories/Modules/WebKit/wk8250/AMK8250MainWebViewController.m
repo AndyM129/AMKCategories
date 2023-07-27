@@ -16,12 +16,12 @@
 
 @implementation AMK8250MainWebViewController
 
-+ (void)load {
-    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
-        [NSNotificationCenter.defaultCenter removeObserver:token];
-        [UIViewController amk_pushViewController:self.new animated:YES];
-    }];
-}
+//+ (void)load {
+//    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+//        [NSNotificationCenter.defaultCenter removeObserver:token];
+//        [UIViewController amk_pushViewController:self.new animated:YES];
+//    }];
+//}
 
 #pragma mark - Dealloc
 
