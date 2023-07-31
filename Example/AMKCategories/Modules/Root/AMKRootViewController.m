@@ -28,6 +28,9 @@
     self.hidesBottomBarWhenPushed = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView reloadData];
+//    [self test_1];
+    [self test_2];
+    [self test_3];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,5 +140,90 @@
 #pragma mark - Override
 
 #pragma mark - Helper Methods
+
+- (void)test_1 {
+    UIView *view = [UIView.alloc init];
+    view.frame = CGRectMake(0, 0, 200, 200);
+    view.center = self.view.center;
+//    view.layer.backgroundColor = UIColor.grayColor.CGColor;
+    [self.view addSubview:view];
+    
+//    CGMutablePathRef path = CGPathCreateMutable();
+//    CGAffineTransform transform = CGAffineTransformIdentity;
+//    transform = CGAffineTransformRotate(transform, -M_PI_2);
+//    CGAffineTransform transform2 = CGAffineTransformIdentity;
+//    transform2 = CGAffineTransformScale(transform2, .5, .5);
+//
+//    CGPathAddRect(path,&transform , CGRectMake(-50, rect.size.height-110, 100, 100));
+//    CGPathAddRect(path, &transform2, CGRectMake(150, rect.size.height-110, 100, 100));
+//    CGContextAddPath(context, path);
+//    CGContextSetLineWidth(context, 3);
+//    CGContextDrawPath(context, kCGPathStroke);
+//    CGPathRelease(path);
+
+//    CAShapeLayer *layerMask = [CAShapeLayer layer];
+//    layerMask.frame = self.bounds;
+//    layerMask.path = [UIBezierPath bezierPathWithRoundedRect:layerMask.frame cornerRadius:12].CGPath;
+//    self.layer.mask = layerMask;
+
+
+
+    
+    [view.layer addSublayer:({
+        CGSize finalSize = CGSizeMake(150, 150);
+        CGFloat layerHeight = finalSize.height * 0.2;
+        
+        UIBezierPath *path = [[UIBezierPath alloc]init];
+        [path moveToPoint:CGPointMake(0, finalSize.height - layerHeight)];
+        [path addLineToPoint:CGPointMake(0, finalSize.height - 1)];
+        [path addLineToPoint:CGPointMake(finalSize.width, finalSize.height - 1)];
+        [path addLineToPoint:CGPointMake(finalSize.width, finalSize.height - layerHeight)];
+        [path addQuadCurveToPoint:CGPointMake(0, finalSize.height - layerHeight) controlPoint:CGPointMake(finalSize.width / 2, (finalSize.height - layerHeight) - 40)];
+
+        CAShapeLayer *bottomCurveLayer = [[CAShapeLayer alloc]init];
+        bottomCurveLayer.path = path.CGPath;
+        bottomCurveLayer.fillColor = [UIColor orangeColor].CGColor;
+        bottomCurveLayer;
+    })];
+
+}
+
+- (void)test_2 {
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(29, NSNotFound, 29, NSNotFound);
+    CGRect frame = CGRectMake(0, edgeInsets.top, 102, UIScreen.mainScreen.bounds.size.height - edgeInsets.top - edgeInsets.bottom);
+    frame.origin.x = UIScreen.mainScreen.bounds.size.width - frame.size.width;
+    
+    UIView *rightScreenEdgeNewEditorGuideView = [UIView.alloc initWithFrame:frame];
+    [rightScreenEdgeNewEditorGuideView.layer addSublayer:({
+        UIBezierPath *path = [UIBezierPath.alloc init];
+        [path moveToPoint:CGPointMake(frame.size.width, 0)];
+        [path addQuadCurveToPoint:CGPointMake(frame.size.width, frame.size.height) controlPoint:CGPointMake(-frame.size.width, frame.size.height / 2)];
+
+        CAShapeLayer *backgroundLayer = [CAShapeLayer.alloc init];
+        backgroundLayer.path = path.CGPath;
+        backgroundLayer.fillColor = [UIColor colorWithWhite:0 alpha:0.4].CGColor;
+        backgroundLayer;
+    })];
+    [UIApplication.sharedApplication.delegate.window addSubview:rightScreenEdgeNewEditorGuideView];
+}
+
+- (void)test_3 {
+    CGRect frame = CGRectMake(0, 0, 68, 168);
+    frame.origin.x = UIScreen.mainScreen.bounds.size.width - frame.size.width;
+    frame.origin.y = (UIScreen.mainScreen.bounds.size.height - frame.size.height) / 2;
+    
+    UIView *rightScreenEdgeNewEditorView = [UIView.alloc initWithFrame:frame];
+    [rightScreenEdgeNewEditorView.layer addSublayer:({
+        UIBezierPath *path = [UIBezierPath.alloc init];
+        [path moveToPoint:CGPointMake(frame.size.width, 0)];
+        [path addQuadCurveToPoint:CGPointMake(frame.size.width, frame.size.height) controlPoint:CGPointMake(-frame.size.width, frame.size.height / 2)];
+
+        CAShapeLayer *backgroundLayer = [CAShapeLayer.alloc init];
+        backgroundLayer.path = path.CGPath;
+        backgroundLayer.fillColor = [UIColor colorWithWhite:0 alpha:0.3].CGColor;
+        backgroundLayer;
+    })];
+    [UIApplication.sharedApplication.delegate.window addSubview:rightScreenEdgeNewEditorView];
+}
 
 @end
