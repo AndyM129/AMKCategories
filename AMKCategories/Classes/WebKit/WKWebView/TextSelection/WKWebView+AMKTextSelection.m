@@ -27,15 +27,25 @@
 
 + (void)load {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [NSClassFromString(@"UITextSelectionView") amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(AMKTextSelection_WKWebView_layoutSubviews)];
+        // iOS 11+
+        [NSClassFromString(@"UITextSelectionView") amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(AMKTextSelection_UITextSelectionView_layoutSubviews)];
+        
+        // iOS 17+
+        [NSClassFromString(@"_UITextSelectionHighlightView") amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(AMKTextSelection__UITextSelectionHighlightView_layoutSubviews)];
+        [NSClassFromString(@"_UITextSelectionRangeAdjustmentContainerView") amk_swizzleInstanceMethod:@selector(layoutSubviews) withMethod:@selector(AMKTextSelection__UITextSelectionRangeAdjustmentContainerView_layoutSubviews)];
     });
 }
 
-- (void)AMKTextSelection_WKWebView_layoutSubviews {
-    [self AMKTextSelection_WKWebView_layoutSubviews];
-    
-    WKWebView *webView = (id)[self amk_nextResponderWithClass:WKWebView.class];
-    !webView.amk_textSelectionViewLayoutSubviewsBlock ?: webView.amk_textSelectionViewLayoutSubviewsBlock(webView, self);
+#define AMKTextSelection_swizzleLayoutSubviewsForClass(className) \
+- (void)AMKTextSelection_##className##_layoutSubviews { \
+    [self AMKTextSelection_##className##_layoutSubviews]; \
+    \
+    WKWebView *webView = (id)[self amk_nextResponderWithClass:WKWebView.class]; \
+    !webView.amk_textSelectionViewLayoutSubviewsBlock ?: webView.amk_textSelectionViewLayoutSubviewsBlock(webView, self); \
 }
+
+AMKTextSelection_swizzleLayoutSubviewsForClass(UITextSelectionView)
+AMKTextSelection_swizzleLayoutSubviewsForClass(_UITextSelectionHighlightView)
+AMKTextSelection_swizzleLayoutSubviewsForClass(_UITextSelectionRangeAdjustmentContainerView)
 
 @end
