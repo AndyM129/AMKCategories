@@ -8,6 +8,25 @@
 #import "MBProgressHUD+AMKCategories.h"
 #import <objc/runtime.h>
 
+#ifndef __OPTIMIZE__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+static NSString *_AMKLogTimeStringWithDate(NSDate *date) {
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [NSDateFormatter.alloc init];
+        [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    });
+    return [dateFormatter stringFromDate:date];
+}
+#pragma clang diagnostic pop
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s %s Line %d: %s\n", _AMKLogTimeStringWithDate(NSDate.date).UTF8String, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String])
+#else
+#define NSLog(...) {}
+#endif
+
 @implementation MBProgressHUD (AMKCategories)
 
 #pragma mark - Init Methods
@@ -124,6 +143,7 @@
         BOOL showAnimated = _hideBeforeHUD ? ([MBProgressHUD hideHUDForView:_view animated:(shouldShow?NO:_animated)] ? NO : _animated) : _animated;
         if (!shouldShow) return;
         
+        NSLog(@"%@ => %@", title, message);
         hud = [MBProgressHUD showHUDAddedTo:_view animated:showAnimated];
         hud.userInteractionEnabled = _userInteractionEnabled;
         hud.removeFromSuperViewOnHide = YES;

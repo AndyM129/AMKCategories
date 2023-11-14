@@ -41,6 +41,7 @@
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
 		8844042C2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8844042B2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m */; };
+		8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852B45D2B02677E004DED8F /* AMK8300ExampleViewController.m */; };
 		885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 885C55212918AD58007482B8 /* AMKRefreshHeader.m */; };
 		886F3E012A6A37690059C0B4 /* AMK8250MainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E002A6A37690059C0B4 /* AMK8250MainWebViewController.m */; };
 		886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */; };
@@ -143,6 +144,8 @@
 		8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKScreenRightEdgePanGestureRecognizerExampleViewController.m; sourceTree = "<group>"; };
 		8844042A2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCrashByInvalidUpdateCollectionViewController.h; sourceTree = "<group>"; };
 		8844042B2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCrashByInvalidUpdateCollectionViewController.m; sourceTree = "<group>"; };
+		8852B45C2B02677E004DED8F /* AMK8300ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8300ExampleViewController.h; sourceTree = "<group>"; };
+		8852B45D2B02677E004DED8F /* AMK8300ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8300ExampleViewController.m; sourceTree = "<group>"; };
 		885C55202918AD58007482B8 /* AMKRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKRefreshHeader.h; sourceTree = "<group>"; };
 		885C55212918AD58007482B8 /* AMKRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKRefreshHeader.m; sourceTree = "<group>"; };
 		886F3DFF2A6A37690059C0B4 /* AMK8250MainWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8250MainWebViewController.h; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 				8806D943290BB4BA005DC5C1 /* UIKit */,
 				8806D95B290BB4BA005DC5C1 /* Foundation */,
 				8806D96F290BB4BA005DC5C1 /* ThirdPart */,
+				8852B45A2B026736004DED8F /* Wenku */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -621,6 +625,23 @@
 				88CE2C392A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m */,
 			);
 			path = CrashByInvalidUpdate;
+			sourceTree = "<group>";
+		};
+		8852B45A2B026736004DED8F /* Wenku */ = {
+			isa = PBXGroup;
+			children = (
+				8852B45B2B026752004DED8F /* 8300 */,
+			);
+			path = Wenku;
+			sourceTree = "<group>";
+		};
+		8852B45B2B026752004DED8F /* 8300 */ = {
+			isa = PBXGroup;
+			children = (
+				8852B45C2B02677E004DED8F /* AMK8300ExampleViewController.h */,
+				8852B45D2B02677E004DED8F /* AMK8300ExampleViewController.m */,
+			);
+			path = 8300;
 			sourceTree = "<group>";
 		};
 		886F3DFE2A6A36FB0059C0B4 /* wk8250 */ = {
@@ -1025,6 +1046,7 @@
 				88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */,
 				886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */,
 				88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */,
+				8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */,
 				88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */,

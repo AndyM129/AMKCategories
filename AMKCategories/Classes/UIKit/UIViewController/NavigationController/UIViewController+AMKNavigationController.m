@@ -217,7 +217,7 @@
         if (viewController.amk_presentedWithNavigationController) {
             viewController = [[UINavigationController alloc] initWithRootViewController:viewController];
         }
-        if (!self.parentViewController) {
+        if (self != UIApplication.sharedApplication.keyWindow.rootViewController && !self.parentViewController) {
             __block UIViewController *presentingViewController = self.presentingViewController;
             [self dismissViewControllerAnimated:animated completion:^{
                 [presentingViewController presentViewController:viewController animated:animated completion:NULL];
