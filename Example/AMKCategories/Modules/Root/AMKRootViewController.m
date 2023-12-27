@@ -87,6 +87,7 @@
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8250MainWebViewController" title:@"WKWebView 长按选中文字 选区控制 示例" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKCategories_Example.AMKSubStringViewController" title:@"【Swift】SubString 相关处理" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8300ExampleViewController" title:@"【文库】8300 Example" detail:nil]];
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8330ExampleViewController" title:@"【文库】8330 Example" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKStackViewController" title:@"示例" detail:@"这是描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"]];
     }
     return _examples;
