@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:244/255.0 blue:250/255.0 alpha:1.0];;
+    self.view.backgroundColor = UIColor.whiteColor;
     self.voiceRecognitionButton.enabled = YES;
 }
 

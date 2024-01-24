@@ -1,5 +1,5 @@
 //
-//  WKNVoiceRecognitionButton.h
+//  AMKVoiceRecognitionPanelView.h
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2024/1/24.
@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-/// 语音识别按钮
-@interface WKNVoiceRecognitionButton : UIButton
+NS_ASSUME_NONNULL_BEGIN
+
+@interface AMKVoiceRecognitionPanelView : UIView
 
 @end
+
+NS_ASSUME_NONNULL_END

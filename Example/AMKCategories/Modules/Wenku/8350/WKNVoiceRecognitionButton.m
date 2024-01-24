@@ -7,6 +7,11 @@
 //
 
 #import "WKNVoiceRecognitionButton.h"
+#import "WKNVoiceRecognitionPanelView.h"
+
+@interface WKNVoiceRecognitionButton ()
+@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPanelView *voiceRecognitionPanelView;
+@end
 
 @implementation WKNVoiceRecognitionButton
 
@@ -30,11 +35,20 @@
         [self setTitleColor:[UIColor colorWithRed:50/255.0 green:115/255.0 blue:246/255.0 alpha:1.0] forState:UIControlStateNormal];
         [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
         [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+        [self addTarget:self action:@selector(handleTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [self addTarget:self action:@selector(handleTouchUp:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
+
+- (WKNVoiceRecognitionPanelView *)voiceRecognitionPanelView {
+    if (!_voiceRecognitionPanelView) {
+        _voiceRecognitionPanelView = [WKNVoiceRecognitionPanelView.alloc init];
+    }
+    return _voiceRecognitionPanelView;
+}
 
 #pragma mark - Data & Networking
 
@@ -56,6 +70,24 @@
 }
 
 #pragma mark - Action Methods
+
+- (void)handleTouchDown:(id)sender {
+    NSLog(@"");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
+    [self performSelector:@selector(showVoiceRecognitionPanelView) withObject:nil afterDelay:0.1 inModes:@[NSRunLoopCommonModes]];
+}
+
+- (void)handleTouchUp:(id)sender {
+    NSLog(@"");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
+    [self.voiceRecognitionPanelView removeFromSuperview];
+}
+
+- (void)showVoiceRecognitionPanelView {
+    NSLog(@"");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
+    [self.viewController.view addSubview:self.voiceRecognitionPanelView];
+}
 
 #pragma mark - Notifications
 
