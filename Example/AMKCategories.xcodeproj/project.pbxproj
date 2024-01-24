@@ -47,6 +47,8 @@
 		886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */; };
 		886F3E062A6E6C130059C0B4 /* wk8250_wkeditorhelper.html in Resources */ = {isa = PBXBuildFile; fileRef = 886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */; };
 		886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */; };
+		8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */; };
+		8873BB3F2B60C759004E7DFE /* WKNVoiceRecognitionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */; };
 		887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */; };
 		887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFE2B3C2352004D0854 /* UIMenuController+wk8330.m */; };
 		887D9D022B3C23E6004D0854 /* AMK8330ExampleWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9D012B3C23E6004D0854 /* AMK8330ExampleWebView.m */; };
@@ -158,6 +160,10 @@
 		886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wk8250_wkeditorhelper.html; sourceTree = "<group>"; };
 		886F3E072A6E6F2F0059C0B4 /* UIView+UITextSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UITextSelectionView.h"; sourceTree = "<group>"; };
 		886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITextSelectionView.m"; sourceTree = "<group>"; };
+		8873BB3A2B60C57D004E7DFE /* AMK8350ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8350ExampleViewController.h; sourceTree = "<group>"; };
+		8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8350ExampleViewController.m; sourceTree = "<group>"; };
+		8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionButton.h; sourceTree = "<group>"; };
+		8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionButton.m; sourceTree = "<group>"; };
 		887D9CFA2B3C2190004D0854 /* AMK8330ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8330ExampleViewController.h; sourceTree = "<group>"; };
 		887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8330ExampleViewController.m; sourceTree = "<group>"; };
 		887D9CFD2B3C2352004D0854 /* UIMenuController+wk8330.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIMenuController+wk8330.h"; sourceTree = "<group>"; };
@@ -639,6 +645,7 @@
 		8852B45A2B026736004DED8F /* Wenku */ = {
 			isa = PBXGroup;
 			children = (
+				8873BB392B60C55C004E7DFE /* 8350 */,
 				887D9CF92B3C216C004D0854 /* 8330 */,
 				8852B45B2B026752004DED8F /* 8300 */,
 			);
@@ -666,6 +673,17 @@
 				886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */,
 			);
 			path = wk8250;
+			sourceTree = "<group>";
+		};
+		8873BB392B60C55C004E7DFE /* 8350 */ = {
+			isa = PBXGroup;
+			children = (
+				8873BB3A2B60C57D004E7DFE /* AMK8350ExampleViewController.h */,
+				8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */,
+				8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */,
+				8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */,
+			);
+			path = 8350;
 			sourceTree = "<group>";
 		};
 		887D9CF92B3C216C004D0854 /* 8330 */ = {
@@ -1035,6 +1053,7 @@
 				886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */,
 				8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */,
 				8806D985290BB57D005DC5C1 /* AMKRootExampleModel.m in Sources */,
+				8873BB3F2B60C759004E7DFE /* WKNVoiceRecognitionButton.m in Sources */,
 				88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */,
 				8806D97D290BB4BB005DC5C1 /* AMKEmojiStringViewController.m in Sources */,
 				8844042C2A6786E8009CE818 /* AMKCrashByInvalidUpdateCollectionViewController.m in Sources */,
@@ -1058,6 +1077,7 @@
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
+				8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
