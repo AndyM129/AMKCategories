@@ -48,6 +48,8 @@
 		886F3E062A6E6C130059C0B4 /* wk8250_wkeditorhelper.html in Resources */ = {isa = PBXBuildFile; fileRef = 886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */; };
 		886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */; };
 		887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */; };
+		887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFE2B3C2352004D0854 /* UIMenuController+wk8330.m */; };
+		887D9D022B3C23E6004D0854 /* AMK8330ExampleWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9D012B3C23E6004D0854 /* AMK8330ExampleWebView.m */; };
 		887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */; };
 		887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 887F16AB2941929400253DE8 /* NSObject+AMKERuntimeInfo.m */; };
 		888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F052977EE0E00B8F26F /* WKWebView+AMKOfflineLoading.m */; };
@@ -158,6 +160,10 @@
 		886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITextSelectionView.m"; sourceTree = "<group>"; };
 		887D9CFA2B3C2190004D0854 /* AMK8330ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8330ExampleViewController.h; sourceTree = "<group>"; };
 		887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8330ExampleViewController.m; sourceTree = "<group>"; };
+		887D9CFD2B3C2352004D0854 /* UIMenuController+wk8330.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIMenuController+wk8330.h"; sourceTree = "<group>"; };
+		887D9CFE2B3C2352004D0854 /* UIMenuController+wk8330.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIMenuController+wk8330.m"; sourceTree = "<group>"; };
+		887D9D002B3C23E6004D0854 /* AMK8330ExampleWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8330ExampleWebView.h; sourceTree = "<group>"; };
+		887D9D012B3C23E6004D0854 /* AMK8330ExampleWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8330ExampleWebView.m; sourceTree = "<group>"; };
 		887F1026293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKUIPasteboardAlertExampleViewController.h; sourceTree = "<group>"; };
 		887F1027293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKUIPasteboardAlertExampleViewController.m; sourceTree = "<group>"; };
 		887F16AA2941929400253DE8 /* NSObject+AMKERuntimeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMKERuntimeInfo.h"; sourceTree = "<group>"; };
@@ -667,6 +673,10 @@
 			children = (
 				887D9CFA2B3C2190004D0854 /* AMK8330ExampleViewController.h */,
 				887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */,
+				887D9D002B3C23E6004D0854 /* AMK8330ExampleWebView.h */,
+				887D9D012B3C23E6004D0854 /* AMK8330ExampleWebView.m */,
+				887D9CFD2B3C2352004D0854 /* UIMenuController+wk8330.h */,
+				887D9CFE2B3C2352004D0854 /* UIMenuController+wk8330.m */,
 			);
 			path = 8330;
 			sourceTree = "<group>";
@@ -1057,11 +1067,13 @@
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
+				887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */,
 				88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */,
 				886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */,
 				88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */,
 				8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */,
 				88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */,
+				887D9D022B3C23E6004D0854 /* AMK8330ExampleWebView.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */,
 			);
