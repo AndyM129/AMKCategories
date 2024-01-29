@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
-    self.voiceRecognitionButton.enabled = YES;
+    [self viewCustomLayoutSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,12 +67,6 @@
     if (!_voiceRecognitionButton) {
         _voiceRecognitionButton = [WKNVoiceRecognitionButton.alloc init];
         [self.view addSubview:_voiceRecognitionButton];
-        [_voiceRecognitionButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.view).inset(63);
-            make.right.mas_equalTo(self.view).inset(10);
-            make.bottom.mas_equalTo(self.view).inset(UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom + 5);
-            make.height.mas_equalTo(47);
-        }];
     }
     return _voiceRecognitionButton;
 }
@@ -80,6 +74,18 @@
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
+
+- (void)viewCustomLayoutSubviews {
+    if (!self.isViewLoaded) {
+        return;
+    }
+    [self.voiceRecognitionButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view).inset(63);
+        make.right.mas_equalTo(self.view).inset(10);
+        make.bottom.mas_equalTo(self.view).inset(UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom + 5);
+        make.height.mas_equalTo(self.voiceRecognitionButton.height);
+    }];
+}
 
 #pragma mark - Action Methods
 

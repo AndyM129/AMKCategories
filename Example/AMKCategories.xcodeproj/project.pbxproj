@@ -49,7 +49,8 @@
 		886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */; };
 		8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */; };
 		8873BB3F2B60C759004E7DFE /* WKNVoiceRecognitionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */; };
-		8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.m */; };
+		8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */; };
+		8873BB4C2B60EB7D004E7DFE /* BDEPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB4B2B60EB7D004E7DFE /* BDEPopupView.m */; };
 		887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */; };
 		887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9CFE2B3C2352004D0854 /* UIMenuController+wk8330.m */; };
 		887D9D022B3C23E6004D0854 /* AMK8330ExampleWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 887D9D012B3C23E6004D0854 /* AMK8330ExampleWebView.m */; };
@@ -165,8 +166,11 @@
 		8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8350ExampleViewController.m; sourceTree = "<group>"; };
 		8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionButton.h; sourceTree = "<group>"; };
 		8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionButton.m; sourceTree = "<group>"; };
-		8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPanelView.h; sourceTree = "<group>"; };
-		8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPanelView.m; sourceTree = "<group>"; };
+		8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPopupView.h; sourceTree = "<group>"; };
+		8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPopupView.m; sourceTree = "<group>"; };
+		8873BB492B60EB7D004E7DFE /* BDEPopupViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDEPopupViewProtocol.h; sourceTree = "<group>"; };
+		8873BB4A2B60EB7D004E7DFE /* BDEPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDEPopupView.h; sourceTree = "<group>"; };
+		8873BB4B2B60EB7D004E7DFE /* BDEPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDEPopupView.m; sourceTree = "<group>"; };
 		887D9CFA2B3C2190004D0854 /* AMK8330ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8330ExampleViewController.h; sourceTree = "<group>"; };
 		887D9CFB2B3C2190004D0854 /* AMK8330ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8330ExampleViewController.m; sourceTree = "<group>"; };
 		887D9CFD2B3C2352004D0854 /* UIMenuController+wk8330.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIMenuController+wk8330.h"; sourceTree = "<group>"; };
@@ -651,6 +655,7 @@
 				8873BB392B60C55C004E7DFE /* 8350 */,
 				887D9CF92B3C216C004D0854 /* 8330 */,
 				8852B45B2B026752004DED8F /* 8300 */,
+				8873BB462B60EB45004E7DFE /* Common */,
 			);
 			path = Wenku;
 			sourceTree = "<group>";
@@ -685,10 +690,28 @@
 				8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */,
 				8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */,
 				8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */,
-				8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.h */,
-				8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.m */,
+				8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.h */,
+				8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */,
 			);
 			path = 8350;
+			sourceTree = "<group>";
+		};
+		8873BB462B60EB45004E7DFE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8873BB482B60EB7D004E7DFE /* BDEPopupView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8873BB482B60EB7D004E7DFE /* BDEPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				8873BB492B60EB7D004E7DFE /* BDEPopupViewProtocol.h */,
+				8873BB4A2B60EB7D004E7DFE /* BDEPopupView.h */,
+				8873BB4B2B60EB7D004E7DFE /* BDEPopupView.m */,
+			);
+			path = BDEPopupView;
 			sourceTree = "<group>";
 		};
 		887D9CF92B3C216C004D0854 /* 8330 */ = {
@@ -1087,7 +1110,7 @@
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
 				8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */,
-				8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPanelView.m in Sources */,
+				8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m in Sources */,
 				888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
@@ -1099,6 +1122,7 @@
 				88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */,
 				8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */,
 				88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */,
+				8873BB4C2B60EB7D004E7DFE /* BDEPopupView.m in Sources */,
 				887D9D022B3C23E6004D0854 /* AMK8330ExampleWebView.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */,

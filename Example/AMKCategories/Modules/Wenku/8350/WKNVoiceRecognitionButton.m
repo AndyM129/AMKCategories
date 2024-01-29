@@ -7,10 +7,13 @@
 //
 
 #import "WKNVoiceRecognitionButton.h"
-#import "WKNVoiceRecognitionPanelView.h"
+#import "WKNVoiceRecognitionPopupView.h"
 
 @interface WKNVoiceRecognitionButton ()
-@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPanelView *voiceRecognitionPanelView;
+@property (nonatomic, strong, readwrite, nullable) UILabel *titleLabel;
+@property (nonatomic, strong, readwrite, nullable) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPopupView *voiceRecognitionPanelView;
+@property (nonatomic, assign, readwrite) WKNVoiceRecognitionButtonState state;
 @end
 
 @implementation WKNVoiceRecognitionButton
@@ -30,63 +33,104 @@
         self.layer.shadowRadius = 10;
         self.layer.shadowOffset = CGSizeMake(0.f, 1.67);
         self.layer.shadowOpacity = 1;
-        self.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
-        [self setTitle:@"按住 说话" forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor colorWithRed:50/255.0 green:115/255.0 blue:246/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
-        [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-        [self addTarget:self action:@selector(handleTouchDown:) forControlEvents:UIControlEventTouchDown];
-        [self addTarget:self action:@selector(handleTouchUp:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        self.layer.cornerRadius = self.frame.size.height / 2;
+        self.layer.backgroundColor = UIColor.whiteColor.CGColor;
+        self.longPressGestureRecognizer.enabled = YES;
+        [self customLayoutSubviews];
+//        self.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+//        [self setTitle:@"按住 说话" forState:UIControlStateNormal];
+//        [self setTitleColor:[UIColor colorWithRed:50/255.0 green:115/255.0 blue:246/255.0 alpha:1.0] forState:UIControlStateNormal];
+//        [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
+//        [self setBackgroundImage:[self resizableBackgroundImageForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+//        [self addTarget:self action:@selector(handleTouchDown:) forControlEvents:UIControlEventTouchDown];
+//        [self addTarget:self action:@selector(handleTouchUp:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
 
-- (WKNVoiceRecognitionPanelView *)voiceRecognitionPanelView {
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [UILabel.alloc init];
+        _titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+        _titleLabel.text = @"按住 说话";
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor colorWithRed:50/255.0 green:115/255.0 blue:246/255.0 alpha:1.0];
+        [self addSubview:_titleLabel];
+    }
+    return _titleLabel;
+}
+
+- (UILongPressGestureRecognizer *)longPressGestureRecognizer {
+    if (!_longPressGestureRecognizer) {
+        _longPressGestureRecognizer = [UILongPressGestureRecognizer.alloc initWithTarget:self action:@selector(handleLongPressGestureRecognizer:)];
+        _longPressGestureRecognizer.minimumPressDuration = 0.1;
+        [self addGestureRecognizer:_longPressGestureRecognizer];
+    }
+    return _longPressGestureRecognizer;
+}
+
+- (WKNVoiceRecognitionPopupView *)voiceRecognitionPanelView {
     if (!_voiceRecognitionPanelView) {
-        _voiceRecognitionPanelView = [WKNVoiceRecognitionPanelView.alloc init];
+        _voiceRecognitionPanelView = [WKNVoiceRecognitionPopupView.alloc init];
     }
     return _voiceRecognitionPanelView;
+}
+
+- (void)setState:(WKNVoiceRecognitionButtonState)state {
+    [self setState:state animated:NO];
+}
+
+- (void)setState:(WKNVoiceRecognitionButtonState)state animated:(BOOL)animated {
+    [UIView animateWithDuration:animated ? 0.25 : 0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _state = state;
+        if (state == WKNVoiceRecognitionButtonStateTouchDown) {
+            [self.voiceRecognitionPanelView showInView:self.voiceRecognitionPanelView.superview animated:animated];
+        } else if (state == WKNVoiceRecognitionButtonStateTouchUp) {
+            [self.voiceRecognitionPanelView dismissAnimated:animated];
+        }
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
-
-- (void)updateConstraints {
-    // Coding ...
-    
-    //according to apple super should be called at end of method
-    [super updateConstraints];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)customLayoutSubviews {
+    [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self);
+        make.right.mas_equalTo(self);
+        make.top.mas_equalTo(self);
+        make.bottom.mas_equalTo(self);
+    }];
 }
 
 #pragma mark - Action Methods
 
-- (void)handleTouchDown:(id)sender {
-    NSLog(@"");
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
-    [self performSelector:@selector(showVoiceRecognitionPanelView) withObject:nil afterDelay:0.1 inModes:@[NSRunLoopCommonModes]];
-}
-
-- (void)handleTouchUp:(id)sender {
-    NSLog(@"");
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
-    [self.voiceRecognitionPanelView removeFromSuperview];
-}
-
-- (void)showVoiceRecognitionPanelView {
-    NSLog(@"");
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showVoiceRecognitionPanelView) object:nil];
-    [self.viewController.view addSubview:self.voiceRecognitionPanelView];
+- (void)handleLongPressGestureRecognizer:(id)sender {
+    CGPoint location = [self.longPressGestureRecognizer locationInView:self];
+    NSLog(@"%ld => %@", self.longPressGestureRecognizer.state, @(location));
+    
+    switch (self.longPressGestureRecognizer.state) {
+        case UIGestureRecognizerStatePossible: {
+            
+        } break;
+        case UIGestureRecognizerStateBegan: {
+            [self setState:WKNVoiceRecognitionButtonStateTouchDown animated:YES];
+        } break;
+        case UIGestureRecognizerStateChanged: {
+            
+        } break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed: {
+            [self setState:WKNVoiceRecognitionButtonStateTouchUp animated:YES];
+        } break;
+        default: {} break;
+    }
 }
 
 #pragma mark - Notifications
@@ -97,14 +141,28 @@
 
 #pragma mark - Helper Methods
 
-- (UIImage *)resizableBackgroundImageForState:(UIControlState)state {
-    UIColor *color = state == UIControlStateHighlighted ? [UIColor colorWithWhite:0.85 alpha:1] : UIColor.whiteColor;
-    CGFloat radius = self.frame.size.height / 2;
-    CGSize size = CGSizeMake(self.frame.size.height, self.frame.size.height);
-    UIImage *backgroundImage = [UIImage imageWithColor:color size:size];
-    backgroundImage = [backgroundImage imageByRoundCornerRadius:radius];
-    backgroundImage = [backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(radius, radius, radius, radius) resizingMode:UIImageResizingModeStretch];
-    return backgroundImage;
-}
+//- (UIImage *)resizableBackgroundImageForState:(UIControlState)state {
+//    UIColor *color = state == UIControlStateHighlighted ? [UIColor colorWithWhite:0.85 alpha:1] : UIColor.whiteColor;
+//    CGFloat radius = self.frame.size.height / 2;
+//    CGSize size = CGSizeMake(self.frame.size.height, self.frame.size.height);
+//    UIImage *backgroundImage = [UIImage imageWithColor:color size:size];
+//    backgroundImage = [backgroundImage imageByRoundCornerRadius:radius];
+//    backgroundImage = [backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(radius, radius, radius, radius) resizingMode:UIImageResizingModeStretch];
+//    return backgroundImage;
+//}
+
+//- (UIColor *)backgroundColorForState:(WKNVoiceRecognitionButtonState)state {
+//    UIColor *backgroundColor = nil;
+//    switch (state) {
+//        case WKNVoiceRecognitionButtonStateTouchDown:
+//        case WKNVoiceRecognitionButtonStateTouchDragEnter:
+//        case WKNVoiceRecognitionButtonStateTouchDragExit: {
+//            backgroundColor = UIColor.whiteColor;
+//        } break;
+//        default: {
+//            backgroundColor = UIColor.whiteColor;
+//        } break;
+//    }
+//}
 
 @end
