@@ -31,7 +31,7 @@ static NSString *_AMKELogTimeStringWithDate(NSDate *date) {
 #import <AMKStackView/AMKStackView.h>
 #import <AMKCategories/UIViewController+AMKNavigationControllerWithCallback.h>
 #import <Masonry/Masonry.h>
-#import <YYCategories.h>
+#import <YYCategories/YYCategories.h>
 #import <Aspects/Aspects.h>
 
 #import "NSObject+AMKERuntimeInfo.h"

@@ -142,28 +142,4 @@
 
 #pragma mark - Helper Methods
 
-//- (UIImage *)resizableBackgroundImageForState:(UIControlState)state {
-//    UIColor *color = state == UIControlStateHighlighted ? [UIColor colorWithWhite:0.85 alpha:1] : UIColor.whiteColor;
-//    CGFloat radius = self.frame.size.height / 2;
-//    CGSize size = CGSizeMake(self.frame.size.height, self.frame.size.height);
-//    UIImage *backgroundImage = [UIImage imageWithColor:color size:size];
-//    backgroundImage = [backgroundImage imageByRoundCornerRadius:radius];
-//    backgroundImage = [backgroundImage resizableImageWithCapInsets:UIEdgeInsetsMake(radius, radius, radius, radius) resizingMode:UIImageResizingModeStretch];
-//    return backgroundImage;
-//}
-
-//- (UIColor *)backgroundColorForState:(WKNVoiceRecognitionButtonState)state {
-//    UIColor *backgroundColor = nil;
-//    switch (state) {
-//        case WKNVoiceRecognitionButtonStateTouchDown:
-//        case WKNVoiceRecognitionButtonStateTouchDragEnter:
-//        case WKNVoiceRecognitionButtonStateTouchDragExit: {
-//            backgroundColor = UIColor.whiteColor;
-//        } break;
-//        default: {
-//            backgroundColor = UIColor.whiteColor;
-//        } break;
-//    }
-//}
-
 @end

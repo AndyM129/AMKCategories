@@ -51,14 +51,10 @@
         __weak __typeof__(self)weakSelf = self;
         _contentViewAnimationBlock = ^(UIView *contentView, BOOL showAnimation, NSTimeInterval duration) {
             if (showAnimation) {
-//                [weakSelf customLayoutSubviews];
-                
                 contentView.alpha = 0;
                 [UIView animateWithDuration:duration animations:^{
                     contentView.alpha = 1;
                 } completion:nil];
-//                [weakSelf updateConstraints];
-//                [weakSelf.contentMainView updateConstraints];
                 
                 weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height);
                 [UIView animateWithDuration:duration delay:duration / 2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -92,7 +88,12 @@
 
 - (WKNVoiceRecognitionPopupContentMainView *)contentMainView {
     if (!_contentMainView) {
-        _contentMainView = [WKNVoiceRecognitionPopupContentMainView.alloc init];
+        CGRect frame = CGRectZero;
+        frame.origin.x = WKNVoiceRecognitionPopupContentMainView.margin.left;
+        frame.origin.y = WKNVoiceRecognitionPopupContentMainView.margin.top;
+        frame.size.width = self.width - WKNVoiceRecognitionPopupContentMainView.margin.left - WKNVoiceRecognitionPopupContentMainView.margin.right;
+        
+        _contentMainView = [WKNVoiceRecognitionPopupContentMainView.alloc initWithFrame:frame];
         [self.contentView addSubview:_contentMainView];
     }
     return _contentMainView;
@@ -115,9 +116,7 @@
     [super updateConstraints];
 }
 
-- (void)customLayoutSubviews {
-//    [self.contentMainView customLayoutSubviews];
-    
+- (void)customLayoutSubviews {    
     self.contentView.frame = ({
         CGRect frame = CGRectZero;
         frame.size.width = self.width;
@@ -128,14 +127,7 @@
     });
     self.contentViewLayerMaskRadientLayer.frame = self.contentView.bounds;
     self.contentViewLayerMaskRadientLayer.endPoint = CGPointMake(0, WKNVoiceRecognitionPopupContentMainView.margin.top / MAX(1.0, self.contentView.height));
-    self.contentMainView.frame = ({
-        CGRect frame = CGRectZero;
-        frame.size.width = self.contentView.width;
-        frame.size.height = self.contentView.height - WKNVoiceRecognitionPopupContentMainView.margin.top - WKNVoiceRecognitionPopupContentMainView.margin.bottom;
-        frame.origin.x = 0;
-        frame.origin.y = WKNVoiceRecognitionPopupContentMainView.margin.top;
-        frame;
-    });
+    [self.contentMainView customLayoutSubviews];
 }
 
 - (void)didMoveToSuperview {
