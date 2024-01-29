@@ -51,7 +51,7 @@
 }
 
 + (UIEdgeInsets)textViewContainerMargin {
-    static UIEdgeInsets _textViewContainerMargin = {10, 17, 154, 17};
+    static UIEdgeInsets _textViewContainerMargin = {10, 17, 160, 17};
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _textViewContainerMargin.bottom += UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom;
@@ -59,63 +59,56 @@
     return _textViewContainerMargin;
 }
 
-//+ (UIEdgeInsets)textViewMargin {
-//    static UIEdgeInsets _textViewMargin = {7, 49, 7, 15};
-//    return _textViewMargin;
-//}
++ (UIEdgeInsets)textViewMargin {
+    static UIEdgeInsets _textViewMargin = {14, 17, 14, 17};
+    return _textViewMargin;
+}
 
-//+ (CGFloat)textViewMinHeight {
-//    static CGFloat _textViewMinHeight;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        CGFloat textViewContainerMinHeight = 47;
-//        _textViewMinHeight = textViewContainerMinHeight - WKNAigcChatInputView.textViewMargin.top - WKNAigcChatInputView.textViewMargin.bottom;
-//    });
-//    return _textViewMinHeight;
-//}
-
-//+ (CGFloat)textViewMaxHeight {
-//    static CGFloat _textViewMaxHeight;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        CGFloat textViewContainerMaxHeight = 176 + 14;
-//        _textViewMaxHeight = textViewContainerMaxHeight - WKNAigcChatInputView.textViewMargin.top - WKNAigcChatInputView.textViewMargin.bottom;
-//    });
-//    return _textViewMaxHeight;
-//}
-
-- (CGFloat)preferredHeightWithoutText {
-    static CGFloat _preferredHeightWhenEmpty = 0;
++ (CGFloat)textViewMinHeight {
+    static CGFloat _textViewMinHeight;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _preferredHeightWhenEmpty = [self preferredHeightWithText:NO];
+        CGFloat textViewContainerMinHeight = 63;
+        _textViewMinHeight = textViewContainerMinHeight - self.class.textViewMargin.top - self.class.textViewMargin.bottom;
     });
-    return _preferredHeightWhenEmpty;
+    return _textViewMinHeight;
 }
+
++ (CGFloat)textViewMaxHeight {
+    static CGFloat _textViewMaxHeight;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        CGFloat textViewContainerMaxHeight = 176;
+        _textViewMaxHeight = textViewContainerMaxHeight - self.class.textViewMargin.top - self.class.textViewMargin.bottom;
+    });
+    return _textViewMaxHeight;
+}
+
+//- (CGFloat)preferredHeightWithoutText {
+//    static CGFloat _preferredHeightWhenEmpty = 0;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        _preferredHeightWhenEmpty = [self preferredHeightWithText:NO];
+//    });
+//    return _preferredHeightWhenEmpty;
+//}
 
 - (CGFloat)preferredHeight {
     return [self preferredHeightWithText:YES];
 }
 
 - (CGFloat)preferredHeightWithText:(BOOL)withText {
-//    UIEdgeInsets textViewContainerMargin = WKNAigcChatInputView.textViewContainerMargin;
-//    UIEdgeInsets textViewMargin = WKNAigcChatInputView.textViewMargin;
-//    CGFloat textViewHeight = 0;
+    UIEdgeInsets textViewContainerMargin = self.class.textViewContainerMargin;
+    UIEdgeInsets textViewMargin = self.class.textViewMargin;
+    CGFloat textViewHeight = 0;
 //    if (!withText || !self.textView.text.length) {
-//        textViewHeight = WKNAigcChatInputView.textViewMinHeight;
+//        textViewHeight = self.class.textViewMinHeight;
 //    } else {
-//        CGFloat textHeight = self.textView.contentSize.height;
-//        CGFloat minTextHeight = MAX(WKNAigcChatInputView.textViewMinHeight, textHeight);
-//        textViewHeight = MIN(WKNAigcChatInputView.textViewMaxHeight, minTextHeight);
+        CGFloat textHeight = self.textView.contentSize.height;
+        textViewHeight = MAX(self.class.textViewMinHeight, MIN(self.class.textViewMaxHeight, textHeight));
 //    }
-//    CGFloat tagsViewHeight = 0;
-//    if (!self.tagsView.isEmpty) {
-//        tagsViewHeight = self.tagsView.customContentSize.height;
-//    }
-//    
-//    CGFloat preferredHeight = textViewContainerMargin.top + textViewMargin.top + textViewHeight + textViewMargin.bottom + textViewContainerMargin.bottom + tagsViewHeight;
-//    return preferredHeight;
-    return 240;
+    CGFloat preferredHeight = textViewContainerMargin.top + textViewMargin.top + textViewHeight + textViewMargin.bottom + textViewContainerMargin.bottom;
+    return preferredHeight;
 }
 
 + (BOOL)requiresConstraintBasedLayout {
@@ -129,6 +122,14 @@
 
 - (void)customLayoutSubviews {
     self.height = self.preferredHeight;
+    self.textViewContainer.frame = ({
+        CGRect frame = CGRectZero;
+        frame.size.width = self.width - self.class.textViewContainerMargin.left - self.class.textViewContainerMargin.right;
+        frame.size.height = self.height - self.class.textViewContainerMargin.top - self.class.textViewContainerMargin.bottom;
+        frame.origin.x = self.class.textViewContainerMargin.left;
+        frame.origin.y = self.class.textViewContainerMargin.top;
+        frame;
+    });
 }
 
 #pragma mark - Action Methods

@@ -56,15 +56,19 @@
                     contentView.alpha = 1;
                 } completion:nil];
                 
-                weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height);
+                weakSelf.contentMainView.alpha = 0;
+                weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height / 2);
                 [UIView animateWithDuration:duration delay:duration / 2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.contentMainView.alpha = 1;
                     weakSelf.contentMainView.transform = CGAffineTransformIdentity;
                 } completion:nil];
             } else {
                 [UIView animateWithDuration:duration animations:^{
                     contentView.alpha = 0;
-                    weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height);
+                    weakSelf.contentMainView.alpha = 0;
+                    weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height / 2);
                 } completion:^(BOOL finished) {
+                    weakSelf.contentMainView.alpha = 0;
                     weakSelf.contentMainView.transform = CGAffineTransformIdentity;
                 }];
             }
