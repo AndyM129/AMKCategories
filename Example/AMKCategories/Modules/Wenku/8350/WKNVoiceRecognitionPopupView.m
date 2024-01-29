@@ -24,7 +24,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:UIScreen.mainScreen.bounds]) {
-        self.animationDuration = 0.25;
+        self.animationDuration = 0.3;
         self.maskView.hidden = YES;
         self.alpha = 0.9; // DEBUG
     }
@@ -58,7 +58,7 @@
                 
                 weakSelf.contentMainView.alpha = 0;
                 weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height / 2);
-                [UIView animateWithDuration:duration delay:duration / 2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [UIView animateWithDuration:duration delay:duration / 2 options:UIViewAnimationOptionCurveEaseOut animations:^{
                     weakSelf.contentMainView.alpha = 1;
                     weakSelf.contentMainView.transform = CGAffineTransformIdentity;
                 } completion:nil];
