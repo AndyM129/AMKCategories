@@ -83,16 +83,17 @@
 }
 
 - (void)setState:(WKNVoiceRecognitionButtonState)state animated:(BOOL)animated {
-    [UIView animateWithDuration:animated ? 0.25 : 0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _state = state;
-        if (state == WKNVoiceRecognitionButtonStateTouchDown) {
-            [self.voiceRecognitionPanelView showInView:self.voiceRecognitionPanelView.superview animated:animated];
-        } else if (state == WKNVoiceRecognitionButtonStateTouchUp) {
-            [self.voiceRecognitionPanelView dismissAnimated:animated];
-        }
-    } completion:^(BOOL finished) {
-        
-    }];
+    _state = state;
+    if (state == WKNVoiceRecognitionButtonStateTouchDown) {
+        [self.voiceRecognitionPanelView showInView:self.voiceRecognitionPanelView.superview animated:animated];
+    } else if (state == WKNVoiceRecognitionButtonStateTouchUp) {
+        [self.voiceRecognitionPanelView dismissAnimated:animated];
+    }
+//    [UIView animateWithDuration:animated ? 0.25 : 0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        
+//    } completion:^(BOOL finished) {
+//        
+//    }];
 }
 
 #pragma mark - Data & Networking

@@ -7,9 +7,11 @@
 //
 
 #import "WKNVoiceRecognitionPopupView.h"
+#import "WKNVoiceRecognitionPopupContentMainView.h"
 
 @interface WKNVoiceRecognitionPopupView ()
-@property (nonatomic, strong, readwrite, nullable) CAGradientLayer *contentViewLayerMaskRadientLayer;
+@property (nonatomic, strong, readwrite, nullable) CAGradientLayer *contentViewLayerMaskRadientLayer; //!< 内容的渐变遮罩
+@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPopupContentMainView *contentMainView; //!< 内容主体
 @end
 
 @implementation WKNVoiceRecognitionPopupView
@@ -44,6 +46,37 @@
     NSAssert(NO, @"自定义页面，请勿赋值");
 }
 
+- (BDEPopupViewContentAnimationBlock)contentViewAnimationBlock {
+    if (!_contentViewAnimationBlock) {
+        __weak __typeof__(self)weakSelf = self;
+        _contentViewAnimationBlock = ^(UIView *contentView, BOOL showAnimation, NSTimeInterval duration) {
+            if (showAnimation) {
+//                [weakSelf customLayoutSubviews];
+                
+                contentView.alpha = 0;
+                [UIView animateWithDuration:duration animations:^{
+                    contentView.alpha = 1;
+                } completion:nil];
+//                [weakSelf updateConstraints];
+//                [weakSelf.contentMainView updateConstraints];
+                
+                weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height);
+                [UIView animateWithDuration:duration delay:duration / 2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    weakSelf.contentMainView.transform = CGAffineTransformIdentity;
+                } completion:nil];
+            } else {
+                [UIView animateWithDuration:duration animations:^{
+                    contentView.alpha = 0;
+                    weakSelf.contentMainView.transform = CGAffineTransformMakeTranslation(0, weakSelf.contentMainView.height);
+                } completion:^(BOOL finished) {
+                    weakSelf.contentMainView.transform = CGAffineTransformIdentity;
+                }];
+            }
+        };
+    }
+    return _contentViewAnimationBlock;
+}
+
 - (CAGradientLayer *)contentViewLayerMaskRadientLayer {
     if (!_contentViewLayerMaskRadientLayer) {
         _contentViewLayerMaskRadientLayer = [CAGradientLayer layer];
@@ -57,48 +90,20 @@
     return _contentViewLayerMaskRadientLayer;
 }
 
-- (BDEPopupViewContentAnimationBlock)contentViewAnimationBlock {
-    if (!_contentViewAnimationBlock) {
-        __weak __typeof__(self)weakSelf = self;
-        _contentViewAnimationBlock = ^(UIView *contentView, BOOL showAnimation, NSTimeInterval duration) {
-            if (showAnimation) {
-                [weakSelf customLayoutSubviews];
-                contentView.alpha = 0;
-                [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    contentView.alpha = 1;
-                } completion:nil];
-            } else {
-                [UIView animateWithDuration:duration animations:^{
-                    contentView.alpha = 0;
-                }];
-            }
-        };
+- (WKNVoiceRecognitionPopupContentMainView *)contentMainView {
+    if (!_contentMainView) {
+        _contentMainView = [WKNVoiceRecognitionPopupContentMainView.alloc init];
+        [self.contentView addSubview:_contentMainView];
     }
-    return _contentViewAnimationBlock;
-}
-
-- (BDEPopupViewContentAnimationBlock)maskViewAnimationBlock {
-    if (!_maskViewAnimationBlock) {
-        _maskViewAnimationBlock = ^(UIView *maskView, BOOL showAnimation, NSTimeInterval duration) {};
-    }
-    return _maskViewAnimationBlock;
+    return _contentMainView;
 }
 
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
 
-+ (UIEdgeInsets)contentViewPadding {
-    static UIEdgeInsets _contentViewPadding;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _contentViewPadding = UIEdgeInsetsMake(74, 0, UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom, 0);
-    });
-    return _contentViewPadding;
-}
-
-- (CGFloat)preferredHeight {
-    return self.class.contentViewPadding.top + 240 + self.class.contentViewPadding.bottom;
+- (CGFloat)preferredContentViewHeight {
+    return WKNVoiceRecognitionPopupContentMainView.margin.top + self.contentMainView.preferredHeight + WKNVoiceRecognitionPopupContentMainView.margin.bottom;
 }
 
 + (BOOL)requiresConstraintBasedLayout {
@@ -111,16 +116,26 @@
 }
 
 - (void)customLayoutSubviews {
+//    [self.contentMainView customLayoutSubviews];
+    
     self.contentView.frame = ({
         CGRect frame = CGRectZero;
         frame.size.width = self.width;
-        frame.size.height = self.preferredHeight;
+        frame.size.height = self.preferredContentViewHeight;
         frame.origin.x = 0;
         frame.origin.y = self.height - frame.size.height;
         frame;
     });
     self.contentViewLayerMaskRadientLayer.frame = self.contentView.bounds;
-    self.contentViewLayerMaskRadientLayer.endPoint = CGPointMake(0, self.class.contentViewPadding.top / MAX(1.0, self.contentView.height));
+    self.contentViewLayerMaskRadientLayer.endPoint = CGPointMake(0, WKNVoiceRecognitionPopupContentMainView.margin.top / MAX(1.0, self.contentView.height));
+    self.contentMainView.frame = ({
+        CGRect frame = CGRectZero;
+        frame.size.width = self.contentView.width;
+        frame.size.height = self.contentView.height - WKNVoiceRecognitionPopupContentMainView.margin.top - WKNVoiceRecognitionPopupContentMainView.margin.bottom;
+        frame.origin.x = 0;
+        frame.origin.y = WKNVoiceRecognitionPopupContentMainView.margin.top;
+        frame;
+    });
 }
 
 - (void)didMoveToSuperview {
