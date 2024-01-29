@@ -7,6 +7,7 @@
 //
 
 #import "WKNVoiceRecognitionPopupView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface WKNVoiceRecognitionPopupView ()
 @property (nonatomic, strong, readwrite, nullable) CAGradientLayer *contentViewLayerMaskRadientLayer;
@@ -119,15 +120,19 @@
     if (_state != state) {
         _state = state;
         if (state == WKNVoiceRecognitionPopupViewStateTouchDown) {
+            self.contentMainView.tipsButton.highlighted = NO;
+            self.contentMainView.voiceRecognitionButton.highlighted = NO;
             [self showInView:self.superview animated:animated];
         } else if (state == WKNVoiceRecognitionPopupViewStateTouchUp) {
             [self dismissAnimated:animated];
         } else if (state == WKNVoiceRecognitionPopupViewStateTouchDragInside) {
             self.contentMainView.tipsButton.highlighted = NO;
             self.contentMainView.voiceRecognitionButton.highlighted = NO;
+            AudioServicesPlaySystemSound(1519);
         } else if (state == WKNVoiceRecognitionPopupViewStateTouchDragOutside) {
             self.contentMainView.tipsButton.highlighted = YES;
             self.contentMainView.voiceRecognitionButton.highlighted = YES;
+            AudioServicesPlaySystemSound(1519);
         }
     }
 }

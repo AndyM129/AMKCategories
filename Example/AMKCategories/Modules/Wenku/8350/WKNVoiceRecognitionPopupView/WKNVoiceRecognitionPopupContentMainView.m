@@ -20,7 +20,7 @@
 #pragma mark - Init Methods
 
 - (void)dealloc {
-    
+    [_voiceRecognitionButton removeObserverBlocks];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -59,6 +59,9 @@
 - (UIButton *)voiceRecognitionButton {
     if (!_voiceRecognitionButton) {
         _voiceRecognitionButton = [UIButton.alloc init];
+        _voiceRecognitionButton.layer.shadowColor = [UIColor colorWithRed:249/255.0 green:90/255.0 blue:101/255.0 alpha:0.25].CGColor;
+        _voiceRecognitionButton.layer.shadowRadius = 30;
+        _voiceRecognitionButton.layer.shadowOffset = CGSizeMake(0.f, 0.f);
         _voiceRecognitionButton.userInteractionEnabled = NO;
         _voiceRecognitionButton.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
         _voiceRecognitionButton.imageEdgeInsets = UIEdgeInsetsMake(18, 0, 0, 0);
@@ -66,6 +69,11 @@
         [_voiceRecognitionButton setImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_h"] forState:UIControlStateHighlighted];
         [_voiceRecognitionButton setBackgroundImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_bg_n"] forState:UIControlStateNormal];
         [_voiceRecognitionButton setBackgroundImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_bg_h"] forState:UIControlStateHighlighted];
+        [_voiceRecognitionButton addObserverBlockForKeyPath:@"highlighted" block:^(UIButton *voiceRecognitionButton, NSNumber * _Nonnull oldVal, NSNumber *  _Nonnull newVal) {
+            if (![newVal isEqualToNumber:oldVal]) {
+                voiceRecognitionButton.layer.shadowOpacity = newVal.boolValue ? 1 : 0;
+            }
+        }];
         [self addSubview:_voiceRecognitionButton];
     }
     return _voiceRecognitionButton;
@@ -151,7 +159,7 @@
 }
 
 - (void)customLayoutSubviews {
-//    UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.delegate.window.safeAreaInsets;
+    UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.delegate.window.safeAreaInsets;
     self.height = self.preferredHeight;
     self.textViewContainer.frame = ({
         CGRect frame = CGRectZero;
@@ -161,20 +169,21 @@
         frame.origin.y = self.class.textViewContainerMargin.top;
         frame;
     });
+    self.voiceRecognitionButton.frame = ({
+        CGFloat aspectRatio = 414 / 103.0;
+        CGRect frame = CGRectZero;
+        frame.size.width = self.width;
+        frame.size.height = self.width / aspectRatio;
+        frame.origin.x = 0;
+        frame.origin.y = self.height - frame.size.height + (safeAreaInsets.bottom > 0 ? 0 : safeAreaInsets.bottom);
+        frame;
+    });
     self.tipsButton.frame = ({
         CGRect frame = CGRectZero;
         frame.size.width = self.width - self.class.textViewContainerMargin.left - self.class.textViewContainerMargin.right;
         frame.size.height = 13;
         frame.origin.x = self.class.textViewContainerMargin.left;
-        frame.origin.y = self.textViewContainer.bottom + 53;
-        frame;
-    });
-    self.voiceRecognitionButton.frame = ({
-        CGRect frame = CGRectZero;
-        frame.size.width = self.width;
-        frame.size.height = self.width / (414 / 103.0);
-        frame.origin.x = 0;
-        frame.origin.y = self.textViewContainer.bottom + 85;
+        frame.origin.y = self.voiceRecognitionButton.top - 19 - frame.size.height;
         frame;
     });
 }
