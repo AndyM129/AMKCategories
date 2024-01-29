@@ -12,6 +12,7 @@
 @interface WKNVoiceRecognitionPopupContentMainView : UIView
 @property (nonatomic, strong, readonly, nullable) UIView *textViewContainer; //!< 文本框 容器视图
 @property (nonatomic, strong, readonly, nullable) UITextView *textView; //!< 文本框
+@property (nonatomic, strong, readonly, nullable) UIButton *tipsButton;
 @property (nonatomic, strong, readonly, nullable) UIButton *voiceRecognitionButton;
 - (void)customLayoutSubviews;
 @end

@@ -25,7 +25,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.layer.borderWidth = 1;
+
     }
     return self;
 }
@@ -63,6 +63,7 @@
         _voiceRecognitionButton.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
         _voiceRecognitionButton.imageEdgeInsets = UIEdgeInsetsMake(18, 0, 0, 0);
         [_voiceRecognitionButton setImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_n"] forState:UIControlStateNormal];
+        [_voiceRecognitionButton setImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_h"] forState:UIControlStateHighlighted];
         [_voiceRecognitionButton setBackgroundImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_bg_n"] forState:UIControlStateNormal];
         [_voiceRecognitionButton setBackgroundImage:[UIImage imageNamed:@"wkn_voice_recognition_popup_voice_bg_h"] forState:UIControlStateHighlighted];
         [self addSubview:_voiceRecognitionButton];
@@ -150,7 +151,7 @@
 }
 
 - (void)customLayoutSubviews {
-    UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.delegate.window.safeAreaInsets;
+//    UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.delegate.window.safeAreaInsets;
     self.height = self.preferredHeight;
     self.textViewContainer.frame = ({
         CGRect frame = CGRectZero;
@@ -173,7 +174,7 @@
         frame.size.width = self.width;
         frame.size.height = self.width / (414 / 103.0);
         frame.origin.x = 0;
-        frame.origin.y = self.textViewContainer.bottom + 85; //self.height - frame.size.height + (safeAreaInsets.bottom > 0 ? 0 : safeAreaInsets.bottom);
+        frame.origin.y = self.textViewContainer.bottom + 85;
         frame;
     });
 }

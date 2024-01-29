@@ -74,6 +74,8 @@
 		88CE2C2F2A66384D003BB866 /* AMKSubStringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE2C2E2A66384D003BB866 /* AMKSubStringViewController.swift */; };
 		88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE2C392A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m */; };
 		88D491E82B67BC18009DFF56 /* Wenku_8350.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D491E72B67BC18009DFF56 /* Wenku_8350.xcassets */; };
+		88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D493622B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m */; };
+		88D493662B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D493652B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m */; };
 		88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */; };
 		88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4BB692A1E42270063DFB9 /* AMKAiWebViewController.m */; };
 		88EEBDEC29151FF90049AED5 /* AMKMJRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEBDEB29151FF90049AED5 /* AMKMJRefreshViewController.m */; };
@@ -214,6 +216,10 @@
 		88CE2C382A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+AMKCrashProtectorForInvalidUpdate.h"; sourceTree = "<group>"; };
 		88CE2C392A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+AMKCrashProtectorForInvalidUpdate.m"; sourceTree = "<group>"; };
 		88D491E72B67BC18009DFF56 /* Wenku_8350.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wenku_8350.xcassets; sourceTree = "<group>"; };
+		88D493612B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPopupViewConstants.h; sourceTree = "<group>"; };
+		88D493622B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPopupViewConstants.m; sourceTree = "<group>"; };
+		88D493642B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		88D493652B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionLongPressGestureRecognizer.m; sourceTree = "<group>"; };
 		88E4BB652A1E42110063DFB9 /* AMKAiRootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiRootController.h; sourceTree = "<group>"; };
 		88E4BB662A1E42110063DFB9 /* AMKAiRootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKAiRootController.m; sourceTree = "<group>"; };
 		88E4BB682A1E42270063DFB9 /* AMKAiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKAiWebViewController.h; sourceTree = "<group>"; };
@@ -693,12 +699,7 @@
 			children = (
 				8873BB3A2B60C57D004E7DFE /* AMK8350ExampleViewController.h */,
 				8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */,
-				8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */,
-				8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */,
-				8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.h */,
-				8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */,
-				8891AE3E2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.h */,
-				8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */,
+				88D493672B67E2EF009DFF56 /* WKNVoiceRecognitionPopupView */,
 				88D491E72B67BC18009DFF56 /* Wenku_8350.xcassets */,
 			);
 			path = 8350;
@@ -852,6 +853,23 @@
 				88CE2C2E2A66384D003BB866 /* AMKSubStringViewController.swift */,
 			);
 			path = SubString;
+			sourceTree = "<group>";
+		};
+		88D493672B67E2EF009DFF56 /* WKNVoiceRecognitionPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */,
+				8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */,
+				88D493642B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.h */,
+				88D493652B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m */,
+				88D493612B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.h */,
+				88D493622B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m */,
+				8873BB432B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.h */,
+				8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */,
+				8891AE3E2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.h */,
+				8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */,
+			);
+			path = WKNVoiceRecognitionPopupView;
 			sourceTree = "<group>";
 		};
 		88E4BB642A1E41C60063DFB9 /* AI */ = {
@@ -1103,8 +1121,10 @@
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
 				88CE2C2F2A66384D003BB866 /* AMKSubStringViewController.swift in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
+				88D493662B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m in Sources */,
 				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
+				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */,

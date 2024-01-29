@@ -7,11 +7,11 @@
 //
 
 #import "WKNVoiceRecognitionPopupView.h"
-#import "WKNVoiceRecognitionPopupContentMainView.h"
 
 @interface WKNVoiceRecognitionPopupView ()
-@property (nonatomic, strong, readwrite, nullable) CAGradientLayer *contentViewLayerMaskRadientLayer; //!< 内容的渐变遮罩
-@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPopupContentMainView *contentMainView; //!< 内容主体
+@property (nonatomic, strong, readwrite, nullable) CAGradientLayer *contentViewLayerMaskRadientLayer;
+@property (nonatomic, strong, readwrite, nullable) WKNVoiceRecognitionPopupContentMainView *contentMainView;
+@property (nonatomic, assign, readwrite) WKNVoiceRecognitionPopupViewState state;
 @end
 
 @implementation WKNVoiceRecognitionPopupView
@@ -26,12 +26,20 @@
     if (self = [super initWithFrame:UIScreen.mainScreen.bounds]) {
         self.animationDuration = 0.3;
         self.maskView.hidden = YES;
-        self.alpha = 0.9; // DEBUG
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
+
++ (WKNVoiceRecognitionPopupView *)sharedInstance {
+    static WKNVoiceRecognitionPopupView *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [WKNVoiceRecognitionPopupView.alloc init];
+    });
+    return _sharedInstance;
+}
 
 - (UIView *)contentView {
     if (!_contentView) {
@@ -101,6 +109,27 @@
         [self.contentView addSubview:_contentMainView];
     }
     return _contentMainView;
+}
+
+- (void)setState:(WKNVoiceRecognitionPopupViewState)state {
+    [self setState:state animated:NO];
+}
+
+- (void)setState:(WKNVoiceRecognitionPopupViewState)state animated:(BOOL)animated {
+    if (_state != state) {
+        _state = state;
+        if (state == WKNVoiceRecognitionPopupViewStateTouchDown) {
+            [self showInView:self.superview animated:animated];
+        } else if (state == WKNVoiceRecognitionPopupViewStateTouchUp) {
+            [self dismissAnimated:animated];
+        } else if (state == WKNVoiceRecognitionPopupViewStateTouchDragInside) {
+            self.contentMainView.tipsButton.highlighted = NO;
+            self.contentMainView.voiceRecognitionButton.highlighted = NO;
+        } else if (state == WKNVoiceRecognitionPopupViewStateTouchDragOutside) {
+            self.contentMainView.tipsButton.highlighted = YES;
+            self.contentMainView.voiceRecognitionButton.highlighted = YES;
+        }
+    }
 }
 
 #pragma mark - Data & Networking
