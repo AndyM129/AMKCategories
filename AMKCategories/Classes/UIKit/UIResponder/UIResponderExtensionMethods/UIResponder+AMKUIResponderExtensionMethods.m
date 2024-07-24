@@ -1,13 +1,13 @@
 //
-//  UIResponder+AMKUIResponderStandardEditActions.m
+//  UIResponder+AMKUIResponderExtensionMethods.m
 //  AMKCategories
 //
-//  Created by Meng Xinxin on 2023/7/24.
+//  Created by Meng Xinxin on 2024/7/24.
 //
 
-#import "UIResponder+AMKUIResponderStandardEditActions.h"
+#import "UIResponder+AMKUIResponderExtensionMethods.h"
 
-@implementation UIResponder (AMKUIResponderStandardEditActions)
+@implementation UIResponder (AMKUIResponderExtensionMethods)
 
 #pragma mark - Init Methods
 
@@ -36,6 +36,5 @@
 #pragma mark - Networking
 
 #pragma mark - Helper Methods
-
 
 @end

@@ -4,9 +4,9 @@ platform :ios, '11.0'
 target 'AMKCategories_Example' do
     # 当前工程
     pod 'AMKCategories', :path => '../'
-    pod 'AMKCategories/UIKit', :path => '../'
-    pod 'AMKCategories/Foundation', :path => '../'
+    pod 'AMKCategories+Debug', :path => '../'
     pod 'AMKCategories/ThirdPart', :path => '../'
+    
     
     # 第三方
     pod 'Masonry'
@@ -17,7 +17,7 @@ target 'AMKCategories_Example' do
     pod 'AFNetworking', '3.2.1'
     pod 'MBProgressHUD', :path => '../PrivatePods/MBProgressHUD'
     pod 'MJRefresh', '3.7.5'
-#    pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'
+    #pod 'MirrorKit', :path => '../PrivatePods/MirrorKit'
     pod 'Aspects', :path => '../PrivatePods/Aspects'
     pod 'FLEX'
     pod 'lottie-ios', '2.5.3'

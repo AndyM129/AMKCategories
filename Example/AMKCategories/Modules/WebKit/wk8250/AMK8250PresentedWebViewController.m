@@ -8,9 +8,14 @@
 
 #import "AMK8250PresentedWebViewController.h"
 #import "AMK8250MainWebViewController.h"
-#import <WebKit/WebKit.h>
+#import <AMKCategories/WKWebView+AMKTextSelectionHighlight.h>
+#import <AMKCategories_Debug/WKWebView+AMKTextSelectionHighlightDebug.h>
+#import <FLEX/FLEX.h>
 #import <Aspects/Aspects.h>
-#import <AMKCategories/WKWebView+AMKTextSelection.h>
+
+static CGRect AMKCGRectEdgeInsets(CGRect rect, UIEdgeInsets edgeInsets) {
+    return CGRectMake((rect.origin.x + edgeInsets.left), (rect.origin.y + edgeInsets.top), (rect.size.width - edgeInsets.left - edgeInsets.right), (rect.size.height - edgeInsets.top - edgeInsets.bottom));
+}
 
 @interface AMK8250MainWebViewController (AMK8250PresentedWebViewController)
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
@@ -23,6 +28,35 @@
 @end
 
 @implementation AMK8250PresentedWebViewController
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 默认启动Debug
+        WKWebView.amk_textSelectionHighlightDebugEnable = YES;
+
+        // 支持手动关闭
+        [FLEXManager.sharedManager registerGlobalEntryWithName:@"AMKTextSelectionHighlightDebug" viewControllerFutureBlock:^UIViewController * _Nonnull{
+            [[FLEXManager.sharedManager valueForKey:@"explorerViewController"] dismissViewControllerAnimated:YES completion:^{
+                NSString *title = @"WKWebView+AMKTextSelectionHighlightDebug";
+                NSString *message = nil;
+                NSArray<NSString *> *actionTitles = @[@"0: 关闭调试", @"1: 开启调试"];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
+                [actionTitles enumerateObjectsUsingBlock:^(NSString * _Nonnull actionTitle, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([actionTitle componentsSeparatedByString:@":"].firstObject.boolValue == WKWebView.amk_textSelectionHighlightDebugEnable) {
+                        actionTitle = [actionTitle stringByAppendingFormat:@" ✔︎"];
+                    }
+                    [alertController addAction:[UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        WKWebView.amk_textSelectionHighlightDebugEnable = [actionTitle componentsSeparatedByString:@":"].firstObject.boolValue;
+                    }]];
+                }];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+                [UIViewController amk_presentViewController:alertController animated:YES completion:nil];
+            }];
+            return UIViewController.new;
+        }];
+    });
+}
 
 #pragma mark - Dealloc
 
@@ -86,18 +120,6 @@
         _webView.backgroundColor = UIColor.clearColor;
         _webView.opaque = false;
         _webView.scrollView.bounces = NO;
-        [_webView setAmk_textSelectionViewLayoutSubviewsBlock:^(WKWebView * _Nullable webView, UIView * _Nullable textSelectionView) {
-            CAShapeLayer *layerMask = textSelectionView.layer.mask ?: [CAShapeLayer layer];
-            if ([layerMask isKindOfClass:CAShapeLayer.class]) {
-                CGRect frame = textSelectionView.bounds;
-                frame.size.height = 250 + 10 * 2;
-                frame.origin.y = textSelectionView.bounds.size.height - frame.size.height - 10 - 50;
-               
-                layerMask.path = [UIBezierPath bezierPathWithRect:frame].CGPath;
-                textSelectionView.layer.mask = layerMask;
-                textSelectionView.layer.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.5].CGColor;
-            }
-        }];
         [self.view addSubview:_webView];
     }
     return _webView;
@@ -106,15 +128,16 @@
 - (UILabel *)mainContentSchematicView {
     if (!_mainContentSchematicView) {
         _mainContentSchematicView = [UILabel.alloc init];
+        _mainContentSchematicView.tintColor = UIColor.redColor;
         _mainContentSchematicView.userInteractionEnabled = NO;
         _mainContentSchematicView.numberOfLines = 0;
         _mainContentSchematicView.textAlignment = NSTextAlignmentCenter;
         _mainContentSchematicView.font = [UIFont boldSystemFontOfSize:30];
         _mainContentSchematicView.text = @"AI生成弹窗区域\n\n不可滑动编辑器";
-        _mainContentSchematicView.textColor = [UIColor.redColor colorWithAlphaComponent:0.25];
+        _mainContentSchematicView.textColor = [_mainContentSchematicView.tintColor colorWithAlphaComponent:0.25];
         _mainContentSchematicView.layer.borderWidth = 2;
-        _mainContentSchematicView.layer.borderColor = _mainContentSchematicView.textColor.CGColor;
-        _mainContentSchematicView.layer.backgroundColor = [_mainContentSchematicView.textColor colorWithAlphaComponent:0.3].CGColor;
+        _mainContentSchematicView.layer.borderColor = [_mainContentSchematicView.tintColor colorWithAlphaComponent:0.25].CGColor;
+        _mainContentSchematicView.layer.backgroundColor = [_mainContentSchematicView.tintColor colorWithAlphaComponent:0.15].CGColor;
         _mainContentSchematicView.frame = ({
             CGRect frame = CGRectZero;
             frame.size.width = self.view.width;
@@ -164,6 +187,13 @@
     [super viewWillLayoutSubviews];
     [self.view insertSubview:self.mainContentSchematicView aboveSubview:self.webView];
     self.webView.frame = self.view.bounds;
+    self.webView.amk_textSelectionHighlightViewLayerMaskFrame = ({
+        UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.delegate.window.safeAreaInsets;
+        CGRect frame = self.webView.bounds;
+        frame.size.height = 250 + 10 * 2;
+        frame.origin.y = self.webView.bounds.size.height - safeAreaInsets.bottom - frame.size.height - 10 - 50;
+        frame;
+    });
 }
 
 #pragma mark - Action Methods

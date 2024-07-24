@@ -46,7 +46,6 @@
 		886F3E012A6A37690059C0B4 /* AMK8250MainWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E002A6A37690059C0B4 /* AMK8250MainWebViewController.m */; };
 		886F3E042A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */; };
 		886F3E062A6E6C130059C0B4 /* wk8250_wkeditorhelper.html in Resources */ = {isa = PBXBuildFile; fileRef = 886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */; };
-		886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */; };
 		8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */; };
 		8873BB3F2B60C759004E7DFE /* WKNVoiceRecognitionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB3E2B60C759004E7DFE /* WKNVoiceRecognitionButton.m */; };
 		8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8873BB442B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m */; };
@@ -164,8 +163,6 @@
 		886F3E022A6A37A90059C0B4 /* AMK8250PresentedWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8250PresentedWebViewController.h; sourceTree = "<group>"; };
 		886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8250PresentedWebViewController.m; sourceTree = "<group>"; };
 		886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wk8250_wkeditorhelper.html; sourceTree = "<group>"; };
-		886F3E072A6E6F2F0059C0B4 /* UIView+UITextSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UITextSelectionView.h"; sourceTree = "<group>"; };
-		886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITextSelectionView.m"; sourceTree = "<group>"; };
 		8873BB3A2B60C57D004E7DFE /* AMK8350ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK8350ExampleViewController.h; sourceTree = "<group>"; };
 		8873BB3B2B60C57D004E7DFE /* AMK8350ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK8350ExampleViewController.m; sourceTree = "<group>"; };
 		8873BB3D2B60C759004E7DFE /* WKNVoiceRecognitionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionButton.h; sourceTree = "<group>"; };
@@ -688,8 +685,6 @@
 				886F3E022A6A37A90059C0B4 /* AMK8250PresentedWebViewController.h */,
 				886F3E032A6A37A90059C0B4 /* AMK8250PresentedWebViewController.m */,
 				886F3E052A6E6C130059C0B4 /* wk8250_wkeditorhelper.html */,
-				886F3E072A6E6F2F0059C0B4 /* UIView+UITextSelectionView.h */,
-				886F3E082A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m */,
 			);
 			path = wk8250;
 			sourceTree = "<group>";
@@ -1042,6 +1037,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-AMKCategories_Example/Pods-AMKCategories_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AMKCategories/AMKCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/AMKCategories+Debug/AMKCategories_Debug.framework",
 				"${BUILT_PRODUCTS_DIR}/AMKStackView/AMKStackView.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
@@ -1059,6 +1055,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKCategories_Debug.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMKStackView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
@@ -1148,7 +1145,6 @@
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
 				887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */,
 				88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */,
-				886F3E092A6E6F2F0059C0B4 /* UIView+UITextSelectionView.m in Sources */,
 				88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */,
 				8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */,
 				88E4BB6A2A1E42270063DFB9 /* AMKAiWebViewController.m in Sources */,

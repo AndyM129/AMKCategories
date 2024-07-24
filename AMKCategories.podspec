@@ -43,10 +43,12 @@ Pod::Spec.new do |s|
     s.subspec 'WebKit' do |webKit|
         # WKWebView 提示相关
         webKit.subspec 'WKWebView' do |webView|
-            # TextSelection 提示相关
-            webView.subspec 'TextSelection' do |textSelection|
-                textSelection.source_files = 'AMKCategories/Classes/WebKit/WKWebView/TextSelection/*.{h,m,mm}'
+            # TextSelectionHighlight 文本选区高亮相关
+            webView.subspec 'TextSelectionHighlight' do |textSelection|
+                textSelection.source_files = 'AMKCategories/Classes/WebKit/WKWebView/TextSelectionHighlight/*.{h,m,mm}'
+                textSelection.dependency 'AMKCategories/UIKit/UIResponder/UIResponderExtensionMethods'
                 textSelection.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
+                textSelection.dependency 'Aspects'
             end
         end
     end
@@ -103,9 +105,9 @@ Pod::Spec.new do |s|
         end
         # UIResponder 相关
         uikit.subspec 'UIResponder' do |responder|
-            # Interactions 交互相关
-            responder.subspec 'ResponderStandardEditActions' do |standardEditActions|
-                standardEditActions.source_files = 'AMKCategories/Classes/UIKit/UIResponder/ResponderStandardEditActions/*.{h,m}'
+            # 扩展方法 相关
+            responder.subspec 'UIResponderExtensionMethods' do |standardEditActions|
+                standardEditActions.source_files = 'AMKCategories/Classes/UIKit/UIResponder/UIResponderExtensionMethods/*.{h,m}'
                 standardEditActions.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
