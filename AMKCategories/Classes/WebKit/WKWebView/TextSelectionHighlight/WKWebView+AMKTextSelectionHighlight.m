@@ -16,7 +16,7 @@
 #define AMKTextSelectionHighlightLog(...)
 #endif
 
-static Class UITSV, UISGD, UISG, _UITSRV, _UITSRACV, _UITCV;
+static Class UITSV, UISGD, UISG, _UITSRV, _UITSRACV, _UITCV, UISTCV;
 
 #pragma mark -
 
@@ -76,17 +76,19 @@ static Class UITSV, UISGD, UISG, _UITSRV, _UITSRACV, _UITCV;
             if (!layerMask || [layerMask isKindOfClass:AMKTextSelectionHighlightViewLayerMaskShapeLayer.class]) {
                 if (CGRectEqualToRect(CGRectZero, webView.amk_textSelectionHighlightViewLayerMaskFrame)) {
                     layerMask = nil;
-                } else if ([textSelectionView isKindOfClass:_UITCV]) {
+                    AMKTextSelectionHighlightLog(@"textSelectionView.layer.mask.path.rect: %@ => %@", textSelectionView, @"无");
+                } else if ([textSelectionView isKindOfClass:_UITCV] || [textSelectionView isKindOfClass:UISTCV]) {
                     CGRect rectIntersection = CGRectIntersection(textSelectionView.frame, webView.amk_textSelectionHighlightViewLayerMaskFrame);
                     rectIntersection = [textSelectionView.superview convertRect:rectIntersection toView:textSelectionView];
                     layerMask = layerMask ?: [AMKTextSelectionHighlightViewLayerMaskShapeLayer layer];
                     layerMask.path = [UIBezierPath bezierPathWithRect:rectIntersection].CGPath;
+                    AMKTextSelectionHighlightLog(@"textSelectionView.layer.mask.path.rect: %@ => %@", textSelectionView, @(rectIntersection));
                 } else {
                     layerMask = layerMask ?: [AMKTextSelectionHighlightViewLayerMaskShapeLayer layer];
                     layerMask.path = [UIBezierPath bezierPathWithRect:webView.amk_textSelectionHighlightViewLayerMaskFrame].CGPath;
+                    AMKTextSelectionHighlightLog(@"textSelectionView.layer.mask.path.rect: %@ => %@", textSelectionView, @(webView.amk_textSelectionHighlightViewLayerMaskFrame));
                 }
                 textSelectionView.layer.mask = layerMask;
-                AMKTextSelectionHighlightLog(@"textSelectionView.layer.mask.path: %@ => %@", textSelectionView, @(webView.amk_textSelectionHighlightViewLayerMaskFrame));
             }
         }];
     }
@@ -110,7 +112,7 @@ static Class UITSV, UISGD, UISG, _UITSRV, _UITSRACV, _UITCV;
     if (amk_textSelectionViewLayoutSubviewsBlock) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            id block = ^(id<AspectInfo> aspectInfo) {
+            void(^block)(id<AspectInfo>) = ^(id<AspectInfo> aspectInfo) {
                 UIView *textSelectionView = aspectInfo.instance;
                 WKWebView *webView = (id)[textSelectionView amk_nextResponderWithClass:WKWebView.class];
                 !webView.amk_textSelectionViewLayoutSubviewsBlock ?: webView.amk_textSelectionViewLayoutSubviewsBlock(webView, textSelectionView);
@@ -134,6 +136,19 @@ static Class UITSV, UISGD, UISG, _UITSRV, _UITSRACV, _UITCV;
             [_UITSRV aspect_hookSelector:@selector(layoutSubviews) withOptions:AspectPositionAfter usingBlock:block error:nil];
             [_UITSRACV aspect_hookSelector:@selector(layoutSubviews) withOptions:AspectPositionAfter usingBlock:block error:nil];
             [_UITCV aspect_hookSelector:@selector(layoutSubviews) withOptions:AspectPositionAfter usingBlock:block error:nil];
+            
+            // iOS 17.4+
+            UISTCV = NSClassFromString([NSString stringWithFormat:@"%@%@%@%@", @"UIStand", @"ardTe", @"xtCur", @"sorView"]);
+            [UISTCV aspect_hookSelector:@selector(layoutSubviews) withOptions:AspectPositionAfter usingBlock:block error:nil];
+            [UISTCV aspect_hookSelector:@selector(setFrame:) withOptions:AspectPositionAfter usingBlock:block error:nil];
+            [UISTCV aspect_hookSelector:@selector(setBounds:) withOptions:AspectPositionAfter usingBlock:block error:nil];
+//            [UISTCV aspect_hookSelector:@selector(setHidden:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+//                UIView *standardTextCursorView = aspectInfo.instance;
+//                standardTextCursorView.isHidden ?: block(aspectInfo);
+//            } error:nil];
+//            [UISTCV aspect_hookSelector:@selector(setBounds:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+//                block(aspectInfo);
+//            } error:nil];
         });
     }
 }
