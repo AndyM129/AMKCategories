@@ -71,6 +71,8 @@
 		88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */; };
 		88B499A82D3144220045FC15 /* AMKExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499A72D3144220045FC15 /* AMKExampleViewController.m */; };
 		88B499AB2D314B6B0045FC15 /* AMKExamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AA2D314B6B0045FC15 /* AMKExamplesTableViewController.m */; };
+		88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AD2D315A460045FC15 /* AMKExampleStackView.m */; };
+		88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */; };
 		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
 		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
 		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
@@ -215,6 +217,10 @@
 		88B499A72D3144220045FC15 /* AMKExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKExampleViewController.m; sourceTree = "<group>"; };
 		88B499A92D314B6B0045FC15 /* AMKExamplesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExamplesTableViewController.h; sourceTree = "<group>"; };
 		88B499AA2D314B6B0045FC15 /* AMKExamplesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKExamplesTableViewController.m; sourceTree = "<group>"; };
+		88B499AC2D315A460045FC15 /* AMKExampleStackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleStackView.h; sourceTree = "<group>"; };
+		88B499AD2D315A460045FC15 /* AMKExampleStackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKExampleStackView.m; sourceTree = "<group>"; };
+		88B499AF2D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMKExampleStackView+AMKExampleStackViewConveniences.h"; sourceTree = "<group>"; };
+		88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleStackView+AMKExampleStackViewConveniences.m"; sourceTree = "<group>"; };
 		88CC95D62959C00D00C0AD26 /* AMKLottieExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLottieExampleViewController.h; sourceTree = "<group>"; };
 		88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLottieExampleViewController.m; sourceTree = "<group>"; };
 		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
@@ -596,14 +602,9 @@
 		8806D973290BB4BA005DC5C1 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5A5195388D20070C39A /* AMKRootViewController.h */,
-				6003F5A6195388D20070C39A /* AMKRootViewController.m */,
-				88B499A92D314B6B0045FC15 /* AMKExamplesTableViewController.h */,
-				88B499AA2D314B6B0045FC15 /* AMKExamplesTableViewController.m */,
-				88B499A62D3144220045FC15 /* AMKExampleViewController.h */,
-				88B499A72D3144220045FC15 /* AMKExampleViewController.m */,
-				8806D983290BB57D005DC5C1 /* AMKRootExampleModel.h */,
-				8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */,
+				88B499B22D315B280045FC15 /* ViewControllers */,
+				88B499B42D315B440045FC15 /* Views */,
+				88B499B32D315B350045FC15 /* Models */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -848,6 +849,39 @@
 				88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */,
 			);
 			path = LifeCircle;
+			sourceTree = "<group>";
+		};
+		88B499B22D315B280045FC15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5A5195388D20070C39A /* AMKRootViewController.h */,
+				6003F5A6195388D20070C39A /* AMKRootViewController.m */,
+				88B499A92D314B6B0045FC15 /* AMKExamplesTableViewController.h */,
+				88B499AA2D314B6B0045FC15 /* AMKExamplesTableViewController.m */,
+				88B499A62D3144220045FC15 /* AMKExampleViewController.h */,
+				88B499A72D3144220045FC15 /* AMKExampleViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		88B499B32D315B350045FC15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8806D983290BB57D005DC5C1 /* AMKRootExampleModel.h */,
+				8806D984290BB57D005DC5C1 /* AMKRootExampleModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88B499B42D315B440045FC15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88B499AC2D315A460045FC15 /* AMKExampleStackView.h */,
+				88B499AD2D315A460045FC15 /* AMKExampleStackView.m */,
+				88B499AF2D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.h */,
+				88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88CC95D52959BFEB00C0AD26 /* Lottie */ = {
@@ -1153,9 +1187,11 @@
 				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
+				88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */,
 				887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
+				88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */,
 				885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */,
 				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,

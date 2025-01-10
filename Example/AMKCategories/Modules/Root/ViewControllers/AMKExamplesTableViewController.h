@@ -1,5 +1,5 @@
 //
-//  AMKExampleViewController.h
+//  AMKExamplesTableViewController.h
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2025/1/10.
@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface AMKExampleViewController : UIViewController
+/// 示例列表页
+@interface AMKExamplesTableViewController : UIViewController
 
 @end
-
-NS_ASSUME_NONNULL_END

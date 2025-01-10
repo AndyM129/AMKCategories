@@ -7,12 +7,12 @@
 //
 
 #import "AMKExamplesTableViewController.h"
+#import "AMKExampleViewController.h"
 
 static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExamplesTableViewCellReusableIdentifier";
 
 @interface AMKExamplesTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
-@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary *params;
 @end
 
 @implementation AMKExamplesTableViewController
@@ -24,13 +24,6 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 }
 
 #pragma mark - Init Methods
-
-- (instancetype _Nullable)initWithParams:(NSDictionary *_Nullable)params {
-    if (self = [self initWithNibName:nil bundle:nil]) {
-        self.params = params.mutableCopy;
-    }
-    return self;
-}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -140,9 +133,9 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AMKExamplesTableViewController *examplesTableViewController = [AMKExamplesTableViewController.alloc initWithParams:nil];
-    examplesTableViewController.hidesBottomBarWhenPushed = YES;
-    [UIViewController amk_pushViewController:examplesTableViewController animated:YES];
+    AMKExampleViewController *exampleViewController = [AMKExampleViewController.alloc initWithParams:nil];
+    exampleViewController.hidesBottomBarWhenPushed = YES;
+    [UIViewController amk_pushViewController:exampleViewController animated:YES];
 }
 
 #pragma mark - Helper Methods
