@@ -89,6 +89,7 @@
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8300ExampleViewController" title:@"【文库】8300 Example" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8330ExampleViewController" title:@"【文库】8330 Example" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK8350ExampleViewController" title:@"【文库】8350 Example" detail:nil]];
+        [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMK9130ExampleViewController" title:@"【文库】9130 Example" detail:nil]];
         [_examples addObject:[AMKRootExampleModel.alloc initWithClazzName:@"AMKStackViewController" title:@"示例" detail:@"这是描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"]];
     }
     return _examples;

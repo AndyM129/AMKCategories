@@ -63,6 +63,8 @@
 		888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */; };
 		888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
 		8891AE402B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */; };
+		889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452822CC8D33C002841C3 /* AMK9130ExampleViewController.m */; };
+		889452862CC8DC59002841C3 /* AMK9130PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452852CC8DC59002841C3 /* AMK9130PresentedViewController.m */; };
 		88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */; };
 		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
@@ -195,6 +197,10 @@
 		888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MyOnDemandResources_1.jpeg; sourceTree = "<group>"; };
 		8891AE3E2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPopupContentMainView.h; sourceTree = "<group>"; };
 		8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPopupContentMainView.m; sourceTree = "<group>"; };
+		889452812CC8D33C002841C3 /* AMK9130ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK9130ExampleViewController.h; sourceTree = "<group>"; };
+		889452822CC8D33C002841C3 /* AMK9130ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK9130ExampleViewController.m; sourceTree = "<group>"; };
+		889452842CC8DC59002841C3 /* AMK9130PresentedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK9130PresentedViewController.h; sourceTree = "<group>"; };
+		889452852CC8DC59002841C3 /* AMK9130PresentedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK9130PresentedViewController.m; sourceTree = "<group>"; };
 		88A05412295D9643001B2CCE /* AMKLifeCircleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarController.h; sourceTree = "<group>"; };
 		88A05413295D9643001B2CCE /* AMKLifeCircleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarController.m; sourceTree = "<group>"; };
 		88A05415295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarItemViewController.h; sourceTree = "<group>"; };
@@ -660,6 +666,7 @@
 		8852B45A2B026736004DED8F /* Wenku */ = {
 			isa = PBXGroup;
 			children = (
+				889452802CC8D31B002841C3 /* 9130 */,
 				8873BB392B60C55C004E7DFE /* 8350 */,
 				887D9CF92B3C216C004D0854 /* 8330 */,
 				8852B45B2B026752004DED8F /* 8300 */,
@@ -797,6 +804,17 @@
 				888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		889452802CC8D31B002841C3 /* 9130 */ = {
+			isa = PBXGroup;
+			children = (
+				889452812CC8D33C002841C3 /* AMK9130ExampleViewController.h */,
+				889452822CC8D33C002841C3 /* AMK9130ExampleViewController.m */,
+				889452842CC8DC59002841C3 /* AMK9130PresentedViewController.h */,
+				889452852CC8DC59002841C3 /* AMK9130PresentedViewController.m */,
+			);
+			path = 9130;
 			sourceTree = "<group>";
 		};
 		88A05410295D95ED001B2CCE /* UITabBarController */ = {
@@ -1112,6 +1130,7 @@
 				888D8F0D2977EE0F00B8F26F /* NSURLRequest+AMKOfflineLoading.m in Sources */,
 				8891AE402B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m in Sources */,
 				88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */,
+				889452862CC8DC59002841C3 /* AMK9130PresentedViewController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
 				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
@@ -1133,6 +1152,7 @@
 				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
 				8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */,
+				889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
