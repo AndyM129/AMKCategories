@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface AMKRootViewController : UIViewController
+@interface AMKRootViewController : UITabBarController
 
 @end

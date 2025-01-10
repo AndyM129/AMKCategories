@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [UIWindow.alloc initWithFrame:UIScreen.mainScreen.bounds];
-    self.window.rootViewController = [UINavigationController.alloc initWithRootViewController:AMKRootViewController.new];
+    self.window.rootViewController = AMKRootViewController.new;
     [self.window makeKeyAndVisible];
     //    [application amk_showAlertIfMobileProvisionWillExpireInDays:999];
     //    [application setAmk_releaseModeCornerMarkEnable:YES];

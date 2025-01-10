@@ -1,21 +1,18 @@
 //
-//  AMKRootViewController.m
-//  AMKCategories
+//  AMKExampleViewController.m
+//  AMKCategories_Example
 //
-//  Created by https://github.com/andym129 on 07/26/2019.
-//  Copyright (c) 2019 AndyM129. All rights reserved.
+//  Created by Meng Xinxin on 2025/1/10.
+//  Copyright © 2025 AndyM129. All rights reserved.
 //
 
-#import "AMKRootViewController.h"
-#import "AMKExamplesTableViewController.h"
 #import "AMKExampleViewController.h"
-#import "AMKRootExampleModel.h"
 
-@interface AMKRootViewController ()
+@interface AMKExampleViewController ()
 
 @end
 
-@implementation AMKRootViewController
+@implementation AMKExampleViewController
 
 #pragma mark - Dealloc
 
@@ -27,7 +24,7 @@
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-
+        self.title = NSStringFromClass(self.class);
     }
     return self;
 }
@@ -37,13 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
-    
-    NSMutableArray<UINavigationController *> *viewControllers = @[].mutableCopy;
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    self.viewControllers = viewControllers;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
