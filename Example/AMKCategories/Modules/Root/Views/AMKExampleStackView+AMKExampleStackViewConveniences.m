@@ -63,57 +63,28 @@
     return separatorView;
 }
 
-- (UIButton *)addArrangedButton:(NSString *)title controlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block {
-    return [self addArrangedButton:title size:40 controlEvents:controlEvents block:block];
-}
-
-- (UIButton *)addArrangedButton:(NSString *)title size:(CGFloat)size controlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block {
+- (UIButton *_Nullable)addArrangedButton:(NSString *_Nullable)title customBlock:(void(^_Nullable)(UIButton *_Nullable button))customBlock touchUpInsideBlock:(void (^_Nullable)(UIButton *_Nullable button))block {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (self.axis == UILayoutConstraintAxisHorizontal) {
-        button.width = size;
-    } else {
-        button.height = size;
-    }
-    button.layer.cornerRadius = 7;
+    button.height = 40;
+    button.layer.cornerRadius = 8;
     button.layer.masksToBounds = YES;
     button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button setTitle:title forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageWithColor:self.tintColor] forState:UIControlStateNormal];
     [button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    [button addBlockForControlEvents:controlEvents block:block];
+    [button addBlockForControlEvents:UIControlEventTouchUpInside block:block];
+    !customBlock ?: customBlock(button);
     [self addArrangedSubview:button];
     return button;
 }
 
-- (UIView *)addArrangedSeparatorWithTitle:(NSString *)title color:(UIColor *)color size:(CGFloat)size {
-    UILabel *label = [UILabel.alloc init];
-    if (self.axis == UILayoutConstraintAxisHorizontal) {
-        label.width = size;
-    } else {
-        label.height = size;
-    }
-    label.font = [UIFont boldSystemFontOfSize:size*0.9];
-    label.textColor = color ?: self.tintColor;
-    label.text = title;
-    label.numberOfLines = 0;
-    
-    UIView *bottomSeparator = [UIView.alloc init];
-    bottomSeparator.backgroundColor = color ?: [self.tintColor colorWithAlphaComponent:.3];
-    [label addSubview:bottomSeparator];
-    [bottomSeparator mas_makeConstraints:^(MASConstraintMaker *make) {
-        if (self.axis == UILayoutConstraintAxisHorizontal) {
-            make.top.bottom.mas_equalTo(label);
-            make.centerX.mas_equalTo(label.mas_right);
-            make.width.mas_equalTo(1);
-        } else {
-            make.left.right.mas_equalTo(label);
-            make.centerY.mas_equalTo(label.mas_bottom);
-            make.height.mas_equalTo(1);
-        }
-    }];
-    
-    [self addArrangedSubview:label];
-    return label;
+- (UIView *_Nullable)addArrangedContainerViewWithCustomBlock:(void(^_Nullable)(UIView *_Nullable containerCiew))customBlock {
+    UIView *view = [UIView.alloc init];
+    view.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    view.layer.borderWidth = 1 / UIScreen.mainScreen.scale;
+    !customBlock ?: customBlock(view);
+    [self addArrangedSubview:view];
+    return view;
 }
 
 #pragma mark - Action Methods

@@ -97,25 +97,24 @@
         return;
     }
     
+    [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"组件介绍 blabla blabla blabla blabla blabla blabla blabla blabla" customBlock:nil];
+    
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"系统内置字号" customBlock:nil];
-    [self.exampleStackView addArrangedLabelWithTitle:@"UIFont.labelFontSize" customBlock:^(UILabel * _Nullable label) {
-        label.font = [UIFont systemFontOfSize:UIFont.labelFontSize];
-    }];
-    [self.exampleStackView addArrangedLabelWithTitle:@"UIFont.buttonFontSize" customBlock:^(UILabel * _Nullable label) {
+    [self.exampleStackView addArrangedLabelWithTitle:[NSString stringWithFormat:@"UIFont.buttonFontSize = %.2f", UIFont.buttonFontSize] customBlock:^(UILabel * _Nullable label) {
         label.font = [UIFont systemFontOfSize:UIFont.buttonFontSize];
     }];
-    [self.exampleStackView addArrangedLabelWithTitle:@"UIFont.smallSystemFontSize" customBlock:^(UILabel * _Nullable label) {
-        label.font = [UIFont systemFontOfSize:UIFont.smallSystemFontSize];
+    [self.exampleStackView addArrangedLabelWithTitle:[NSString stringWithFormat:@"UIFont.labelFontSize = %.2f", UIFont.labelFontSize] customBlock:^(UILabel * _Nullable label) {
+        label.font = [UIFont systemFontOfSize:UIFont.labelFontSize];
     }];
-    [self.exampleStackView addArrangedLabelWithTitle:@"UIFont.systemFontSize" customBlock:^(UILabel * _Nullable label) {
+    [self.exampleStackView addArrangedLabelWithTitle:[NSString stringWithFormat:@"UIFont.systemFontSize = %2f", UIFont.systemFontSize] customBlock:^(UILabel * _Nullable label) {
         label.font = [UIFont systemFontOfSize:UIFont.systemFontSize];
     }];
-    
-    [self.exampleStackView addArrangedSeparatorWithCustomBlock:nil];
+    [self.exampleStackView addArrangedLabelWithTitle:[NSString stringWithFormat:@"UIFont.smallSystemFontSize = %2f", UIFont.smallSystemFontSize] customBlock:^(UILabel * _Nullable label) {
+        label.font = [UIFont systemFontOfSize:UIFont.smallSystemFontSize];
+    }];
     
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"标题 blabla blabla blabla blabla blabla blabla blabla blabla" customBlock:nil];
-    [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"描述 blabla blabla blabla blabla blabla blabla blabla blabla" customBlock:nil];
-     
+    [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"子标题 blabla blabla blabla blabla blabla blabla blabla blabla" customBlock:nil];
     
     [self.exampleStackView addArrangedSubview:({
         UITextField *textField = [UITextField.alloc initWithFrame:CGRectMake(0, 0, 0, 50)];
@@ -123,19 +122,27 @@
         textField.placeholder = @"请输入...";
         textField;
     })];
-    [self.exampleStackView addArrangedSubview:({
-        UIButton *button = [UIButton.alloc initWithFrame:CGRectMake(0, 0, 0, 50)];
-        button.layer.cornerRadius = 8;
-        button.layer.masksToBounds = YES;
-        [button setBackgroundImage:[UIImage imageWithColor:button.tintColor] forState:UIControlStateNormal];
-        [button setTitle:@"按钮" forState:UIControlStateNormal];
-        [button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-        [button addBlockForControlEvents:UIControlEventTouchUpInside block:^(UIButton *button) {
-            NSInteger clickedTimes = [button.currentTitle componentsSeparatedByString:@"："].lastObject.integerValue;
-            [button setTitle:[NSString stringWithFormat:@"按钮 点击次数：%ld", clickedTimes + 1] forState:UIControlStateNormal];
+    [self.exampleStackView addArrangedButton:@"按钮" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
+        NSInteger clickedTimes = [button.currentTitle componentsSeparatedByString:@"："].lastObject.integerValue;
+        [button setTitle:[NSString stringWithFormat:@"按钮 点击次数：%ld", clickedTimes + 1] forState:UIControlStateNormal];
+    }];
+    
+    [self.exampleStackView addArrangedSeparatorWithCustomBlock:nil];
+    [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerCiew) {
+        containerCiew.height = 100;
+        containerCiew.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:.15];
+    }];
+    [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerCiew) {
+        UIView *subview = [UIView.alloc init];
+        subview.backgroundColor = [UIColor.orangeColor colorWithAlphaComponent:0.5];
+        
+        [containerCiew addSubview:subview];
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(150);
+            make.left.top.mas_equalTo(containerCiew).inset(20);
+            make.bottom.mas_equalTo(containerCiew).inset(50);
         }];
-        button;
-    })];
+    }];
 }
 
 @end

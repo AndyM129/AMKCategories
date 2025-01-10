@@ -22,10 +22,10 @@
 /// 添加分割线
 - (UIView *_Nullable)addArrangedSeparatorWithCustomBlock:(void(^_Nullable)(UIView *_Nullable separatorView))customBlock;
 
-/// 添加按钮（默认主轴方向的大小）
-- (UIButton *_Nullable)addArrangedButton:(NSString *_Nullable)title controlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block;
+/// 添加按钮
+- (UIButton *_Nullable)addArrangedButton:(NSString *_Nullable)title customBlock:(void(^_Nullable)(UIButton *_Nullable button))customBlock touchUpInsideBlock:(void (^_Nullable)(UIButton *_Nullable button))block;
 
-/// 添加按钮（指定主轴方向的大小）
-- (UIButton *_Nullable)addArrangedButton:(NSString *_Nullable)title size:(CGFloat)size controlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block;
+/// 添加容器视图
+- (UIView *_Nullable)addArrangedContainerViewWithCustomBlock:(void(^_Nullable)(UIView *_Nullable containerCiew))customBlock;
 
 @end
