@@ -9,16 +9,13 @@
 #import <UIKit/UIKit.h>
 
 /// 类似 UIStackView
-@interface AMKExampleStackView : UIView
+@interface AMKExampleStackView : UIScrollView
 
 /// 布局被管理的子视图的主轴
 @property (nonatomic, assign, readwrite) UILayoutConstraintAxis axis;
 
 /// 布局被管理的子视图的间距
 @property (nonatomic, assign, readwrite) CGFloat spacing;
-
-/// 布局被管理的子视图的内边距，默认 UIEdgeInsetsZero
-@property (nonatomic, assign, readwrite) UIEdgeInsets contentInset;
 
 /// 所有被管理的子视图
 @property (nonatomic, copy, readonly, nullable) NSArray<__kindof UIView *> *arrangedSubviews;

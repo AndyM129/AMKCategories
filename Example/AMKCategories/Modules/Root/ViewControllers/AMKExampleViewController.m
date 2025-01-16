@@ -66,6 +66,7 @@
 - (AMKExampleStackView *)exampleStackView {
     if (!_exampleStackView) {
         _exampleStackView = [AMKExampleStackView.alloc initWithAxis:UILayoutConstraintAxisVertical spacing:20];
+        _exampleStackView.contentInset = UIEdgeInsetsMake(20, 20, 20, 20);
         [self.view addSubview:_exampleStackView];
     }
     return _exampleStackView;
@@ -77,7 +78,7 @@
 
 - (void)updateViewConstraints {
     [self.exampleStackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(20, 20, 20, 20));
+        make.edges.mas_equalTo(self.view);
     }];
     [super updateViewConstraints];
 }

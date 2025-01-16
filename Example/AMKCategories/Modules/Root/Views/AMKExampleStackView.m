@@ -13,7 +13,9 @@ static NSString *kArrangedSubviewsArrayKey = @"arrangedSubviews";
 static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 
 @interface AMKExampleStackView ()
-@property (nonatomic, copy, readwrite, nullable) NSMutableArray<__kindof UIView *> *arrangedSubviews;
+@property (nonatomic, strong, readwrite, nullable) UIView *contentView;
+@property (nonatomic, assign, readwrite) UIEdgeInsets contentViewInset;
+@property (nonatomic, copy, readwrite, nullable) NSMutableArray<__kindof UIView *> *mutableArrangedSubviews;
 @end
 
 @implementation AMKExampleStackView
@@ -21,7 +23,7 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 #pragma mark - Init Methods
 
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:kArrangedSubviewsArrayKey context:kArrangedSubviewsKVOContext];
+    
 }
 
 - (instancetype)initWithAxis:(UILayoutConstraintAxis)axis spacing:(CGFloat)spacing {
@@ -34,18 +36,42 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self addObserver:self forKeyPath:kArrangedSubviewsArrayKey options:NSKeyValueObservingOptionNew context:kArrangedSubviewsKVOContext];
+        self.axis = UILayoutConstraintAxisVertical;
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
 
-- (NSMutableArray<__kindof UIView *> *)arrangedSubviews {
-    if (!_arrangedSubviews) {
-        _arrangedSubviews = @[].mutableCopy;
+- (void)setAxis:(UILayoutConstraintAxis)axis {
+    if (axis == UILayoutConstraintAxisHorizontal) {
+        NSAssert(NO, @"目前暂仅支持 UILayoutConstraintAxisVertical，不支持 UILayoutConstraintAxisHorizontal");
+        return;
     }
-    return _arrangedSubviews;
+    _axis = axis;
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+    self.contentViewInset = contentInset;
+}
+
+- (UIView *)contentView {
+    if (!_contentView) {
+        _contentView = [UIView.alloc init];
+        [self addSubview:_contentView];
+    }
+    return _contentView;
+}
+
+- (NSMutableArray<__kindof UIView *> *)mutableArrangedSubviews {
+    if (!_mutableArrangedSubviews) {
+        _mutableArrangedSubviews = @[].mutableCopy;
+    }
+    return _mutableArrangedSubviews;
+}
+
+- (NSArray<__kindof UIView *> *)arrangedSubviews {
+    return self.mutableArrangedSubviews;
 }
 
 #pragma mark - Data & Networking
@@ -60,8 +86,10 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
     if ([self.arrangedSubviews containsObject:view]) return;
     
     // 添加视图，并加入管理
-    [self addSubview:view];
-    [[self mutableArrayValueForKey:kArrangedSubviewsArrayKey] addObject:view];
+    [self.contentView addSubview:view];
+    [self.mutableArrangedSubviews addObject:view];
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
 }
 
 - (void)removeArrangedSubview:(UIView *)view {
@@ -69,11 +97,13 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
     if (!view) return;
     
     // 若不是子视图，则直接返回
-    if (view.superview != self) return;
+    if (view.superview != self.contentView) return;
     
     // 移除视图，更新管理
     [view removeFromSuperview];
-    [[self mutableArrayValueForKey:kArrangedSubviewsArrayKey] removeObject:view];
+    [self.mutableArrangedSubviews removeObject:view];
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
 }
 
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex {
@@ -81,9 +111,11 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
     if (!view) return;
     
     // 若不是子视图，则添加为子视图，并更新管理
-    if (view.superview != self) {
-        [self addSubview:view];
-        [[self mutableArrayValueForKey:kArrangedSubviewsArrayKey] insertObject:view atIndex:MIN(self.arrangedSubviews.count, stackIndex)];
+    if (view.superview != self.contentView) {
+        [self.contentView addSubview:view];
+        [self.mutableArrangedSubviews insertObject:view atIndex:MIN(self.arrangedSubviews.count, stackIndex)];
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
     }
     // 否则已是子视图，则调整位置，并更新管理
     else {
@@ -93,9 +125,9 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
         if (fromIndex == toIndex) return;
         
         // 先用 NSNull.null 占位，再插入视图，再移除占位的 NSNull.null，最后更新管理
-        [(NSMutableArray *)self.arrangedSubviews replaceObjectAtIndex:fromIndex withObject:NSNull.null];
-        [(NSMutableArray *)self.arrangedSubviews insertObject:view atIndex:toIndex];
-        [(NSMutableArray *)self.arrangedSubviews removeObjectAtIndex:fromIndex];
+        [self.mutableArrangedSubviews replaceObjectAtIndex:fromIndex withObject:(id)NSNull.null];
+        [self.mutableArrangedSubviews insertObject:view atIndex:toIndex];
+        [self.mutableArrangedSubviews removeObjectAtIndex:fromIndex];
         [self setNeedsUpdateConstraints];
         [self updateConstraintsIfNeeded];
     }
@@ -106,31 +138,40 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 }
 
 - (void)updateConstraints {
+    [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+        make.width.equalTo(self);
+    }];
+    
     NSArray<UIView *> *subviews = self.arrangedSubviews;
     if (self.axis == UILayoutConstraintAxisHorizontal) {
-        [subviews enumerateObjectsUsingBlock:^(UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
-            [subview mas_remakeConstraints:^(MASConstraintMaker *make) {
-                if (idx == 0) {
-                    make.left.mas_equalTo(self).insets(self.contentInset);
-                } else {
-                    make.left.mas_equalTo(subviews[idx-1].mas_right).offset(self.spacing);
-                }
-                make.width.mas_equalTo(subview.width);
-                make.top.bottom.mas_equalTo(self).insets(self.contentInset);
-            }];
-        }];
+//        [subviews enumerateObjectsUsingBlock:^(UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
+//            [subview mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                if (idx == 0) {
+//                    make.left.mas_equalTo(self.contentView).insets(self.contentInset);
+//                } else {
+//                    make.left.mas_equalTo(subviews[idx-1].mas_right).offset(self.spacing);
+//                }
+//                make.width.mas_equalTo(subview.width);
+//                make.top.bottom.mas_equalTo(self.contentView).insets(self.contentInset);
+//            }];
+//        }];
     } else {
         [subviews enumerateObjectsUsingBlock:^(UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
             [subview mas_remakeConstraints:^(MASConstraintMaker *make) {
                 if (idx == 0) {
-                    make.top.mas_equalTo(self).insets(self.contentInset);
+                    make.top.mas_equalTo(self.contentView).inset(self.contentViewInset.top);
                 } else {
                     make.top.mas_equalTo(subviews[idx-1].mas_bottom).offset(self.spacing);
                 }
                 if (subview.height > 0) {
                     make.height.mas_equalTo(subview.height);
                 }
-                make.left.right.mas_equalTo(self).insets(self.contentInset);
+                if (idx == subviews.count - 1) {
+                    make.bottom.equalTo(self.contentView.mas_bottom).inset(self.contentViewInset.bottom);
+                }
+                make.left.mas_equalTo(self.contentView).inset(self.contentViewInset.left);
+                make.right.mas_equalTo(self.contentView).inset(self.contentViewInset.right);
             }];
         }];
     }
@@ -146,15 +187,6 @@ static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 #pragma mark - Notifications
 
 #pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if (context == kArrangedSubviewsKVOContext) {
-        [self setNeedsUpdateConstraints];
-        [self updateConstraintsIfNeeded];
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
 
 #pragma mark - Protocol
 
