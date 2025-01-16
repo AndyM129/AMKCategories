@@ -67,6 +67,27 @@
 								</dict>
 							</array>
 						</dict>
+						<dict>
+							<key>title</key>
+							<string>NSBundleResourceRequest</string>
+							<key>subtitle</key>
+							<string>iOS官方瘦身方案</string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>ODR 调研</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKBundleResourceRequestExampleViewController</string>
+								</dict>
+							</array>
+						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -99,6 +120,90 @@
 								</dict>
 							</array>
 						</dict>
+						<dict>
+							<key>title</key>
+							<string>UIPasteboard</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>iOS16+ 权限弹窗优化</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKUIPasteboardAlertExampleViewController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>UITabBarController</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>LifeCircle</string>
+									<key>subtitle</key>
+									<string>TabBarController viewDidAppear 探索</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKLifeCircleTabBarController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>UIViewController</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>Transitioning</string>
+									<key>subtitle</key>
+									<string>自定义转场</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKCustomTransitioningViewController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>UIScreenEdgePanGestureRecognizer</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>屏幕右侧边缘手势 示例</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKScreenRightEdgePanGestureRecognizerExampleViewController</string>
+								</dict>
+							</array>
+						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -119,6 +224,37 @@
 							<string></string>
 							<key>pageClassName</key>
 							<string>AMKOfflineLoadingWebViewController</string>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>长按选中文字 选区控制 示例</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK8250MainWebViewController</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Swift.String</string>
+					<key>subtitle</key>
+					<string></string>
+					<key>keywords</key>
+					<string></string>
+					<key>subExamples</key>
+					<array>
+						<dict>
+							<key>title</key>
+							<string>SubString 相关处理</string>
+							<key>subtitle</key>
+							<string>详见控制台输出</string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMKCategories_Example.AMKSubStringViewController</string>
 						</dict>
 					</array>
 				</dict>
@@ -164,6 +300,48 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>title</key>
+					<string>Lottie</string>
+					<key>subtitle</key>
+					<string>An easy way to use pull-to-refresh</string>
+					<key>keywords</key>
+					<string></string>
+					<key>subExamples</key>
+					<array>
+						<dict>
+							<key>title</key>
+							<string>动画示例</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMKLottieExampleViewController</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>AIGC</string>
+					<key>subtitle</key>
+					<string></string>
+					<key>keywords</key>
+					<string></string>
+					<key>subExamples</key>
+					<array>
+						<dict>
+							<key>title</key>
+							<string>AMKAiRootController</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMKAiRootController</string>
+						</dict>
+					</array>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -205,6 +383,90 @@
 							<string></string>
 							<key>pageClassName</key>
 							<string>AMKXxxExampleViewController</string>
+							<key>pageParams</key>
+							<dict>
+								<key>key1</key>
+								<string>value1</string>
+								<key>key2</key>
+								<string>value2</string>
+							</dict>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>AMKStackViewController</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMKStackViewController</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>技术调研</string>
+					<key>subtitle</key>
+					<string></string>
+					<key>keywords</key>
+					<string></string>
+					<key>subExamples</key>
+					<array>
+						<dict>
+							<key>title</key>
+							<string>WK 8300 Example</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK8300ExampleViewController</string>
+							<key>pageParams</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>WK 8330 Example</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK8330ExampleViewController</string>
+							<key>pageParams</key>
+							<dict>
+								<key>key1</key>
+								<string>value1</string>
+								<key>key2</key>
+								<string>value2</string>
+							</dict>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>WK 8350 Example</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK8350ExampleViewController</string>
+							<key>pageParams</key>
+							<dict>
+								<key>key1</key>
+								<string>value1</string>
+								<key>key2</key>
+								<string>value2</string>
+							</dict>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>WK 9130 Example</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK9130ExampleViewController</string>
 							<key>pageParams</key>
 							<dict>
 								<key>key1</key>
