@@ -39,6 +39,8 @@
 		880B94D22D38E24500C9754B /* AMKExampleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B94D12D38E24500C9754B /* AMKExampleViewModel.m */; };
 		880B94D52D38E3DA00C9754B /* AMKExamples.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880B94D42D38E3DA00C9754B /* AMKExamples.plist */; };
 		880B94D82D38FF4800C9754B /* AMKXxxExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B94D72D38FF4800C9754B /* AMKXxxExampleViewController.m */; };
+		880B958F2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B958E2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m */; };
+		880B95922D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
@@ -159,6 +161,10 @@
 		880B94D62D38FF4800C9754B /* AMKXxxExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKXxxExampleViewController.h; sourceTree = "<group>"; };
 		880B94D72D38FF4800C9754B /* AMKXxxExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKXxxExampleViewController.m; sourceTree = "<group>"; };
 		880B94DA2D39018200C9754B /* AMKExampleViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleViewControllerProtocol.h; sourceTree = "<group>"; };
+		880B958D2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMKExampleViewModel+AMKAssociatedObject.h"; sourceTree = "<group>"; };
+		880B958E2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleViewModel+AMKAssociatedObject.m"; sourceTree = "<group>"; };
+		880B95902D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMKExampleViewModel+AMKRootExampleViewModel.h"; sourceTree = "<group>"; };
+		880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleViewModel+AMKRootExampleViewModel.m"; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
@@ -645,6 +651,10 @@
 			children = (
 				880B94D02D38E24500C9754B /* AMKExampleViewModel.h */,
 				880B94D12D38E24500C9754B /* AMKExampleViewModel.m */,
+				880B958D2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.h */,
+				880B958E2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m */,
+				880B95902D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.h */,
+				880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1217,6 +1227,7 @@
 				88A05414295D9643001B2CCE /* AMKLifeCircleTabBarController.m in Sources */,
 				889452862CC8DC59002841C3 /* AMK9130PresentedViewController.m in Sources */,
 				8806D97B290BB4BB005DC5C1 /* AMKGitCommitInfoViewController.m in Sources */,
+				880B958F2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m in Sources */,
 				8812EFE22878661800370522 /* AMKStackViewController.m in Sources */,
 				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
@@ -1241,6 +1252,7 @@
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
 				8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */,
 				889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */,
+				880B95922D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m in Sources */,
 				88B499AB2D314B6B0045FC15 /* AMKExampleTableViewController.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,

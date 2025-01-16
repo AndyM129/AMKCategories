@@ -26,17 +26,6 @@
 
 #pragma mark - Getters & Setters
 
-+ (AMKExampleViewModel *)rootExampleViewModel {
-    static AMKExampleViewModel *_rootExampleViewModel;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *plistPath = [NSBundle.mainBundle pathForResource:@"AMKExamples" ofType:@"plist"];
-        NSDictionary *dict = [NSDictionary.alloc initWithContentsOfFile:plistPath];
-        _rootExampleViewModel = [AMKExampleViewModel yy_modelWithDictionary:dict];
-    });
-    return _rootExampleViewModel;
-}
-
 #pragma mark - Data & Networking
 
 #pragma mark - Public Methods

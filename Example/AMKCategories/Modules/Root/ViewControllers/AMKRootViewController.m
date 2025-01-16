@@ -9,7 +9,7 @@
 #import "AMKRootViewController.h"
 #import "AMKExampleTableViewController.h"
 #import "AMKExampleViewController.h"
-#import "AMKExampleViewModel.h"
+#import "AMKExampleViewModel+AMKRootExampleViewModel.h"
 
 @interface AMKRootViewController ()
 

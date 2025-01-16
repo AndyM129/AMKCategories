@@ -8,6 +8,7 @@
 
 #import "AMKExampleTableViewController.h"
 #import "AMKExampleViewController.h"
+#import "AMKExampleViewModel+AMKAssociatedObject.h"
 
 static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExamplesTableViewCellReusableIdentifier";
 
@@ -69,7 +70,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 100)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -118,29 +119,44 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.viewModel.subExamples.count;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:section];
+    if (subViewModel.isExpanded) {
+        return subViewModel.subExamples.count + 1;
+    }
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:indexPath.row];
+    AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:indexPath.section];
+    if (indexPath.row > 0) {
+        subViewModel = [subViewModel.subExamples objectAtIndex:indexPath.row - 1];
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMKExamplesTableViewCellReusableIdentifier];
     if (!cell) {
         cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AMKExamplesTableViewCellReusableIdentifier];
+        cell.indentationWidth = 20;
         cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
         cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
-        cell.detailTextLabel.textColor = UIColor.lightGrayColor;
+        cell.detailTextLabel.textColor = UIColor.grayColor;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    cell.indentationLevel = indexPath.row == 0 ? 0 : 1;
+    cell.contentView.alpha = indexPath.row == 0 ? 1 : 0.5;
     cell.textLabel.text = subViewModel.title;
     cell.detailTextLabel.text = subViewModel.subtitle;
     return cell;
 }
 
-- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.viewModel.subtitle;
-}
+//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return self.viewModel.subtitle;
+//}
 
 #pragma mark UITableViewDelegate
 
@@ -151,12 +167,21 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AMKExampleViewModel *viewModel = [self.viewModel.subExamples objectAtIndex:indexPath.row];
+    AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:indexPath.section];
+    if (indexPath.row == 0) {
+        subViewModel.isExpanded = !subViewModel.isExpanded;
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
+    
+    if (indexPath.row > 0) {
+        subViewModel = [subViewModel.subExamples objectAtIndex:indexPath.row - 1];
+    }
     
     // 解析所选项 对应的 示例页类名（用内置的类兜底）
-    Class pageClass = NSClassFromString(viewModel.pageClassName);
+    Class pageClass = NSClassFromString(subViewModel.pageClassName);
     if (!pageClass) {
-        if (viewModel.subExamples.count) {
+        if (subViewModel.subExamples.count) {
             pageClass = AMKExampleTableViewController.class;
         } else {
             pageClass = AMKExampleViewController.class;
@@ -170,7 +195,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     }
     // 否则以指定方法初始化
     else {
-        viewController = [pageClass.alloc initWithViewModel:viewModel];
+        viewController = [pageClass.alloc initWithViewModel:subViewModel];
     }
 
     // 跳转页面
