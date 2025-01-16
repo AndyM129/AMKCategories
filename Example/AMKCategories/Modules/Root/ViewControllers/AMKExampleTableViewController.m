@@ -175,7 +175,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
     // 跳转页面
     viewController.hidesBottomBarWhenPushed = YES;
-    [UIViewController amk_pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Helper Methods

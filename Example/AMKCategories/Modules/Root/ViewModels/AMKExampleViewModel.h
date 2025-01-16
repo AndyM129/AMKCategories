@@ -20,14 +20,14 @@
 /// 搜索关键词，分割搜索时 会与该字段中的内容做匹配检测
 @property (nonatomic, strong, nullable) NSArray<NSString *> *keywords;
 
-/// 说明页 类名，点击时 若该值非空，则跳转对应的页面
+/// 示例页 类名，点击时 若该值非空，则跳转对应的页面
 @property (nonatomic, copy, nullable) NSString *pageClassName;
 
 /// 页面参数，当跳转该选项的示例页时，会传入该参数
 @property (nonatomic, strong, nullable) NSDictionary *pageParams;
 
 /// 当前选项 在实例库中的路径，有之前各选项的 title 拼接成
-@property (nonatomic, copy, nullable) NSString *itemPath;
+@property (nonatomic, copy, nullable) NSString *examplePath;
 
 /// 子示例
 @property (nonatomic, strong, readwrite, nullable) NSArray<AMKExampleViewModel *> *subExamples;
