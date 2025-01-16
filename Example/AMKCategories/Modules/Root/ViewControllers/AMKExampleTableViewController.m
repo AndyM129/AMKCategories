@@ -111,6 +111,32 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 #pragma mark - Action Methods
 
+- (void)gotoExampleViewControllerWithViewModel:(AMKExampleViewModel *)viewModel {
+    // 解析所选项 对应的 示例页类名（用内置的类兜底）
+    Class pageClass = NSClassFromString(viewModel.pageClassName);
+    if (!pageClass) {
+        if (viewModel.subExamples.count) {
+            pageClass = AMKExampleTableViewController.class;
+        } else {
+            pageClass = AMKExampleViewController.class;
+        }
+    }
+    
+    // 若对应的类 未遵守示例页协议，则直接初始化
+    UIViewController *viewController = nil;
+    if (![pageClass conformsToProtocol:@protocol(AMKExampleViewControllerProtocol)]) {
+        viewController = [pageClass.alloc init];
+    }
+    // 否则以指定方法初始化
+    else {
+        viewController = [pageClass.alloc initWithViewModel:viewModel];
+    }
+
+    // 跳转页面
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark - Notifications
 
 #pragma mark - KVO
@@ -145,12 +171,12 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
         cell.detailTextLabel.numberOfLines = 0;
         cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
         cell.detailTextLabel.textColor = UIColor.grayColor;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.indentationLevel = indexPath.row == 0 ? 0 : 1;
     cell.contentView.alpha = indexPath.row == 0 ? 1 : 0.5;
+    cell.indentationLevel = indexPath.row == 0 ? 0 : 1;
     cell.textLabel.text = subViewModel.title;
     cell.detailTextLabel.text = subViewModel.subtitle;
+    cell.accessoryType = indexPath.row == 0 ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -171,36 +197,10 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     if (indexPath.row == 0) {
         subViewModel.isExpanded = !subViewModel.isExpanded;
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
-        return;
-    }
-    
-    if (indexPath.row > 0) {
+    } else {
         subViewModel = [subViewModel.subExamples objectAtIndex:indexPath.row - 1];
+        [self gotoExampleViewControllerWithViewModel:subViewModel];
     }
-    
-    // 解析所选项 对应的 示例页类名（用内置的类兜底）
-    Class pageClass = NSClassFromString(subViewModel.pageClassName);
-    if (!pageClass) {
-        if (subViewModel.subExamples.count) {
-            pageClass = AMKExampleTableViewController.class;
-        } else {
-            pageClass = AMKExampleViewController.class;
-        }
-    }
-    
-    // 若对应的类 未遵守示例页协议，则直接初始化
-    UIViewController *viewController = nil;
-    if (![pageClass conformsToProtocol:@protocol(AMKExampleViewControllerProtocol)]) {
-        viewController = [pageClass.alloc init];
-    }
-    // 否则以指定方法初始化
-    else {
-        viewController = [pageClass.alloc initWithViewModel:subViewModel];
-    }
-
-    // 跳转页面
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Helper Methods
