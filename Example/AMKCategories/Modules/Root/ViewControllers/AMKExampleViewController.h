@@ -6,16 +6,15 @@
 //  Copyright © 2025 AndyM129. All rights reserved.
 //
 
-#import "AMKStackViewController.h"
+#import <UIKit/UIKit.h>
+#import "AMKExampleViewControllerProtocol.h"
 #import "AMKExampleStackView+AMKExampleStackViewConveniences.h"
+#import "AMKExampleViewModel.h"
 
 /// 示例页
-@interface AMKExampleViewController : UIViewController
+@interface AMKExampleViewController : UIViewController <AMKExampleViewControllerProtocol>
 
 /// 示例栈
 @property (nonatomic, strong, readonly, nullable) AMKExampleStackView *exampleStackView;
-
-/// 基于参数初始化
-- (instancetype _Nullable)initWithParams:(NSDictionary *_Nullable)params;
 
 @end

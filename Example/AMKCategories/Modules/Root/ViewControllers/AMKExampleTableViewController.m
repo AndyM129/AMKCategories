@@ -1,21 +1,21 @@
 //
-//  AMKExamplesTableViewController.m
+//  AMKExampleTableViewController.m
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2025/1/10.
 //  Copyright © 2025 AndyM129. All rights reserved.
 //
 
-#import "AMKExamplesTableViewController.h"
+#import "AMKExampleTableViewController.h"
 #import "AMKExampleViewController.h"
 
 static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExamplesTableViewCellReusableIdentifier";
 
-@interface AMKExamplesTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AMKExampleTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
 @end
 
-@implementation AMKExamplesTableViewController
+@implementation AMKExampleTableViewController
 
 #pragma mark - Dealloc
 
@@ -24,6 +24,13 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 }
 
 #pragma mark - Init Methods
+
+- (instancetype)initWithViewModel:(AMKExampleViewModel *)viewModel {
+    if (self = [super init]) {
+        self.viewModel = viewModel;
+    }
+    return self;
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -43,6 +50,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -76,6 +84,19 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     return _tableView;
 }
 
+@synthesize viewModel = _viewModel;
+
+- (void)setViewModel:(AMKExampleViewModel *)viewModel {
+    _viewModel = viewModel;
+    [self setTitle:_viewModel.title];
+    [self.tabBarItem setTitle:_viewModel.title];
+    
+    if (!self.isViewLoaded) {
+        return;
+    }
+    [self.tableView reloadData];
+}
+
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
@@ -97,15 +118,12 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.viewModel.subExamples.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMKExamplesTableViewCellReusableIdentifier];
     if (!cell) {
         cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AMKExamplesTableViewCellReusableIdentifier];
@@ -115,13 +133,13 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
         cell.detailTextLabel.textColor = UIColor.lightGrayColor;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = @"标题 xxxxx";
-    cell.detailTextLabel.text = @"说明 xxxxxx";
+    cell.textLabel.text = subViewModel.title;
+    cell.detailTextLabel.text = subViewModel.subtitle;
     return cell;
 }
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Section %ld Begin", section];
+    return self.viewModel.subtitle;
 }
 
 #pragma mark UITableViewDelegate
@@ -133,9 +151,31 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AMKExampleViewController *exampleViewController = [AMKExampleViewController.alloc initWithParams:nil];
-    exampleViewController.hidesBottomBarWhenPushed = YES;
-    [UIViewController amk_pushViewController:exampleViewController animated:YES];
+    AMKExampleViewModel *viewModel = [self.viewModel.subExamples objectAtIndex:indexPath.row];
+    
+    // 解析所选项 对应的 示例页类名（用内置的类兜底）
+    Class pageClass = NSClassFromString(viewModel.pageClassName);
+    if (!pageClass) {
+        if (viewModel.subExamples.count) {
+            pageClass = AMKExampleTableViewController.class;
+        } else {
+            pageClass = AMKExampleViewController.class;
+        }
+    }
+    
+    // 若对应的类 未遵守示例页协议，则直接初始化
+    UIViewController *viewController = nil;
+    if (![pageClass conformsToProtocol:@protocol(AMKExampleViewControllerProtocol)]) {
+        viewController = [pageClass.alloc init];
+    }
+    // 否则以指定方法初始化
+    else {
+        viewController = [pageClass.alloc initWithViewModel:viewModel];
+    }
+
+    // 跳转页面
+    viewController.hidesBottomBarWhenPushed = YES;
+    [UIViewController amk_pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Helper Methods

@@ -1,5 +1,5 @@
 //
-//  AMKExamplesTableViewController.h
+//  AMKExampleTableViewController.h
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2025/1/10.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AMKExampleViewControllerProtocol.h"
 
 /// 示例列表页
-@interface AMKExamplesTableViewController : UIViewController
+@interface AMKExampleTableViewController : UIViewController <AMKExampleViewControllerProtocol>
 
 @end

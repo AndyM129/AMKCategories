@@ -23,9 +23,9 @@
 
 #pragma mark - Init Methods
 
-- (instancetype _Nullable)initWithParams:(NSDictionary *_Nullable)params {
-    if (self = [self initWithNibName:nil bundle:nil]) {
-        self.params = params.mutableCopy;
+- (instancetype)initWithViewModel:(AMKExampleViewModel *)viewModel {
+    if (self = [super init]) {
+        self.viewModel = viewModel;
     }
     return self;
 }
@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
-    [self addExamplesIfNeeded];
+    [self addDefaultExamplesIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,11 +65,19 @@
 
 - (AMKExampleStackView *)exampleStackView {
     if (!_exampleStackView) {
-        _exampleStackView = [AMKExampleStackView.alloc initWithAxis:UILayoutConstraintAxisVertical spacing:20];
+        _exampleStackView = [AMKExampleStackView.alloc initWithFrame:self.view.bounds];
         _exampleStackView.contentInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        _exampleStackView.spacing = 20;
         [self.view addSubview:_exampleStackView];
     }
     return _exampleStackView;
+}
+
+@synthesize viewModel = _viewModel;
+
+- (void)setViewModel:(AMKExampleViewModel *)viewModel {
+    _viewModel = viewModel;
+    [self setTitle:_viewModel.title];
 }
 
 #pragma mark - Data & Networking
@@ -93,7 +101,8 @@
 
 #pragma mark - Helper Methods
 
-- (void)addExamplesIfNeeded {
+/// 按需添加 默认示例
+- (void)addDefaultExamplesIfNeeded {
     if (![self isMemberOfClass:AMKExampleViewController.class]) {
         return;
     }

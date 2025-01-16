@@ -7,9 +7,9 @@
 //
 
 #import "AMKRootViewController.h"
-#import "AMKExamplesTableViewController.h"
+#import "AMKExampleTableViewController.h"
 #import "AMKExampleViewController.h"
-#import "AMKRootExampleModel.h"
+#import "AMKExampleViewModel.h"
 
 @interface AMKRootViewController ()
 
@@ -38,11 +38,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     
-    NSMutableArray<UINavigationController *> *viewControllers = @[].mutableCopy;
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
-    [viewControllers addObject:[UINavigationController.alloc initWithRootViewController:[AMKExamplesTableViewController.alloc init]]];
+    AMKExampleViewModel *rootExampleViewModel = AMKExampleViewModel.rootExampleViewModel;
+    __block NSMutableArray<UINavigationController *> *viewControllers = [NSMutableArray arrayWithCapacity:rootExampleViewModel.subExamples.count];
+    [rootExampleViewModel.subExamples enumerateObjectsUsingBlock:^(AMKExampleViewModel * _Nonnull viewModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        AMKExampleTableViewController *exampleTableViewController = [AMKExampleTableViewController.alloc init];
+        exampleTableViewController.viewModel = viewModel;
+        UINavigationController *navigationController = [UINavigationController.alloc initWithRootViewController:exampleTableViewController];
+        [viewControllers addObject:navigationController];
+    }];
     self.viewControllers = viewControllers;
 }
 
