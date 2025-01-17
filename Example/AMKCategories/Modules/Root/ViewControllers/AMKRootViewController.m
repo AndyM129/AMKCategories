@@ -43,6 +43,8 @@
     [rootExampleViewModel.subExamples enumerateObjectsUsingBlock:^(AMKExampleViewModel * _Nonnull viewModel, NSUInteger idx, BOOL * _Nonnull stop) {
         AMKExampleTableViewController *exampleTableViewController = [AMKExampleTableViewController.alloc init];
         exampleTableViewController.viewModel = viewModel;
+        exampleTableViewController.tabBarItem.image = [self tabBarItemImageWithViewModel:viewModel];
+        
         UINavigationController *navigationController = [UINavigationController.alloc initWithRootViewController:exampleTableViewController];
         [viewControllers addObject:navigationController];
     }];
@@ -80,5 +82,23 @@
 #pragma mark - Protocol
 
 #pragma mark - Helper Methods
+
+- (UIImage *)tabBarItemImageWithViewModel:(AMKExampleViewModel *)viewModel {
+    static NSMutableDictionary *map = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        map = @{}.mutableCopy;
+        map[@"基础组件"] = @"wkn_widget_example_tabbar_basic";
+        map[@"接口能力"] = @"wkn_widget_example_tabbar_api";
+        map[@"其他"] = @"wkn_widget_example_tabbar_others";
+    });
+    
+    NSString *imageName = [map objectForKey:viewModel.title];
+    UIImage *image = !imageName.length ? nil : [UIImage imageNamed:imageName];
+    if (!image) {
+        image = [UIImage imageWithColor:self.view.tintColor size:CGSizeMake(25, 25)];
+    }
+    return image;
+}
 
 @end

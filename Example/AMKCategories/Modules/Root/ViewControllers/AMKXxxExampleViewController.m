@@ -33,12 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 示例说明
-    if (self.viewModel.subtitle.length) {
-        [self.exampleStackView addArrangedSubtitleLabelWithTitle:self.viewModel.subtitle customBlock:nil];
-    }
-    
+        
     // 示例：页面参数
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"页面参数" customBlock:nil];
     [self.exampleStackView addArrangedLabelWithTitle:self.viewModel.pageParams.jsonPrettyStringEncoded ?: @"(无)" customBlock:nil];

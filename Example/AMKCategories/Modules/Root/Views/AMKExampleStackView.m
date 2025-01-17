@@ -9,13 +9,12 @@
 #import "AMKExampleStackView.h"
 #import <Masonry/Masonry.h>
 
-static NSString *kArrangedSubviewsArrayKey = @"arrangedSubviews";
 static void *kArrangedSubviewsKVOContext = &kArrangedSubviewsKVOContext;
 
 @interface AMKExampleStackView ()
 @property (nonatomic, strong, readwrite, nullable) UIView *contentView;
 @property (nonatomic, assign, readwrite) UIEdgeInsets contentViewInset;
-@property (nonatomic, copy, readwrite, nullable) NSMutableArray<__kindof UIView *> *mutableArrangedSubviews;
+@property (nonatomic, strong, readwrite, nullable) NSMutableArray<__kindof UIView *> *mutableArrangedSubviews;
 @end
 
 @implementation AMKExampleStackView

@@ -36,7 +36,7 @@
 
 - (NSString *)treeDescriptionWithPrefix:(NSString *)prefix isLast:(BOOL)isLast {
     __block NSMutableString *treeDescription = @"".mutableCopy;
-    [treeDescription appendFormat:@"%@%@%@%@\n", (prefix ?: @""), (self.title ?: @""), (self.subtitle.length ? @" —— " : @""), (self.subtitle ?: @"")];
+    [treeDescription appendFormat:@"%@%@%@%@\n", (prefix ?: @""), (self.title ?: @""), (self.subtitle.length ? @" ······ " : @""), (self.subtitle ?: @"")];
     [self.subExamples enumerateObjectsUsingBlock:^(AMKExampleViewModel * _Nonnull subExample, NSUInteger idx, BOOL * _Nonnull stop) {
         BOOL isLastSub = idx == self.subExamples.count-1;
         NSString *parentExamplePrefix = @"";

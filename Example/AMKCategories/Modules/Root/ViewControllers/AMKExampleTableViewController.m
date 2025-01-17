@@ -38,8 +38,6 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"Examples";
-        self.tabBarItem.title = @"Examples";
-        self.tabBarItem.image = [UIImage imageWithColor:UIColor.blueColor size:CGSizeMake(25, 25)];
     }
     return self;
 }
