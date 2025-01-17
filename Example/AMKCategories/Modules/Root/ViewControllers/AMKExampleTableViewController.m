@@ -14,6 +14,8 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 @interface AMKExampleTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
+@property (nonatomic, strong, readwrite, nullable) UIView *tableHeaderView;
+@property (nonatomic, strong, readwrite, nullable) UILabel *subtitleLabel;
 @end
 
 @implementation AMKExampleTableViewController
@@ -21,7 +23,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 #pragma mark - Dealloc
 
 - (void)dealloc {
-    
+    [_subtitleLabel removeObserverBlocks];
 }
 
 #pragma mark - Init Methods
@@ -51,7 +53,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -71,9 +73,11 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColor.systemGroupedBackgroundColor;
         _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 100)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.tableHeaderView = self.tableHeaderView;
         if (@available(iOS 15.0, *)) {
             _tableView.sectionHeaderTopPadding = 0;
         }
@@ -85,24 +89,61 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     return _tableView;
 }
 
+- (UIView *)tableHeaderView {
+    if (!_tableHeaderView) {
+        _tableHeaderView = [UIView.alloc initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 0)];
+        _tableHeaderView.layoutMargins = UIEdgeInsetsMake(10, 10, 20, 10);
+    }
+    return _tableHeaderView;
+}
+
+- (UILabel *)subtitleLabel {
+    if (!_subtitleLabel) {
+        __weak __typeof__(self)weakSelf = self;
+        _subtitleLabel = [UILabel.alloc init];
+        _subtitleLabel.numberOfLines = 0;
+        _subtitleLabel.textColor = UIColor.placeholderTextColor;
+        _subtitleLabel.font = [UIFont systemFontOfSize:13];
+        [_subtitleLabel addObserverBlockForKeyPath:@"bounds" block:^(UILabel *subtitleLabel, NSValue *oldVal, NSValue *newVal) {
+            if (![newVal isEqualToValue:oldVal]) {
+                CGFloat subtitleLabelHeight = MAX(subtitleLabel.font.lineHeight, newVal.CGRectValue.size.height);
+                UIEdgeInsets contentInset = weakSelf.tableView.contentInset;
+                contentInset.top = weakSelf.tableHeaderView.layoutMargins.top + subtitleLabelHeight + weakSelf.tableHeaderView.layoutMargins.bottom;
+                weakSelf.tableView.contentInset = contentInset;
+            }
+        }];
+        [self.tableHeaderView addSubview:self.subtitleLabel];
+    }
+    return _subtitleLabel;
+}
+
 @synthesize viewModel = _viewModel;
 
 - (void)setViewModel:(AMKExampleViewModel *)viewModel {
     _viewModel = viewModel;
-    [self setTitle:_viewModel.title];
-    [self.tabBarItem setTitle:_viewModel.title];
-    
-    if (!self.isViewLoaded) {
-        return;
-    }
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 #pragma mark - Data & Networking
 
+- (void)reloadData {
+    self.title = self.viewModel.title;
+    self.tabBarItem.title = self.viewModel.title;
+    
+    if (!self.isViewLoaded) {
+        return;
+    }
+    
+    self.subtitleLabel.text = _viewModel.subtitle;
+    [self.tableView reloadData];
+}
+
 #pragma mark - Layout Subviews
 
 - (void)updateViewConstraints {
+    [self.subtitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.mas_equalTo(self.tableHeaderView).insets(self.tableHeaderView.layoutMargins);
+    }];
     [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
@@ -166,7 +207,6 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMKExamplesTableViewCellReusableIdentifier];
     if (!cell) {
         cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AMKExamplesTableViewCellReusableIdentifier];
-        cell.indentationWidth = 20;
         cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
         cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
@@ -174,15 +214,12 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     }
     cell.contentView.alpha = indexPath.row == 0 ? 1 : 0.5;
     cell.indentationLevel = indexPath.row == 0 ? 0 : 1;
+    cell.separatorInset = UIEdgeInsetsMake(0, cell.indentationLevel * 40, 0, 0);
     cell.textLabel.text = subViewModel.title;
     cell.detailTextLabel.text = subViewModel.subtitle;
     cell.accessoryType = indexPath.row == 0 ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
-
-//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return self.viewModel.subtitle;
-//}
 
 #pragma mark UITableViewDelegate
 
