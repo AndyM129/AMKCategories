@@ -29,4 +29,7 @@
 /// 子示例
 @property (nonatomic, strong, readwrite, nullable) NSArray<AMKExampleViewModel *> *subExamples;
 
+/// 树状描述
+- (NSString *_Nullable)treeDescription;
+
 @end

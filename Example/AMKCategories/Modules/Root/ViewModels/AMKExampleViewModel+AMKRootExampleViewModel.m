@@ -22,6 +22,7 @@
         NSString *plistPath = [NSBundle.mainBundle pathForResource:@"AMKExamples" ofType:@"plist"];
         NSDictionary *dict = [NSDictionary.alloc initWithContentsOfFile:plistPath];
         _rootExampleViewModel = [AMKExampleViewModel yy_modelWithDictionary:dict];
+        NSLog(@"AMKExampleViewModel.rootExampleViewModel = %@", [_rootExampleViewModel treeDescription]);
     });
     return _rootExampleViewModel;
 }
