@@ -6,23 +6,30 @@
 	<string>组件示例库</string>
 	<key>subtitle</key>
 	<string></string>
+	<key>【模板】subExamples</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>标题</string>
+			<key>subtitle</key>
+			<string>介绍、说明</string>
+			<key>keywords</key>
+			<string></string>
+			<key>pageClassName</key>
+			<string></string>
+			<key>pageParams</key>
+			<dict/>
+			<key>subExamples</key>
+			<array/>
+		</dict>
+	</array>
 	<key>subExamples</key>
 	<array>
 		<dict>
 			<key>title</key>
-			<string>基础UI</string>
+			<string>基础组件</string>
 			<key>subtitle</key>
-			<string></string>
-			<key>keywords</key>
-			<string></string>
-			<key>subExamples</key>
-			<array/>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>交互动画</string>
-			<key>subtitle</key>
-			<string></string>
+			<string>新增的自定义UI等组件，以满足定制场景的需要</string>
 			<key>keywords</key>
 			<string></string>
 			<key>subExamples</key>
@@ -32,7 +39,7 @@
 			<key>title</key>
 			<string>接口能力</string>
 			<key>subtitle</key>
-			<string></string>
+			<string>封装或扩展已有实现，以便简化使用，或成套提供</string>
 			<key>keywords</key>
 			<string></string>
 			<key>subExamples</key>
@@ -41,7 +48,7 @@
 					<key>title</key>
 					<string>Foundation</string>
 					<key>subtitle</key>
-					<string></string>
+					<string>系统底层接口</string>
 					<key>keywords</key>
 					<string></string>
 					<key>subExamples</key>
@@ -88,13 +95,34 @@
 								</dict>
 							</array>
 						</dict>
+						<dict>
+							<key>title</key>
+							<string>Swift.String</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>SubString 相关处理</string>
+									<key>subtitle</key>
+									<string>详见控制台输出</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKCategories_Example.AMKSubStringViewController</string>
+								</dict>
+							</array>
+						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>title</key>
 					<string>UIKit</string>
 					<key>subtitle</key>
-					<string></string>
+					<string>系统UI接口</string>
 					<key>keywords</key>
 					<string></string>
 					<key>subExamples</key>
@@ -210,7 +238,7 @@
 					<key>title</key>
 					<string>WebKit</string>
 					<key>subtitle</key>
-					<string></string>
+					<string>系统浏览器接口</string>
 					<key>keywords</key>
 					<string></string>
 					<key>subExamples</key>
@@ -239,106 +267,55 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Swift.String</string>
+					<string>QuartzCore</string>
 					<key>subtitle</key>
-					<string></string>
+					<string>图形渲染、动画以及与硬件加速相关的接口</string>
 					<key>keywords</key>
 					<string></string>
 					<key>subExamples</key>
 					<array>
 						<dict>
 							<key>title</key>
-							<string>SubString 相关处理</string>
+							<string>CAAnimation</string>
 							<key>subtitle</key>
-							<string>详见控制台输出</string>
-							<key>keywords</key>
-							<string></string>
-							<key>pageClassName</key>
-							<string>AMKCategories_Example.AMKSubStringViewController</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Hades端能力</string>
-			<key>subtitle</key>
-			<string></string>
-			<key>keywords</key>
-			<string></string>
-			<key>subExamples</key>
-			<array/>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>第三方</string>
-			<key>subtitle</key>
-			<string></string>
-			<key>keywords</key>
-			<string></string>
-			<key>subExamples</key>
-			<array>
-				<dict>
-					<key>title</key>
-					<string>MJRefresh</string>
-					<key>subtitle</key>
-					<string>An easy way to use pull-to-refresh</string>
-					<key>keywords</key>
-					<string></string>
-					<key>subExamples</key>
-					<array>
-						<dict>
-							<key>title</key>
-							<string>为您推荐xx条新内容</string>
-							<key>subtitle</key>
-							<string>&quot;类似头条，下拉刷新时结束之前，会先显示「为您推荐xx条新内容」</string>
-							<key>keywords</key>
-							<string></string>
-							<key>pageClassName</key>
-							<string>AMKMJRefreshViewController</string>
+							<string>核心动画相关接口</string>
+							<key>subExamples</key>
+							<array/>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Lottie</string>
+					<string>Hades端能力</string>
 					<key>subtitle</key>
-					<string>An easy way to use pull-to-refresh</string>
+					<string>为 Hades H5 页面提供的端能力</string>
 					<key>keywords</key>
 					<string></string>
 					<key>subExamples</key>
 					<array>
 						<dict>
 							<key>title</key>
-							<string>动画示例</string>
+							<string>WebOffline</string>
 							<key>subtitle</key>
-							<string></string>
+							<string>离线加载</string>
 							<key>keywords</key>
 							<string></string>
 							<key>pageClassName</key>
-							<string>AMKLottieExampleViewController</string>
+							<string></string>
+							<key>subExamples</key>
+							<array/>
 						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>title</key>
-					<string>AIGC</string>
-					<key>subtitle</key>
-					<string></string>
-					<key>keywords</key>
-					<string></string>
-					<key>subExamples</key>
-					<array>
 						<dict>
 							<key>title</key>
-							<string>AMKAiRootController</string>
+							<string>HadesHybridPreload</string>
 							<key>subtitle</key>
-							<string></string>
+							<string>Hybrid API 预加载(预热)</string>
 							<key>keywords</key>
 							<string></string>
 							<key>pageClassName</key>
-							<string>AMKAiRootController</string>
+							<string></string>
+							<key>subExamples</key>
+							<array/>
 						</dict>
 					</array>
 				</dict>
@@ -400,6 +377,80 @@
 							<string></string>
 							<key>pageClassName</key>
 							<string>AMKStackViewController</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>第三方</string>
+					<key>subtitle</key>
+					<string></string>
+					<key>keywords</key>
+					<string></string>
+					<key>subExamples</key>
+					<array>
+						<dict>
+							<key>title</key>
+							<string>MJRefresh</string>
+							<key>subtitle</key>
+							<string>An easy way to use pull-to-refresh</string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>为您推荐xx条新内容</string>
+									<key>subtitle</key>
+									<string>&quot;类似头条，下拉刷新时结束之前，会先显示「为您推荐xx条新内容」</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKMJRefreshViewController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>Lottie</string>
+							<key>subtitle</key>
+							<string>An easy way to use pull-to-refresh</string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>动画示例</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKLottieExampleViewController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>AIGC</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>AMKAiRootController</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKAiRootController</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>

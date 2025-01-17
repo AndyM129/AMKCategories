@@ -78,6 +78,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableHeaderView = self.tableHeaderView;
+        _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(1, 0, 0, 0);
         if (@available(iOS 15.0, *)) {
             _tableView.sectionHeaderTopPadding = 0;
         }
@@ -209,7 +210,7 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
         cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AMKExamplesTableViewCellReusableIdentifier];
         cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
         cell.detailTextLabel.textColor = UIColor.grayColor;
     }
     cell.contentView.alpha = indexPath.row == 0 ? 1 : 0.5;
@@ -232,8 +233,12 @@ static NSString * const AMKExamplesTableViewCellReusableIdentifier = @"AMKExampl
     
     AMKExampleViewModel *subViewModel = [self.viewModel.subExamples objectAtIndex:indexPath.section];
     if (indexPath.row == 0) {
-        subViewModel.isExpanded = !subViewModel.isExpanded;
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (subViewModel.subExamples.count) {
+            subViewModel.isExpanded = !subViewModel.isExpanded;
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [self gotoExampleViewControllerWithViewModel:subViewModel];
+        }
     } else {
         subViewModel = [subViewModel.subExamples objectAtIndex:indexPath.row - 1];
         [self gotoExampleViewControllerWithViewModel:subViewModel];
