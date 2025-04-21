@@ -500,27 +500,11 @@
 		8806D95B290BB4BA005DC5C1 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				8806D95C290BB4BA005DC5C1 /* NSDictionary */,
 				8806D95E290BB4BA005DC5C1 /* NSBundle */,
 				8806D965290BB4BA005DC5C1 /* NSString */,
 				8806D96A290BB4BA005DC5C1 /* NSObject */,
 			);
 			path = Foundation;
-			sourceTree = "<group>";
-		};
-		8806D95C290BB4BA005DC5C1 /* NSDictionary */ = {
-			isa = PBXGroup;
-			children = (
-				8806D95D290BB4BA005DC5C1 /* Database */,
-			);
-			path = NSDictionary;
-			sourceTree = "<group>";
-		};
-		8806D95D290BB4BA005DC5C1 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		8806D95E290BB4BA005DC5C1 /* NSBundle */ = {
