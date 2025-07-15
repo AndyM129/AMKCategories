@@ -45,6 +45,7 @@
 		883121512E26845F00183073 /* AMK10090ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883121502E26845F00183073 /* AMK10090ExampleViewController.m */; };
 		883121542E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */; };
 		883122B32E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */; };
+		883122B62E26951600183073 /* AMK10090ExampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -176,6 +177,8 @@
 		883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
 		883122B12E268EE600183073 /* AMK10090ExampleVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleVideoTableViewCell.h; sourceTree = "<group>"; };
 		883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleVideoTableViewCell.m; sourceTree = "<group>"; };
+		883122B42E26951600183073 /* AMK10090ExampleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleTableViewCell.h; sourceTree = "<group>"; };
+		883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleTableViewCell.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */,
 				883121522E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.h */,
 				883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */,
+				883122B42E26951600183073 /* AMK10090ExampleTableViewCell.h */,
+				883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */,
 			);
 			path = 10090;
 			sourceTree = "<group>";
@@ -1241,6 +1246,7 @@
 				888D8F0C2977EE0F00B8F26F /* AMKOfflineLoadingWebViewController.m in Sources */,
 				88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */,
 				88CE2C2F2A66384D003BB866 /* AMKSubStringViewController.swift in Sources */,
+				883122B62E26951600183073 /* AMK10090ExampleTableViewCell.m in Sources */,
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				88D493662B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m in Sources */,
 				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,

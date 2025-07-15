@@ -9,6 +9,7 @@
 #import "AMK10090ExampleViewController.h"
 #import "AMK10090ExampleVideoTableViewCell.h"
 #import "AMK10090ExampleCategoryTitleTableViewCell.h"
+#import "AMK10090ExampleTableViewCell.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -92,6 +93,7 @@
         }
         [_tableView registerClass:AMK10090ExampleVideoTableViewCell.class forCellReuseIdentifier:AMK10090ExampleVideoTableViewCell.className];
         [_tableView registerClass:AMK10090ExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className];
+        [_tableView registerClass:AMK10090ExampleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
@@ -110,6 +112,16 @@
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
         section;
     })];
     
@@ -150,6 +162,11 @@
         AMK10090ExampleCategoryTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
         return cell;
     }
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleTableViewCell.className]) {
+        AMK10090ExampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleTableViewCell.className forIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:70/255.0 green:157/255.0 blue:227/255.0 alpha:0.5 - indexPath.row * 0.05];
+        return cell;
+    }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
 }
 
@@ -164,6 +181,9 @@
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleCategoryTitleTableViewCell.className]) {
         return [AMK10090ExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleTableViewCell.className]) {
+        return [AMK10090ExampleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     return 0;
 }

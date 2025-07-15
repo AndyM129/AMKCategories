@@ -1,5 +1,5 @@
 //
-//  AMK10090ExampleCategoryTitleTableViewCell.h
+//  AMK10090ExampleTableViewCell.h
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2025/7/15.
@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JXCategoryView/JXCategoryView.h>
 
-/// Tab TableViewCell
-@interface AMK10090ExampleCategoryTitleTableViewCell : UITableViewCell
-
-@property (nonatomic, strong, readonly, nullable) JXCategoryTitleView *categoryTitleView;
+@interface AMK10090ExampleTableViewCell : UITableViewCell
 
 + (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath;
 

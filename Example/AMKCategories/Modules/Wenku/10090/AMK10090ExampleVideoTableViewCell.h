@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AMK10090ExampleVideoTableViewCell : UITableViewCell
+
 @property (nonatomic, strong, readonly, nullable) UILabel *videoPlayerView;
 
-+ (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
++ (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath;
 
 @end
