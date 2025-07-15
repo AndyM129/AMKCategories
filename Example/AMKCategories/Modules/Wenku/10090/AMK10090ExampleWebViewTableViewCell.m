@@ -29,6 +29,19 @@
 
 #pragma mark - Getters & Setters
 
+- (WKWebView *)webView {
+    if (!_webView) {
+        NSString *urlString = @"http://wenku.baidu.com";
+        NSURL *URL = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest.alloc initWithURL:URL];
+        
+        _webView = [WKWebView.alloc init];
+        [_webView loadRequest:request];
+        [self.contentView addSubview:_webView];
+    }
+    return _webView;
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     // 不调用父类实现，以避免编辑模式下的默认处理
 }
@@ -38,7 +51,7 @@
 #pragma mark - Layout Subviews
 
 + (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath {
-    return 500;
+    return UIScreen.mainScreen.bounds.size.height;
 }
 
 + (BOOL)requiresConstraintBasedLayout {
@@ -46,7 +59,9 @@
 }
 
 - (void)updateConstraints {
-    // Coding ...
+    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    }];
     
     //according to apple super should be called at end of method
     [super updateConstraints];
