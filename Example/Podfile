@@ -12,6 +12,7 @@ target 'AMKCategories_Example' do
     pod 'Masonry'
     pod 'YYModel'
     pod 'YYText'
+    pod 'JXCategoryView'
     pod 'YYCategories'
     pod 'AMKStackView'
     pod 'AFNetworking', '3.2.1'

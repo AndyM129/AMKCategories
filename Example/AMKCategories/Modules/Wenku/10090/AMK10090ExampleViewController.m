@@ -7,6 +7,9 @@
 //
 
 #import "AMK10090ExampleViewController.h"
+#import "AMK10090ExampleVideoTableViewCell.h"
+#import "AMK10090ExampleCategoryTitleTableViewCell.h"
+#import <AMKCategories/UITableView+AMKTableViewSection.h>
 
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
@@ -42,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = self.view.backgroundColor ?: [UIColor whiteColor];
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,13 +90,32 @@
             self.automaticallyAdjustsScrollViewInsets = NO;
 #           pragma clang diagnostic pop
         }
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+        [_tableView registerClass:AMK10090ExampleVideoTableViewCell.class forCellReuseIdentifier:AMK10090ExampleVideoTableViewCell.className];
+        [_tableView registerClass:AMK10090ExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
     return _tableView;
 }
 
 #pragma mark - Data & Networking
+
+- (void)reloadData {
+    NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
+    [sections addObject:({
+        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleVideoTableViewCell.className rows:nil];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleVideoTableViewCell.className userInfo:nil]];
+        section;
+    })];
+    [sections addObject:({
+        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
+        section;
+    })];
+    
+    self.tableView.amk_sections = sections;
+    [self.tableView reloadData];
+}
 
 #pragma mark - Layout Subviews
 
@@ -108,33 +130,40 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return self.tableView.amk_sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 5;
-    }
-    if (section == 1) {
-        return 1;
-    }
-    return 0;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[section];
+    return tableViewSection.rows.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:71/255.0 green:158/255.0 blue:226/255.0 alpha:0.6 - indexPath.item * 0.05];
-    return cell;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
+    AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
+
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleVideoTableViewCell.className]) {
+        AMK10090ExampleVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleVideoTableViewCell.className forIndexPath:indexPath];
+        return cell;
+    }
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleCategoryTitleTableViewCell.className]) {
+        AMK10090ExampleCategoryTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
+        return cell;
+    }
+    return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
 }
 
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 100;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
+    AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
+
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleVideoTableViewCell.className]) {
+        return [AMK10090ExampleVideoTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
-    if (indexPath.section == 1) {
-        return 400;
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleCategoryTitleTableViewCell.className]) {
+        return [AMK10090ExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     return 0;
 }

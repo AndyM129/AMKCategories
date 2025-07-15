@@ -76,6 +76,10 @@ Pod::Spec.new do |s|
         end
         # UITableView 视图相关
         uikit.subspec 'UITableView' do |tableView|
+            # TableViewSection 相关
+            tableView.subspec 'TableViewSection' do |delegate|
+                delegate.source_files = 'AMKCategories/Classes/UIKit/UITableView/TableViewSection/*.{h,m}'
+            end
             # Delegate 相关
             tableView.subspec 'Delegate' do |delegate|
                 delegate.source_files = 'AMKCategories/Classes/UIKit/UITableView/Delegate/*.{h,m}'

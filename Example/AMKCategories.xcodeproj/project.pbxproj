@@ -43,6 +43,8 @@
 		880B95922D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
 		883121512E26845F00183073 /* AMK10090ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883121502E26845F00183073 /* AMK10090ExampleViewController.m */; };
+		883121542E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */; };
+		883122B32E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -170,6 +172,10 @@
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
 		8831214F2E26845F00183073 /* AMK10090ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleViewController.h; sourceTree = "<group>"; };
 		883121502E26845F00183073 /* AMK10090ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleViewController.m; sourceTree = "<group>"; };
+		883121522E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleCategoryTitleTableViewCell.h; sourceTree = "<group>"; };
+		883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
+		883122B12E268EE600183073 /* AMK10090ExampleVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleVideoTableViewCell.h; sourceTree = "<group>"; };
+		883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleVideoTableViewCell.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -667,6 +673,10 @@
 			children = (
 				8831214F2E26845F00183073 /* AMK10090ExampleViewController.h */,
 				883121502E26845F00183073 /* AMK10090ExampleViewController.m */,
+				883122B12E268EE600183073 /* AMK10090ExampleVideoTableViewCell.h */,
+				883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */,
+				883121522E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.h */,
+				883121532E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m */,
 			);
 			path = 10090;
 			sourceTree = "<group>";
@@ -1151,6 +1161,7 @@
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/JXCategoryView/JXCategoryView.framework",
 				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -1169,6 +1180,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXCategoryView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -1237,9 +1249,11 @@
 				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
+				883122B32E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m in Sources */,
 				88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */,
 				887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
+				883121542E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
 				88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */,
 				885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */,
