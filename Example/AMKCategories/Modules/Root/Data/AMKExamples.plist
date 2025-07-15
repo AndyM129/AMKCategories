@@ -526,6 +526,18 @@
 								<string>value2</string>
 							</dict>
 						</dict>
+						<dict>
+							<key>title</key>
+							<string>WK 10090 Example</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK10090ExampleViewController</string>
+							<key>pageParams</key>
+							<dict/>
+						</dict>
 					</array>
 				</dict>
 			</array>

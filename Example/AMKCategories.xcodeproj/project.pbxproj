@@ -42,6 +42,7 @@
 		880B958F2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B958E2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m */; };
 		880B95922D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
+		883121512E26845F00183073 /* AMK10090ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883121502E26845F00183073 /* AMK10090ExampleViewController.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -167,6 +168,8 @@
 		880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleViewModel+AMKRootExampleViewModel.m"; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
+		8831214F2E26845F00183073 /* AMK10090ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleViewController.h; sourceTree = "<group>"; };
+		883121502E26845F00183073 /* AMK10090ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleViewController.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -659,6 +662,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		8831214E2E26844600183073 /* 10090 */ = {
+			isa = PBXGroup;
+			children = (
+				8831214F2E26845F00183073 /* AMK10090ExampleViewController.h */,
+				883121502E26845F00183073 /* AMK10090ExampleViewController.m */,
+			);
+			path = 10090;
+			sourceTree = "<group>";
+		};
 		8831D5822A50017400BABB4D /* Transitioning */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +720,7 @@
 		8852B45A2B026736004DED8F /* Wenku */ = {
 			isa = PBXGroup;
 			children = (
+				8831214E2E26844600183073 /* 10090 */,
 				889452802CC8D31B002841C3 /* 9130 */,
 				8873BB392B60C55C004E7DFE /* 8350 */,
 				887D9CF92B3C216C004D0854 /* 8330 */,
@@ -1219,6 +1232,7 @@
 				887F1028293F3C0F00253DE8 /* AMKUIPasteboardAlertExampleViewController.m in Sources */,
 				88D493662B67E0D9009DFF56 /* WKNVoiceRecognitionLongPressGestureRecognizer.m in Sources */,
 				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,
+				883121512E26845F00183073 /* AMK10090ExampleViewController.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
