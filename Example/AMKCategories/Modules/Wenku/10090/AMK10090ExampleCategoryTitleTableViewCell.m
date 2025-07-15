@@ -8,7 +8,7 @@
 
 #import "AMK10090ExampleCategoryTitleTableViewCell.h"
 
-@interface AMK10090ExampleCategoryTitleTableViewCell ()
+@interface AMK10090ExampleCategoryTitleTableViewCell () <JXCategoryViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) JXCategoryTitleView *categoryTitleView;
 @end
 
@@ -36,6 +36,7 @@
         _categoryTitleView.titleSelectedColor = [UIColor colorWithRed:70/255.0 green:157/255.0 blue:227/255.0 alpha:1.0];
         _categoryTitleView.titles = @[@"Tab 1", @"Tab 2"];
         _categoryTitleView.averageCellSpacingEnabled = NO;
+        _categoryTitleView.delegate = self;
         
         JXCategoryIndicatorLineView *lineView = [JXCategoryIndicatorLineView.alloc init];
         lineView.indicatorColor = _categoryTitleView.titleSelectedColor;
@@ -85,7 +86,12 @@
 
 #pragma mark - Protocol
 
-#pragma mark - Helper Methods
+#pragma mark JXCategoryViewDelegate
 
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
+    !self.categoryTitleViewDidSelectItemBlock ?: self.categoryTitleViewDidSelectItemBlock(self, index);
+}
+
+#pragma mark - Helper Methods
 
 @end

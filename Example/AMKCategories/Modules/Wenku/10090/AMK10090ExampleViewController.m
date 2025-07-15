@@ -10,10 +10,13 @@
 #import "AMK10090ExampleVideoTableViewCell.h"
 #import "AMK10090ExampleCategoryTitleTableViewCell.h"
 #import "AMK10090ExampleTableViewCell.h"
+#import "AMK10090ExampleWebViewTableViewCell.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
+#import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
+@property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
 @end
 
 @implementation AMK10090ExampleViewController
@@ -94,6 +97,7 @@
         [_tableView registerClass:AMK10090ExampleVideoTableViewCell.class forCellReuseIdentifier:AMK10090ExampleVideoTableViewCell.className];
         [_tableView registerClass:AMK10090ExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className];
         [_tableView registerClass:AMK10090ExampleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleTableViewCell.className];
+        [_tableView registerClass:AMK10090ExampleWebViewTableViewCell.class forCellReuseIdentifier:AMK10090ExampleWebViewTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
@@ -112,16 +116,20 @@
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        if (self.categoryTitleViewSelectedIndex == 1) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleWebViewTableViewCell.className userInfo:nil]];
+        } else {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
+        }
         section;
     })];
     
@@ -151,20 +159,30 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak __typeof__(self)weakSelf = self;
     AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
     AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
-
+    
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleVideoTableViewCell.className]) {
         AMK10090ExampleVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleVideoTableViewCell.className forIndexPath:indexPath];
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleCategoryTitleTableViewCell.className]) {
         AMK10090ExampleCategoryTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
+        cell.categoryTitleViewDidSelectItemBlock = ^(AMK10090ExampleCategoryTitleTableViewCell * _Nullable cell, NSInteger index) {
+            [MBProgressHUD amk_showTextHUDWithTitle:[NSString stringWithFormat:@"点击 index = %ld", index] message:nil inView:nil responder:nil duration:1.5 animated:YES];
+            weakSelf.categoryTitleViewSelectedIndex = index;
+            [weakSelf reloadData];
+        };
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleTableViewCell.className]) {
         AMK10090ExampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleTableViewCell.className forIndexPath:indexPath];
         cell.contentView.backgroundColor = [UIColor colorWithRed:70/255.0 green:157/255.0 blue:227/255.0 alpha:0.5 - indexPath.row * 0.05];
+        return cell;
+    }
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleWebViewTableViewCell.className]) {
+        AMK10090ExampleWebViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
         return cell;
     }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
@@ -184,6 +202,9 @@
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleTableViewCell.className]) {
         return [AMK10090ExampleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    if ([tableViewRow.identifier isEqualToString:AMK10090ExampleWebViewTableViewCell.className]) {
+        return [AMK10090ExampleWebViewTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     return 0;
 }
