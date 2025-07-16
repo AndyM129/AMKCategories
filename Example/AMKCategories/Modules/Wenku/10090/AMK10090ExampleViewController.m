@@ -14,8 +14,10 @@
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
-@interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
+@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
+@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
 @end
 
@@ -168,7 +170,11 @@
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleCategoryTitleTableViewCell.className]) {
-        AMK10090ExampleCategoryTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
+        AMK10090ExampleCategoryTitleTableViewCell *cell = self.categoryTitleTableViewCell;
+        if (!cell) {
+            cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
+            self.categoryTitleTableViewCell = cell;
+        }
         cell.categoryTitleViewDidSelectItemBlock = ^(AMK10090ExampleCategoryTitleTableViewCell * _Nullable cell, NSInteger index) {
             [MBProgressHUD amk_showTextHUDWithTitle:[NSString stringWithFormat:@"点击 index = %ld", index] message:nil inView:nil responder:nil duration:1.5 animated:YES];
             weakSelf.categoryTitleViewSelectedIndex = index;
@@ -182,7 +188,11 @@
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleWebViewTableViewCell.className]) {
-        AMK10090ExampleWebViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+        AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
+        if (!cell) {
+            cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+            self.webViewTableViewCell = cell;
+        }
         return cell;
     }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
@@ -212,6 +222,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark UIGestureRecognizerDelegate
 
 #pragma mark - Helper Methods
 
