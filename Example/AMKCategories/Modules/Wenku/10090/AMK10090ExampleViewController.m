@@ -100,6 +100,19 @@
         [_tableView registerClass:AMK10090ExampleWebViewTableViewCell.class forCellReuseIdentifier:AMK10090ExampleWebViewTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
+        
+        __weak __typeof__(self)weakSelf = self;
+        [_tableView addObserverBlockForKeyPath:@"contentSize" block:^(UITableView * _Nonnull tableView, NSNumber * oldVal, NSNumber * newVal) {
+            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
+                [weakSelf updateWebViewTableViewCellWebViewScrollEnabled];
+            }
+        }];
+        [_tableView addObserverBlockForKeyPath:@"contentOffset" block:^(UITableView * _Nonnull tableView, NSNumber * oldVal, NSNumber * newVal) {
+            if (!CGPointEqualToPoint(newVal.CGPointValue, oldVal.CGPointValue)) {
+                [weakSelf updateWebViewTableViewCellWebViewScrollEnabled];
+            }
+        }];
+
     }
     return _tableView;
 }
@@ -138,6 +151,10 @@
 }
 
 #pragma mark - Layout Subviews
+
+- (void)updateWebViewTableViewCellWebViewScrollEnabled {
+    self.webViewTableViewCell.webView.scrollView.scrollEnabled = (self.tableView.contentOffset.y + self.tableView.height) >= self.tableView.contentSize.height;
+}
 
 #pragma mark - Action Methods
 
@@ -190,6 +207,7 @@
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
             self.webViewTableViewCell = cell;
+            [self updateWebViewTableViewCellWebViewScrollEnabled];
         }
         return cell;
     }
