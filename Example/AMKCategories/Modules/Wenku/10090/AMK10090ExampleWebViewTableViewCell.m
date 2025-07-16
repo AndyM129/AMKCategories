@@ -115,7 +115,6 @@
         }
         // 当前cell 已露出
         else {
-            tableView.contentOffset = CGPointMake(0, cellTop);
             scrollView.showsVerticalScrollIndicator = YES;
         }
     }
