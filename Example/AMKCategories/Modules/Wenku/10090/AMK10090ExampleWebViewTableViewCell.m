@@ -51,7 +51,7 @@
         NSURLRequest *request = [NSURLRequest.alloc initWithURL:URL];
         
         _webView = [AMK10090ExampleWebView.alloc init];
-        _webView.scrollView.bounces = NO;
+//        _webView.scrollView.bounces = NO;
         [_webView loadRequest:request];
         [self.contentView addSubview:_webView];
     }

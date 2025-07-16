@@ -20,6 +20,7 @@
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
+@property (nonatomic, assign) BOOL canWebViewScroll;
 @end
 
 @implementation AMK10090ExampleViewController
@@ -52,6 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = self.view.backgroundColor ?: [UIColor whiteColor];
+    self.canWebViewScroll = NO;
     [self reloadData];
 }
 
@@ -197,7 +199,13 @@
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
             cell.webView.scrollView.delegate = self;
+            cell.webView.scrollView.scrollEnabled = NO; // 先禁
             self.webViewTableViewCell = cell;
+            
+            UIPanGestureRecognizer *proxyPan = [[UIPanGestureRecognizer alloc] initWithTarget:nil action:nil];
+            proxyPan.delegate = self; // 这里才能写 self
+            proxyPan.cancelsTouchesInView = NO; // 不抢事件
+            [cell.webView.scrollView addGestureRecognizer:proxyPan];
         }
         return cell;
     }
@@ -239,7 +247,46 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView) {
+        CGFloat offsetY = scrollView.contentOffset.y;
+        CGFloat threshold = self.tableView.contentSize.height - self.tableView.bounds.size.height;
+
+        if (offsetY >= threshold) {
+            scrollView.contentOffset = CGPointMake(0, threshold);
+            self.canWebViewScroll = YES;
+            self.webView.scrollView.scrollEnabled = YES;
+        } else {
+            self.canWebViewScroll = NO;
+            self.webView.scrollView.scrollEnabled = NO;
+        }
+    }
+
+    if (scrollView == self.webView.scrollView) {
+        if (!self.canWebViewScroll) {
+            scrollView.contentOffset = CGPointZero;
+        }
+
+        if (scrollView.contentOffset.y <= 0) {
+            self.canWebViewScroll = NO;
+            self.webView.scrollView.scrollEnabled = NO;
+        }
+    }
+}
+
 #pragma mark UIGestureRecognizerDelegate
+
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return YES;
+//}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    // 只要两个手势里有一个来自 webView.scrollView，就允许同时识别
+    if ([gestureRecognizer.view isDescendantOfView:self.webView.scrollView] || [otherGestureRecognizer.view isDescendantOfView:self.webView.scrollView]) {
+        return YES;
+    }
+    return NO;
+}
 
 #pragma mark - Helper Methods
 
