@@ -14,25 +14,8 @@
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
-@interface AMK10090ExampleTableView : UITableView
-
-@end
-
-@implementation AMK10090ExampleTableView
-
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    BOOL shouldBegin = [super gestureRecognizerShouldBegin:gestureRecognizer];
-//    NSLog(@"%@ => %@", gestureRecognizer, @(shouldBegin));
-//    return shouldBegin;
-//}
-
-@end
-
-#pragma mark -
-#pragma mark -
-
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
-@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleTableView *tableView;
+@property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *customTableViewPanGestureRecognizer;
@@ -92,9 +75,9 @@
 
 #pragma mark - Getters & Setters
 
-- (AMK10090ExampleTableView *)tableView {
+- (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [AMK10090ExampleTableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.estimatedRowHeight = 0;
