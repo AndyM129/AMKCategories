@@ -15,7 +15,7 @@
 
 #pragma mark - Public Methods
 
-- (UIResponder *)amk_nextResponderWithClass:(Class)Class {
+- (__kindof UIResponder *)amk_nextResponderWithClass:(Class)Class {
     UIResponder *nextResponder = self;
     while (nextResponder && ![nextResponder isKindOfClass:Class]) {
         nextResponder = nextResponder.nextResponder;

@@ -11,6 +11,6 @@
 @interface UIResponder (AMKUIResponderExtensionMethods)
 
 /// 返回响应者链中 指定类型的响应对象
-- (UIResponder *_Nullable)amk_nextResponderWithClass:(Class _Nullable)Class;
+- (__kindof UIResponder *_Nullable)amk_nextResponderWithClass:(Class _Nullable)Class;
 
 @end
