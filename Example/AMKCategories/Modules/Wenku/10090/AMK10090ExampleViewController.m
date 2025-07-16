@@ -232,16 +232,10 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.tableView) {
-        [self tableViewDidScroll:scrollView];
-    }
-}
-
-- (void)tableViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"🔳 %@", scrollView);
     
-    // webViewTableViewCell 可见
-    if (!self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
+    // 若 webViewTableViewCell 可见
+    if (self.webViewTableViewCell && !self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
         // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
         if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
             self.tableView.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
