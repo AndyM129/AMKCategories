@@ -20,7 +20,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
-
+        self.bounces = NO;
     }
     return self;
 }
@@ -38,6 +38,11 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"%@", gestureRecognizer);
+    return YES;
+}
 
 #pragma mark - Helper Methods
 

@@ -197,6 +197,8 @@
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
             self.webViewTableViewCell = cell;
+            [self.tableView addGestureRecognizer:cell.webView.scrollView.panGestureRecognizer];
+            //[cell.webView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.tableView.panGestureRecognizer];
         }
         return cell;
     }

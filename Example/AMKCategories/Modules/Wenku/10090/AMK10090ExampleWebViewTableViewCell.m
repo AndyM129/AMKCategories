@@ -44,7 +44,8 @@
     if (!_webView) {
         //NSString *urlString = @"http://wenku.baidu.com";
         //NSString *urlString = @"https://m.toutiao.com";
-        NSString *urlString = @"https://tanbi.baidu.com/h5apptopic/browse/wkjumpdownload?fromKey=1027470f&docId=99b9f97b9dc3d5bbfd0a79563c1ec5da51e2d628&tfAI=0&utm_source=bdss-WKapp&utm_medium=cpc&utm_account=SS-bdtg60&e_creative=76761983588&e_keywordid=619201700996&bd_vid=7260869444029181928";
+        //NSString *urlString = @"https://tanbi.baidu.com/h5apptopic/browse/wkjumpdownload?fromKey=1027470f&docId=99b9f97b9dc3d5bbfd0a79563c1ec5da51e2d628&tfAI=0&utm_source=bdss-WKapp&utm_medium=cpc&utm_account=SS-bdtg60&e_creative=76761983588&e_keywordid=619201700996&bd_vid=7260869444029181928";
+        NSString *urlString = @"https://article.xuexi.cn/articles/index.html?art_id=16839459196239307151&source=share&study_style_id=feeds_opaque&reco_id=101c0b0a2412c0a88442000j&share_to=copylink&study_share_enable=1&study_comment_disable=1&ptype=0&item_id=16839459196239307151";
         NSURL *URL = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest.alloc initWithURL:URL];
         
