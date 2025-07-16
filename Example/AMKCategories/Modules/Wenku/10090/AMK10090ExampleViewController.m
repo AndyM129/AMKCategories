@@ -272,6 +272,11 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     // 仅拦截自定义手势 竖向滑动
     if (gestureRecognizer == self.customTableViewPanGestureRecognizer || gestureRecognizer == self.customWebScrollViewPanGestureRecognizer) {
+        if (self.categoryTitleViewSelectedIndex != 1) {
+            NSLog(@"%@ => %@", gestureRecognizer, @"NA Tab 的手势不拦截");
+            return NO;
+        }
+        
         UIPanGestureRecognizer *panGestureRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint velocity = [panGestureRecognizer velocityInView:panGestureRecognizer.view];
         if (fabs(velocity.x) >= fabs(velocity.y * 2)) {
@@ -279,7 +284,12 @@
             return NO;
         }
         NSLog(@"%@ => %@", gestureRecognizer, @(velocity));
-        
+        if (gestureRecognizer == self.customTableViewPanGestureRecognizer) {
+            return NO;
+        }
+        else if (gestureRecognizer == self.customWebScrollViewPanGestureRecognizer) {
+            return (self.tableView.contentOffset.y + self.tableView.height) < self.tableView.contentSize.height;
+        }
         return YES;
     }
     
