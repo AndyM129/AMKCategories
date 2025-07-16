@@ -243,4 +243,8 @@
 
 #pragma mark - Helper Methods
 
+- (WKWebView *)webView {
+    return self.webViewTableViewCell.webView;
+}
+
 @end
