@@ -196,6 +196,7 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+            cell.webView.scrollView.delegate = self;
             self.webViewTableViewCell = cell;
         }
         return cell;
@@ -229,6 +230,14 @@
 }
 
 #pragma mark UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView) {
+        NSLog(@"🟨 %@", scrollView);
+    } else if (scrollView == self.webViewTableViewCell.webView.scrollView) {
+        NSLog(@"🟩 %@", scrollView);
+    }
+}
 
 #pragma mark UIGestureRecognizerDelegate
 
