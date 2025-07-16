@@ -14,6 +14,7 @@
 #import "AMK10090ExampleWebViewTableViewCell.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
+#import <Aspects/Aspects.h>
 
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleTableView *tableView;
@@ -197,7 +198,17 @@
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
             cell.webView.scrollView.delegate = self;
+            
             self.webViewTableViewCell = cell;
+            
+            
+            [self.tableView addGestureRecognizer:cell.webView.scrollView.panGestureRecognizer];
+            static id<AspectToken> aspectToken;
+            [aspectToken remove];
+            aspectToken = [(NSObject *)cell.webView.scrollView.panGestureRecognizer.delegate aspect_hookSelector:@selector(gestureRecognizerShouldBegin:) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo) {
+                BOOL returnValue = (weakSelf.tableView.contentOffset.y + weakSelf.tableView.height) >= weakSelf.tableView.contentSize.height;
+                [aspectInfo.originalInvocation setReturnValue:&returnValue];
+            } error:nil];
         }
         return cell;
     }
