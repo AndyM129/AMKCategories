@@ -14,10 +14,30 @@
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
+@interface AMK10090ExampleTableView : UITableView
+
+@end
+
+@implementation AMK10090ExampleTableView
+
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+//    BOOL shouldBegin = [super gestureRecognizerShouldBegin:gestureRecognizer];
+//    NSLog(@"%@ => %@", gestureRecognizer, @(shouldBegin));
+//    return shouldBegin;
+//}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
-@property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
+@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleTableView *tableView;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
+@property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *customTableViewPanGestureRecognizer;
+@property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *customWebScrollViewPanGestureRecognizer;
+
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
 @end
 
@@ -72,9 +92,9 @@
 
 #pragma mark - Getters & Setters
 
-- (UITableView *)tableView {
+- (AMK10090ExampleTableView *)tableView {
     if (!_tableView) {
-        _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [AMK10090ExampleTableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.estimatedRowHeight = 0;
@@ -102,8 +122,28 @@
         [_tableView registerClass:AMK10090ExampleWebViewTableViewCell.class forCellReuseIdentifier:AMK10090ExampleWebViewTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
+        
+        [_tableView addGestureRecognizer:self.customTableViewPanGestureRecognizer];
     }
     return _tableView;
+}
+
+- (UIPanGestureRecognizer *)customTableViewPanGestureRecognizer {
+    if (!_customTableViewPanGestureRecognizer) {
+        _customTableViewPanGestureRecognizer = [UIPanGestureRecognizer.alloc init];
+        _customTableViewPanGestureRecognizer.cancelsTouchesInView = YES;
+        _customTableViewPanGestureRecognizer.delegate = self;
+    }
+    return _customTableViewPanGestureRecognizer;
+}
+
+- (UIPanGestureRecognizer *)customWebScrollViewPanGestureRecognizer {
+    if (!_customWebScrollViewPanGestureRecognizer) {
+        _customWebScrollViewPanGestureRecognizer = [UIPanGestureRecognizer.alloc init];
+        _customWebScrollViewPanGestureRecognizer.cancelsTouchesInView = YES;
+        _customWebScrollViewPanGestureRecognizer.delegate = self;
+    }
+    return _customWebScrollViewPanGestureRecognizer;
 }
 
 #pragma mark - Data & Networking
@@ -191,6 +231,8 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+            //cell.customWebScrollViewPanGestureRecognizer.delegate = self;
+            [cell.webView.scrollView addGestureRecognizer:self.customWebScrollViewPanGestureRecognizer];
             self.webViewTableViewCell = cell;
         }
         return cell;
@@ -224,6 +266,11 @@
 }
 
 #pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"%@", gestureRecognizer);
+    return YES;
+}
 
 #pragma mark - Helper Methods
 
