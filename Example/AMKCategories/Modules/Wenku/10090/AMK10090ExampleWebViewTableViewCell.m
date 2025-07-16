@@ -14,20 +14,13 @@
 
 @implementation AMK10090ExampleWebView
 
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    BOOL shouldBegin = [super gestureRecognizerShouldBegin:gestureRecognizer];
-//    NSLog(@"%@ => %@", gestureRecognizer, @(shouldBegin));
-//    return shouldBegin;
-//}
-
 @end
 
 #pragma mark -
 #pragma mark -
 
-@interface AMK10090ExampleWebViewTableViewCell () <UIGestureRecognizerDelegate>
+@interface AMK10090ExampleWebViewTableViewCell ()
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebView *webView;
-//@property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *customWebScrollViewPanGestureRecognizer;
 @end
 
 @implementation AMK10090ExampleWebViewTableViewCell
@@ -57,20 +50,9 @@
         _webView.scrollView.bounces = NO;
         [_webView loadRequest:request];
         [self.contentView addSubview:_webView];
-        
-//        [_webView.scrollView addGestureRecognizer:self.customWebScrollViewPanGestureRecognizer];
     }
     return _webView;
 }
-
-//- (UIPanGestureRecognizer *)customWebScrollViewPanGestureRecognizer {
-//    if (!_customWebScrollViewPanGestureRecognizer) {
-//        _customWebScrollViewPanGestureRecognizer = [UIPanGestureRecognizer.alloc init];
-//        _customWebScrollViewPanGestureRecognizer.cancelsTouchesInView = YES;
-////        _customWebScrollViewPanGestureRecognizer.delegate = self;
-//    }
-//    return _customWebScrollViewPanGestureRecognizer;
-//}
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     // 不调用父类实现，以避免编辑模式下的默认处理
@@ -109,12 +91,6 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
-
-#pragma mark UIGestureRecognizerDelegate
-
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    return YES;
-//}
 
 #pragma mark - Helper Methods
 

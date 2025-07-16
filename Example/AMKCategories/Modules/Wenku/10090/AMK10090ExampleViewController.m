@@ -14,19 +14,10 @@
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
-@interface AMK10090ExampleCustomTableViewPanGestureRecognizer : UIPanGestureRecognizer @end
-@implementation AMK10090ExampleCustomTableViewPanGestureRecognizer @end
-
-@interface AMK10090ExampleCustomWebScrollViewPanGestureRecognizer : UIPanGestureRecognizer @end
-@implementation AMK10090ExampleCustomWebScrollViewPanGestureRecognizer @end
-
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
-@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCustomTableViewPanGestureRecognizer *customTableViewPanGestureRecognizer;
-@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCustomWebScrollViewPanGestureRecognizer *customWebScrollViewPanGestureRecognizer;
-
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
 @end
 
@@ -109,41 +100,8 @@
         [_tableView registerClass:AMK10090ExampleWebViewTableViewCell.class forCellReuseIdentifier:AMK10090ExampleWebViewTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
-        
-        //[_tableView addGestureRecognizer:self.customTableViewPanGestureRecognizer];
-        
-        __weak __typeof__(self)weakSelf = self;
-        [_tableView addObserverBlockForKeyPath:@"contentSize" block:^(UITableView * _Nonnull tableView, NSNumber * oldVal, NSNumber * newVal) {
-            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
-                [weakSelf updateWebViewTableViewCellWebViewScrollEnabled];
-            }
-        }];
-        [_tableView addObserverBlockForKeyPath:@"contentOffset" block:^(UITableView * _Nonnull tableView, NSNumber * oldVal, NSNumber * newVal) {
-            if (!CGPointEqualToPoint(newVal.CGPointValue, oldVal.CGPointValue)) {
-                [weakSelf updateWebViewTableViewCellWebViewScrollEnabled];
-            }
-        }];
-
     }
     return _tableView;
-}
-
-- (AMK10090ExampleCustomTableViewPanGestureRecognizer *)customTableViewPanGestureRecognizer {
-    if (!_customTableViewPanGestureRecognizer) {
-        _customTableViewPanGestureRecognizer = [AMK10090ExampleCustomTableViewPanGestureRecognizer.alloc init];
-        _customTableViewPanGestureRecognizer.cancelsTouchesInView = YES;
-        _customTableViewPanGestureRecognizer.delegate = self;
-    }
-    return _customTableViewPanGestureRecognizer;
-}
-
-- (AMK10090ExampleCustomWebScrollViewPanGestureRecognizer *)customWebScrollViewPanGestureRecognizer {
-    if (!_customWebScrollViewPanGestureRecognizer) {
-        _customWebScrollViewPanGestureRecognizer = [AMK10090ExampleCustomWebScrollViewPanGestureRecognizer.alloc init];
-        _customWebScrollViewPanGestureRecognizer.cancelsTouchesInView = YES;
-        _customWebScrollViewPanGestureRecognizer.delegate = self;
-    }
-    return _customWebScrollViewPanGestureRecognizer;
 }
 
 #pragma mark - Data & Networking
@@ -180,10 +138,6 @@
 }
 
 #pragma mark - Layout Subviews
-
-- (void)updateWebViewTableViewCellWebViewScrollEnabled {
-    self.webViewTableViewCell.webView.scrollView.scrollEnabled = (self.tableView.contentOffset.y + self.tableView.height) >= self.tableView.contentSize.height;
-}
 
 #pragma mark - Action Methods
 
@@ -235,9 +189,7 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
-            //[cell.webView.scrollView addGestureRecognizer:self.customWebScrollViewPanGestureRecognizer];
             self.webViewTableViewCell = cell;
-            [self updateWebViewTableViewCellWebViewScrollEnabled];
         }
         return cell;
     }
@@ -271,69 +223,7 @@
 
 #pragma mark UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    self.webViewTableViewCell.webView.scrollView.scrollEnabled = (self.tableView.contentOffset.y + self.tableView.height) >= self.tableView.contentSize.height;
-}
-
 #pragma mark UIGestureRecognizerDelegate
-
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-//    NSLog(@"ℹ️%@ ℹ️%@", gestureRecognizer, otherGestureRecognizer);
-//    if (otherGestureRecognizer == self.navigationController.interactivePopGestureRecognizer) {
-//        return YES;
-//    }
-//    
-//    return YES;
-//}
-
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-////    if (gestureRecognizer == self.customWebScrollViewPanGestureRecognizer && otherGestureRecognizer.)
-//    return YES;
-//}
-//
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    // 仅拦截自定义手势 竖向滑动
-//    if (gestureRecognizer == self.customTableViewPanGestureRecognizer || gestureRecognizer == self.customWebScrollViewPanGestureRecognizer) {
-//        if (self.categoryTitleViewSelectedIndex != 1) {
-//            NSLog(@"%@ => %@", gestureRecognizer, @"NA Tab 的手势不拦截");
-//            return NO;
-//        }
-//        
-//        UIPanGestureRecognizer *panGestureRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
-//        CGPoint velocity = [panGestureRecognizer velocityInView:panGestureRecognizer.view];
-//        if (fabs(velocity.x) >= fabs(velocity.y * 2)) {
-//            NSLog(@"%@ => %@ => %@", gestureRecognizer, @(velocity), @"横向手势不拦截");
-//            return NO;
-//        }
-//        NSLog(@"%@ => %@", gestureRecognizer, @(velocity));
-//        if (gestureRecognizer == self.customTableViewPanGestureRecognizer) {
-//            return NO;
-//        }
-//        else if (gestureRecognizer == self.customWebScrollViewPanGestureRecognizer) {
-//            return (self.tableView.contentOffset.y + self.tableView.height) < self.tableView.contentSize.height;
-//        }
-//        return YES;
-//    }
-//    
-//    // 默认手势 不拦截
-//    NSLog(@"%@", gestureRecognizer);
-//    return YES;
-//    
-////    // 显示 WebView Cell 时
-////    if (self.categoryTitleViewSelectedIndex == 1) {
-////        if (gestureRecognizer == self.customTableViewPanGestureRecognizer) {
-////            CGPoint velocity = [self.customTableViewPanGestureRecognizer velocityInView:self.customTableViewPanGestureRecognizer.view];
-////            
-////            return YES;
-////        }
-////        if (gestureRecognizer == self.customWebScrollViewPanGestureRecognizer) {
-////            return YES;
-////        }
-////    }
-////    
-////    // 其他情况
-////    return gestureRecognizer == self.customTableViewPanGestureRecognizer;
-//}
 
 #pragma mark - Helper Methods
 
