@@ -20,6 +20,8 @@
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
+@property (nonatomic, assign) BOOL webViewCanScroll;
+
 @end
 
 @implementation AMK10090ExampleViewController
@@ -196,6 +198,7 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+            cell.webView.scrollView.delegate = self;
             self.webViewTableViewCell = cell;
         }
         return cell;
@@ -229,6 +232,69 @@
 }
 
 #pragma mark UIScrollViewDelegate
+
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    if (scrollView == self.tableView) {
+//        NSLog(@"🟨 %@", scrollView);
+//    } else if (scrollView == self.webViewTableViewCell.webView.scrollView) {
+//        NSLog(@"🟩 %@", scrollView);
+//    }
+//}
+
+- (WKWebView *)webView {
+    return self.webViewTableViewCell.webView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView) {
+        // 检查tableView是否滚动到底部
+        CGPoint offset = self.tableView.contentOffset;
+        CGFloat contentHeight = self.tableView.contentSize.height;
+        CGFloat height = self.tableView.bounds.size.height;
+        
+        if (offset.y + height >= contentHeight - 10) {
+            // tableView已经滚动到底部附近，允许webView滚动
+            self.webViewCanScroll = YES;
+        } else {
+            // tableView还没有滚动到底部，禁止webView滚动
+            self.webViewCanScroll = NO;
+            CGPoint webViewOffset = self.webView.scrollView.contentOffset;
+            if (webViewOffset.y > 0) {
+                [self.webView.scrollView setContentOffset:CGPointZero animated:NO];
+            }
+        }
+    } else if (scrollView == self.webView.scrollView) {
+        if (!self.webViewCanScroll) {
+            // 如果webView不应该滚动，将滚动事件传递给tableView
+            CGPoint webViewOffset = self.webView.scrollView.contentOffset;
+            CGFloat webViewScrollableHeight = self.webView.scrollView.contentSize.height - self.webView.scrollView.bounds.size.height;
+            
+            if (webViewScrollableHeight > 0) {
+                // 计算webView的滚动比例
+                CGFloat scrollRatio = webViewOffset.y / webViewScrollableHeight;
+                
+                // 计算tableView可以滚动的剩余空间
+                CGPoint tableViewOffset = self.tableView.contentOffset;
+                CGFloat tableViewContentHeight = self.tableView.contentSize.height;
+                CGFloat tableViewHeight = self.tableView.bounds.size.height;
+                CGFloat tableViewRemainingScroll = tableViewContentHeight - tableViewHeight - tableViewOffset.y;
+                
+                if (tableViewRemainingScroll > 0) {
+                    // tableView还有空间可以滚动，将webView的滚动转换为tableView的滚动
+                    CGFloat tableViewScrollAmount = scrollRatio * tableViewRemainingScroll;
+                    CGPoint newTableViewOffset = CGPointMake(tableViewOffset.x, tableViewOffset.y + tableViewScrollAmount);
+                    [self.tableView setContentOffset:newTableViewOffset animated:NO];
+                    
+                    // 重置webView的滚动偏移
+                    self.webView.scrollView.contentOffset = CGPointZero;
+                } else {
+                    // tableView已经滚动到底部，允许webView滚动
+                    self.webViewCanScroll = YES;
+                }
+            }
+        }
+    }
+}
 
 #pragma mark UIGestureRecognizerDelegate
 
