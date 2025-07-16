@@ -7,6 +7,7 @@
 //
 
 #import "AMK10090ExampleTableView.h"
+#import "AMK10090ExampleWebViewTableViewCell.h"
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 #import <WebKit/WebKit.h>
 
@@ -30,6 +31,25 @@
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    NSLog(@"%@", self.subviews);
+    
+    NSArray<UIView *> *subviews = self.subviews;
+    NSInteger webViewTableViewCellIndex = [subviews indexOfObjectPassingTest:^BOOL(UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [subview isKindOfClass:AMK10090ExampleWebViewTableViewCell.class];
+    }];
+    if (webViewTableViewCellIndex != NSNotFound) {
+        AMK10090ExampleWebViewTableViewCell *webViewTableViewCell = (id)subviews[webViewTableViewCellIndex];
+        WKWebView *webView  = webViewTableViewCell.webView;
+        webView.frame = self.bounds;
+        [self insertSubview:webViewTableViewCell.webView atIndex:0];
+        
+        
+    }
+    
+}
 
 #pragma mark - Action Methods
 
