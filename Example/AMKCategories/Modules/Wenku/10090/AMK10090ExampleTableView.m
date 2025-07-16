@@ -10,6 +10,10 @@
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 #import <WebKit/WebKit.h>
 
+@interface AMK10090ExampleTableView () <UIGestureRecognizerDelegate>
+
+@end
+
 @implementation AMK10090ExampleTableView
 
 #pragma mark - Init Methods
@@ -38,6 +42,12 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
+
+#pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return [gestureRecognizer isKindOfClass:UIPanGestureRecognizer.class] && [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class];
+}
 
 #pragma mark - Helper Methods
 

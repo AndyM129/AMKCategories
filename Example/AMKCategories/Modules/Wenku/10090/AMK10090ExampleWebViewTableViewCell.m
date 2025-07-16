@@ -19,7 +19,7 @@
 #pragma mark -
 #pragma mark -
 
-@interface AMK10090ExampleWebViewTableViewCell ()
+@interface AMK10090ExampleWebViewTableViewCell () <UIScrollViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebView *webView;
 @end
 
@@ -51,7 +51,7 @@
         NSURLRequest *request = [NSURLRequest.alloc initWithURL:URL];
         
         _webView = [AMK10090ExampleWebView.alloc init];
-        _webView.scrollView.bounces = NO;
+        _webView.scrollView.delegate = self;
         [_webView loadRequest:request];
         [self.contentView addSubview:_webView];
     }
@@ -95,6 +95,12 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"🔲 %@", scrollView);
+}
 
 #pragma mark - Helper Methods
 

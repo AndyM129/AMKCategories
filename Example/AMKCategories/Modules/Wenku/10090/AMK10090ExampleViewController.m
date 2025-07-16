@@ -231,6 +231,10 @@
 
 #pragma mark UIScrollViewDelegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"🔳 %@", scrollView);
+}
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (scrollView == self.tableView) {
         NSLog(@"🟨 %@", scrollView);
