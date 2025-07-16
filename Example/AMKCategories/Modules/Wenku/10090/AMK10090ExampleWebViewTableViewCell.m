@@ -68,7 +68,8 @@
 #pragma mark - Layout Subviews
 
 + (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath {
-    return UIScreen.mainScreen.bounds.size.height;
+//    return MIN(tableView.bounds.size.height, UIScreen.mainScreen.bounds.size.height * 0.7);
+    return tableView.bounds.size.height;
 }
 
 + (BOOL)requiresConstraintBasedLayout {
