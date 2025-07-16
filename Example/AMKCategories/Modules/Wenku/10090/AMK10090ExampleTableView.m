@@ -20,7 +20,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
-
+        self.bounces = NO;
     }
     return self;
 }
@@ -40,5 +40,29 @@
 #pragma mark - Protocol
 
 #pragma mark - Helper Methods
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    NSLog(@"当前 tableView contentOffset：%@", @(self.contentOffset));
+    
+    UIView *view = [super hitTest:point withEvent:event];
+    NSLog(@"原本响应交互的视图：%@", view);
+    
+    WKWebView *webView = [view amk_nextResponderWithClass:WKWebView.class];
+    if (webView) {
+        NSLog(@"该视图所在 webView：%@", webView);
+        
+        CGRect webViewRectInTableView = [webView convertRect:webView.bounds toView:self];
+        NSLog(@"该 webView 在 tableView 中的 Rect：%@", @(webViewRectInTableView));
+        
+        if (webViewRectInTableView.origin.y > self.contentOffset.y) {
+            NSLog(@"已交由 tableView 响应交互");
+            view = self;
+        } else {
+            NSLog(@"已保留 webView 的子视图响应交互");
+        }
+    }
+    NSLog(@"最终响应UI为：%@\n\n", view);
+    return view;
+}
 
 @end
