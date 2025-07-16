@@ -234,7 +234,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"🔳 %@", scrollView);
     
-    if (self.categoryTitleViewSelectedIndex == 0) {
+    if (!self.webViewTableViewCell.isHighlighted && self.webViewTableViewCell.alpha>0) {
         // 正在显示 webViewTableViewCell 中的 webView，则固定tableView的contentOffset，让其不动
         if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
             self.tableView.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
