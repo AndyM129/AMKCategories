@@ -7,6 +7,7 @@
 //
 
 #import "AMK10090ExampleWebViewTableViewCell.h"
+#import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 
 @interface AMK10090ExampleWebView : WKWebView
 
@@ -100,6 +101,23 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"🔲 %@", scrollView);
+    
+    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+    if (tableView) {
+        CGFloat cellTop = self.frame.origin.y;
+        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
+        
+        // 当前cell 还未露出
+        if (tableViewContentOffsetY < cellTop) {
+            scrollView.contentOffset = CGPointZero;
+            scrollView.showsVerticalScrollIndicator = NO;
+        }
+        // 当前cell 已露出
+        else {
+            tableView.contentOffset = CGPointMake(0, cellTop);
+            scrollView.showsVerticalScrollIndicator = YES;
+        }
+    }
 }
 
 #pragma mark - Helper Methods
