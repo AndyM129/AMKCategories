@@ -47,6 +47,7 @@
 		883122B32E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B22E268EE600183073 /* AMK10090ExampleVideoTableViewCell.m */; };
 		883122B62E26951600183073 /* AMK10090ExampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */; };
 		883122B92E26990900183073 /* AMK10090ExampleWebViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122B82E26990900183073 /* AMK10090ExampleWebViewTableViewCell.m */; };
+		883122E22E277BC200183073 /* AMK10090ExampleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122E12E277BC200183073 /* AMK10090ExampleTableView.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -182,6 +183,8 @@
 		883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleTableViewCell.m; sourceTree = "<group>"; };
 		883122B72E26990900183073 /* AMK10090ExampleWebViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleWebViewTableViewCell.h; sourceTree = "<group>"; };
 		883122B82E26990900183073 /* AMK10090ExampleWebViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleWebViewTableViewCell.m; sourceTree = "<group>"; };
+		883122E02E277BC200183073 /* AMK10090ExampleTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10090ExampleTableView.h; sourceTree = "<group>"; };
+		883122E12E277BC200183073 /* AMK10090ExampleTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10090ExampleTableView.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -687,6 +690,8 @@
 				883122B52E26951600183073 /* AMK10090ExampleTableViewCell.m */,
 				883122B72E26990900183073 /* AMK10090ExampleWebViewTableViewCell.h */,
 				883122B82E26990900183073 /* AMK10090ExampleWebViewTableViewCell.m */,
+				883122E02E277BC200183073 /* AMK10090ExampleTableView.h */,
+				883122E12E277BC200183073 /* AMK10090ExampleTableView.m */,
 			);
 			path = 10090;
 			sourceTree = "<group>";
@@ -1272,6 +1277,7 @@
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
 				88EEBDF5291527530049AED5 /* AMKRefreshHeaderToastView.m in Sources */,
 				88B499A82D3144220045FC15 /* AMKExampleViewController.m in Sources */,
+				883122E22E277BC200183073 /* AMK10090ExampleTableView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
 				8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */,
 				889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */,

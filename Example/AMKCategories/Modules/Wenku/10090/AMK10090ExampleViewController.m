@@ -7,6 +7,7 @@
 //
 
 #import "AMK10090ExampleViewController.h"
+#import "AMK10090ExampleTableView.h"
 #import "AMK10090ExampleVideoTableViewCell.h"
 #import "AMK10090ExampleCategoryTitleTableViewCell.h"
 #import "AMK10090ExampleTableViewCell.h"
@@ -15,7 +16,7 @@
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
 @interface AMK10090ExampleViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
-@property (nonatomic, strong, readwrite, nullable) UITableView *tableView;
+@property (nonatomic, strong, readwrite, nullable) AMK10090ExampleTableView *tableView;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
@@ -72,10 +73,9 @@
 
 #pragma mark - Getters & Setters
 
-- (UITableView *)tableView {
+- (AMK10090ExampleTableView *)tableView {
     if (!_tableView) {
-        _tableView = [UITableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _tableView = [AMK10090ExampleTableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
@@ -116,7 +116,7 @@
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
-        if (self.categoryTitleViewSelectedIndex == 1) {
+        if (self.categoryTitleViewSelectedIndex == 0) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleWebViewTableViewCell.className userInfo:nil]];
         } else {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
@@ -138,6 +138,13 @@
 }
 
 #pragma mark - Layout Subviews
+
+- (void)updateViewConstraints {
+    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    [super updateViewConstraints];
+}
 
 #pragma mark - Action Methods
 

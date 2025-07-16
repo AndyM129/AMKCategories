@@ -42,7 +42,9 @@
 
 - (AMK10090ExampleWebView *)webView {
     if (!_webView) {
-        NSString *urlString = @"http://wenku.baidu.com";
+        //NSString *urlString = @"http://wenku.baidu.com";
+        //NSString *urlString = @"https://m.toutiao.com";
+        NSString *urlString = @"https://tanbi.baidu.com/h5apptopic/browse/wkjumpdownload?fromKey=1027470f&docId=99b9f97b9dc3d5bbfd0a79563c1ec5da51e2d628&tfAI=0&utm_source=bdss-WKapp&utm_medium=cpc&utm_account=SS-bdtg60&e_creative=76761983588&e_keywordid=619201700996&bd_vid=7260869444029181928";
         NSURL *URL = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest.alloc initWithURL:URL];
         
