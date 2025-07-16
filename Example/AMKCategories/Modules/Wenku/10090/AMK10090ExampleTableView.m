@@ -10,6 +10,10 @@
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 #import <WebKit/WebKit.h>
 
+@interface AMK10090ExampleTableView () <UIGestureRecognizerDelegate>
+
+@end
+
 @implementation AMK10090ExampleTableView
 
 #pragma mark - Init Methods

@@ -20,6 +20,7 @@
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @property (nonatomic, strong, readwrite, nullable) AMK10090ExampleWebViewTableViewCell *webViewTableViewCell;
 @property (nonatomic, assign, readwrite) NSInteger categoryTitleViewSelectedIndex;
+@property (nonatomic) BOOL isSyncing; // 递归保护
 @end
 
 @implementation AMK10090ExampleViewController
@@ -198,6 +199,12 @@
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
             cell.webView.scrollView.delegate = self;
             self.webViewTableViewCell = cell;
+            
+            // 旁听 pan，用来允许 simultaneous
+            UIPanGestureRecognizer *proxy = [[UIPanGestureRecognizer alloc] initWithTarget:nil action:nil];
+            proxy.delegate = self;
+            proxy.cancelsTouchesInView = NO;
+            [cell.webView.scrollView addGestureRecognizer:proxy];
         }
         return cell;
     }
@@ -240,6 +247,45 @@
 }
 
 #pragma mark UIGestureRecognizerDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scroll {
+    if (self.isSyncing) return;   // 防止递归
+
+    CGRect rect = [self.webViewTableViewCell convertRect:self.webViewTableViewCell.bounds toView:self.tableView];
+    CGFloat topY = rect.origin.y; // webCell 顶部在 table 的 Y
+    self.isSyncing = YES;
+
+    if (scroll == self.tableView) {
+        // table 拉动
+        if (scroll.contentOffset.y >= topY) {
+            // 计算“超出部分”给 web
+            CGFloat overflow = scroll.contentOffset.y - topY;
+            self.tableView.contentOffset = CGPointMake(0, topY);           // 固定
+            self.webView.scrollView.contentOffset =
+              CGPointMake(0, MAX(0, overflow));
+        } else {
+            // 仍在 section-0，保持 web 顶部
+            self.webView.scrollView.contentOffset = CGPointZero;
+        }
+    } else if (scroll == self.webView.scrollView) {
+        // web 拉回顶部 ➜ 返还剩余位移给 table
+        if (scroll.contentOffset.y <= 0) {
+            CGFloat underflow = scroll.contentOffset.y; // ≤0
+            self.webView.scrollView.contentOffset = CGPointZero;
+            self.tableView.contentOffset =
+              CGPointMake(0, MAX(0, self.tableView.contentOffset.y + underflow));
+        }
+    }
+
+    self.isSyncing = NO;
+}
+
+#pragma mark - Gesture Delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)g
+   shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)o {
+    return [g.view isDescendantOfView:self.webView.scrollView] ||
+           [o.view isDescendantOfView:self.webView.scrollView];
+}
 
 #pragma mark - Helper Methods
 
