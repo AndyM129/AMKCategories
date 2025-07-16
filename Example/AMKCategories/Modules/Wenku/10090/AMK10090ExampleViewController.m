@@ -239,11 +239,15 @@
         // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
         if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
             self.tableView.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
+            self.tableView.showsVerticalScrollIndicator = NO;
         }
         // 已经显示了 tableView 中 webViewTableViewCell 之前的 cell，则 webViewTableViewCell 中的 webView 的 contentOffset 需要重置
         if (self.tableView.contentOffset.y < self.webViewTableViewCell.top) {
             self.webViewTableViewCell.webView.scrollView.contentOffset = CGPointZero;
+            self.tableView.showsVerticalScrollIndicator = YES;
         }
+    } else {
+        self.tableView.showsVerticalScrollIndicator = YES;
     }
 }
 
