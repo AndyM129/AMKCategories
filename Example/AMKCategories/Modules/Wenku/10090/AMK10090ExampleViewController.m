@@ -259,6 +259,7 @@
         } else {
             self.canWebViewScroll = NO;
             self.webView.scrollView.scrollEnabled = NO;
+            self.webView.scrollView.contentOffset = CGPointZero; // 防抖
         }
     }
 
