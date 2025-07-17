@@ -7,9 +7,11 @@
 //
 
 #import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableViewCachedCellProtocol.h"
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
 
 @interface WKNNestedScrollTableView ()
+@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<id, WKNNestedScrollTableViewCachedCell *> *cachedCells;
 @property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<NSString *, Class> *registeredClasses;
 @end
 
@@ -75,20 +77,35 @@
     [self.registeredClasses setObject:cellClass forKey:identifier];
 }
 
-- (nullable __kindof UITableViewCell *)cachedCellForIdentifier:(nullable NSString *)identifier atIndexPath:(nullable NSIndexPath *)indexPath {
+- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+
     if (identifier.length) {
-        cell = [self.cachedCells amk_objectForKey:identifier asClass:UITableViewCell.class];
-        if (!cell) {
-            if (!indexPath) {
-                Class cellClass = self.registeredClasses[identifier];
-                cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-            } else {
-                cell = [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        // 读取该 identifier 所注册的类
+        Class cellClass = self.registeredClasses[identifier];
+        
+        // 若该类 遵守缓存协议
+        if ([cellClass conformsToProtocol:@protocol(WKNNestedScrollTableViewCachedCellProtocol)]) {
+            
+            // 优先从 `cachedCells` 中读取
+            cell = [self.cachedCells amk_objectForKey:identifier asClass:UITableViewCell.class];
+            
+            // 若没有，则先初始化 并添加缓存
+            if (!cell) {
+                if (!indexPath) {
+                    cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                } else {
+                    cell = [super dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+                }
+                [self.cachedCells setObject:cell forKey:identifier];
             }
-            [self.cachedCells setObject:cell forKey:identifier];
+        }
+        // 否则，走默认实现
+        else {
+            cell = [super dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         }
     }
+    
     return cell;
 }
 

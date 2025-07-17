@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <JXCategoryView/JXCategoryView.h>
+#import "WKNNestedScrollTableViewCachedCellProtocol.h"
 @class WKNNestedScrollTableExampleCategoryTitleTableViewCell;
 
 typedef void(^WKNNestedScrollTableExampleCategoryTitleTableViewCellCategoryTitleViewDidSelectItemBlock)(WKNNestedScrollTableExampleCategoryTitleTableViewCell *_Nullable cell, NSInteger index);
 
 /// Tab TableViewCell
-@interface WKNNestedScrollTableExampleCategoryTitleTableViewCell : UITableViewCell
+@interface WKNNestedScrollTableExampleCategoryTitleTableViewCell : UITableViewCell <WKNNestedScrollTableViewCachedCellProtocol>
 
 @property (nonatomic, strong, readonly, nullable) JXCategoryTitleView *categoryTitleView;
 

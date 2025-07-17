@@ -200,6 +200,7 @@
 		883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleWebTableViewCell.m; sourceTree = "<group>"; };
 		883122F62E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.h; sourceTree = "<group>"; };
 		883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
+		883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCachedCellProtocol.h; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -748,6 +749,7 @@
 			children = (
 				883122EC2E28CC0400183073 /* WKNNestedScrollTableView.h */,
 				883122ED2E28CC0400183073 /* WKNNestedScrollTableView.m */,
+				883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */,
 			);
 			path = WKNNestedScrollTableView;
 			sourceTree = "<group>";

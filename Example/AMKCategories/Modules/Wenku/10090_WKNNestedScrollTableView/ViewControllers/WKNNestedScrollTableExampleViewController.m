@@ -24,7 +24,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
 @implementation WKNNestedScrollTableView (WKNNestedScrollTableExampleViewController)
 
 - (WKNNestedScrollTableExampleCategoryTitleTableViewCell *)categoryTitleTableViewCell {
-    return [self cachedCellForIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className atIndexPath:nil];
+    return [self dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className forIndexPath:nil];
 }
 
 @end
@@ -174,7 +174,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
-        WKNNestedScrollTableExampleCategoryTitleTableViewCell *cell = [self.tableView cachedCellForIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className atIndexPath:indexPath];
+        WKNNestedScrollTableExampleCategoryTitleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className forIndexPath:indexPath];
         cell.categoryTitleViewDidSelectItemBlock = ^(WKNNestedScrollTableExampleCategoryTitleTableViewCell * _Nullable cell, NSInteger index) {
             [MBProgressHUD amk_showTextHUDWithTitle:[NSString stringWithFormat:@"点击 index = %ld", index] message:nil inView:nil responder:nil duration:1.5 animated:YES];
             [weakSelf reloadData];
