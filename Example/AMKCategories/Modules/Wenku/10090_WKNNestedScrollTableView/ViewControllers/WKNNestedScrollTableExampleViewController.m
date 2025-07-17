@@ -7,6 +7,7 @@
 //
 
 #import "WKNNestedScrollTableExampleViewController.h"
+#import "WKNNestedScrollTableExampleNormalTableViewCell.h"
 #import "WKNNestedScrollTableView.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 
@@ -19,7 +20,9 @@
 + (void)load {
     id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
         [NSNotificationCenter.defaultCenter removeObserver:token];
-        [UIViewController amk_pushViewController:self.new animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIViewController amk_pushViewController:self.new animated:YES];
+        });
     }];
 }
 
@@ -44,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -68,10 +71,10 @@
 - (WKNNestedScrollTableView *)tableView {
     if (!_tableView) {
         _tableView = [WKNNestedScrollTableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, CGFLOAT_MIN)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        [_tableView registerClass:WKNNestedScrollTableExampleNormalTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
@@ -82,11 +85,20 @@
 
 - (void)reloadData {
     NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
-//    [sections addObject:({
-//        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleVideoTableViewCell.className rows:nil];
-//        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleVideoTableViewCell.className userInfo:nil]];
-//        section;
-//    })];
+    [sections addObject:({
+        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
+        for (NSInteger i=0; i<5; i++) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+        }
+        section;
+    })];
+    [sections addObject:({
+        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
+        for (NSInteger i=0; i<5; i++) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+        }
+        section;
+    })];
 //    [sections addObject:({
 //        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
 //        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
@@ -131,23 +143,36 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return self.tableView.amk_sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[section];
+    return tableViewSection.rows.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-    return cell;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
+    AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
+    
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
+        WKNNestedScrollTableExampleNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className forIndexPath:indexPath];
+        cell.textLabel.text = [NSString stringWithFormat:@"Item <%ld, %ld>", indexPath.section, indexPath.row];
+        return cell;
+    }
+    return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
 }
 
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
+    AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
+    
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
+        return [WKNNestedScrollTableExampleNormalTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
