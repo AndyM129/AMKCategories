@@ -534,9 +534,30 @@
 							<key>keywords</key>
 							<string></string>
 							<key>pageClassName</key>
-							<string>AMK10090ExampleViewController</string>
-							<key>pageParams</key>
-							<dict/>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>核心效果调研</string>
+									<key>subtitle</key>
+									<string>在 UITableView 中，支持显示 WebViewCell，并可以传递滚动和惯性</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMK10090ExampleViewController</string>
+								</dict>
+								<dict>
+									<key>title</key>
+									<string>WKNNestedScrollTableView</string>
+									<key>subtitle</key>
+									<string>封装：支持嵌套显示 滚动视图Cell，并可以传递滚动和惯性 的 UITableView</string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>WKNNestedScrollTableExampleViewController</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
