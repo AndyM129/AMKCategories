@@ -18,3 +18,17 @@
 + (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params;
 
 @end
+
+#pragma mark -
+
+/// 长Web
+@interface WKNNestedScrollTableExampleLongWebTableViewCell : WKNNestedScrollTableExampleWebTableViewCell
+
+@end
+
+#pragma mark -
+
+/// 短Web
+@interface WKNNestedScrollTableExampleShortWebTableViewCell : WKNNestedScrollTableExampleWebTableViewCell
+
+@end

@@ -110,3 +110,24 @@
 #pragma mark - Helper Methods
 
 @end
+
+
+#pragma mark -
+#pragma mark -
+
+/// 长Web
+@implementation WKNNestedScrollTableExampleLongWebTableViewCell
+
+@end
+
+#pragma mark -
+#pragma mark -
+
+/// 短Web
+@implementation WKNNestedScrollTableExampleShortWebTableViewCell
+
++ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
+    return 210;
+}
+
+@end
