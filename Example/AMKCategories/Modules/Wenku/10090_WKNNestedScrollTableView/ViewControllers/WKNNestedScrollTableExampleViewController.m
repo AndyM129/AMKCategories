@@ -107,6 +107,13 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
 #pragma mark - Data & Networking
 
 - (void)reloadData {
+    // 首次刷新：配置 Tab
+    if (!self.tableView.amk_sections.count) {
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NA Cells", @"WebViewCell"];
+        [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
+    }
+    
+    // 重新构建列表内容
     NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
@@ -129,7 +136,8 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         section;
     })];
     
-    self.tableView.amk_sections = sections;
+    // 刷新列表
+    [self.tableView setAmk_sections:sections];
     [self.tableView reloadData];
 }
 
