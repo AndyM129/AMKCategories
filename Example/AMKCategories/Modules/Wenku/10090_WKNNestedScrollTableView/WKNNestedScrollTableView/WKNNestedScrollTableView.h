@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+typedef __kindof UITableViewCell WKNNestedScrollTableViewCachedCell;
 
+/// 支持嵌套 UIScrollView，并支持滚动事件传递、惯性联动的自定义 TableView
 @interface WKNNestedScrollTableView : UITableView
+
+/// 已缓存的 Cell
+@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<id, WKNNestedScrollTableViewCachedCell *> *cachedCells;
+
+/// 从 `cachedCells` 中获取指定 `identifier` 的 cell；若不存在，则会先创建，再添加到缓存，最后将其返回
+- (nullable __kindof UITableViewCell *)cachedCellForIdentifier:(nullable NSString *)identifier atIndexPath:(nullable NSIndexPath *)indexPath;
+
+/// 处理嵌套的 UIScrollView 及滚动传递、惯性联动
+- (void)preferredProcessNestedScrollTableViewDidScroll:(nullable __kindof UIScrollView *)scrollView;
 
 @end
 
-NS_ASSUME_NONNULL_END
+#define WKNNestedScrollTableViewLog(fmt, ...) NSLog((@"【WKNNestedScrollTableView】" fmt), ##__VA_ARGS__)

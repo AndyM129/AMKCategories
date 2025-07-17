@@ -496,6 +496,19 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
     return [value isKindOfClass:[NSDictionary class]] ? value : nil;
 }
 
+- (id _Nullable)amk_objectForKey:(id _Nullable)key asClass:(Class _Nonnull)cls {
+    return [self amk_objectForKeyPath:key separatingWithString:nil asClass:cls];
+}
+
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath asClass:(Class _Nonnull)cls {
+    return [self amk_objectForKeyPath:keyPath separatingWithString:@"." asClass:cls];
+}
+
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator asClass:(Class _Nonnull)cls {
+    id object = [self amk_objectForKeyPath:keyPath separatingWithString:separator];
+    return [object isKindOfClass:cls] ? object : nil;
+}
+
 - (id _Nullable)amk_objectForKey:(id _Nullable)key {
     return [self amk_objectForKeyPath:key separatingWithString:nil];
 }

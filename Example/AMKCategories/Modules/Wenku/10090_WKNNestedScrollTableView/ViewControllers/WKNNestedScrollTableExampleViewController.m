@@ -8,8 +8,29 @@
 
 #import "WKNNestedScrollTableExampleViewController.h"
 #import "WKNNestedScrollTableExampleNormalTableViewCell.h"
+#import "WKNNestedScrollTableExampleCategoryTitleTableViewCell.h"
+#import "WKNNestedScrollTableExampleWebTableViewCell.h"
 #import "WKNNestedScrollTableView.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
+#import <AMKCategories/MBProgressHUD+AMKCategories.h>
+#import <AMKCategories/NSDictionary+AMKObjectForKey.h>
+
+static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableViewCellCacheKey";
+
+@interface WKNNestedScrollTableView (WKNNestedScrollTableExampleViewController)
+@property (nonatomic, strong, readonly, nullable) WKNNestedScrollTableExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
+@end
+
+@implementation WKNNestedScrollTableView (WKNNestedScrollTableExampleViewController)
+
+- (WKNNestedScrollTableExampleCategoryTitleTableViewCell *)categoryTitleTableViewCell {
+    return [self cachedCellForIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className atIndexPath:nil];
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
 
 @interface WKNNestedScrollTableExampleViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) WKNNestedScrollTableView *tableView;
@@ -75,6 +96,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:WKNNestedScrollTableExampleNormalTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className];
+        [_tableView registerClass:WKNNestedScrollTableExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className];
+        [_tableView registerClass:WKNNestedScrollTableExampleWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleWebTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
@@ -87,37 +110,24 @@
     NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
-        for (NSInteger i=0; i<5; i++) {
+        for (NSInteger i=0; i<10; i++) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
         }
         section;
     })];
     [sections addObject:({
-        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
-        for (NSInteger i=0; i<5; i++) {
-            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+        JXCategoryTitleView *categoryTitleView = self.tableView.categoryTitleTableViewCell.categoryTitleView;
+        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
+        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className userInfo:nil]];
+        if (categoryTitleView.selectedIndex == 0) {
+            for (NSInteger i=0; i<10; i++) {
+                [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+            }
+        } else if (categoryTitleView.selectedIndex == 1) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleWebTableViewCell.className userInfo:nil]];
         }
         section;
     })];
-//    [sections addObject:({
-//        AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className rows:nil];
-//        [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className userInfo:nil]];
-//        if (self.categoryTitleViewSelectedIndex == 0) {
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleWebViewTableViewCell.className userInfo:nil]];
-//        } else {
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:AMK10090ExampleTableViewCell.className userInfo:nil]];
-//        }
-//        section;
-//    })];
     
     self.tableView.amk_sections = sections;
     [self.tableView reloadData];
@@ -152,12 +162,28 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak __typeof__(self)weakSelf = self;
     AMKTableViewSection *tableViewSection = self.tableView.amk_sections[indexPath.section];
     AMKTableViewRow *tableViewRow = tableViewSection.rows[indexPath.row];
     
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
-        WKNNestedScrollTableExampleNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className forIndexPath:indexPath];
+        WKNNestedScrollTableExampleNormalTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"Item <%ld, %ld>", indexPath.section, indexPath.row];
+        cell.textLabel.textColor = UIColor.grayColor;
+        cell.contentView.backgroundColor = [UIColor colorWithRed:70/255.0 green:157/255.0 blue:227/255.0 alpha:0.7 - indexPath.row * 0.05];
+        return cell;
+    }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
+        WKNNestedScrollTableExampleCategoryTitleTableViewCell *cell = [self.tableView cachedCellForIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className atIndexPath:indexPath];
+        cell.categoryTitleViewDidSelectItemBlock = ^(WKNNestedScrollTableExampleCategoryTitleTableViewCell * _Nullable cell, NSInteger index) {
+            [MBProgressHUD amk_showTextHUDWithTitle:[NSString stringWithFormat:@"点击 index = %ld", index] message:nil inView:nil responder:nil duration:1.5 animated:YES];
+            [weakSelf reloadData];
+        };
+        return cell;
+    }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
+        WKNNestedScrollTableExampleWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleWebTableViewCell.className forIndexPath:indexPath];
+        [cell.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/pptspreadact"]]];
         return cell;
     }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
@@ -172,11 +198,20 @@
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
         return [WKNNestedScrollTableExampleNormalTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
+        return [WKNNestedScrollTableExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
     return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView preferredProcessNestedScrollTableViewDidScroll:scrollView];
 }
 
 #pragma mark - Helper Methods

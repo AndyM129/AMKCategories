@@ -51,6 +51,8 @@
 		883122E92E28CB6400183073 /* WKNNestedScrollTableExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122E82E28CB6400183073 /* WKNNestedScrollTableExampleViewController.m */; };
 		883122EE2E28CC0400183073 /* WKNNestedScrollTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122ED2E28CC0400183073 /* WKNNestedScrollTableView.m */; };
 		883122F22E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F12E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m */; };
+		883122F52E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */; };
+		883122F82E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -194,6 +196,10 @@
 		883122ED2E28CC0400183073 /* WKNNestedScrollTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableView.m; sourceTree = "<group>"; };
 		883122F02E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleNormalTableViewCell.h; sourceTree = "<group>"; };
 		883122F12E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleNormalTableViewCell.m; sourceTree = "<group>"; };
+		883122F32E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleWebTableViewCell.h; sourceTree = "<group>"; };
+		883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleWebTableViewCell.m; sourceTree = "<group>"; };
+		883122F62E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.h; sourceTree = "<group>"; };
+		883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -720,6 +726,10 @@
 			children = (
 				883122F02E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.h */,
 				883122F12E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m */,
+				883122F32E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.h */,
+				883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */,
+				883122F62E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.h */,
+				883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1335,6 +1345,7 @@
 				883122B92E26990900183073 /* AMK10090ExampleWebViewTableViewCell.m in Sources */,
 				8806D976290BB4BA005DC5C1 /* AMKCustomProgressView.m in Sources */,
 				888D8F0B2977EE0F00B8F26F /* WKWebView+AMKOfflineLoading.m in Sources */,
+				883122F82E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m in Sources */,
 				8806D977290BB4BA005DC5C1 /* AMKCustomProgressViewController.m in Sources */,
 				8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */,
 				880B94D82D38FF4800C9754B /* AMKXxxExampleViewController.m in Sources */,
@@ -1345,6 +1356,7 @@
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
 				887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */,
+				883122F52E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m in Sources */,
 				88E4BB672A1E42110063DFB9 /* AMKAiRootController.m in Sources */,
 				88CE2C3A2A679285003BB866 /* UICollectionView+AMKCrashProtectorForInvalidUpdate.m in Sources */,
 				8852B45E2B02677E004DED8F /* AMK8300ExampleViewController.m in Sources */,

@@ -83,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDictionary *_Nullable)amk_dictionaryForKeyPath:(NSString *_Nullable)keyPath;
 - (NSDictionary *_Nullable)amk_dictionaryForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator;
 
+- (id _Nullable)amk_objectForKey:(id _Nullable)key asClass:(Class _Nonnull)cls;
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath asClass:(Class _Nonnull)cls;
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator asClass:(Class _Nonnull)cls;
+
 - (id _Nullable)amk_objectForKey:(id _Nullable)key;
 - (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath;
 - (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator;

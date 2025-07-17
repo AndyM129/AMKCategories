@@ -7,6 +7,7 @@
 //
 
 #import "WKNNestedScrollTableExampleNormalTableViewCell.h"
+#import "WKNNestedScrollTableView.h"
 
 @implementation WKNNestedScrollTableExampleNormalTableViewCell
 
@@ -18,6 +19,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        WKNNestedScrollTableViewLog(@"Style %ld - %@", style, reuseIdentifier);
         //self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.selectedBackgroundView = [UIView.alloc initWithFrame:self.bounds];
         self.selectedBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
