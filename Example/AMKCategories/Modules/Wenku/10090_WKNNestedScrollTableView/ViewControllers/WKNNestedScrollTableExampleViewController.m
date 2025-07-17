@@ -201,6 +201,9 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
         return [WKNNestedScrollTableExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
+        return [WKNNestedScrollTableExampleWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
     return 0;
 }
 

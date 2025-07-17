@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "WKNNestedScrollTableViewCachedCellProtocol.h"
+#import "WKNNestedScrollTableViewCellProtocol.h"
 
-@interface WKNNestedScrollTableExampleWebTableViewCell : UITableViewCell
+@interface WKNNestedScrollTableExampleWebTableViewCell : UITableViewCell <WKNNestedScrollTableViewCachedCellProtocol, WKNNestedScrollTableViewCellProtocol>
 
 @property (nonatomic, strong, readonly, nullable) WKWebView *webView;
 

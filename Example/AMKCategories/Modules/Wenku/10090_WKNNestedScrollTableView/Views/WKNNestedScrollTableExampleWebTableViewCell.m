@@ -101,6 +101,12 @@
     }
 }
 
+#pragma mark WKNNestedScrollTableViewCellProtocol
+
+- (UIScrollView *)nestedScrollView {
+    return self.webView.scrollView;
+}
+
 #pragma mark - Helper Methods
 
 @end

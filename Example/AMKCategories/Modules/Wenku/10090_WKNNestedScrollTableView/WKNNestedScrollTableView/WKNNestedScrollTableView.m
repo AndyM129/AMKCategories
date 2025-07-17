@@ -8,9 +8,10 @@
 
 #import "WKNNestedScrollTableView.h"
 #import "WKNNestedScrollTableViewCachedCellProtocol.h"
+#import "WKNNestedScrollTableViewCellProtocol.h"
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
 
-@interface WKNNestedScrollTableView ()
+@interface WKNNestedScrollTableView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<id, WKNNestedScrollTableViewCachedCell *> *cachedCells;
 @property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<NSString *, Class> *registeredClasses;
 @end
@@ -53,7 +54,37 @@
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
     NSLog(@"🔳 %@", scrollView);
     
-    // 若 webViewTableViewCell 可见
+    // 将当前可见的 cell 基于 indexPath 排序
+    NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
+    
+    // 找到遵守 `WKNNestedScrollTableViewCellProtocol` 协议的 cell，以便后续对其处理
+    NSInteger indexForNestedScrollTableViewCell = [sortedIndexPathsForVisibleRows indexOfObjectPassingTest:^BOOL(NSIndexPath * _Nonnull indexPath, NSUInteger idx, BOOL * _Nonnull stop) {
+        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
+        return [cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)];
+    }];
+    
+    // 若有 nestedScrollTableViewCell
+    if (indexForNestedScrollTableViewCell != NSNotFound) {
+        NSIndexPath *indexPathForNestedScrollTableViewCell = sortedIndexPathsForVisibleRows[indexForNestedScrollTableViewCell];
+        UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
+        UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
+        
+        // 若正在显示 nestedScrollView，则固定 tableView 的 contentOffset，让其不动
+        if (nestedScrollView.contentOffset.y > 0) {
+            self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
+            self.showsVerticalScrollIndicator = NO;
+        }
+        // 若已经显示了 nestedScrollTableViewCell 之前的 cell，则 nestedScrollView 的 contentOffset 需要重置
+        if (self.contentOffset.y < nestedScrollTableViewCell.top) {
+            nestedScrollView.contentOffset = CGPointZero;
+            self.showsVerticalScrollIndicator = YES;
+        }
+    } else {
+        self.showsVerticalScrollIndicator = YES;
+    }
+    
+    
+//    // 若 webViewTableViewCell 可见
 //    if (self.webViewTableViewCell && !self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
 //        // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
 //        if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
@@ -114,6 +145,12 @@
 #pragma mark - KVO
 
 #pragma mark - Protocol
+
+#pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return [gestureRecognizer isKindOfClass:UIPanGestureRecognizer.class] && [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class];
+}
 
 #pragma mark - Helper Methods
 
