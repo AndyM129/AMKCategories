@@ -111,7 +111,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
 - (void)reloadData {
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NA Cells", @"长WebViewCell", @"短WebViewCell"];
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells"];
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
     
@@ -128,17 +128,30 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         JXCategoryTitleView *categoryTitleView = self.tableView.categoryTitleTableViewCell.categoryTitleView;
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className userInfo:nil]];
+        // NACells
         if (categoryTitleView.selectedIndex == 0) {
             for (NSInteger i=0; i<10; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
-        } else if (categoryTitleView.selectedIndex == 1) {
-            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
+        }
+        // 短WebViewCell
+        else if (categoryTitleView.selectedIndex == 1) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
+        }
+        // 短WebView+NACells
+        else if (categoryTitleView.selectedIndex == 2) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
             for (NSInteger i=0; i<5; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
-        } else if (categoryTitleView.selectedIndex == 2) {
-            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
+        }
+        // 长WebViewCell
+        else if (categoryTitleView.selectedIndex == 3) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
+        }
+        // 长WebViewCell+NACells
+        else if (categoryTitleView.selectedIndex == 4) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
             for (NSInteger i=0; i<5; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }

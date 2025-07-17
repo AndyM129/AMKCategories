@@ -69,8 +69,12 @@
         UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
         UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
         
-        // 若正在显示 nestedScrollView，则固定 tableView 的 contentOffset，让其不动
-        if (nestedScrollView.contentOffset.y > 0) {
+        // 关闭 nestedScrollView 的弹性滚动
+        if (nestedScrollView.bounces) {
+            nestedScrollView.bounces = NO;
+        }
+        // 若正在显示 nestedScrollView 且没有滚到底，则固定 tableView 的 contentOffset，让其不动
+        if (nestedScrollView.contentOffset.y > 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
             self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
             self.showsVerticalScrollIndicator = NO;
         }
@@ -82,23 +86,6 @@
     } else {
         self.showsVerticalScrollIndicator = YES;
     }
-    
-    
-//    // 若 webViewTableViewCell 可见
-//    if (self.webViewTableViewCell && !self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
-//        // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
-//        if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
-//            self.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
-//            self.showsVerticalScrollIndicator = NO;
-//        }
-//        // 已经显示了 tableView 中 webViewTableViewCell 之前的 cell，则 webViewTableViewCell 中的 webView 的 contentOffset 需要重置
-//        if (self.contentOffset.y < self.webViewTableViewCell.top) {
-//            self.webViewTableViewCell.webView.scrollView.contentOffset = CGPointZero;
-//            self.showsVerticalScrollIndicator = YES;
-//        }
-//    } else {
-//        self.showsVerticalScrollIndicator = YES;
-//    }
 }
 
 #pragma mark - Action Methods
