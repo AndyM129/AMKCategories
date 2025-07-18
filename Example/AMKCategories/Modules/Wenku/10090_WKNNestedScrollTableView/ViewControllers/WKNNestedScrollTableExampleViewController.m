@@ -98,6 +98,9 @@
         _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, CGFLOAT_MIN)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        if (@available(iOS 13.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         [_tableView registerClass:WKNNestedScrollTableExampleNormalTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleLongWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className];

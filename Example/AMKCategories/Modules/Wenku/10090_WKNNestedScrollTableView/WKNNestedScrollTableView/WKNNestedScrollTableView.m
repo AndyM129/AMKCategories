@@ -73,10 +73,6 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
         UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
         
-        // 关闭 nestedScrollView 的弹性滚动
-        if (nestedScrollView.bounces) {
-            nestedScrollView.bounces = NO;
-        }
         // 若正在显示 nestedScrollView 且没有滚到底，则固定 tableView 的 contentOffset，让其不动
         if (nestedScrollView.contentOffset.y > 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
             self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
@@ -131,6 +127,7 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         if ([cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)]) {
             UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = (id)cell;
             UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
+            nestedScrollView.bounces = NO; // 关闭 nestedScrollView 的弹性滚动
             objc_setAssociatedObject(nestedScrollView.panGestureRecognizer, kNestedScrollTableViewCellKey, nestedScrollTableViewCell, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             [self addGestureRecognizer:nestedScrollView.panGestureRecognizer];
         }
