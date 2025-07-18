@@ -18,6 +18,7 @@
     [debugDescription appendFormat:@"; frame = (%g %g; %g %g)", self.origin.x, self.origin.y, self.size.width, self.size.height];
     [debugDescription appendFormat:@"; contentOffset = (%g %g)", self.contentOffset.x, self.contentOffset.y];
     [debugDescription appendFormat:@"; contentSize = (%g %g)", self.contentSize.width, self.contentSize.height];
+    [debugDescription appendFormat:@"; contentOffsetMaxY = %g", self.contentOffset.y + self.size.height];
     [debugDescription appendFormat:@">"];
     return debugDescription;
 }
