@@ -56,36 +56,36 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
-    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView);
-    
-    // 将当前可见的 cell 基于 indexPath 排序
-    NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
-    
-    // 找到遵守 `WKNNestedScrollTableViewCellProtocol` 协议的 cell，以便后续对其处理
-    NSInteger indexForNestedScrollTableViewCell = [sortedIndexPathsForVisibleRows indexOfObjectPassingTest:^BOOL(NSIndexPath * _Nonnull indexPath, NSUInteger idx, BOOL * _Nonnull stop) {
-        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        return [cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)];
-    }];
-    
-    // 若有 nestedScrollTableViewCell
-    if (indexForNestedScrollTableViewCell != NSNotFound) {
-        NSIndexPath *indexPathForNestedScrollTableViewCell = sortedIndexPathsForVisibleRows[indexForNestedScrollTableViewCell];
-        UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
-        UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
-        
-        // 若正在显示 nestedScrollView 且没有滚到底，则固定 tableView 的 contentOffset，让其不动
-        if (nestedScrollView.contentOffset.y > 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
-            self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
-            self.showsVerticalScrollIndicator = NO;
-        }
-        // 若已经显示了 nestedScrollTableViewCell 之前的 cell，则 nestedScrollView 的 contentOffset 需要重置
-        if (self.contentOffset.y < nestedScrollTableViewCell.top) {
-            nestedScrollView.contentOffset = CGPointZero;
-            self.showsVerticalScrollIndicator = YES;
-        }
-    } else {
-        self.showsVerticalScrollIndicator = YES;
-    }
+//    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView);
+//    
+//    // 将当前可见的 cell 基于 indexPath 排序
+//    NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
+//    
+//    // 找到遵守 `WKNNestedScrollTableViewCellProtocol` 协议的 cell，以便后续对其处理
+//    NSInteger indexForNestedScrollTableViewCell = [sortedIndexPathsForVisibleRows indexOfObjectPassingTest:^BOOL(NSIndexPath * _Nonnull indexPath, NSUInteger idx, BOOL * _Nonnull stop) {
+//        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
+//        return [cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)];
+//    }];
+//    
+//    // 若有 nestedScrollTableViewCell
+//    if (indexForNestedScrollTableViewCell != NSNotFound) {
+//        NSIndexPath *indexPathForNestedScrollTableViewCell = sortedIndexPathsForVisibleRows[indexForNestedScrollTableViewCell];
+//        UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
+//        UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
+//        
+//        // 若正在显示 nestedScrollView 且没有滚到底，则固定 tableView 的 contentOffset，让其不动
+//        if (nestedScrollView.contentOffset.y > 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
+//            self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
+//            self.showsVerticalScrollIndicator = NO;
+//        }
+//        // 若已经显示了 nestedScrollTableViewCell 之前的 cell，则 nestedScrollView 的 contentOffset 需要重置
+//        if (self.contentOffset.y < nestedScrollTableViewCell.top) {
+//            nestedScrollView.contentOffset = CGPointZero;
+//            self.showsVerticalScrollIndicator = YES;
+//        }
+//    } else {
+//        self.showsVerticalScrollIndicator = YES;
+//    }
 }
 
 #pragma mark - Action Methods

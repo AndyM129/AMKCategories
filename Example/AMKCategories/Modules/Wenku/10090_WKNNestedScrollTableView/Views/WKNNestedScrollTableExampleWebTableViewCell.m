@@ -82,21 +82,38 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"🔲 %@", scrollView);
-    
+    if (scrollView == self.nestedScrollView) {
+        [self nestedScrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)nestedScrollViewDidScroll:(UIScrollView *)nestedScrollView {
     UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
-    if (tableView) {
-        CGFloat cellTop = self.frame.origin.y;
-        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
-        
-        // 当前cell 还未露出
-        if (tableViewContentOffsetY < cellTop) {
-            scrollView.contentOffset = CGPointZero;
-            scrollView.showsVerticalScrollIndicator = NO;
+    if (!tableView) {
+        return;
+    }
+    NSLog(@"🔲 %@", nestedScrollView);
+    CGFloat cellTop = self.frame.origin.y;
+    CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
+    
+    // 当前 cell 还未露出
+    if (tableViewContentOffsetY < cellTop) {
+        nestedScrollView.contentOffset = CGPointZero;
+        nestedScrollView.showsVerticalScrollIndicator = NO;
+    }
+    // 当前 cell 已露出
+    else {
+        // 若 nestedScrollView 没有滚到底，则固定 tableView 的 contentOffset，让其不动
+        if (nestedScrollView.contentOffset.y >= 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
+            tableView.contentOffset = CGPointMake(0, cellTop);
+            tableView.showsVerticalScrollIndicator = NO;
+            nestedScrollView.showsVerticalScrollIndicator = YES;
         }
-        // 当前cell 已露出
+        // 否则，nestedScrollView 已滚到底，则固定 nestedScrollView 的 contentOffset，让其不动
         else {
-            scrollView.showsVerticalScrollIndicator = YES;
+            nestedScrollView.contentOffset = CGPointMake(0, nestedScrollView.contentSize.height - nestedScrollView.frame.size.height);
+            nestedScrollView.showsVerticalScrollIndicator = NO;
+            tableView.showsVerticalScrollIndicator = YES;
         }
     }
 }
