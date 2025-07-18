@@ -10,6 +10,7 @@
 #import "WKNNestedScrollTableViewCachedCellProtocol.h"
 #import "WKNNestedScrollTableViewCellProtocol.h"
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
+#import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 
 @interface WKNNestedScrollTableView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<id, WKNNestedScrollTableViewCachedCell *> *cachedCells;
@@ -52,7 +53,7 @@
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
-    NSLog(@"🔳 %@", scrollView);
+    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView);
     
     // 将当前可见的 cell 基于 indexPath 排序
     NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
@@ -136,7 +137,17 @@
 #pragma mark UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return [gestureRecognizer isKindOfClass:UIPanGestureRecognizer.class] && [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class];
+    BOOL shouldRecognizeSimultaneously = YES;
+    // 一方是 当前 tableView 的 panGestureRecognizer
+    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && gestureRecognizer == self.panGestureRecognizer;
+    
+    // 另一方是 tableView 中的 WKNNestedScrollTableViewCellProtocol Cell
+    UITableViewCell<WKNNestedScrollTableViewCellProtocol> *otherGestureRecognizerCell = [otherGestureRecognizer.view amk_nextResponderWithClass:UITableViewCell.class];
+    UIScrollView *nestedScrollView = [otherGestureRecognizerCell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)] ? otherGestureRecognizerCell.nestedScrollView : nil;
+    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && [otherGestureRecognizer.view isDescendantOfView:nestedScrollView];
+    
+    WKNNestedScrollTableViewLog(@"%@ 👉%@, 👉%@", (shouldRecognizeSimultaneously ? @"⭕️" : @"🚫"), gestureRecognizer, otherGestureRecognizer);
+    return shouldRecognizeSimultaneously;
 }
 
 #pragma mark - Helper Methods
