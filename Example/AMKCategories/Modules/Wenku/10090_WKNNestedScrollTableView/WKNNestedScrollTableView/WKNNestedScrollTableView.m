@@ -88,17 +88,18 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
         UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
         
-        // 若正在滚动 nestedScrollView
+        // 若 nestedScrollView 开始滚动
         if (nestedScrollView.contentOffset.y > 0) {
-            // 若没有滚到底，则固定 tableView 的 contentOffset，让其不动
             CGFloat nestedScrollViewContentOffsetMaxY = nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height;
             CGFloat nestedScrollViewContentSizeHeight = nestedScrollView.contentSize.height;
+            
+            // 若 nestedScrollView 没有滚到底，则固定 tableView 的 contentOffset，让其不动
             if (nestedScrollViewContentOffsetMaxY < nestedScrollViewContentSizeHeight) {
                 self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
                 self.showsVerticalScrollIndicator = NO;
             }
         }
-        // 否则，恢复 tableView 的正常滚动
+        // 否则 nestedScrollView 没有滚动，恢复 tableView 的正常滚动
         else {
             self.showsVerticalScrollIndicator = YES;
         }

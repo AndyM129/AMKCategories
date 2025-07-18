@@ -102,12 +102,12 @@
         CGFloat cellTop = self.frame.origin.y;
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
         
-        // 当前cell 还未滚到 tableView 顶部
+        // 若当前 cell 还未滚到 tableView 可视区域的顶部
         if (tableViewContentOffsetY + (currentScrollOffsetY < 0 ? -currentScrollOffsetY : 0) < cellTop) {
             scrollView.contentOffset = CGPointZero;
             scrollView.showsVerticalScrollIndicator = NO;
         }
-        // 当前cell 已露出
+        // 若当前 cell 已滚到 tableView 可视区域的顶部
         else {
             scrollView.showsVerticalScrollIndicator = scrollView.contentOffset.y > 0;
         }
