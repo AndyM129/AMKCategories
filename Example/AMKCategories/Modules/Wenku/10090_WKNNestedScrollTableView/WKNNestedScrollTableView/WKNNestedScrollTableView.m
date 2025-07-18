@@ -123,6 +123,13 @@
         else {
             cell = [super dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         }
+        
+        // 若该 Cell 遵守 WKNNestedScrollTableViewCellProtocol 协议，则将其
+        if ([cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)]) {
+            UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = (id)cell;
+            UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
+            [self addGestureRecognizer:nestedScrollView.panGestureRecognizer];
+        }
     }
     
     return cell;
@@ -136,15 +143,28 @@
 
 #pragma mark UIGestureRecognizerDelegate
 
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    BOOL shouldRecognizeSimultaneously = YES;
+//    // 一方是 当前 tableView 的 panGestureRecognizer
+//    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && gestureRecognizer == self.panGestureRecognizer;
+//    
+//    // 另一方是 tableView 中的 WKNNestedScrollTableViewCellProtocol Cell
+//    UITableViewCell<WKNNestedScrollTableViewCellProtocol> *otherGestureRecognizerCell = [otherGestureRecognizer.view amk_nextResponderWithClass:UITableViewCell.class];
+//    UIScrollView *nestedScrollView = [otherGestureRecognizerCell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)] ? otherGestureRecognizerCell.nestedScrollView : nil;
+//    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && [otherGestureRecognizer.view isDescendantOfView:nestedScrollView];
+//    
+//    WKNNestedScrollTableViewLog(@"%@ 👉%@, 👉%@", (shouldRecognizeSimultaneously ? @"⭕️" : @"🚫"), gestureRecognizer, otherGestureRecognizer);
+//    return shouldRecognizeSimultaneously;
+//}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     BOOL shouldRecognizeSimultaneously = YES;
+    
     // 一方是 当前 tableView 的 panGestureRecognizer
-    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && gestureRecognizer == self.panGestureRecognizer;
+    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && gestureRecognizer.view == self;
     
     // 另一方是 tableView 中的 WKNNestedScrollTableViewCellProtocol Cell
-    UITableViewCell<WKNNestedScrollTableViewCellProtocol> *otherGestureRecognizerCell = [otherGestureRecognizer.view amk_nextResponderWithClass:UITableViewCell.class];
-    UIScrollView *nestedScrollView = [otherGestureRecognizerCell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)] ? otherGestureRecognizerCell.nestedScrollView : nil;
-    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && [otherGestureRecognizer.view isDescendantOfView:nestedScrollView];
+    shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && otherGestureRecognizer.view == self;
     
     WKNNestedScrollTableViewLog(@"%@ 👉%@, 👉%@", (shouldRecognizeSimultaneously ? @"⭕️" : @"🚫"), gestureRecognizer, otherGestureRecognizer);
     return shouldRecognizeSimultaneously;

@@ -15,8 +15,6 @@
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
 
-static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableViewCellCacheKey";
-
 @interface WKNNestedScrollTableView (WKNNestedScrollTableExampleViewController)
 @property (nonatomic, strong, readonly, nullable) WKNNestedScrollTableExampleCategoryTitleTableViewCell *categoryTitleTableViewCell;
 @end
