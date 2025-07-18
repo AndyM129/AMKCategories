@@ -83,6 +83,10 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.isHidden || self.alpha <= 0 || !scrollView.scrollEnabled) {
+        return;
+    }
+    
     static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
     CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; // 上次的内容偏移Y
     CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; // 本次 相较于上次，Y的偏移差值，正值为向下滚，负值为向上滚
