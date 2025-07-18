@@ -51,16 +51,27 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
     return _cachedCells;
 }
 
+//- (void)setContentOffset:(CGPoint)contentOffset {
+//    WKNNestedScrollTableViewLog(@"🔶 %@ -> %@", @(self.contentOffset), @(contentOffset));
+//    [super setContentOffset:contentOffset];
+//}
+//
+//- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+//    WKNNestedScrollTableViewLog(@"🔶 %@ -> %@", @(self.contentOffset), @(contentOffset));
+//    [super setContentOffset:contentOffset animated:animated];
+//}
+
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
     static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
-    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; // 上次的内容偏移Y
-    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; // 本次 相较于上次，Y的偏移差值，正值为向下滚，负值为向上滚
+    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的内容偏移Y
+    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
+    BOOL isScrollingToDown = currentScrollOffsetY > 0; //!< 是否在向下滚动
     objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY);
+    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g %@", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
     
     // 将当前可见的 cell 基于 indexPath 排序
     NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];

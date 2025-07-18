@@ -88,11 +88,12 @@
     }
     
     static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
-    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; // 上次的内容偏移Y
-    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; // 本次 相较于上次，Y的偏移差值，正值为向下滚，负值为向上滚
+    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的内容偏移Y
+    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
+    BOOL isScrollingToDown = currentScrollOffsetY > 0; //!< 是否在向下滚动
     objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    WKNNestedScrollTableViewLog(@"🔲 %@ —— ΔY = %g", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY);
-        
+    WKNNestedScrollTableViewLog(@"🔲 %@ —— ΔY = %g %@", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
+    
     UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
     if (tableView) {
         CGFloat cellTop = self.frame.origin.y;
