@@ -78,9 +78,8 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
             self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
             self.showsVerticalScrollIndicator = NO;
         }
-        // 若已经显示了 nestedScrollTableViewCell 之前的 cell，则 nestedScrollView 的 contentOffset 需要重置
-        if (self.contentOffset.y < nestedScrollTableViewCell.top) {
-            nestedScrollView.contentOffset = CGPointZero;
+        // 否则，恢复 tableView 的正常滚动
+        else {
             self.showsVerticalScrollIndicator = YES;
         }
     } else {
