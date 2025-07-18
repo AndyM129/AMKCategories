@@ -96,12 +96,17 @@
     CGFloat cellTop = self.frame.origin.y;
     CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
     
-    // 当前 cell 还未露出
+    if (nestedScrollView.contentOffset.y > 0 && tableViewContentOffsetY < cellTop) {
+        tableView.contentOffset = CGPointMake(0, cellTop);
+        tableViewContentOffsetY = tableView.contentOffset.y;
+    }
+    
+    // 当前 cell 还未滚到列表可视区顶部
     if (tableViewContentOffsetY < cellTop) {
         nestedScrollView.contentOffset = CGPointZero;
         nestedScrollView.showsVerticalScrollIndicator = NO;
     }
-    // 当前 cell 已露出
+    // 当前 cell 已滚到列表可视区顶部
     else {
         // 若 nestedScrollView 没有滚到底，则固定 tableView 的 contentOffset，让其不动
         if (nestedScrollView.contentOffset.y >= 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
