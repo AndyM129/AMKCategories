@@ -32,3 +32,11 @@
 @interface WKNNestedScrollTableExampleShortWebTableViewCell : WKNNestedScrollTableExampleWebTableViewCell
 
 @end
+
+#pragma mark -
+
+@interface WKWebView (WKNNestedScrollTableView)
+
+- (nullable WKNavigation *)wknNestedScrollTableView_loadHTMLStringWithContentHeight:(CGFloat)contentHeight;
+
+@end

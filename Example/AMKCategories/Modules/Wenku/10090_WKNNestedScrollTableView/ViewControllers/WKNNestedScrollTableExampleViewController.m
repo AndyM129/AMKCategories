@@ -135,7 +135,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className userInfo:nil]];
         // NACells
         if (categoryTitleView.selectedIndex == 0) {
-            for (NSInteger i=0; i<10; i++) {
+            for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
@@ -146,7 +146,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         // 短WebView+NACells
         else if (categoryTitleView.selectedIndex == 2) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
-            for (NSInteger i=0; i<5; i++) {
+            for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
@@ -157,7 +157,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
         // 长WebViewCell+NACells
         else if (categoryTitleView.selectedIndex == 4) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
-            for (NSInteger i=0; i<5; i++) {
+            for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
@@ -205,8 +205,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
         WKNNestedScrollTableExampleNormalTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"Item <%ld, %ld>", indexPath.section, indexPath.row];
-        cell.textLabel.textColor = UIColor.grayColor;
-        cell.contentView.backgroundColor = [UIColor colorWithRed:70/255.0 green:157/255.0 blue:227/255.0 alpha:0.7 - indexPath.row * 0.05];
+        cell.contentView.backgroundColor = [UIColor colorWithHue:fmod(0.6 + indexPath.section * 0.13, 1.0) saturation:fabs(0.8 - indexPath.row * 0.05) brightness:1 alpha:1.0];
         return cell;
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
@@ -226,7 +225,7 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleShortWebTableViewCell.className]) {
         WKNNestedScrollTableExampleShortWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className forIndexPath:indexPath];
         if (!cell.webView.URL) {
-            [cell.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/pptspreadact"]]];
+            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:cell.height];
         }
         return cell;
     }
