@@ -92,7 +92,7 @@
     if (!tableView) {
         return;
     }
-    NSLog(@"🔲 %@", nestedScrollView);
+    NSLog(@"🔲 %@ - %@ => %@", self.className, nestedScrollView.className, nestedScrollView);
     CGFloat cellTop = self.frame.origin.y;
     CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
     
