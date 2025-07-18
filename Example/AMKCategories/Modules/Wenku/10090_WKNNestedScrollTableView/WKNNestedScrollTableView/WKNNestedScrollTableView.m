@@ -56,7 +56,11 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
-    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView.wknNestedScrollTableViewDebug_debugDescription);
+    static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
+    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; // 上次的内容偏移Y
+    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; // 本次 相较于上次，Y的偏移差值，正值为向下滚，负值为向上滚
+    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY);
     
     // 将当前可见的 cell 基于 indexPath 排序
     NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
@@ -73,10 +77,13 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
         UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
         
-        // 若正在显示 nestedScrollView 且没有滚到底，则固定 tableView 的 contentOffset，让其不动
-        if (nestedScrollView.contentOffset.y > 0 && (nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
-            self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
-            self.showsVerticalScrollIndicator = NO;
+        // 若正在滚动 nestedScrollView
+        if (nestedScrollView.contentOffset.y > 0) {
+            // 若没有滚到底，则固定 tableView 的 contentOffset，让其不动
+            if ((nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
+                self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
+                self.showsVerticalScrollIndicator = NO;
+            }
         }
         // 否则，恢复 tableView 的正常滚动
         else {

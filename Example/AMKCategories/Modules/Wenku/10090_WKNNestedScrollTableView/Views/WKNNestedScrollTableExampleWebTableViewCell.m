@@ -9,6 +9,7 @@
 #import "WKNNestedScrollTableExampleWebTableViewCell.h"
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 #import "WKNNestedScrollTableView+WKNDebug.h"
+#import <objc/runtime.h>
 
 @interface WKNNestedScrollTableExampleWebTableViewCell () <UIScrollViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
@@ -82,15 +83,19 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"🔲 %@", scrollView.wknNestedScrollTableViewDebug_debugDescription);
-    
+    static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
+    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; // 上次的内容偏移Y
+    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; // 本次 相较于上次，Y的偏移差值，正值为向下滚，负值为向上滚
+    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    WKNNestedScrollTableViewLog(@"🔲 %@ —— ΔY = %g", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY);
+        
     UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
     if (tableView) {
         CGFloat cellTop = self.frame.origin.y;
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
         
-        // 当前cell 还未露出
-        if (tableViewContentOffsetY < cellTop) {
+        // 当前cell 还未滚到 tableView 顶部
+        if (tableViewContentOffsetY + (currentScrollOffsetY < 0 ? -currentScrollOffsetY : 0) < cellTop) {
             scrollView.contentOffset = CGPointZero;
             scrollView.showsVerticalScrollIndicator = NO;
         }
