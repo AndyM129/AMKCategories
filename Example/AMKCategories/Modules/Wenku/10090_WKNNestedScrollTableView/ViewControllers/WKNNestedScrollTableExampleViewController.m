@@ -67,6 +67,11 @@ static NSString *kCategoryTitleTableViewCellCacheKey = @"kCategoryTitleTableView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 临时消除 fd_fullscreenPopGestureRecognizer 带来的影响，恢复原本默认处理
+    self.navigationController.fd_fullscreenPopGestureRecognizer.enabled = NO;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self reloadData];
 }
