@@ -53,6 +53,7 @@
 		883122F22E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F12E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m */; };
 		883122F52E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */; };
 		883122F82E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */; };
+		883122FD2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 883122FC2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -202,6 +203,8 @@
 		883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
 		883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCachedCellProtocol.h; sourceTree = "<group>"; };
 		883122FA2E28F10500183073 /* WKNNestedScrollTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCellProtocol.h; sourceTree = "<group>"; };
+		883122FB2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKNNestedScrollTableView+WKNDebug.h"; sourceTree = "<group>"; };
+		883122FC2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKNNestedScrollTableView+WKNDebug.m"; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -750,6 +753,8 @@
 			children = (
 				883122EC2E28CC0400183073 /* WKNNestedScrollTableView.h */,
 				883122ED2E28CC0400183073 /* WKNNestedScrollTableView.m */,
+				883122FB2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.h */,
+				883122FC2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m */,
 				883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */,
 				883122FA2E28F10500183073 /* WKNNestedScrollTableViewCellProtocol.h */,
 			);
@@ -1354,6 +1359,7 @@
 				8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */,
 				880B94D82D38FF4800C9754B /* AMKXxxExampleViewController.m in Sources */,
 				8873BB452B60CFF0004E7DFE /* WKNVoiceRecognitionPopupView.m in Sources */,
+				883122FD2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m in Sources */,
 				888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,

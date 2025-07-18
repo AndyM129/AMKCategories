@@ -8,7 +8,7 @@
 
 #import "WKNNestedScrollTableExampleWebTableViewCell.h"
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
-#import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableView+WKNDebug.h"
 
 @interface WKNNestedScrollTableExampleWebTableViewCell () <UIScrollViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
@@ -82,7 +82,7 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"🔲 %@", scrollView);
+    NSLog(@"🔲 %@", scrollView.wknNestedScrollTableViewDebug_debugDescription);
     
     UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
     if (tableView) {

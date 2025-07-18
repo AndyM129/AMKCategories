@@ -25,5 +25,3 @@ typedef __kindof UITableViewCell WKNNestedScrollTableViewCachedCell;
 - (void)preferredProcessNestedScrollTableViewDidScroll:(nullable __kindof UIScrollView *)scrollView;
 
 @end
-
-#define WKNNestedScrollTableViewLog(fmt, ...) NSLog((@"【WKNNestedScrollTableView】" fmt), ##__VA_ARGS__)

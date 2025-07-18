@@ -7,7 +7,7 @@
 //
 
 #import "WKNNestedScrollTableExampleCategoryTitleTableViewCell.h"
-#import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableView+WKNDebug.h"
 
 @interface WKNNestedScrollTableExampleCategoryTitleTableViewCell () <JXCategoryViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) JXCategoryTitleView *categoryTitleView;

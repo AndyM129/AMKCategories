@@ -10,7 +10,7 @@
 #import "WKNNestedScrollTableExampleNormalTableViewCell.h"
 #import "WKNNestedScrollTableExampleCategoryTitleTableViewCell.h"
 #import "WKNNestedScrollTableExampleWebTableViewCell.h"
-#import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableView+WKNDebug.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
@@ -118,6 +118,7 @@
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
         self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells"];
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = 3;
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
     

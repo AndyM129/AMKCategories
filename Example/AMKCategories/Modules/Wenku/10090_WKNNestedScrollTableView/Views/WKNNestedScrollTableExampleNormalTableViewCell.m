@@ -7,7 +7,7 @@
 //
 
 #import "WKNNestedScrollTableExampleNormalTableViewCell.h"
-#import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableView+WKNDebug.h"
 
 @implementation WKNNestedScrollTableExampleNormalTableViewCell
 

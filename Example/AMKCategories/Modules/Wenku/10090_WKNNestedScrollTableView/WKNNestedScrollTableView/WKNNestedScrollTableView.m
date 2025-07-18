@@ -6,7 +6,7 @@
 //  Copyright © 2025 AndyM129. All rights reserved.
 //
 
-#import "WKNNestedScrollTableView.h"
+#import "WKNNestedScrollTableView+WKNDebug.h"
 #import "WKNNestedScrollTableViewCachedCellProtocol.h"
 #import "WKNNestedScrollTableViewCellProtocol.h"
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
@@ -56,7 +56,7 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
-    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView);
+    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView.wknNestedScrollTableViewDebug_debugDescription);
     
     // 将当前可见的 cell 基于 indexPath 排序
     NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
