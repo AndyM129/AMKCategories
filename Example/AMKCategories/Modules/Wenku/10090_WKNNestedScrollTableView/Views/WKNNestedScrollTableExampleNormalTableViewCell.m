@@ -20,10 +20,9 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         WKNNestedScrollTableViewLog(@"Style %ld - %@", style, reuseIdentifier);
-        //self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.selectedBackgroundView = [UIView.alloc initWithFrame:self.bounds];
         self.selectedBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:.05];
+        self.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     }
     return self;
 }
@@ -32,6 +31,13 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     // 不调用父类实现，以避免编辑模式下的默认处理
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    [UIView animateWithDuration:0.15 animations:^{
+        self.contentView.alpha = highlighted ? 0.8 : 1;
+    }];
 }
 
 #pragma mark - Data & Networking
