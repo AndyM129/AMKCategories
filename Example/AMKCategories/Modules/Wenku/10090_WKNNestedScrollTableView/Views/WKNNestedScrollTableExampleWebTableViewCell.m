@@ -109,7 +109,7 @@
         }
         // 当前cell 已露出
         else {
-            scrollView.showsVerticalScrollIndicator = YES;
+            scrollView.showsVerticalScrollIndicator = scrollView.contentOffset.y > 0;
         }
     }
 }
