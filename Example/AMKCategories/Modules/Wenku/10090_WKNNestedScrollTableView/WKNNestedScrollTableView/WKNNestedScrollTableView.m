@@ -91,7 +91,9 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         // 若正在滚动 nestedScrollView
         if (nestedScrollView.contentOffset.y > 0) {
             // 若没有滚到底，则固定 tableView 的 contentOffset，让其不动
-            if ((nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height) < nestedScrollView.contentSize.height) {
+            CGFloat nestedScrollViewContentOffsetMaxY = nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height;
+            CGFloat nestedScrollViewContentSizeHeight = nestedScrollView.contentSize.height;
+            if (nestedScrollViewContentOffsetMaxY < nestedScrollViewContentSizeHeight) {
                 self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
                 self.showsVerticalScrollIndicator = NO;
             }
