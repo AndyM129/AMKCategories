@@ -198,7 +198,7 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
-//            [cell.webView amk10090Example_loadHTMLStringWithContentHeight:500];
+            [cell.webView amk10090Example_loadHTMLStringWithContentHeight:1500];
 //            cell.webView.scrollView.delegate = self;
             self.webViewTableViewCell = cell;
         }

@@ -58,7 +58,7 @@
 
 @interface AMK10090ExampleWebViewTableViewCell () <UIScrollViewDelegate>
 @property (nonatomic, strong, readwrite, nullable) _AMK10090ExampleIntrinsicSizeView *intrinsicSizeView;
-//@property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
+@property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @end
 
 @implementation AMK10090ExampleWebViewTableViewCell
@@ -73,15 +73,6 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.layer.borderWidth = 1 / UIScreen.mainScreen.scale;
-        
-        __weak __typeof__(self)weakSelf = self;
-        [self.contentView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-            [UIView performWithoutAnimation:^{
-                weakSelf.intrinsicSizeView.intrinsicContentHeight = arc4random() % 400 + 50;
-                UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-                [tableView performBatchUpdates:nil completion:nil];
-            }];
-        }]];
     }
     return self;
 }
@@ -91,33 +82,33 @@
 - (_AMK10090ExampleIntrinsicSizeView *)intrinsicSizeView {
     if (!_intrinsicSizeView) {
         _intrinsicSizeView = [_AMK10090ExampleIntrinsicSizeView.alloc init];
-        _intrinsicSizeView.intrinsicContentHeight = 100;
+        _intrinsicSizeView.intrinsicContentHeight = 50;
         [self.contentView insertSubview:_intrinsicSizeView atIndex:0];
     }
     return _intrinsicSizeView;
 }
 
-//- (WKWebView *)webView {
-//    if (!_webView) {
-//        __weak __typeof__(self)weakSelf = self;
-//        _webView = [WKWebView.alloc init];
-//        _webView.scrollView.delegate = self;
-//        [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
-//            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
-//                [weakSelf setNeedsUpdateConstraints];
-//                [weakSelf updateConstraintsIfNeeded];
-//                
-////                dispatch_async(dispatch_get_main_queue(), ^{
-////                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-////                    [tableView beginUpdates];
-////                    [tableView endUpdates];
-////                });
-//            }
-//        }];
-//        [self.contentView addSubview:_webView];
-//    }
-//    return _webView;
-//}
+- (WKWebView *)webView {
+    if (!_webView) {
+        __weak __typeof__(self)weakSelf = self;
+        _webView = [WKWebView.alloc init];
+        _webView.scrollView.delegate = self;
+        [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
+            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
+                [UIView performWithoutAnimation:^{
+                    [weakSelf setNeedsUpdateConstraints];
+                    [weakSelf updateConstraintsIfNeeded];
+
+                    weakSelf.intrinsicSizeView.intrinsicContentHeight = scrollView.contentSize.height;
+                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+                    [tableView performBatchUpdates:nil completion:nil];
+                }];
+            }
+        }];
+        [self.contentView addSubview:_webView];
+    }
+    return _webView;
+}
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     // 不调用父类实现，以避免编辑模式下的默认处理
@@ -139,21 +130,11 @@
     [self.intrinsicSizeView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.contentView);
     }];
-
-//    [self.webBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.contentView).inset(11);
-//        make.height.mas_equalTo(240);
-//        make.left.mas_equalTo(self.contentView).inset(70);
-//        make.right.mas_lessThanOrEqualTo(self.contentView).inset(20);
-//        make.bottom.mas_equalTo(self.contentView);
-//    }];
-    
-//    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.mas_equalTo(self.contentView);
-//        make.top.mas_equalTo(self.contentView);
-//        make.height.mas_equalTo(100);//(MAX(100, self.webView.scrollView.contentSize.height));
-//        make.bottom.mas_equalTo(self.contentView);
-//    }];
+    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+        make.left.top.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(MIN(tableView.height, self.webView.scrollView.contentSize.height));
+    }];
     
     //according to apple super should be called at end of method
     [super updateConstraints];
