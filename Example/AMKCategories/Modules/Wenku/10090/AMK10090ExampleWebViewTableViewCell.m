@@ -254,14 +254,19 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         __weak __typeof__(self)weakSelf = self;
-        [self.webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
+        self.contentView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
+        [self.contentView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
             weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
             [weakSelf setNeedsUpdateConstraints];
             [weakSelf updateConstraintsIfNeeded];
             
             UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-            [tableView beginUpdates];
-            [tableView endUpdates];
+            [UIView performWithoutAnimation:^{
+                [tableView performBatchUpdates:nil completion:nil];
+            }];
+//            [tableView performBatchUpdates:nil completion:nil];
+//            [tableView beginUpdates];
+//            [tableView endUpdates];
         }]];
     }
     return self;
@@ -270,6 +275,7 @@
 - (AMKWebBackgroundView *)webBackgroundView {
     if (!_webBackgroundView) {
         _webBackgroundView = [AMKWebBackgroundView new];
+        _webBackgroundView.hidden = YES;
         _webBackgroundView.backgroundColor = [UIColor greenColor];
         _webBackgroundView.customIntrinsicContentHeight = 200;
         [self.contentView addSubview:_webBackgroundView];
