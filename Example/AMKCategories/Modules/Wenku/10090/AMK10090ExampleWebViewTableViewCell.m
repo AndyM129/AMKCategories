@@ -93,6 +93,8 @@
         __weak __typeof__(self)weakSelf = self;
         _webView = [WKWebView.alloc init];
         _webView.scrollView.delegate = self;
+        _webView.layer.borderColor = [UIColor.redColor colorWithAlphaComponent:0.5].CGColor;
+        _webView.layer.borderWidth = 3;
         [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
             if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
                 [UIView performWithoutAnimation:^{
@@ -157,22 +159,18 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    NSLog(@"🔲 %@", scrollView);
-//    
-//    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
-//    if (tableView) {
-//        CGFloat cellTop = self.frame.origin.y;
-//        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
-//        
-//        // 当前cell 还未露出
-//        if (tableViewContentOffsetY < cellTop) {
-//            scrollView.contentOffset = CGPointZero;
-//            scrollView.showsVerticalScrollIndicator = NO;
-//        }
-//        // 当前cell 已露出
-//        else {
-//            scrollView.showsVerticalScrollIndicator = YES;
-//        }
-//    }
+    
+    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+    if (tableView) {
+        CGFloat cellTop = self.frame.origin.y;
+        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
+        NSLog(@"🔲 cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
+        
+        CGFloat webViewTop = MAX(0, (tableViewContentOffsetY - cellTop));
+        webViewTop = MIN(webViewTop, scrollView.contentSize.height - scrollView.height);
+        self.webView.top = webViewTop;
+        self.webView.scrollView.contentOffset = CGPointMake(0, webViewTop);
+    }
 }
 
 #pragma mark - Helper Methods
