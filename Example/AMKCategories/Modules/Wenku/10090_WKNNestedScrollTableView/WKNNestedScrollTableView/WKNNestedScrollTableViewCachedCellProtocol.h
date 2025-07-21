@@ -12,3 +12,14 @@
 @protocol WKNNestedScrollTableViewCachedCellProtocol <NSObject>
 
 @end
+
+#pragma mark -
+#pragma mark -
+
+/// 支持 WKNNestedScrollTableView 缓存的 Cell 类
+typedef __kindof UITableViewCell<WKNNestedScrollTableViewCachedCellProtocol> WKNNestedScrollTableViewCachedCell;
+
+/// WKNNestedScrollTableView 已缓存 Cell 的 CacheKey
+///
+/// 即：`cell` 的 `reuseIdentifier`
+typedef NSString WKNNestedScrollTableViewCacheKey;

@@ -287,7 +287,7 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.tableView preferredProcessNestedScrollTableViewDidScroll:scrollView];
+    WKNNestedScrollTableViewLog(@"🔳 %@", scrollView.wknNestedScrollTableViewDebug_debugDescription);
 }
 
 #pragma mark - Helper Methods

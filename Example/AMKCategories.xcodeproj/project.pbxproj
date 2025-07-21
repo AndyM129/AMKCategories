@@ -86,6 +86,7 @@
 		88A05417295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05416295D96A4001B2CCE /* AMKLifeCircleTabBarItemViewController.m */; };
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
 		88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */; };
+		88B1DF3B2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1DF3A2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m */; };
 		88B499A82D3144220045FC15 /* AMKExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499A72D3144220045FC15 /* AMKExampleViewController.m */; };
 		88B499AB2D314B6B0045FC15 /* AMKExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AA2D314B6B0045FC15 /* AMKExampleTableViewController.m */; };
 		88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AD2D315A460045FC15 /* AMKExampleStackView.m */; };
@@ -202,7 +203,6 @@
 		883122F62E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.h; sourceTree = "<group>"; };
 		883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleCategoryTitleTableViewCell.m; sourceTree = "<group>"; };
 		883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCachedCellProtocol.h; sourceTree = "<group>"; };
-		883122FA2E28F10500183073 /* WKNNestedScrollTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCellProtocol.h; sourceTree = "<group>"; };
 		883122FB2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKNNestedScrollTableView+WKNDebug.h"; sourceTree = "<group>"; };
 		883122FC2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKNNestedScrollTableView+WKNDebug.m"; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
@@ -266,6 +266,8 @@
 		88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarSubViewController.m; sourceTree = "<group>"; };
 		88A0541B295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLifeCircleTabBarBaseViewController.h; sourceTree = "<group>"; };
 		88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarBaseViewController.m; sourceTree = "<group>"; };
+		88B1DF392E2E3DE800E172DE /* WKNNestedScrollTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCell.h; sourceTree = "<group>"; };
+		88B1DF3A2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableViewCell.m; sourceTree = "<group>"; };
 		88B499A62D3144220045FC15 /* AMKExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleViewController.h; sourceTree = "<group>"; };
 		88B499A72D3144220045FC15 /* AMKExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKExampleViewController.m; sourceTree = "<group>"; };
 		88B499A92D314B6B0045FC15 /* AMKExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleTableViewController.h; sourceTree = "<group>"; };
@@ -753,10 +755,11 @@
 			children = (
 				883122EC2E28CC0400183073 /* WKNNestedScrollTableView.h */,
 				883122ED2E28CC0400183073 /* WKNNestedScrollTableView.m */,
+				88B1DF392E2E3DE800E172DE /* WKNNestedScrollTableViewCell.h */,
+				88B1DF3A2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m */,
 				883122FB2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.h */,
 				883122FC2E2A4B5000183073 /* WKNNestedScrollTableView+WKNDebug.m */,
 				883122F92E28EB1000183073 /* WKNNestedScrollTableViewCachedCellProtocol.h */,
-				883122FA2E28F10500183073 /* WKNNestedScrollTableViewCellProtocol.h */,
 			);
 			path = WKNNestedScrollTableView;
 			sourceTree = "<group>";
@@ -1339,6 +1342,7 @@
 				883121542E26889500183073 /* AMK10090ExampleCategoryTitleTableViewCell.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
 				88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */,
+				88B1DF3B2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m in Sources */,
 				885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */,
 				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,

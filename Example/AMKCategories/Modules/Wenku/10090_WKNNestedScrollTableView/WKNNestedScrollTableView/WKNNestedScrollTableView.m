@@ -7,8 +7,8 @@
 //
 
 #import "WKNNestedScrollTableView+WKNDebug.h"
+#import "WKNNestedScrollTableViewCell.h"
 #import "WKNNestedScrollTableViewCachedCellProtocol.h"
-#import "WKNNestedScrollTableViewCellProtocol.h"
 #import <AMKCategories/NSDictionary+AMKObjectForKey.h>
 #import <AMKCategories/UIResponder+AMKUIResponderExtensionMethods.h>
 #import <objc/runtime.h>
@@ -16,8 +16,13 @@
 static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 
 @interface WKNNestedScrollTableView () <UIGestureRecognizerDelegate>
-@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<id, WKNNestedScrollTableViewCachedCell *> *cachedCells;
+
+/// 当前已通过 `-registerClass:forCellReuseIdentifier:` 注册过的类
 @property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<NSString *, Class> *registeredClasses;
+
+/// 当前已缓存的 Cell
+@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<WKNNestedScrollTableViewCacheKey *, WKNNestedScrollTableViewCachedCell *> *cachedCells;
+
 @end
 
 @implementation WKNNestedScrollTableView
@@ -37,14 +42,14 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 
 #pragma mark - Getters & Setters
 
-- (NSMutableDictionary<NSString *,Class> *)registeredClasses {
+- (NSMutableDictionary<NSString *, Class> *)registeredClasses {
     if (!_registeredClasses) {
         _registeredClasses = @{}.mutableCopy;
     }
     return _registeredClasses;
 }
 
-- (NSMutableDictionary<id,__kindof UITableViewCell *> *)cachedCells {
+- (NSMutableDictionary<WKNNestedScrollTableViewCacheKey *, WKNNestedScrollTableViewCachedCell *> *)cachedCells {
     if (!_cachedCells) {
         _cachedCells = @{}.mutableCopy;
     }
@@ -54,72 +59,6 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
-
-- (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)tableView {
-    if (tableView != self) {
-        return;
-    }
-    
-    //CGFloat currentContentOffsetY = self.contentOffset.y; //!< 当前的内容偏移Y
-    WKNNestedScrollTableViewLog(@"🔳 %@", self.wknNestedScrollTableViewDebug_debugDescription);
-}
-
-- (void)_preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)tableView {
-    if (tableView != self) {
-        return;
-    }
-    
-    static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
-    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的内容偏移Y
-    CGFloat currentContentOffsetY = self.contentOffset.y; //!< 当前的内容偏移Y
-    CGFloat currentScrollOffsetY = currentContentOffsetY - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
-    BOOL isScrollingToDown = currentScrollOffsetY > 0; //!< 是否在向下滚动
-    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(self.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g %@", self.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
-    
-    // 将当前可见的 cell 基于 indexPath 排序
-    NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
-    
-    // 找到遵守 `WKNNestedScrollTableViewCellProtocol` 协议的 cell，以便后续对其处理
-    NSInteger indexForNestedScrollTableViewCell = [sortedIndexPathsForVisibleRows indexOfObjectPassingTest:^BOOL(NSIndexPath * _Nonnull indexPath, NSUInteger idx, BOOL * _Nonnull stop) {
-        UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        return [cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)];
-    }];
-    
-    // 若有 nestedScrollTableViewCell
-    if (indexForNestedScrollTableViewCell != NSNotFound) {
-        NSIndexPath *indexPathForNestedScrollTableViewCell = sortedIndexPathsForVisibleRows[indexForNestedScrollTableViewCell];
-        UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = [self cellForRowAtIndexPath:indexPathForNestedScrollTableViewCell];
-        UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
-        
-        // 若 nestedScrollView 开始滚动
-        if (nestedScrollView.contentOffset.y > 0) {
-            CGFloat nestedScrollViewContentOffsetMaxY = nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height;
-            CGFloat nestedScrollViewContentSizeHeight = nestedScrollView.contentSize.height;
-            CGFloat nestedScrollTableViewCellTop = nestedScrollTableViewCell.top;
-            
-            // 若 nestedScrollView 没有滚到底，则固定 tableView 的 contentOffset，让其不动
-//            if (!isScrollingToDown) {
-//                nestedScrollViewContentOffsetMaxY = ceil(nestedScrollViewContentOffsetMaxY + fabs(currentScrollOffsetY));
-//            }
-            if (nestedScrollViewContentOffsetMaxY < nestedScrollViewContentSizeHeight) {
-                self.contentOffset = CGPointMake(0, nestedScrollTableViewCellTop);
-                self.showsVerticalScrollIndicator = NO;
-
-//                if (isScrollingToDown) {
-//                    self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
-//                    self.showsVerticalScrollIndicator = NO;
-//                }
-            }
-        }
-        // 否则 nestedScrollView 没有滚动，恢复 tableView 的正常滚动
-        else {
-            self.showsVerticalScrollIndicator = YES;
-        }
-    } else {
-        self.showsVerticalScrollIndicator = YES;
-    }
-}
 
 #pragma mark - Action Methods
 
@@ -148,7 +87,7 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
                 } else {
                     cell = [super dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
                 }
-                [self.cachedCells setObject:cell forKey:identifier];
+                [self.cachedCells setObject:(WKNNestedScrollTableViewCachedCell *)cell forKey:identifier];
             }
         }
         // 否则，走默认实现
@@ -156,11 +95,12 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
             cell = [super dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         }
         
-        // 若该 Cell 遵守 WKNNestedScrollTableViewCellProtocol 协议，则将其
-        if ([cell conformsToProtocol:@protocol(WKNNestedScrollTableViewCellProtocol)]) {
-            UITableViewCell<WKNNestedScrollTableViewCellProtocol> *nestedScrollTableViewCell = (id)cell;
+        // 若为 WKNNestedScrollTableViewCell，且有 nestedScrollView，则将其 panGestureRecognizer 添加到当前 tableView，以便接管其滑动手势
+        if ([cell isKindOfClass:WKNNestedScrollTableViewCell.class] && [(WKNNestedScrollTableViewCell *)cell nestedScrollView]) {
+            WKNNestedScrollTableViewCell *nestedScrollTableViewCell = (id)cell;
             UIScrollView *nestedScrollView = nestedScrollTableViewCell.nestedScrollView;
             nestedScrollView.bounces = NO; // 关闭 nestedScrollView 的弹性滚动
+            nestedScrollView.showsVerticalScrollIndicator = NO; // 关闭 nestedScrollView 的竖向滚动条
             objc_setAssociatedObject(nestedScrollView.panGestureRecognizer, kNestedScrollTableViewCellKey, nestedScrollTableViewCell, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             [self addGestureRecognizer:nestedScrollView.panGestureRecognizer];
         }
@@ -183,8 +123,8 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
     // 一方是 当前 tableView 的 panGestureRecognizer
     shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && gestureRecognizer == self.panGestureRecognizer;
 
-    // 另一方是被加到 tableView 上的 WKNNestedScrollTableViewCellProtocol Cell 的 nestedScrollView 的 panGestureRecognizer
-    UITableViewCell<WKNNestedScrollTableViewCellProtocol> *otherGestureRecognizerNestedScrollTableViewCell = objc_getAssociatedObject(otherGestureRecognizer, kNestedScrollTableViewCellKey);
+    // 另一方是被加到 tableView 上的 WKNNestedScrollTableViewCell 的 nestedScrollView 的 panGestureRecognizer
+    WKNNestedScrollTableViewCell *otherGestureRecognizerNestedScrollTableViewCell = objc_getAssociatedObject(otherGestureRecognizer, kNestedScrollTableViewCellKey);
     shouldRecognizeSimultaneously = shouldRecognizeSimultaneously && otherGestureRecognizerNestedScrollTableViewCell;
 
     WKNNestedScrollTableViewLog(@"%@ 👉%@, 👉%@", (shouldRecognizeSimultaneously ? @"⭕️" : @"🚫"), gestureRecognizer, otherGestureRecognizer);

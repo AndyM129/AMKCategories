@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
+/// WKNNestedScrollTableView 示例：普通 NA Cell
 @interface WKNNestedScrollTableExampleNormalTableViewCell : UITableViewCell
 
 + (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params;
 
 @end
-
-NS_ASSUME_NONNULL_END

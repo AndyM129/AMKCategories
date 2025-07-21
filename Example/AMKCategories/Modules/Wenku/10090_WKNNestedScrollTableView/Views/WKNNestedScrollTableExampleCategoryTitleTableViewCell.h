@@ -13,7 +13,7 @@
 
 typedef void(^WKNNestedScrollTableExampleCategoryTitleTableViewCellCategoryTitleViewDidSelectItemBlock)(WKNNestedScrollTableExampleCategoryTitleTableViewCell *_Nullable cell, NSInteger index);
 
-/// Tab TableViewCell
+/// WKNNestedScrollTableView 示例：支持显示 Tab 切换
 @interface WKNNestedScrollTableExampleCategoryTitleTableViewCell : UITableViewCell <WKNNestedScrollTableViewCachedCellProtocol>
 
 @property (nonatomic, strong, readonly, nullable) JXCategoryTitleView *categoryTitleView;
