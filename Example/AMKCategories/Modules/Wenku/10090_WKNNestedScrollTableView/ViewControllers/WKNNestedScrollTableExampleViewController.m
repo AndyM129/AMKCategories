@@ -36,14 +36,14 @@
 
 @implementation WKNNestedScrollTableExampleViewController
 
-//+ (void)load {
-//    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
-//        [NSNotificationCenter.defaultCenter removeObserver:token];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [UIViewController amk_pushViewController:self.new animated:YES];
-//        });
-//    }];
-//}
++ (void)load {
+    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
+        [NSNotificationCenter.defaultCenter removeObserver:token];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIViewController amk_pushViewController:self.new animated:YES];
+        });
+    }];
+}
 
 #pragma mark - Dealloc
 
@@ -229,7 +229,7 @@
         WKNNestedScrollTableExampleShortWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className forIndexPath:indexPath];
         if (!cell.webView.URL) {
             //[cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:cell.height];
-            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:500];
+            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:300];
         }
         return cell;
     }
@@ -248,23 +248,11 @@
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
         return [WKNNestedScrollTableExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
-//    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
-//        WKNNestedScrollTableExampleWebTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        return 100;
-//        //return UITableViewAutomaticDimension;//cell.nestedScrollView.contentSize.height;
-//    }
-    //if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell.className]) {
-    //    return [WKNNestedScrollTableExampleLongWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
-    //}
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell.className]) {
+        return [WKNNestedScrollTableExampleLongWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleShortWebTableViewCell.className]) {
-        return UITableViewAutomaticDimension;
-        
-        //WKNNestedScrollTableExampleShortWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className forIndexPath:indexPath];
-        //return cell.nestedScrollView.contentSize.height;
-        
-        //return 100;
-        
-        //return [WKNNestedScrollTableExampleShortWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+        return [WKNNestedScrollTableExampleShortWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
         return [WKNNestedScrollTableExampleWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];

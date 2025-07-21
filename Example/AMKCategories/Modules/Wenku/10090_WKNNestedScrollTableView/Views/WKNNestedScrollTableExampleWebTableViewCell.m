@@ -11,8 +11,42 @@
 #import "WKNNestedScrollTableView+WKNDebug.h"
 #import <objc/runtime.h>
 
+@interface _WKNNestedScrollTableCellIntrinsicSizeView : UIView
+@property (nonatomic, assign, readwrite) CGFloat intrinsicContentHeight;
+@end
+
+@implementation _WKNNestedScrollTableCellIntrinsicSizeView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.userInteractionEnabled = NO;
+    }
+    return self;
+}
+
+- (void)setIntrinsicContentHeight:(CGFloat)intrinsicContentHeight {
+    if (_intrinsicContentHeight == intrinsicContentHeight) {
+        return;
+    }
+    
+    NSLog(@"%g -> %g", _intrinsicContentHeight, intrinsicContentHeight);
+    _intrinsicContentHeight = intrinsicContentHeight;
+    [self invalidateIntrinsicContentSize];
+}
+
+- (CGSize)intrinsicContentSize {
+    CGSize intrinsicContentSize = [super intrinsicContentSize];
+    intrinsicContentSize.height = self.intrinsicContentHeight;
+    return intrinsicContentSize;
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
 @interface WKNNestedScrollTableExampleWebTableViewCell () <UIScrollViewDelegate>
-@property (nonatomic, strong, readwrite, nullable) UIView *webContainerView;
+@property (nonatomic, strong, readwrite, nullable) _WKNNestedScrollTableCellIntrinsicSizeView *intrinsicSizeView;
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @end
 
@@ -21,31 +55,34 @@
 #pragma mark - Init Methods
 
 - (void)dealloc {
-    [_webView.scrollView removeObserverBlocks];
+    
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         WKNNestedScrollTableViewLog(@"Style %ld - %@", style, reuseIdentifier);
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.layer.borderWidth = 1 / UIScreen.mainScreen.scale;
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
 
-- (UIView *)webContainerView {
-    if (!_webContainerView) {
-        _webContainerView = [UIView.alloc init];
-        _webContainerView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
-        [self.contentView insertSubview:_webContainerView atIndex:0];
+- (_WKNNestedScrollTableCellIntrinsicSizeView *)intrinsicSizeView {
+    if (!_intrinsicSizeView) {
+        _intrinsicSizeView = [_WKNNestedScrollTableCellIntrinsicSizeView.alloc init];
+        _intrinsicSizeView.intrinsicContentHeight = 50;
+        [self.contentView insertSubview:_intrinsicSizeView atIndex:0];
     }
-    return _webContainerView;
+    return _intrinsicSizeView;
 }
 
 - (WKWebView *)webView {
     if (!_webView) {
         _webView = [WKWebView.alloc init];
+        _webView.layer.borderColor = [UIColor.redColor colorWithAlphaComponent:0.5].CGColor;
+        _webView.layer.borderWidth = 3;
         _webView.scrollView.delegate = self;
         if (@available(iOS 13.0, *)) {
             _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -55,27 +92,14 @@
         __weak __typeof__(self)weakSelf = self;
         [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
             if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
-                WKNNestedScrollTableViewLog(@"contentSize: %@ => %@", oldVal, newVal);
-                
-                
-//                [weakSelf.webContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                    make.height.mas_equalTo(newVal);
-//                }];
-                
-                [weakSelf.webContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.left.top.right.mas_equalTo(weakSelf.contentView);
-                    make.height.mas_equalTo(scrollView.contentSize.height);
-                    make.bottom.mas_equalTo(weakSelf.contentView);
+                [UIView performWithoutAnimation:^{
+                    [weakSelf setNeedsUpdateConstraints];
+                    [weakSelf updateConstraintsIfNeeded];
+
+                    weakSelf.intrinsicSizeView.intrinsicContentHeight = scrollView.contentSize.height;
+                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+                    [tableView performBatchUpdates:nil completion:nil];
                 }];
-                
-//                [weakSelf setNeedsUpdateConstraints];
-//                [weakSelf updateConstraintsIfNeeded];
-                
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-//                    [tableView beginUpdates];
-//                    [tableView endUpdates];
-//                });
             }
         }];
     }
@@ -90,26 +114,23 @@
 
 #pragma mark - Layout Subviews
 
-//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-//    return tableView.height;
-//}
++ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
+    return UITableViewAutomaticDimension;
+}
 
 + (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
 
 - (void)updateConstraints {
-    CGFloat height = self.webView.scrollView.contentSize.height;
-    WKNNestedScrollTableViewLog(@"self.webView.scrollView.contentSize: %@", @(self.webView.scrollView.contentSize));
-    [self.webContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(height);
-        make.bottom.mas_equalTo(self.contentView);
+    [self.intrinsicSizeView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
     }];
-//    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.left.top.right.mas_equalTo(0);
-//        make.height.mas_equalTo(50);
-//    }];
+    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+        make.left.top.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(MIN(tableView.height, self.webView.scrollView.contentSize.height));
+    }];
     
     //according to apple super should be called at end of method
     [super updateConstraints];
@@ -131,7 +152,19 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)nestedScrollView {
+    if (nestedScrollView != self.nestedScrollView) {
+        return;
+    }
     
+    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+    if (tableView) {
+        CGFloat cellTop = self.frame.origin.y;
+        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
+        NSLog(@"🔲 cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
+        
+        self.webView.top = MAX(0, MIN((tableViewContentOffsetY - cellTop), (nestedScrollView.contentSize.height - nestedScrollView.height)));
+        self.webView.scrollView.contentOffset = CGPointMake(0, self.webView.top);
+    }
 }
 
 - (void)_scrollViewDidScroll:(UIScrollView *)nestedScrollView {
@@ -204,9 +237,9 @@
 /// 长Web
 @implementation WKNNestedScrollTableExampleLongWebTableViewCell
 
-+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-    return tableView.height;
-}
+//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
+//    return tableView.height;
+//}
 
 @end
 
@@ -216,9 +249,9 @@
 /// 短Web
 @implementation WKNNestedScrollTableExampleShortWebTableViewCell
 
-+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-    return 200;
-}
+//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
+//    return 200;
+//}
 
 @end
 
