@@ -65,13 +65,18 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
 
 #pragma mark - Layout Subviews
 
-- (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)scrollView {
+- (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)tableView {
+    if (tableView != self) {
+        return;
+    }
+    
     static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
     CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的内容偏移Y
-    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
+    CGFloat currentContentOffsetY = self.contentOffset.y; //!< 当前的内容偏移Y
+    CGFloat currentScrollOffsetY = currentContentOffsetY - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
     BOOL isScrollingToDown = currentScrollOffsetY > 0; //!< 是否在向下滚动
-    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g %@", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
+    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(self.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    WKNNestedScrollTableViewLog(@"🔳 %@ —— ΔY = %g %@", self.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
     
     // 将当前可见的 cell 基于 indexPath 排序
     NSArray<NSIndexPath *> *sortedIndexPathsForVisibleRows = [self.indexPathsForVisibleRows sortedArrayUsingSelector:@selector(compare:)];
@@ -92,11 +97,20 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
         if (nestedScrollView.contentOffset.y > 0) {
             CGFloat nestedScrollViewContentOffsetMaxY = nestedScrollView.contentOffset.y + nestedScrollView.frame.size.height;
             CGFloat nestedScrollViewContentSizeHeight = nestedScrollView.contentSize.height;
+            CGFloat nestedScrollTableViewCellTop = nestedScrollTableViewCell.top;
             
             // 若 nestedScrollView 没有滚到底，则固定 tableView 的 contentOffset，让其不动
+//            if (!isScrollingToDown) {
+//                nestedScrollViewContentOffsetMaxY = ceil(nestedScrollViewContentOffsetMaxY + fabs(currentScrollOffsetY));
+//            }
             if (nestedScrollViewContentOffsetMaxY < nestedScrollViewContentSizeHeight) {
-                self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
+                self.contentOffset = CGPointMake(0, nestedScrollTableViewCellTop);
                 self.showsVerticalScrollIndicator = NO;
+
+//                if (isScrollingToDown) {
+//                    self.contentOffset = CGPointMake(0, nestedScrollTableViewCell.top);
+//                    self.showsVerticalScrollIndicator = NO;
+//                }
             }
         }
         // 否则 nestedScrollView 没有滚动，恢复 tableView 的正常滚动

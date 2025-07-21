@@ -85,14 +85,23 @@
 
 #pragma mark UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)nestedScrollView {
+    if (nestedScrollView != self.nestedScrollView) {
+        return;
+    }
+    
     static void *kLastContentOffsetYKey = &kLastContentOffsetYKey;
-    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的内容偏移Y
-    CGFloat currentScrollOffsetY = scrollView.contentOffset.y - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
+    static void *kLastScrollOffsetYKey = &kLastScrollOffsetYKey;
+    CGFloat lastContentOffsetY = [objc_getAssociatedObject(self, kLastContentOffsetYKey) floatValue]; //!< 上次的 内容偏移Y
+    CGFloat lastScrollOffsetY = [objc_getAssociatedObject(self, kLastScrollOffsetYKey) floatValue]; //!< 上次的 Y的偏移差值
+    CGFloat currentContentOffsetY = nestedScrollView.contentOffset.y; //!< 当前的内容偏移Y
+    CGFloat currentScrollOffsetY = currentContentOffsetY - lastContentOffsetY; //!< 本次 相较于上次，Y的偏移差值
     BOOL isScrollingToDown = currentScrollOffsetY > 0; //!< 是否在向下滚动
-    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(scrollView.contentOffset.y), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if (!self.isHidden && self.alpha > 0 && scrollView.scrollEnabled) {
-        WKNNestedScrollTableViewLog(@"🔲 %@ —— ΔY = %g %@", scrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"));
+    BOOL isScrollingForFixOffsetY = isScrollingToDown ? NO : (currentScrollOffsetY + lastScrollOffsetY < 0.001); //!< 是否因修正 OffsetY 而触发的本次执行
+    objc_setAssociatedObject(self, kLastContentOffsetYKey, @(currentContentOffsetY), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kLastScrollOffsetYKey, @(currentScrollOffsetY), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (!self.isHidden && self.alpha > 0 && nestedScrollView.scrollEnabled) {
+        WKNNestedScrollTableViewLog(@"🔲 %@ —— ΔY = %g %@%@", nestedScrollView.wknNestedScrollTableViewDebug_debugDescription, currentScrollOffsetY, (isScrollingToDown ? @"⇣" : @"⇡"), (isScrollingForFixOffsetY ? @" 🔧" : @""));
     }
     
     UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
@@ -100,14 +109,26 @@
         CGFloat cellTop = self.frame.origin.y;
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
         
+        // 值修正
+        if (!isScrollingToDown) {
+            tableViewContentOffsetY = tableViewContentOffsetY + -currentScrollOffsetY;
+        }
+        
         // 若当前 cell 还未滚到 tableView 可视区域的顶部
-        if (tableViewContentOffsetY + (currentScrollOffsetY < 0 ? -currentScrollOffsetY : 0) < cellTop) {
-            scrollView.contentOffset = CGPointZero;
-            scrollView.showsVerticalScrollIndicator = NO;
+        if (tableViewContentOffsetY < cellTop) {
+            nestedScrollView.contentOffset = CGPointZero;
+            nestedScrollView.showsVerticalScrollIndicator = NO;
         }
         // 若当前 cell 已滚到 tableView 可视区域的顶部
         else {
-            scrollView.showsVerticalScrollIndicator = scrollView.contentOffset.y > 0;
+            // 当前 cell 已顶部已经滑出 tableView 可视区域，则固定 scrollView 的 contentOffset，让其不动
+            if (nestedScrollView.contentOffset.y > 0) {
+                if (!isScrollingToDown) {
+                    nestedScrollView.contentOffset = CGPointMake(0, nestedScrollView.contentSize.height - nestedScrollView.height);
+                    nestedScrollView.showsVerticalScrollIndicator = NO;
+                }
+            }
+            //scrollView.showsVerticalScrollIndicator = scrollView.contentOffset.y > 0;
         }
     }
 }
