@@ -10,6 +10,7 @@
 #import "WKNNestedScrollTableExampleNormalTableViewCell.h"
 #import "WKNNestedScrollTableExampleCategoryTitleTableViewCell.h"
 #import "WKNNestedScrollTableExampleWebTableViewCell.h"
+#import "WKNNestedScrollTableExampleCollectionTableViewCell.h"
 #import "WKNNestedScrollTableView+WKNDebug.h"
 #import <AMKCategories/UITableView+AMKTableViewSection.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
@@ -107,6 +108,7 @@
         [_tableView registerClass:WKNNestedScrollTableExampleLongWebTableViewCell2.class forCellReuseIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className];
         [_tableView registerClass:WKNNestedScrollTableExampleShortWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleWebTableViewCell.className];
+        [_tableView registerClass:WKNNestedScrollTableExampleCollectionTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleCollectionTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
         [self.view addSubview:_tableView];
     }
@@ -116,14 +118,24 @@
 #pragma mark - Data & Networking
 
 - (void)reloadData {
+    static NSString *kNormalCells = @"NormalCells";
+    static NSString *kShortWebCell = @"ShortWebCell";
+    static NSString *kShortWebCell_NormalCells = @"ShortWebCell+NormalCells";
+    static NSString *kLongWebCell = @"LongWebCell";
+    static NSString *kLongWebCell_NormalCells = @"LongWebCell+NormalCells";
+    static NSString *kLongWebCell_NormalCells_LongWebCell2 = @"LongWebCell+NormalCells+LongWebCell2";
+    static NSString *kNormalCells_CollectionView = @"NormalCells+CollectionView";
+    
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells", @"长WebViewCell+NACells+长WebViewCell2"];
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = 1;
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[kNormalCells, kShortWebCell, kShortWebCell_NormalCells, kLongWebCell, kLongWebCell_NormalCells, kLongWebCell_NormalCells_LongWebCell2, kNormalCells_CollectionView];
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = [self.tableView.categoryTitleTableViewCell.categoryTitleView.titles indexOfObject:kShortWebCell];
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
     
     // 重新构建列表内容
+    NSInteger selectedIndex = self.tableView.categoryTitleTableViewCell.categoryTitleView.selectedIndex;
+    NSString *selectedTitle = self.tableView.categoryTitleTableViewCell.categoryTitleView.titles[selectedIndex];
     NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
@@ -136,41 +148,48 @@
         JXCategoryTitleView *categoryTitleView = self.tableView.categoryTitleTableViewCell.categoryTitleView;
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className userInfo:nil]];
-        // NACells
-        if (categoryTitleView.selectedIndex == 0) {
+        // NormalCells
+        if (selectedTitle == kNormalCells) {
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
-        // 短WebViewCell
-        else if (categoryTitleView.selectedIndex == 1) {
+        // ShortWebCell
+        if (selectedTitle == kShortWebCell) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
         }
-        // 短WebView+NACells
-        else if (categoryTitleView.selectedIndex == 2) {
+        // ShortWebCell+NormalCells
+        else if (selectedTitle == kShortWebCell_NormalCells) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
-        // 长WebViewCell
-        else if (categoryTitleView.selectedIndex == 3) {
+        // LongWebCell
+        else if (selectedTitle == kLongWebCell) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
         }
-        // 长WebViewCell+NACells
-        else if (categoryTitleView.selectedIndex == 4) {
+        // LongWebCell+NormalCells
+        else if (selectedTitle == kLongWebCell_NormalCells) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
         }
-        // 长WebViewCell+NACells+长WebViewCell2
-        else if (categoryTitleView.selectedIndex == 5) {
+        // LongWebCell+NormalCells+LongWebCell2
+        else if (selectedTitle == kLongWebCell_NormalCells_LongWebCell2) {
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className userInfo:nil]];
+        }
+        // NormalCells+CollectionView
+        else if (selectedTitle == kNormalCells_CollectionView) {
+            for (NSInteger i=0; i<5; i++) {
+                [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+            }
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCollectionTableViewCell.className userInfo:nil]];
         }
         section;
     })];
@@ -250,6 +269,11 @@
         }
         return cell;
     }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCollectionTableViewCell.className]) {
+        WKNNestedScrollTableExampleCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleCollectionTableViewCell.className forIndexPath:indexPath];
+        [cell.collectionView reloadData];
+        return cell;
+    }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
 }
 
@@ -276,6 +300,9 @@
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell2.className]) {
         return [WKNNestedScrollTableExampleLongWebTableViewCell2 tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCollectionTableViewCell.className]) {
+        return [WKNNestedScrollTableExampleCollectionTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
     return 0;
 }

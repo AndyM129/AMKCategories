@@ -26,13 +26,24 @@
 }
 
 - (void)setIntrinsicContentHeight:(CGFloat)intrinsicContentHeight {
-    if (_intrinsicContentHeight == intrinsicContentHeight) {
-        return;
-    }
+//    if (_intrinsicContentHeight == intrinsicContentHeight) {
+//        return;
+//    }
     
-    NSLog(@"%g -> %g", _intrinsicContentHeight, intrinsicContentHeight);
+    WKNNestedScrollTableViewCell *tableViewCell = [self amk_nextResponderWithClass:WKNNestedScrollTableViewCell.class];
+    UITableView *tableView = [tableViewCell amk_nextResponderWithClass:UITableView.class];
+    WKNNestedScrollTableViewLog(@"%@: %g => %g", tableViewCell.className, _intrinsicContentHeight, intrinsicContentHeight);
+
     _intrinsicContentHeight = intrinsicContentHeight;
     [self invalidateIntrinsicContentSize];
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [UIView performWithoutAnimation:^{
+            [tableViewCell setNeedsUpdateConstraints];
+            [tableViewCell updateConstraintsIfNeeded];
+            [tableView performBatchUpdates:nil completion:nil];
+        }];
+    });
 }
 
 - (CGSize)intrinsicContentSize {
@@ -79,14 +90,7 @@
             [self addObserverBlockForKeyPath:@"nestedScrollView.contentSize" block:^(WKNNestedScrollTableViewCell * _Nonnull nestedScrollTableViewCell, NSNumber * oldVal, NSNumber * newVal) {
                 if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
                     WKNNestedScrollTableViewLog(@"%@: %@ => %@", weakSelf.className, oldVal, newVal);
-                    [UIView performWithoutAnimation:^{
-                        [weakSelf setNeedsUpdateConstraints];
-                        [weakSelf updateConstraintsIfNeeded];
-                        
-                        weakSelf.intrinsicSizeView.intrinsicContentHeight = nestedScrollTableViewCell.nestedScrollView.contentSize.height;
-                        UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-                        [tableView performBatchUpdates:nil completion:nil];
-                    }];
+                    weakSelf.intrinsicSizeView.intrinsicContentHeight = nestedScrollTableViewCell.nestedScrollView.contentSize.height;
                 }
             }];
         }

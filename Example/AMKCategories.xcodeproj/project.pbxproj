@@ -87,6 +87,7 @@
 		88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A05419295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m */; };
 		88A0541D295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */; };
 		88B1DF3B2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1DF3A2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m */; };
+		88B1DF3E2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1DF3D2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.m */; };
 		88B499A82D3144220045FC15 /* AMKExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499A72D3144220045FC15 /* AMKExampleViewController.m */; };
 		88B499AB2D314B6B0045FC15 /* AMKExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AA2D314B6B0045FC15 /* AMKExampleTableViewController.m */; };
 		88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AD2D315A460045FC15 /* AMKExampleStackView.m */; };
@@ -268,6 +269,8 @@
 		88A0541C295DA3AE001B2CCE /* AMKLifeCircleTabBarBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLifeCircleTabBarBaseViewController.m; sourceTree = "<group>"; };
 		88B1DF392E2E3DE800E172DE /* WKNNestedScrollTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableViewCell.h; sourceTree = "<group>"; };
 		88B1DF3A2E2E3DE800E172DE /* WKNNestedScrollTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableViewCell.m; sourceTree = "<group>"; };
+		88B1DF3C2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNNestedScrollTableExampleCollectionTableViewCell.h; sourceTree = "<group>"; };
+		88B1DF3D2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNNestedScrollTableExampleCollectionTableViewCell.m; sourceTree = "<group>"; };
 		88B499A62D3144220045FC15 /* AMKExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleViewController.h; sourceTree = "<group>"; };
 		88B499A72D3144220045FC15 /* AMKExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKExampleViewController.m; sourceTree = "<group>"; };
 		88B499A92D314B6B0045FC15 /* AMKExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKExampleTableViewController.h; sourceTree = "<group>"; };
@@ -735,6 +738,8 @@
 				883122F12E28D1E800183073 /* WKNNestedScrollTableExampleNormalTableViewCell.m */,
 				883122F32E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.h */,
 				883122F42E28D74500183073 /* WKNNestedScrollTableExampleWebTableViewCell.m */,
+				88B1DF3C2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.h */,
+				88B1DF3D2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.m */,
 				883122F62E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.h */,
 				883122F72E28DB3F00183073 /* WKNNestedScrollTableExampleCategoryTitleTableViewCell.m */,
 			);
@@ -1350,6 +1355,7 @@
 				88B499A82D3144220045FC15 /* AMKExampleViewController.m in Sources */,
 				883122E22E277BC200183073 /* AMK10090ExampleTableView.m in Sources */,
 				8806D97A290BB4BB005DC5C1 /* AMKTableViewDelegateViewController.m in Sources */,
+				88B1DF3E2E2E550300E172DE /* WKNNestedScrollTableExampleCollectionTableViewCell.m in Sources */,
 				8873BB3C2B60C57D004E7DFE /* AMK8350ExampleViewController.m in Sources */,
 				883122E92E28CB6400183073 /* WKNNestedScrollTableExampleViewController.m in Sources */,
 				889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */,
