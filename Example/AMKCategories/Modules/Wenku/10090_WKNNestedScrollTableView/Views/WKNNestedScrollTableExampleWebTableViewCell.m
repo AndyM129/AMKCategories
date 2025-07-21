@@ -72,7 +72,7 @@
 - (_WKNNestedScrollTableCellIntrinsicSizeView *)intrinsicSizeView {
     if (!_intrinsicSizeView) {
         _intrinsicSizeView = [_WKNNestedScrollTableCellIntrinsicSizeView.alloc init];
-        _intrinsicSizeView.intrinsicContentHeight = 50;
+        _intrinsicSizeView.intrinsicContentHeight = 50; // 在 nestedScrollView 拥有真正高度之前，默认的显示高度
         [self.contentView insertSubview:_intrinsicSizeView atIndex:0];
     }
     return _intrinsicSizeView;
@@ -92,6 +92,7 @@
         __weak __typeof__(self)weakSelf = self;
         [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
             if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
+                WKNNestedScrollTableViewLog(@"%@: %@ => %@", weakSelf.className, oldVal, newVal);
                 [UIView performWithoutAnimation:^{
                     [weakSelf setNeedsUpdateConstraints];
                     [weakSelf updateConstraintsIfNeeded];
@@ -129,7 +130,7 @@
     [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
         UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
         make.left.top.right.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(MIN(tableView.height, self.webView.scrollView.contentSize.height));
+        make.height.mas_equalTo(MIN(tableView.height, self.webView.scrollView.contentSize.height ?: self.intrinsicSizeView.intrinsicContentHeight));
     }];
     
     //according to apple super should be called at end of method
@@ -160,7 +161,7 @@
     if (tableView) {
         CGFloat cellTop = self.frame.origin.y;
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
-        NSLog(@"🔲 cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
+        NSLog(@"🔲 %@: cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", self.className, cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
         
         CGFloat webViewTop = MAX(0, MIN((tableViewContentOffsetY - cellTop), (nestedScrollView.contentSize.height - nestedScrollView.height)));
         [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -242,9 +243,13 @@
 /// 长Web
 @implementation WKNNestedScrollTableExampleLongWebTableViewCell
 
-//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-//    return tableView.height;
-//}
+@end
+
+#pragma mark -
+#pragma mark -
+
+/// 长Web 2
+@implementation WKNNestedScrollTableExampleLongWebTableViewCell2
 
 @end
 
@@ -253,10 +258,6 @@
 
 /// 短Web
 @implementation WKNNestedScrollTableExampleShortWebTableViewCell
-
-//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-//    return 200;
-//}
 
 @end
 

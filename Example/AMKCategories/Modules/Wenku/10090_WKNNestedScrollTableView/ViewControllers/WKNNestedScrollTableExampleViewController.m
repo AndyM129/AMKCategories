@@ -104,6 +104,7 @@
         [_tableView registerClass:WKNNestedScrollTableExampleNormalTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleLongWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className];
+        [_tableView registerClass:WKNNestedScrollTableExampleLongWebTableViewCell2.class forCellReuseIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className];
         [_tableView registerClass:WKNNestedScrollTableExampleShortWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className];
         [_tableView registerClass:WKNNestedScrollTableExampleWebTableViewCell.class forCellReuseIdentifier:WKNNestedScrollTableExampleWebTableViewCell.className];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
@@ -117,7 +118,7 @@
 - (void)reloadData {
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells"];
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells", @"长WebViewCell+NACells+长WebViewCell2"];
         self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = 1;
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
@@ -162,6 +163,14 @@
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
+        }
+        // 长WebViewCell+NACells+长WebViewCell2
+        else if (categoryTitleView.selectedIndex == 5) {
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
+            for (NSInteger i=0; i<20; i++) {
+                [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+            }
+            [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className userInfo:nil]];
         }
         section;
     })];
@@ -233,6 +242,14 @@
         }
         return cell;
     }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell2.className]) {
+        WKNNestedScrollTableExampleLongWebTableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className forIndexPath:indexPath];
+        if (!cell.webView.URL) {
+            [cell.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/pptspreadact"]]];
+            //[cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:1500];
+        }
+        return cell;
+    }
     return [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className forIndexPath:indexPath];
 }
 
@@ -256,6 +273,9 @@
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
         return [WKNNestedScrollTableExampleWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    }
+    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell2.className]) {
+        return [WKNNestedScrollTableExampleLongWebTableViewCell2 tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
     return 0;
 }

@@ -28,6 +28,13 @@
 
 #pragma mark -
 
+/// 长Web 2
+@interface WKNNestedScrollTableExampleLongWebTableViewCell2 : WKNNestedScrollTableExampleWebTableViewCell
+
+@end
+
+#pragma mark -
+
 /// 短Web
 @interface WKNNestedScrollTableExampleShortWebTableViewCell : WKNNestedScrollTableExampleWebTableViewCell
 
