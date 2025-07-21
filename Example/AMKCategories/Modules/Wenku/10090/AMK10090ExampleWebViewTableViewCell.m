@@ -260,6 +260,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.webBackgroundView = [AMKWebBackgroundView new];
         self.webBackgroundView.backgroundColor = [UIColor greenColor];
+        self.webBackgroundView.customIntrinsicContentHeight = 200;
         [self.contentView addSubview:self.webBackgroundView];
 
         [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
