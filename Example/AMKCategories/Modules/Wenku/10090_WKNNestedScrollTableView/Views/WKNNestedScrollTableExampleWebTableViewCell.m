@@ -12,6 +12,7 @@
 #import <objc/runtime.h>
 
 @interface WKNNestedScrollTableExampleWebTableViewCell () <UIScrollViewDelegate>
+@property (nonatomic, strong, readwrite, nullable) UIView *webContainerView;
 @property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @end
 
@@ -20,7 +21,7 @@
 #pragma mark - Init Methods
 
 - (void)dealloc {
-    
+    [_webView.scrollView removeObserverBlocks];
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -33,6 +34,15 @@
 
 #pragma mark - Getters & Setters
 
+- (UIView *)webContainerView {
+    if (!_webContainerView) {
+        _webContainerView = [UIView.alloc init];
+        _webContainerView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
+        [self.contentView insertSubview:_webContainerView atIndex:0];
+    }
+    return _webContainerView;
+}
+
 - (WKWebView *)webView {
     if (!_webView) {
         _webView = [WKWebView.alloc init];
@@ -41,6 +51,33 @@
             _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         [self.contentView addSubview:_webView];
+        
+        __weak __typeof__(self)weakSelf = self;
+        [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
+            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
+                WKNNestedScrollTableViewLog(@"contentSize: %@ => %@", oldVal, newVal);
+                
+                
+//                [weakSelf.webContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                    make.height.mas_equalTo(newVal);
+//                }];
+                
+                [weakSelf.webContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.left.top.right.mas_equalTo(weakSelf.contentView);
+                    make.height.mas_equalTo(scrollView.contentSize.height);
+                    make.bottom.mas_equalTo(weakSelf.contentView);
+                }];
+                
+//                [weakSelf setNeedsUpdateConstraints];
+//                [weakSelf updateConstraintsIfNeeded];
+                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+//                    [tableView beginUpdates];
+//                    [tableView endUpdates];
+//                });
+            }
+        }];
     }
     return _webView;
 }
@@ -53,18 +90,26 @@
 
 #pragma mark - Layout Subviews
 
-+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
-    return tableView.height;
-}
+//+ (CGFloat)tableView:(nullable UITableView *)tableView heightForRowAtIndexPath:(nullable NSIndexPath *)indexPath withParams:(nullable id)params {
+//    return tableView.height;
+//}
 
 + (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
 
 - (void)updateConstraints {
-    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
+    CGFloat height = self.webView.scrollView.contentSize.height;
+    WKNNestedScrollTableViewLog(@"self.webView.scrollView.contentSize: %@", @(self.webView.scrollView.contentSize));
+    [self.webContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(height);
+        make.bottom.mas_equalTo(self.contentView);
     }];
+//    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.top.right.mas_equalTo(0);
+//        make.height.mas_equalTo(50);
+//    }];
     
     //according to apple super should be called at end of method
     [super updateConstraints];
@@ -86,6 +131,10 @@
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)nestedScrollView {
+    
+}
+
+- (void)_scrollViewDidScroll:(UIScrollView *)nestedScrollView {
     if (nestedScrollView != self.nestedScrollView) {
         return;
     }

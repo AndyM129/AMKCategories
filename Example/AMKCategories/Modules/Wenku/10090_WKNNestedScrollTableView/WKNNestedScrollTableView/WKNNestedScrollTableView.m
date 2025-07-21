@@ -51,21 +51,20 @@ static void *kNestedScrollTableViewCellKey = &kNestedScrollTableViewCellKey;
     return _cachedCells;
 }
 
-//- (void)setContentOffset:(CGPoint)contentOffset {
-//    WKNNestedScrollTableViewLog(@"🔶 %@ -> %@", @(self.contentOffset), @(contentOffset));
-//    [super setContentOffset:contentOffset];
-//}
-//
-//- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
-//    WKNNestedScrollTableViewLog(@"🔶 %@ -> %@", @(self.contentOffset), @(contentOffset));
-//    [super setContentOffset:contentOffset animated:animated];
-//}
-
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
 
 - (void)preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)tableView {
+    if (tableView != self) {
+        return;
+    }
+    
+    //CGFloat currentContentOffsetY = self.contentOffset.y; //!< 当前的内容偏移Y
+    WKNNestedScrollTableViewLog(@"🔳 %@", self.wknNestedScrollTableViewDebug_debugDescription);
+}
+
+- (void)_preferredProcessNestedScrollTableViewDidScroll:(__kindof UIScrollView *)tableView {
     if (tableView != self) {
         return;
     }

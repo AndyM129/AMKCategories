@@ -118,7 +118,7 @@
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
         self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[@"NACells", @"短WebViewCell", @"短WebView+NACells", @"长WebViewCell", @"长WebViewCell+NACells"];
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = 3;
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = 1;
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
     
@@ -228,7 +228,8 @@
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleShortWebTableViewCell.className]) {
         WKNNestedScrollTableExampleShortWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className forIndexPath:indexPath];
         if (!cell.webView.URL) {
-            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:cell.height];
+            //[cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:cell.height];
+            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:500];
         }
         return cell;
     }
@@ -247,11 +248,23 @@
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className]) {
         return [WKNNestedScrollTableExampleCategoryTitleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
-    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell.className]) {
-        return [WKNNestedScrollTableExampleLongWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
-    }
+//    if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
+//        WKNNestedScrollTableExampleWebTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        return 100;
+//        //return UITableViewAutomaticDimension;//cell.nestedScrollView.contentSize.height;
+//    }
+    //if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell.className]) {
+    //    return [WKNNestedScrollTableExampleLongWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+    //}
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleShortWebTableViewCell.className]) {
-        return [WKNNestedScrollTableExampleShortWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
+        return UITableViewAutomaticDimension;
+        
+        //WKNNestedScrollTableExampleShortWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className forIndexPath:indexPath];
+        //return cell.nestedScrollView.contentSize.height;
+        
+        //return 100;
+        
+        //return [WKNNestedScrollTableExampleShortWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
     }
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleWebTableViewCell.className]) {
         return [WKNNestedScrollTableExampleWebTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath withParams:nil];
