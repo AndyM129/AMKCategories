@@ -166,10 +166,8 @@
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
         NSLog(@"🔲 cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
         
-        CGFloat webViewTop = MAX(0, (tableViewContentOffsetY - cellTop));
-        webViewTop = MIN(webViewTop, scrollView.contentSize.height - scrollView.height);
-        self.webView.top = webViewTop;
-        self.webView.scrollView.contentOffset = CGPointMake(0, webViewTop);
+        self.webView.top = MAX(0, MIN((tableViewContentOffsetY - cellTop), (scrollView.contentSize.height - scrollView.height)));
+        self.webView.scrollView.contentOffset = CGPointMake(0, self.webView.top);
     }
 }
 
