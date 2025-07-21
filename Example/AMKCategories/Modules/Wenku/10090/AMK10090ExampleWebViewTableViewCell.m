@@ -22,265 +22,113 @@
 #pragma mark -
 #pragma mark -
 
-//@interface AMK10090ExampleWebViewTableViewCell () <UIScrollViewDelegate>
-//@property (nonatomic, strong, readwrite, nullable) UIView *webBackgroundView;
-//@property (nonatomic, assign, readwrite) CGFloat contentHeight;
-//@property (nonatomic, strong, readwrite, nullable) MASConstraint *contentHeightConstraint;
-//@property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
-//@end
-//
-//@implementation AMK10090ExampleWebViewTableViewCell
-//
-//#pragma mark - Init Methods
-//
-//- (void)dealloc {
-//    [_webView.scrollView removeObserverBlocks];
-//}
-//
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
-//        self.contentView.layer.borderWidth = 1 / UIScreen.mainScreen.scale;
-////        self.contentHeight = 100;
-////        
-////        _webBackgroundView = [UIView.alloc init];
-////        _webBackgroundView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
-////        [self.contentView addSubview:_webBackgroundView];
-////        [_webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-////            make.left.top.right.equalTo(self.contentView);
-////            self.contentHeightConstraint = make.height.mas_equalTo(self.contentHeight); // 默认高度
-////            make.bottom.equalTo(self.contentView); // ⚠️ 关键：撑开 contentView
-////        }];
-////        
-////        __weak __typeof__(self)weakSelf = self;
-////        [_webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-////            weakSelf.contentHeight = arc4random() % 400;
-////        }]];
-//        
-//        self.webBackgroundView = [UIView new];
-//        self.webBackgroundView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
-//        [self.contentView addSubview:self.webBackgroundView];
-//        
-//        [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.right.equalTo(self.contentView);
-//            self.contentHeightConstraint = make.height.mas_equalTo(100); // 默认高度
-//            make.bottom.equalTo(self.contentView); // ⚠️ 关键：撑开 contentView
-//        }];
-//        
-//        __weak __typeof__(self)weakSelf = self;
-//        [_webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-//            weakSelf.contentHeight = arc4random() % 400;
-//        }]];
-//    }
-//    return self;
-//}
-//
-//#pragma mark - Getters & Setters
-//
-////- (UIView *)webBackgroundView {
-////    if (!_webBackgroundView) {
-////        _webBackgroundView = [UIView.alloc init];
-////        _webBackgroundView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
-////        [self.contentView addSubview:_webBackgroundView];
-////        [_webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-////            make.left.top.right.equalTo(self.contentView);
-////            self.contentHeightConstraint = make.height.mas_equalTo(self.contentHeight); // 默认高度
-////            make.bottom.equalTo(self.contentView); // ⚠️ 关键：撑开 contentView
-////        }];
-////        
-////        __weak __typeof__(self)weakSelf = self;
-////        [_webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-////            weakSelf.contentHeight = arc4random() % 400;
-////        }]];
-////    }
-////    return _webBackgroundView;
-////}
-////
-////- (void)setContentHeight:(CGFloat)contentHeight {
-////    _contentHeight = contentHeight;
-////    if (_contentHeightConstraint) {
-////        _contentHeightConstraint.mas_equalTo(_contentHeight);
-////    }
-////    [self setNeedsUpdateConstraints];
-////    [self updateConstraintsIfNeeded];
-////}
-//
-//- (void)setContentHeight:(CGFloat)contentHeight {
-////    self.contentHeightConstraint.mas_equalTo(contentHeight);
-////    [self setNeedsUpdateConstraints];
-////    [self updateConstraintsIfNeeded];
-//    
-//    [self.contentHeightConstraint uninstall]; // ⚠️ 注意更新前先卸载旧的
-//    [self.webBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        self.contentHeightConstraint = make.height.mas_equalTo(contentHeight);
-//    }];
-//    
-//    [self setNeedsUpdateConstraints];
-//    [self updateConstraintsIfNeeded];
-//}
-//
-////- (WKWebView *)webView {
-////    if (!_webView) {
-////        __weak __typeof__(self)weakSelf = self;
-////        _webView = [WKWebView.alloc init];
-////        _webView.scrollView.delegate = self;
-////        [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
-////            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
-////                [weakSelf setNeedsUpdateConstraints];
-////                [weakSelf updateConstraintsIfNeeded];
-////                
-//////                dispatch_async(dispatch_get_main_queue(), ^{
-//////                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
-//////                    [tableView beginUpdates];
-//////                    [tableView endUpdates];
-//////                });
-////            }
-////        }];
-////        [self.contentView addSubview:_webView];
-////    }
-////    return _webView;
-////}
-//
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-//    // 不调用父类实现，以避免编辑模式下的默认处理
-//}
-//
-//#pragma mark - Data & Networking
-//
-//#pragma mark - Layout Subviews
-//
-//+ (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath {
-//    return UITableViewAutomaticDimension;
-//}
-//
-//+ (BOOL)requiresConstraintBasedLayout {
-//    return YES;
-//}
-//
-//- (void)updateConstraints {
-//    
-//    
-////    [self.webBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-////        make.left.top.right.mas_equalTo(self.contentView);
-////        make.height.mas_equalTo(self.contentHeight);
-////        make.bottom.mas_equalTo(self.contentView);
-////    }];
-//    
-////    [self.webBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-////        make.top.mas_equalTo(self.contentView).inset(11);
-////        make.height.mas_equalTo(240);
-////        make.left.mas_equalTo(self.contentView).inset(70);
-////        make.right.mas_lessThanOrEqualTo(self.contentView).inset(20);
-////        make.bottom.mas_equalTo(self.contentView);
-////    }];
-//    
-////    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-////        make.left.right.mas_equalTo(self.contentView);
-////        make.top.mas_equalTo(self.contentView);
-////        make.height.mas_equalTo(100);//(MAX(100, self.webView.scrollView.contentSize.height));
-////        make.bottom.mas_equalTo(self.contentView);
-////    }];
-//    
-//    //according to apple super should be called at end of method
-//    [super updateConstraints];
-//}
-//
-//- (void)prepareForReuse {
-//    [super prepareForReuse];
-//    // Clear subviews data ...
-//}
-//
-//#pragma mark - Action Methods
-//
-//#pragma mark - Notifications
-//
-//#pragma mark - KVO
-//
-//#pragma mark - Protocol
-//
-//#pragma mark UIScrollViewDelegate
-//
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-////    NSLog(@"🔲 %@", scrollView);
-////    
-////    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
-////    if (tableView) {
-////        CGFloat cellTop = self.frame.origin.y;
-////        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
-////        
-////        // 当前cell 还未露出
-////        if (tableViewContentOffsetY < cellTop) {
-////            scrollView.contentOffset = CGPointZero;
-////            scrollView.showsVerticalScrollIndicator = NO;
-////        }
-////        // 当前cell 已露出
-////        else {
-////            scrollView.showsVerticalScrollIndicator = YES;
-////        }
-////    }
-//}
-//
-//#pragma mark - Helper Methods
-//
-//@end
-
-@interface AMKWebBackgroundView : UIView
-@property (nonatomic, assign, readwrite) CGFloat customIntrinsicContentHeight;
+@interface _AMK10090ExampleIntrinsicSizeView : UIView
+@property (nonatomic, assign, readwrite) CGFloat intrinsicContentHeight;
 @end
 
-@implementation AMKWebBackgroundView
+@implementation _AMK10090ExampleIntrinsicSizeView
 
-- (void)setCustomIntrinsicContentHeight:(CGFloat)customIntrinsicContentHeight {
-    NSLog(@"%g -> %g", _customIntrinsicContentHeight, customIntrinsicContentHeight);
-    _customIntrinsicContentHeight = customIntrinsicContentHeight;
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.userInteractionEnabled = NO;
+    }
+    return self;
+}
+
+- (void)setIntrinsicContentHeight:(CGFloat)intrinsicContentHeight {
+    if (_intrinsicContentHeight == intrinsicContentHeight) {
+        return;
+    }
+    
+    NSLog(@"%g -> %g", _intrinsicContentHeight, intrinsicContentHeight);
+    _intrinsicContentHeight = intrinsicContentHeight;
     [self invalidateIntrinsicContentSize];
 }
 
 - (CGSize)intrinsicContentSize {
     CGSize intrinsicContentSize = [super intrinsicContentSize];
-    intrinsicContentSize.height = self.customIntrinsicContentHeight;
+    intrinsicContentSize.height = self.intrinsicContentHeight;
     return intrinsicContentSize;
 }
 
 @end
 
+#pragma mark -
+#pragma mark -
 
-@interface AMK10090ExampleWebViewTableViewCell ()
-@property (nonatomic, strong) AMKWebBackgroundView *webBackgroundView;
+@interface AMK10090ExampleWebViewTableViewCell () <UIScrollViewDelegate>
+@property (nonatomic, strong, readwrite, nullable) _AMK10090ExampleIntrinsicSizeView *intrinsicSizeView;
+//@property (nonatomic, strong, readwrite, nullable) WKWebView *webView;
 @end
 
 @implementation AMK10090ExampleWebViewTableViewCell
 
+#pragma mark - Init Methods
+
+- (void)dealloc {
+    [_webView.scrollView removeObserverBlocks];
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.layer.borderWidth = 1 / UIScreen.mainScreen.scale;
+        
         __weak __typeof__(self)weakSelf = self;
-        self.contentView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
         [self.contentView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-            weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
-//            [weakSelf setNeedsUpdateConstraints];
-//            [weakSelf updateConstraintsIfNeeded];
-            
-            UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
             [UIView performWithoutAnimation:^{
+                weakSelf.intrinsicSizeView.intrinsicContentHeight = arc4random() % 400 + 50;
+                UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
                 [tableView performBatchUpdates:nil completion:nil];
             }];
-//            [tableView performBatchUpdates:nil completion:nil];
-//            [tableView beginUpdates];
-//            [tableView endUpdates];
         }]];
     }
     return self;
 }
 
-- (AMKWebBackgroundView *)webBackgroundView {
-    if (!_webBackgroundView) {
-        _webBackgroundView = [AMKWebBackgroundView new];
-        _webBackgroundView.hidden = YES;
-        _webBackgroundView.backgroundColor = [UIColor greenColor];
-        _webBackgroundView.customIntrinsicContentHeight = 200;
-        [self.contentView addSubview:_webBackgroundView];
+#pragma mark - Getters & Setters
+
+- (_AMK10090ExampleIntrinsicSizeView *)intrinsicSizeView {
+    if (!_intrinsicSizeView) {
+        _intrinsicSizeView = [_AMK10090ExampleIntrinsicSizeView.alloc init];
+        _intrinsicSizeView.intrinsicContentHeight = 100;
+        [self.contentView insertSubview:_intrinsicSizeView atIndex:0];
     }
-    return _webBackgroundView;
+    return _intrinsicSizeView;
+}
+
+//- (WKWebView *)webView {
+//    if (!_webView) {
+//        __weak __typeof__(self)weakSelf = self;
+//        _webView = [WKWebView.alloc init];
+//        _webView.scrollView.delegate = self;
+//        [_webView.scrollView addObserverBlockForKeyPath:@"contentSize" block:^(UIScrollView * _Nonnull scrollView, NSNumber * oldVal, NSNumber * newVal) {
+//            if (!CGSizeEqualToSize(newVal.CGSizeValue, oldVal.CGSizeValue)) {
+//                [weakSelf setNeedsUpdateConstraints];
+//                [weakSelf updateConstraintsIfNeeded];
+//                
+////                dispatch_async(dispatch_get_main_queue(), ^{
+////                    UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+////                    [tableView beginUpdates];
+////                    [tableView endUpdates];
+////                });
+//            }
+//        }];
+//        [self.contentView addSubview:_webView];
+//    }
+//    return _webView;
+//}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    // 不调用父类实现，以避免编辑模式下的默认处理
+}
+
+#pragma mark - Data & Networking
+
+#pragma mark - Layout Subviews
+
++ (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath {
+    return UITableViewAutomaticDimension;
 }
 
 + (BOOL)requiresConstraintBasedLayout {
@@ -288,13 +136,121 @@
 }
 
 - (void)updateConstraints {
-    [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.contentView);
-        make.bottom.equalTo(self.contentView);
+    [self.intrinsicSizeView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
     }];
+
+//    [self.webBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.contentView).inset(11);
+//        make.height.mas_equalTo(240);
+//        make.left.mas_equalTo(self.contentView).inset(70);
+//        make.right.mas_lessThanOrEqualTo(self.contentView).inset(20);
+//        make.bottom.mas_equalTo(self.contentView);
+//    }];
+    
+//    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.mas_equalTo(self.contentView);
+//        make.top.mas_equalTo(self.contentView);
+//        make.height.mas_equalTo(100);//(MAX(100, self.webView.scrollView.contentSize.height));
+//        make.bottom.mas_equalTo(self.contentView);
+//    }];
     
     //according to apple super should be called at end of method
     [super updateConstraints];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    // Clear subviews data ...
+}
+
+#pragma mark - Action Methods
+
+#pragma mark - Notifications
+
+#pragma mark - KVO
+
+#pragma mark - Protocol
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"🔲 %@", scrollView);
+//    
+//    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+//    if (tableView) {
+//        CGFloat cellTop = self.frame.origin.y;
+//        CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
+//        
+//        // 当前cell 还未露出
+//        if (tableViewContentOffsetY < cellTop) {
+//            scrollView.contentOffset = CGPointZero;
+//            scrollView.showsVerticalScrollIndicator = NO;
+//        }
+//        // 当前cell 已露出
+//        else {
+//            scrollView.showsVerticalScrollIndicator = YES;
+//        }
+//    }
+}
+
+#pragma mark - Helper Methods
+
 @end
+
+
+
+
+//@interface AMK10090ExampleWebViewTableViewCell ()
+//@property (nonatomic, strong) _AMK10090ExampleIntrinsicSizeView *webBackgroundView;
+//@end
+//
+//@implementation AMK10090ExampleWebViewTableViewCell
+//
+//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+//        __weak __typeof__(self)weakSelf = self;
+//        self.contentView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
+//        [self.contentView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
+//            weakSelf.webBackgroundView.intrinsicContentHeight = arc4random() % 400 + 50;
+////            [weakSelf setNeedsUpdateConstraints];
+////            [weakSelf updateConstraintsIfNeeded];
+//            
+//            UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+//            [UIView performWithoutAnimation:^{
+//                [tableView performBatchUpdates:nil completion:nil];
+//            }];
+////            [tableView performBatchUpdates:nil completion:nil];
+////            [tableView beginUpdates];
+////            [tableView endUpdates];
+//        }]];
+//    }
+//    return self;
+//}
+//
+//- (_AMK10090ExampleIntrinsicSizeView *)webBackgroundView {
+//    if (!_webBackgroundView) {
+//        _webBackgroundView = [_AMK10090ExampleIntrinsicSizeView new];
+//        _webBackgroundView.hidden = YES;
+//        _webBackgroundView.backgroundColor = [UIColor greenColor];
+//        _webBackgroundView.intrinsicContentHeight = 200;
+//        [self.contentView addSubview:_webBackgroundView];
+//    }
+//    return _webBackgroundView;
+//}
+//
+//+ (BOOL)requiresConstraintBasedLayout {
+//    return YES;
+//}
+//
+//- (void)updateConstraints {
+//    [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.equalTo(self.contentView);
+//        make.bottom.equalTo(self.contentView);
+//    }];
+//    
+//    //according to apple super should be called at end of method
+//    [super updateConstraints];
+//}
+//
+//@end
