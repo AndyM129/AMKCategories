@@ -11,8 +11,18 @@
 
 @interface AMK10090ExampleWebViewTableViewCell : UITableViewCell
 
+@property (nonatomic, strong, readonly, nullable) UIView *webBackgroundView;
+
 @property (nonatomic, strong, readonly, nullable) WKWebView *webView;
 
-+ (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath;
+//+ (CGFloat)tableView:(UITableView *_Nullable)tableView heightForRowAtIndexPath:(NSIndexPath *_Nullable)indexPath;
+
+@end
+
+#pragma mark -
+
+@interface WKWebView (WKNNestedScrollTableView)
+
+- (nullable WKNavigation *)amk10090Example_loadHTMLStringWithContentHeight:(CGFloat)contentHeight;
 
 @end

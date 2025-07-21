@@ -24,12 +24,12 @@
 
 @implementation AMK10090ExampleViewController
 
-//+ (void)load {
-//    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
-//        [NSNotificationCenter.defaultCenter removeObserver:token];
-//        [UIViewController amk_pushViewController:[self new] animated:YES];
-//    }];
-//}
++ (void)load {
+    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
+        [NSNotificationCenter.defaultCenter removeObserver:token];
+        [UIViewController amk_pushViewController:[self new] animated:YES];
+    }];
+}
 
 #pragma mark - Dealloc
 
@@ -77,23 +77,25 @@
     if (!_tableView) {
         _tableView = [AMK10090ExampleTableView.alloc initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor whiteColor];
-        _tableView.estimatedRowHeight = 0;
-        _tableView.estimatedSectionFooterHeight = 0;
-        _tableView.estimatedSectionHeaderHeight = 0;
-        _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, CGFLOAT_MIN)];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.separatorColor = UIColor.clearColor;
+//        _tableView.estimatedRowHeight = 0;
+//        _tableView.estimatedSectionFooterHeight = 0;
+//        _tableView.estimatedSectionHeaderHeight = 0;
+//        _tableView.tableFooterView = [UIView.alloc initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, CGFLOAT_MIN)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        if (@available(iOS 15.0, *)) {
-            _tableView.sectionHeaderTopPadding = 0;
-        }
-        if (@available(iOS 13.0, *)) {
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } else {
-#           pragma clang diagnostic push
-#           pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            self.automaticallyAdjustsScrollViewInsets = NO;
-#           pragma clang diagnostic pop
-        }
+//        if (@available(iOS 15.0, *)) {
+//            _tableView.sectionHeaderTopPadding = 0;
+//        }
+//        if (@available(iOS 13.0, *)) {
+//            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        } else {
+//#           pragma clang diagnostic push
+//#           pragma clang diagnostic ignored "-Wdeprecated-declarations"
+//            self.automaticallyAdjustsScrollViewInsets = NO;
+//#           pragma clang diagnostic pop
+//        }
         [_tableView registerClass:AMK10090ExampleVideoTableViewCell.class forCellReuseIdentifier:AMK10090ExampleVideoTableViewCell.className];
         [_tableView registerClass:AMK10090ExampleCategoryTitleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleCategoryTitleTableViewCell.className];
         [_tableView registerClass:AMK10090ExampleTableViewCell.class forCellReuseIdentifier:AMK10090ExampleTableViewCell.className];
@@ -196,6 +198,7 @@
         AMK10090ExampleWebViewTableViewCell *cell = self.webViewTableViewCell;
         if (!cell) {
             cell = [tableView dequeueReusableCellWithIdentifier:AMK10090ExampleWebViewTableViewCell.className forIndexPath:indexPath];
+//            [cell.webView amk10090Example_loadHTMLStringWithContentHeight:500];
 //            cell.webView.scrollView.delegate = self;
             self.webViewTableViewCell = cell;
         }
@@ -220,7 +223,8 @@
         return [AMK10090ExampleTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     if ([tableViewRow.identifier isEqualToString:AMK10090ExampleWebViewTableViewCell.className]) {
-        return [AMK10090ExampleWebViewTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
+        return UITableViewAutomaticDimension;
+//        return [AMK10090ExampleWebViewTableViewCell tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     return 0;
 }
@@ -234,29 +238,21 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"🔳 %@", scrollView);
     
-    // 若 webViewTableViewCell 可见
-    if (self.webViewTableViewCell && !self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
-        // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
-        if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
-            self.tableView.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
-            self.tableView.showsVerticalScrollIndicator = NO;
-        }
-        // 已经显示了 tableView 中 webViewTableViewCell 之前的 cell，则 webViewTableViewCell 中的 webView 的 contentOffset 需要重置
-        if (self.tableView.contentOffset.y < self.webViewTableViewCell.top) {
-            self.webViewTableViewCell.webView.scrollView.contentOffset = CGPointZero;
-            self.tableView.showsVerticalScrollIndicator = YES;
-        }
-    } else {
-        self.tableView.showsVerticalScrollIndicator = YES;
-    }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if (scrollView == self.tableView) {
-        NSLog(@"🟨 %@", scrollView);
-    } else if (scrollView == self.webViewTableViewCell.webView.scrollView) {
-        NSLog(@"🟩 %@", scrollView);
-    }
+//    // 若 webViewTableViewCell 可见
+//    if (self.webViewTableViewCell && !self.webViewTableViewCell.isHidden && self.webViewTableViewCell.alpha>0) {
+//        // 正在显示 webViewTableViewCell 中的 webView，则固定 tableView 的 contentOffset，让其不动
+//        if (self.webViewTableViewCell.webView.scrollView.contentOffset.y > 0) {
+//            self.tableView.contentOffset = CGPointMake(0, self.webViewTableViewCell.top);
+//            self.tableView.showsVerticalScrollIndicator = NO;
+//        }
+//        // 已经显示了 tableView 中 webViewTableViewCell 之前的 cell，则 webViewTableViewCell 中的 webView 的 contentOffset 需要重置
+//        if (self.tableView.contentOffset.y < self.webViewTableViewCell.top) {
+//            self.webViewTableViewCell.webView.scrollView.contentOffset = CGPointZero;
+//            self.tableView.showsVerticalScrollIndicator = YES;
+//        }
+//    } else {
+//        self.tableView.showsVerticalScrollIndicator = YES;
+//    }
 }
 
 #pragma mark UIGestureRecognizerDelegate
