@@ -251,22 +251,8 @@
 
 @implementation AMK10090ExampleWebViewTableViewCell
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.webBackgroundView = [AMKWebBackgroundView new];
-        self.webBackgroundView.backgroundColor = [UIColor greenColor];
-        self.webBackgroundView.customIntrinsicContentHeight = 200;
-        [self.contentView addSubview:self.webBackgroundView];
-
-        [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.equalTo(self.contentView);
-            make.bottom.equalTo(self.contentView);
-        }];
-        
         __weak __typeof__(self)weakSelf = self;
         [self.webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
             weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
@@ -279,6 +265,30 @@
         }]];
     }
     return self;
+}
+
+- (AMKWebBackgroundView *)webBackgroundView {
+    if (!_webBackgroundView) {
+        _webBackgroundView = [AMKWebBackgroundView new];
+        _webBackgroundView.backgroundColor = [UIColor greenColor];
+        _webBackgroundView.customIntrinsicContentHeight = 200;
+        [self.contentView addSubview:_webBackgroundView];
+    }
+    return _webBackgroundView;
+}
+
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
+- (void)updateConstraints {
+    [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+    }];
+    
+    //according to apple super should be called at end of method
+    [super updateConstraints];
 }
 
 @end
