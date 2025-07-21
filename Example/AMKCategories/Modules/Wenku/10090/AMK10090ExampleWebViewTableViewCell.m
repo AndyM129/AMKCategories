@@ -257,8 +257,8 @@
         self.contentView.backgroundColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
         [self.contentView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
             weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
-            [weakSelf setNeedsUpdateConstraints];
-            [weakSelf updateConstraintsIfNeeded];
+//            [weakSelf setNeedsUpdateConstraints];
+//            [weakSelf updateConstraintsIfNeeded];
             
             UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
             [UIView performWithoutAnimation:^{
