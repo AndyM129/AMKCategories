@@ -8,6 +8,46 @@
 
 #import "WKNNestedScrollTableExampleCollectionTableViewCell.h"
 
+@interface WKNNestedScrollTableExampleCollectionViewCell : UICollectionViewCell
+@property (nonatomic, strong, readwrite, nullable) UILabel *titleLabel;
+@end
+
+@implementation WKNNestedScrollTableExampleCollectionViewCell
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.selectedBackgroundView = [UIView.alloc initWithFrame:self.bounds];
+        self.selectedBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    }
+    return self;
+}
+
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [UILabel.alloc init];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.numberOfLines = 0;
+        [self.contentView addSubview:_titleLabel];
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
+        }];
+    }
+    return _titleLabel;
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [UIView animateWithDuration:0.15 animations:^{
+        self.contentView.alpha = highlighted ? 0.8 : 1;
+    }];
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
 @interface WKNNestedScrollTableExampleCollectionTableViewCell () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 @property (nonatomic, strong, readwrite, nullable) UICollectionView *collectionView;
 @end
@@ -37,9 +77,7 @@
         _collectionView.layer.borderWidth = 3;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
-        [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class)];
-        [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class)];
+        [_collectionView registerClass:WKNNestedScrollTableExampleCollectionViewCell.class forCellWithReuseIdentifier:WKNNestedScrollTableExampleCollectionViewCell.className];
         [self.contentView addSubview:_collectionView];
     }
     return _collectionView;
@@ -100,14 +138,16 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+    WKNNestedScrollTableExampleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:WKNNestedScrollTableExampleCollectionViewCell.className forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor colorWithHue:fmod(0.6 + indexPath.section * 0.13, 1.0) saturation:fabs(0.8 - indexPath.row * 0.05) brightness:1 alpha:1.0];
+    cell.titleLabel.text = [NSString stringWithFormat:@"Item <%ld, %ld>", indexPath.section, indexPath.row];
     return cell;
 }
 
 #pragma mark UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSLog(@"");
 }
 

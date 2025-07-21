@@ -124,18 +124,19 @@
     static NSString *kLongWebCell = @"LongWebCell";
     static NSString *kLongWebCell_NormalCells = @"LongWebCell+NormalCells";
     static NSString *kLongWebCell_NormalCells_LongWebCell2 = @"LongWebCell+NormalCells+LongWebCell2";
-    static NSString *kNormalCells_CollectionView = @"NormalCells+CollectionView";
+    static NSString *kNormalCells_CollectionCells_NormalCells = @"NormalCells+CollectionCells+NormalCells";
     
     // 首次刷新：配置 Tab
     if (!self.tableView.amk_sections.count) {
-        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[kNormalCells, kShortWebCell, kShortWebCell_NormalCells, kLongWebCell, kLongWebCell_NormalCells, kLongWebCell_NormalCells_LongWebCell2, kNormalCells_CollectionView];
+        self.tableView.categoryTitleTableViewCell.categoryTitleView.titles = @[kNormalCells, kShortWebCell, kShortWebCell_NormalCells, kLongWebCell, kLongWebCell_NormalCells, kLongWebCell_NormalCells_LongWebCell2, kNormalCells_CollectionCells_NormalCells];
         self.tableView.categoryTitleTableViewCell.categoryTitleView.defaultSelectedIndex = [self.tableView.categoryTitleTableViewCell.categoryTitleView.titles indexOfObject:kShortWebCell];
         [self.tableView.categoryTitleTableViewCell.categoryTitleView reloadDataWithoutListContainer];
     }
     
     // 重新构建列表内容
-    NSInteger selectedIndex = self.tableView.categoryTitleTableViewCell.categoryTitleView.selectedIndex;
-    NSString *selectedTitle = self.tableView.categoryTitleTableViewCell.categoryTitleView.titles[selectedIndex];
+    JXCategoryTitleView *categoryTitleView = self.tableView.categoryTitleTableViewCell.categoryTitleView;
+    NSInteger selectedIndex = categoryTitleView.selectedIndex;
+    NSString *selectedTitle = categoryTitleView.titles[selectedIndex];
     NSMutableArray<AMKTableViewSection *> *sections = @[].mutableCopy;
     [sections addObject:({
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className rows:nil];
@@ -145,54 +146,108 @@
         section;
     })];
     [sections addObject:({
-        JXCategoryTitleView *categoryTitleView = self.tableView.categoryTitleTableViewCell.categoryTitleView;
         AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
         [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className userInfo:nil]];
-        // NormalCells
-        if (selectedTitle == kNormalCells) {
+        section;
+    })];
+    // NormalCells
+    if (selectedTitle == kNormalCells) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
-        }
-        // ShortWebCell
-        if (selectedTitle == kShortWebCell) {
+            section;
+        })];
+    }
+    // ShortWebCell
+    if (selectedTitle == kShortWebCell) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
-        }
-        // ShortWebCell+NormalCells
-        else if (selectedTitle == kShortWebCell_NormalCells) {
+            section;
+        })];
+    }
+    // ShortWebCell+NormalCells
+    else if (selectedTitle == kShortWebCell_NormalCells) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleShortWebTableViewCell.className userInfo:nil]];
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
-        }
-        // LongWebCell
-        else if (selectedTitle == kLongWebCell) {
+            section;
+        })];
+    }
+    // LongWebCell
+    else if (selectedTitle == kLongWebCell) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
-        }
-        // LongWebCell+NormalCells
-        else if (selectedTitle == kLongWebCell_NormalCells) {
+            section;
+        })];
+    }
+    // LongWebCell+NormalCells
+    else if (selectedTitle == kLongWebCell_NormalCells) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
-        }
-        // LongWebCell+NormalCells+LongWebCell2
-        else if (selectedTitle == kLongWebCell_NormalCells_LongWebCell2) {
+            section;
+        })];
+    }
+    // LongWebCell+NormalCells+LongWebCell2
+    else if (selectedTitle == kLongWebCell_NormalCells_LongWebCell2) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className userInfo:nil]];
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             for (NSInteger i=0; i<20; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell2.className userInfo:nil]];
-        }
-        // NormalCells+CollectionView
-        else if (selectedTitle == kNormalCells_CollectionView) {
+            section;
+        })];
+    }
+    // NormalCells+CollectionCells+NormalCells
+    else if (selectedTitle == kNormalCells_CollectionCells_NormalCells) {
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             for (NSInteger i=0; i<5; i++) {
                 [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
             }
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
             [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleCollectionTableViewCell.className userInfo:nil]];
-        }
-        section;
-    })];
+            section;
+        })];
+        [sections addObject:({
+            AMKTableViewSection *section = [AMKTableViewSection.alloc initWithIdentifier:WKNNestedScrollTableExampleCategoryTitleTableViewCell.className rows:nil];
+            for (NSInteger i=0; i<4; i++) {
+                [section.rows addObject:[AMKTableViewRow.alloc initWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className userInfo:nil]];
+            }
+            section;
+        })];
+    }
     
     // 刷新列表
     [self.tableView setAmk_sections:sections];
@@ -234,7 +289,7 @@
     
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleNormalTableViewCell.className]) {
         WKNNestedScrollTableExampleNormalTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleNormalTableViewCell.className forIndexPath:indexPath];
-        cell.textLabel.text = [NSString stringWithFormat:@"Item <%ld, %ld>", indexPath.section, indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"Row <%ld, %ld>", indexPath.section, indexPath.row];
         cell.contentView.backgroundColor = [UIColor colorWithHue:fmod(0.6 + indexPath.section * 0.13, 1.0) saturation:fabs(0.8 - indexPath.row * 0.05) brightness:1 alpha:1.0];
         return cell;
     }
