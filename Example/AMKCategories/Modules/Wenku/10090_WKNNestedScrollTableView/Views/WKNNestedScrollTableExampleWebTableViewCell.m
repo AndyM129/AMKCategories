@@ -162,8 +162,13 @@
         CGFloat tableViewContentOffsetY = tableView.contentOffset.y;
         NSLog(@"🔲 cellTop = %g, tableViewContentOffsetY = %g, Y-Top差值 = %g", cellTop, tableViewContentOffsetY, tableViewContentOffsetY - cellTop);
         
-        self.webView.top = MAX(0, MIN((tableViewContentOffsetY - cellTop), (nestedScrollView.contentSize.height - nestedScrollView.height)));
-        self.webView.scrollView.contentOffset = CGPointMake(0, self.webView.top);
+        CGFloat webViewTop = MAX(0, MIN((tableViewContentOffsetY - cellTop), (nestedScrollView.contentSize.height - nestedScrollView.height)));
+        [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(self.contentView);
+            make.top.mas_equalTo(webViewTop);
+            make.height.mas_equalTo(MIN(tableView.height, self.webView.scrollView.contentSize.height));
+        }];
+        self.webView.scrollView.contentOffset = CGPointMake(0, webViewTop);
     }
 }
 

@@ -220,8 +220,8 @@
     if ([tableViewRow.identifier isEqualToString:WKNNestedScrollTableExampleLongWebTableViewCell.className]) {
         WKNNestedScrollTableExampleLongWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WKNNestedScrollTableExampleLongWebTableViewCell.className forIndexPath:indexPath];
         if (!cell.webView.URL) {
-            //[cell.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/pptspreadact"]]];
-            [cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:1500];
+            [cell.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://tanbi.baidu.com/h5apptopic/browse/pptspreadact"]]];
+            //[cell.webView wknNestedScrollTableView_loadHTMLStringWithContentHeight:1500];
         }
         return cell;
     }
