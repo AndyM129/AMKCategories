@@ -247,7 +247,6 @@
 
 @interface AMK10090ExampleWebViewTableViewCell ()
 @property (nonatomic, strong) AMKWebBackgroundView *webBackgroundView;
-@property (nonatomic, strong) MASConstraint *heightConstraint;
 @end
 
 @implementation AMK10090ExampleWebViewTableViewCell
@@ -270,7 +269,6 @@
         
         __weak __typeof__(self)weakSelf = self;
         [self.webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-            //[weakSelf setWebHeight:arc4random() % 400 + 50];
             weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
             [weakSelf setNeedsUpdateConstraints];
             [weakSelf updateConstraintsIfNeeded];
@@ -281,20 +279,6 @@
         }]];
     }
     return self;
-}
-
-- (void)setWebHeight:(CGFloat)height {
-//    [self.heightConstraint uninstall]; // ⚠️ 注意更新前先卸载旧的
-//    [self.webBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        self.heightConstraint = make.height.mas_equalTo(height);
-//    }];
-
-//    [self setNeedsUpdateConstraints];
-//    [self updateConstraintsIfNeeded];
-//    
-//    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
-//    [tableView beginUpdates];
-//    [tableView endUpdates];
 }
 
 @end
