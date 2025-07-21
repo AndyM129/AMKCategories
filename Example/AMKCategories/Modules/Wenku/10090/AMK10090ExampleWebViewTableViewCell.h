@@ -11,7 +11,7 @@
 
 @interface AMK10090ExampleWebViewTableViewCell : UITableViewCell
 
-@property (nonatomic, strong, readonly, nullable) UIView *webBackgroundView;
+//@property (nonatomic, strong, readonly, nullable) UIView *webBackgroundView;
 
 @property (nonatomic, strong, readonly, nullable) WKWebView *webView;
 

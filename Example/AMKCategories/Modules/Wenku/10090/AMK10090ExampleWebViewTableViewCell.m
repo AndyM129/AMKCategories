@@ -224,9 +224,29 @@
 //
 //@end
 
+@interface AMKWebBackgroundView : UIView
+@property (nonatomic, assign, readwrite) CGFloat customIntrinsicContentHeight;
+@end
+
+@implementation AMKWebBackgroundView
+
+- (void)setCustomIntrinsicContentHeight:(CGFloat)customIntrinsicContentHeight {
+    NSLog(@"%g -> %g", _customIntrinsicContentHeight, customIntrinsicContentHeight);
+    _customIntrinsicContentHeight = customIntrinsicContentHeight;
+    [self invalidateIntrinsicContentSize];
+}
+
+- (CGSize)intrinsicContentSize {
+    CGSize intrinsicContentSize = [super intrinsicContentSize];
+    intrinsicContentSize.height = self.customIntrinsicContentHeight;
+    return intrinsicContentSize;
+}
+
+@end
+
 
 @interface AMK10090ExampleWebViewTableViewCell ()
-@property (nonatomic, strong) UIView *webBackgroundView;
+@property (nonatomic, strong) AMKWebBackgroundView *webBackgroundView;
 @property (nonatomic, strong) MASConstraint *heightConstraint;
 @end
 
@@ -238,36 +258,42 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.webBackgroundView = [UIView new];
+        self.webBackgroundView = [AMKWebBackgroundView new];
         self.webBackgroundView.backgroundColor = [UIColor greenColor];
         [self.contentView addSubview:self.webBackgroundView];
 
         [self.webBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self.contentView);
-//            /self.heightConstraint = make.height.mas_equalTo(100); // 初始高度
-            make.bottom.equalTo(self.contentView); // ✅ 必须加这一句！
+            make.bottom.equalTo(self.contentView);
         }];
         
         __weak __typeof__(self)weakSelf = self;
         [self.webBackgroundView addGestureRecognizer:[UITapGestureRecognizer.alloc initWithActionBlock:^(id  _Nonnull sender) {
-            [weakSelf setWebHeight:arc4random() % 400 + 50];
+            //[weakSelf setWebHeight:arc4random() % 400 + 50];
+            weakSelf.webBackgroundView.customIntrinsicContentHeight = arc4random() % 400 + 50;
+            [weakSelf setNeedsUpdateConstraints];
+            [weakSelf updateConstraintsIfNeeded];
+            
+            UITableView *tableView = [weakSelf amk_nextResponderWithClass:UITableView.class];
+            [tableView beginUpdates];
+            [tableView endUpdates];
         }]];
     }
     return self;
 }
 
 - (void)setWebHeight:(CGFloat)height {
-    [self.heightConstraint uninstall]; // ⚠️ 注意更新前先卸载旧的
-    [self.webBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-        self.heightConstraint = make.height.mas_equalTo(height);
-    }];
+//    [self.heightConstraint uninstall]; // ⚠️ 注意更新前先卸载旧的
+//    [self.webBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        self.heightConstraint = make.height.mas_equalTo(height);
+//    }];
 
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    
-    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
-    [tableView beginUpdates];
-    [tableView endUpdates];
+//    [self setNeedsUpdateConstraints];
+//    [self updateConstraintsIfNeeded];
+//    
+//    UITableView *tableView = [self amk_nextResponderWithClass:UITableView.class];
+//    [tableView beginUpdates];
+//    [tableView endUpdates];
 }
 
 @end
