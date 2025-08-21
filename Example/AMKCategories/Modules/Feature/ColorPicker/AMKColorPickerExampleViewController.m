@@ -77,8 +77,7 @@
     [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
     [self.stackView addArrangedSubview:self.colorHuePickerView];
     [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        weakSelf.colorHuePickerView.colorHue = arc4random() % 100 / 100.0;
-        weakSelf.colorHueSaturationView.hue = weakSelf.colorHuePickerView.colorHue;
+        weakSelf.colorHuePickerView.hue = arc4random() % 100 / 100.0;
     }];
 }
 
@@ -119,10 +118,14 @@
 
 - (AMKColorHuePickerView *)colorHuePickerView {
     if (!_colorHuePickerView) {
+        __weak __typeof__(self)weakSelf = self;
         _colorHuePickerView = [AMKColorHuePickerView.alloc init];
         _colorHuePickerView.height = 30;
-        _colorHuePickerView.colorHueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.colorHueViewDefaultHeight / 2);
-        _colorHuePickerView.colorHue = 0.2;
+        _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);
+        _colorHuePickerView.hue = 0.2;
+        _colorHuePickerView.hueChangedBlock = ^(AMKColorHuePickerView * _Nonnull colorHuePickerView) {
+            weakSelf.colorHueSaturationView.hue = colorHuePickerView.hue;
+        };
     }
     return _colorHuePickerView;
 }
