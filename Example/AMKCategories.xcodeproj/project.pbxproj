@@ -42,6 +42,7 @@
 		880B958F2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B958E2D39220000C9754B /* AMKExampleViewModel+AMKAssociatedObject.m */; };
 		880B95922D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */; };
 		8812EFE22878661800370522 /* AMKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8812EFE12878661800370522 /* AMKStackViewController.m */; };
+		881E13F52E56B80700076F94 /* AMKColorPickerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881E13F42E56B80700076F94 /* AMKColorPickerExampleViewController.m */; };
 		8831D5852A5001B000BABB4D /* AMKCustomTransitioningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */; };
 		8831D5882A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D5872A5010FA00BABB4D /* WKNEditReaderNewTransitioning.m */; };
 		8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831D7F92A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m */; };
@@ -167,6 +168,8 @@
 		880B95912D39223500C9754B /* AMKExampleViewModel+AMKRootExampleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleViewModel+AMKRootExampleViewModel.m"; sourceTree = "<group>"; };
 		8812EFE02878661700370522 /* AMKStackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKStackViewController.h; sourceTree = "<group>"; };
 		8812EFE12878661800370522 /* AMKStackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKStackViewController.m; sourceTree = "<group>"; };
+		881E13F32E56B80700076F94 /* AMKColorPickerExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKColorPickerExampleViewController.h; sourceTree = "<group>"; };
+		881E13F42E56B80700076F94 /* AMKColorPickerExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKColorPickerExampleViewController.m; sourceTree = "<group>"; };
 		8831D5832A5001B000BABB4D /* AMKCustomTransitioningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKCustomTransitioningViewController.h; sourceTree = "<group>"; };
 		8831D5842A5001B000BABB4D /* AMKCustomTransitioningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKCustomTransitioningViewController.m; sourceTree = "<group>"; };
 		8831D5862A5010FA00BABB4D /* WKNEditReaderNewTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNEditReaderNewTransitioning.h; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 				8806D95B290BB4BA005DC5C1 /* Foundation */,
 				8806D96F290BB4BA005DC5C1 /* ThirdPart */,
 				8852B45A2B026736004DED8F /* Wenku */,
+				881E13F12E56B7DB00076F94 /* Feature */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -657,6 +661,23 @@
 				880B94DA2D39018200C9754B /* AMKExampleViewControllerProtocol.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		881E13F12E56B7DB00076F94 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				881E13F22E56B7EF00076F94 /* ColorPicker */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		881E13F22E56B7EF00076F94 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				881E13F32E56B80700076F94 /* AMKColorPickerExampleViewController.h */,
+				881E13F42E56B80700076F94 /* AMKColorPickerExampleViewController.m */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 		8831D5822A50017400BABB4D /* Transitioning */ = {
@@ -1228,6 +1249,7 @@
 				6003F59E195388D20070C39A /* AMKAppDelegate.m in Sources */,
 				8806D975290BB4BA005DC5C1 /* AMKContentHuggingPriorityViewController.m in Sources */,
 				88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */,
+				881E13F52E56B80700076F94 /* AMKColorPickerExampleViewController.m in Sources */,
 				885C55222918AD58007482B8 /* AMKRefreshHeader.m in Sources */,
 				8806D97C290BB4BB005DC5C1 /* AMKAppVersionInfoViewController.m in Sources */,
 				8806D978290BB4BA005DC5C1 /* AMKCollectionViewDelegateViewController.m in Sources */,
