@@ -34,14 +34,8 @@
     if (!_saturationBrightnessView) {
         __weak __typeof__(self)weakSelf = self;
         _saturationBrightnessView = [AMKColorSaturationBrightnessView.alloc init];
-        _saturationBrightnessView.touchedBlock = ^(AMKColorSaturationBrightnessView * _Nonnull colorHuePickerView, CGPoint location) {
+        [_saturationBrightnessView addBlockForControlEvents:UIControlEventAllTouchEvents block:^(id  _Nonnull sender) {
             [weakSelf updateCursorView];
-        };
-        [_saturationBrightnessView addObserverBlockForKeyPath:@"touchedBlock" block:^(AMKColorSaturationBrightnessView *saturationBrightnessView, id _Nonnull oldVal, id _Nonnull newVal) {
-            if (newVal != oldVal) {
-                NSLog(@"请勿修改 saturationBrightnessView.touchedBlock");
-                saturationBrightnessView.touchedBlock = oldVal;
-            }
         }];
         [self addSubview:_saturationBrightnessView];
     }

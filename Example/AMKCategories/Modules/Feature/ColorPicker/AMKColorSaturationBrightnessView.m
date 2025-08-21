@@ -9,7 +9,7 @@
 #import "AMKColorSaturationBrightnessView.h"
 
 @interface AMKColorSaturationBrightnessView ()
-
+@property (nonatomic, assign, readwrite) CGPoint trackingLocation;
 @end
 
 @implementation AMKColorSaturationBrightnessView
@@ -71,35 +71,40 @@
 
 #pragma mark - Action Methods
 
-- (void)handleTouches:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)handleTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
     if (self.width < FLT_EPSILON || self.height < FLT_EPSILON) {
         return;
     }
     
-    CGPoint location = [touches.anyObject locationInView:self];
+    CGPoint location = [touch locationInView:self];
     location.x = MAX(0, MIN(location.x, self.width));
     location.y = MAX(0, MIN(location.y, self.height));
     
     self.saturation = location.x / self.width;
     self.brightness = 1 - location.y / self.height;
+    self.trackingLocation = location;
     //NSLog(@"location:{%.2f, %.2f} => saturation:%.2f, brightness:%.2f", location.x, location.y, self.saturation, self.brightness);
-    !self.touchedBlock ?: self.touchedBlock(self, location);
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
-    [self handleTouches:touches withEvent:event];
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
+    BOOL shouldBeginTracking = [super beginTrackingWithTouch:touch withEvent:event];
+    [self handleTrackingWithTouch:touch withEvent:event];
+    return shouldBeginTracking;
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
-    [self handleTouches:touches withEvent:event];
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
+    BOOL shouldContinueTracking = [super continueTrackingWithTouch:touch withEvent:event];
+    [self handleTrackingWithTouch:touch withEvent:event];
+    return shouldContinueTracking;
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
-    [self handleTouches:touches withEvent:event];
+- (void)endTrackingWithTouch:(nullable UITouch *)touch withEvent:(nullable UIEvent *)event {
+    [super endTrackingWithTouch:touch withEvent:event];
+    [self handleTrackingWithTouch:touch withEvent:event];
 }
 
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
-    [self handleTouches:touches withEvent:event];
+- (void)cancelTrackingWithEvent:(nullable UIEvent *)event {
+    [super cancelTrackingWithEvent:event];
 }
 
 #pragma mark - Notifications

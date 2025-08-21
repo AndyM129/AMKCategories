@@ -12,7 +12,7 @@
 typedef void(^AMKColorSaturationBrightnessViewTouchedBlock)(AMKColorSaturationBrightnessView *_Nonnull colorHuePickerView, CGPoint location);
 
 /// 指定色相的 饱和度&亮度 视图
-@interface AMKColorSaturationBrightnessView : UIView
+@interface AMKColorSaturationBrightnessView : UIControl
 
 /// 色相，默认为 `0`
 @property (assign, nonatomic) CGFloat hue;
@@ -23,7 +23,7 @@ typedef void(^AMKColorSaturationBrightnessViewTouchedBlock)(AMKColorSaturationBr
 /// 当前的亮度，默认为 `1`
 @property (assign, nonatomic) CGFloat brightness;
 
-/// 触摸时的回调
-@property (nonatomic, copy, readwrite, nullable) AMKColorSaturationBrightnessViewTouchedBlock touchedBlock;
+/// 最近一次触摸时的位置
+@property (nonatomic, assign, readonly) CGPoint trackingLocation;
 
 @end
