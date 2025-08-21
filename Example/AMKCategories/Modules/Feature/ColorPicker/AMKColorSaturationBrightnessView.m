@@ -1,18 +1,18 @@
 //
-//  AMKColorHueSaturationView.m
+//  AMKColorSaturationBrightnessView.m
 //  AMKCategories_Example
 //
 //  Created by Meng Xinxin on 2025/8/21.
 //  Copyright © 2025 AndyM129. All rights reserved.
 //
 
-#import "AMKColorHueSaturationView.h"
+#import "AMKColorSaturationBrightnessView.h"
 
-@interface AMKColorHueSaturationView ()
+@interface AMKColorSaturationBrightnessView ()
 
 @end
 
-@implementation AMKColorHueSaturationView
+@implementation AMKColorSaturationBrightnessView
 
 #pragma mark - Init Methods
 
@@ -68,6 +68,37 @@
 }
 
 #pragma mark - Action Methods
+
+- (void)handleTouches:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.width < FLT_EPSILON || self.height < FLT_EPSILON) {
+        return;
+    }
+    
+    CGPoint location = [touches.anyObject locationInView:self];
+    location.x = MAX(0, MIN(location.x, self.width));
+    location.y = MAX(0, MIN(location.y, self.height));
+    
+    self.saturation = location.x / self.width;
+    self.brightness = 1 - location.y / self.height;
+    NSLog(@"location:{%.2f, %.2f} => saturation:%.2f, brightness:%.2f", location.x, location.y, self.saturation, self.brightness);
+    !self.touchedBlock ?: self.touchedBlock(self, location);
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    [self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    [self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    [self handleTouches:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    [self handleTouches:touches withEvent:event];
+}
 
 #pragma mark - Notifications
 

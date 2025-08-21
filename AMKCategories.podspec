@@ -158,6 +158,13 @@ Pod::Spec.new do |s|
                 mobileProvision.dependency 'AMKCategories/Foundation/NSBundle/MobileProvision'
             end
         end
+        # UIColor 相关
+        uikit.subspec 'UIColor' do |color|
+            # 扩展方法 相关
+            color.subspec 'UIColorExtensionMethods' do |extensionMethods|
+                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIColor/UIColorExtensionMethods/*.{h,m}'
+            end
+        end
     end
     
     # QuartzCore 通用扩展

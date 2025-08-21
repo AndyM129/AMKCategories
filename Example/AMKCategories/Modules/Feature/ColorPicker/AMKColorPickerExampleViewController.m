@@ -7,18 +7,16 @@
 //
 
 #import "AMKColorPickerExampleViewController.h"
-#import "AMKColorHueSaturationView.h"
-#import "AMKColorHueView.h"
+#import "AMKColorSaturationBrightnessPickerView.h"
 #import "AMKColorHuePickerView.h"
-#import "AMKColorPickerView.h"
 #import <AMKCategories/UIView+AMKCornerRadii.h>
 #import <AMKCategories/MBProgressHUD+AMKCategories.h>
 
 @interface AMKColorPickerExampleViewController ()
-@property (nonatomic, strong, readwrite, nullable) AMKColorHueSaturationView *colorHueSaturationView;
-@property (nonatomic, strong, readwrite, nullable) AMKColorHueView *colorHueView;
-@property (nonatomic, strong, readwrite, nullable) AMKColorHuePickerView *colorHuePickerView;
-//@property (nonatomic, strong, readwrite, nullable) AMKColorPickerView *colorPickerView;
+@property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessView *colorSaturationBrightnessView;
+//@property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessPickerView *colorSaturationBrightnessPickerView;
+//@property (nonatomic, strong, readwrite, nullable) AMKColorHueView *colorHueView;
+//@property (nonatomic, strong, readwrite, nullable) AMKColorHuePickerView *colorHuePickerView;
 @end
 
 @implementation AMKColorPickerExampleViewController
@@ -55,30 +53,36 @@
     [super viewDidLoad];
     
     __weak __typeof__(self)weakSelf = self;
-    [self.stackView addArrangedSeparatorWithTitle:@"UIColorPickerViewController 系统取色页" color:nil size:12];
-    [self.stackView addArrangedButton:@"显示" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        if (@available(iOS 14.0, *)) {
-            UIColorPickerViewController *viewController = [UIColorPickerViewController.alloc init];
-            [UIViewController amk_presentViewController:viewController animated:YES];
-        } else {
-            [MBProgressHUD amk_showTextHUDWithTitle:weakSelf.title message:@"Only iOS 14.0+" inView:nil responder:nil duration:2 animated:YES];
-        }
-    }];
+//    [self.stackView addArrangedSeparatorWithTitle:@"UIColorPickerViewController 系统取色页" color:nil size:12];
+//    [self.stackView addArrangedButton:@"显示" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        if (@available(iOS 14.0, *)) {
+//            UIColorPickerViewController *viewController = [UIColorPickerViewController.alloc init];
+//            [UIViewController amk_presentViewController:viewController animated:YES];
+//        } else {
+//            [MBProgressHUD amk_showTextHUDWithTitle:weakSelf.title message:@"Only iOS 14.0+" inView:nil responder:nil duration:2 animated:YES];
+//        }
+//    }];
     
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueSaturationView 色盘视图（纯展示）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorHueSaturationView];
-    [self.stackView addArrangedButton:@"换个颜色" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        weakSelf.colorHueSaturationView.hue = arc4random() % 100 / 100.0;
-    }];
-    
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorHueView];
-    
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorHuePickerView];
+    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessView 指定色相的 色相&亮度 视图" color:nil size:12];
+    [self.stackView addArrangedSubview:self.colorSaturationBrightnessView];
     [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        weakSelf.colorHuePickerView.hue = arc4random() % 100 / 100.0;
+        weakSelf.colorSaturationBrightnessView.hue = arc4random() % 100 / 100.0;
     }];
+    
+//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessPickerView 色相&亮度 选择器（可交互）" color:nil size:12];
+//    [self.stackView addArrangedSubview:self.colorSaturationBrightnessPickerView];
+//    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        weakSelf.colorSaturationBrightnessPickerView.hue = arc4random() % 100 / 100.0;
+//    }];
+    
+//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
+//    [self.stackView addArrangedSubview:self.colorHueView];
+    
+//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
+//    [self.stackView addArrangedSubview:self.colorHuePickerView];
+//    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        weakSelf.colorHuePickerView.hue = arc4random() % 100 / 100.0;
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,43 +103,43 @@
 
 #pragma mark - Getters & Setters
 
-- (AMKColorHueSaturationView *)colorHueSaturationView {
-    if (!_colorHueSaturationView) {
-        _colorHueSaturationView = [AMKColorHueSaturationView.alloc init];
-        _colorHueSaturationView.height = 150;
+- (AMKColorSaturationBrightnessView *)colorSaturationBrightnessView {
+    if (!_colorSaturationBrightnessView) {
+        _colorSaturationBrightnessView = [AMKColorSaturationBrightnessView.alloc init];
+        _colorSaturationBrightnessView.height = 150;
     }
-    return _colorHueSaturationView;
+    return _colorSaturationBrightnessView;
 }
 
-- (AMKColorHueView *)colorHueView {
-    if (!_colorHueView) {
-        _colorHueView = [AMKColorHueView.alloc init];
-        _colorHueView.height = 5;
-        _colorHueView.amk_cornerRadii = AMKCornerRadiiMakeAll(_colorHueView.height / 2);
-    }
-    return _colorHueView;
-}
-
-- (AMKColorHuePickerView *)colorHuePickerView {
-    if (!_colorHuePickerView) {
-        __weak __typeof__(self)weakSelf = self;
-        _colorHuePickerView = [AMKColorHuePickerView.alloc init];
-        _colorHuePickerView.height = 30;
-        _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);
-        _colorHuePickerView.hue = 0.2;
-        _colorHuePickerView.hueChangedBlock = ^(AMKColorHuePickerView * _Nonnull colorHuePickerView) {
-            weakSelf.colorHueSaturationView.hue = colorHuePickerView.hue;
-        };
-    }
-    return _colorHuePickerView;
-}
-
-//- (AMKColorPickerView *)colorPickerView {
-//    if (!_colorPickerView) {
-//        _colorPickerView = [AMKColorPickerView.alloc init];
-//        _colorPickerView.height = 150;
+//- (AMKColorSaturationBrightnessPickerView *)colorSaturationBrightnessPickerView {
+//    if (!_colorSaturationBrightnessPickerView) {
+//        _colorSaturationBrightnessPickerView = [AMKColorSaturationBrightnessPickerView.alloc init];
+//        _colorSaturationBrightnessPickerView.height = 150;
 //    }
-//    return _colorPickerView;
+//    return _colorSaturationBrightnessPickerView;
+//}
+
+//- (AMKColorHueView *)colorHueView {
+//    if (!_colorHueView) {
+//        _colorHueView = [AMKColorHueView.alloc init];
+//        _colorHueView.height = 5;
+//        _colorHueView.amk_cornerRadii = AMKCornerRadiiMakeAll(_colorHueView.height / 2);
+//    }
+//    return _colorHueView;
+//}
+
+//- (AMKColorHuePickerView *)colorHuePickerView {
+//    if (!_colorHuePickerView) {
+//        __weak __typeof__(self)weakSelf = self;
+//        _colorHuePickerView = [AMKColorHuePickerView.alloc init];
+//        _colorHuePickerView.height = 30;
+//        _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);
+//        _colorHuePickerView.hue = 0.2;
+//        _colorHuePickerView.hueChangedBlock = ^(AMKColorHuePickerView * _Nonnull colorHuePickerView) {
+//            weakSelf.colorSaturationBrightnessPickerView.hue = colorHuePickerView.hue;
+//        };
+//    }
+//    return _colorHuePickerView;
 //}
 
 #pragma mark - Data & Networking
