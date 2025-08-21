@@ -33,11 +33,38 @@
 
 - (void)setHue:(CGFloat)hue {
     _hue = MAX(0, MIN(hue, 1));
+    _selectedColor = nil;
     [self setNeedsDisplay];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
-- (UIColor *)trackingColor {
-    return [UIColor colorWithHue:_hue saturation:_saturation brightness:_brightness alpha:1];
+- (void)setSaturation:(CGFloat)saturation {
+    _saturation = saturation;
+    _selectedColor = nil;
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (void)setBrightness:(CGFloat)brightness {
+    _brightness = brightness;
+    _selectedColor = nil;
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (UIColor *)selectedColor {
+    if (!_selectedColor) {
+        _selectedColor = [UIColor colorWithHue:_hue saturation:_saturation brightness:_brightness alpha:1];
+    }
+    return _selectedColor;
+}
+
+@synthesize selectedColor = _selectedColor;
+- (void)setSelectedColor:(UIColor *)selectedColor {
+    _selectedColor = selectedColor ?: [UIColor colorWithHue:0 saturation:1 brightness:1 alpha:1];
+    _hue = _selectedColor.hue;
+    _saturation = _selectedColor.saturation;
+    _brightness = _selectedColor.brightness;
+    [self setNeedsDisplay];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - Data & Networking

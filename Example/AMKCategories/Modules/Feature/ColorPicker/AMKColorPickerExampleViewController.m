@@ -64,22 +64,52 @@
     }];
     
     [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessView 指定色相的 色相&亮度 视图" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorSaturationBrightnessView];
-    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-        weakSelf.colorSaturationBrightnessView.hue = arc4random() % 100 / 100.0;
-    }];
-    
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessPickerView 指定色相的 色相&亮度 选择器（可交互）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorSaturationBrightnessPickerView];
+    [self.stackView addArrangedSubview:({
+        UIView *containerView = [UIView.alloc init];
+        containerView.height = 100;
+        [containerView addSubview:self.colorSaturationBrightnessView];
+        containerView.backgroundColor = self.colorSaturationBrightnessView.selectedColor;
+        [self.colorSaturationBrightnessView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 100));
+        }];
+        [self.colorSaturationBrightnessView addBlockForControlEvents:UIControlEventValueChanged block:^(AMKColorSaturationBrightnessView *colorSaturationBrightnessView) {
+            colorSaturationBrightnessView.superview.backgroundColor = colorSaturationBrightnessView.selectedColor;
+        }];
+        containerView;
+    })];
 //    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-//        weakSelf.colorSaturationBrightnessPickerView.hue = arc4random() % 100 / 100.0;
+//        weakSelf.colorSaturationBrightnessView.hue = arc4random() % 100 / 100.0;
+//    }];
+//    [self.stackView addArrangedButton:@"换个饱和度" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        weakSelf.colorSaturationBrightnessView.saturation = arc4random() % 100 / 100.0;
+//    }];
+//    [self.stackView addArrangedButton:@"换个亮度" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        weakSelf.colorSaturationBrightnessView.brightness = arc4random() % 100 / 100.0;
+//    }];
+//    [self.stackView addArrangedButton:@"换个颜色" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//        weakSelf.colorSaturationBrightnessView.selectedColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
 //    }];
     
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorHueView];
+    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessPickerView 指定色相的 色相&亮度 选择器" color:nil size:12];
+    [self.stackView addArrangedSubview:self.colorSaturationBrightnessPickerView];
+    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.hue = arc4random() % 100 / 100.0;
+    }];
+    [self.stackView addArrangedButton:@"换个饱和度" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.saturation = arc4random() % 100 / 100.0;
+    }];
+    [self.stackView addArrangedButton:@"换个亮度" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.brightness = arc4random() % 100 / 100.0;
+    }];
+    [self.stackView addArrangedButton:@"换个颜色" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.selectedColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+    }];
     
-    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
-    [self.stackView addArrangedSubview:self.colorHuePickerView];
+//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
+//    [self.stackView addArrangedSubview:self.colorHueView];
+    
+//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
+//    [self.stackView addArrangedSubview:self.colorHuePickerView];
 //    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
 //        weakSelf.colorHuePickerView.hue = arc4random() % 100 / 100.0;
 //    }];
@@ -118,19 +148,24 @@
         _colorSaturationBrightnessPickerView.height = 100;
         _colorSaturationBrightnessPickerView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
         
+        // 自定义内边距
+        [_colorSaturationBrightnessPickerView.saturationBrightnessView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 100));
+        }];
+        
         // 添加光标上的颜色预览
         UIImageSymbolConfiguration *configuration = [UIImageSymbolConfiguration configurationWithPointSize:30];
         UIImageView *previewView = [UIImageView.alloc initWithImage:[[[UIImage systemImageNamed:@"drop.fill" withConfiguration:configuration] imageByFlipVertical] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-        previewView.tintColor = _colorSaturationBrightnessPickerView.saturationBrightnessView.trackingColor;
+        previewView.tintColor = _colorSaturationBrightnessPickerView.saturationBrightnessView.selectedColor;
         [_colorSaturationBrightnessPickerView setAssociateValue:previewView withKey:@"previewView"];
         [_colorSaturationBrightnessPickerView.cursorView addSubview:previewView];
         [previewView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(_colorSaturationBrightnessPickerView.cursorView.mas_centerX);
             make.bottom.mas_equalTo(_colorSaturationBrightnessPickerView.cursorView.mas_top);
         }];
-        [_colorSaturationBrightnessPickerView.saturationBrightnessView addBlockForControlEvents:UIControlEventAllTouchEvents block:^(id  _Nonnull sender) {
+        [_colorSaturationBrightnessPickerView.saturationBrightnessView addBlockForControlEvents:UIControlEventValueChanged block:^(id  _Nonnull sender) {
             UIImageView *previewView = [weakSelf.colorSaturationBrightnessPickerView getAssociatedValueForKey:@"previewView"];
-            previewView.tintColor = weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.trackingColor;
+            previewView.tintColor = weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.selectedColor;
         }];
         
         // 添加光标上的颜色预览的描边
@@ -138,6 +173,12 @@
         [previewView addSubview:previewOverlayView];
         [previewOverlayView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(previewView);
+        }];
+        
+        // 监听值更新
+        _colorSaturationBrightnessPickerView.backgroundColor = _colorSaturationBrightnessPickerView.saturationBrightnessView.selectedColor;
+        [_colorSaturationBrightnessPickerView.saturationBrightnessView addBlockForControlEvents:UIControlEventValueChanged block:^(AMKColorSaturationBrightnessView *saturationBrightnessView) {
+            weakSelf.colorSaturationBrightnessPickerView.backgroundColor = weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.selectedColor;
         }];
     }
     return _colorSaturationBrightnessPickerView;
@@ -154,7 +195,7 @@
 
 - (AMKColorHuePickerView *)colorHuePickerView {
     if (!_colorHuePickerView) {
-        __weak __typeof__(self)weakSelf = self;
+//        __weak __typeof__(self)weakSelf = self;
         _colorHuePickerView = [AMKColorHuePickerView.alloc init];
         _colorHuePickerView.height = 30;
         _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);

@@ -15,18 +15,24 @@ typedef void(^AMKColorSaturationBrightnessViewTouchedBlock)(AMKColorSaturationBr
 @interface AMKColorSaturationBrightnessView : UIControl
 
 /// 色相，默认为 `0`
+///
+/// 赋值时，会更新 `selectedColor`
 @property (assign, nonatomic) CGFloat hue;
 
 /// 当前的饱和度，默认为 `1`
+///
+/// 赋值时，会更新 `selectedColor`
 @property (assign, nonatomic) CGFloat saturation;
 
 /// 当前的亮度，默认为 `1`
+///
+/// 赋值时，会更新 `selectedColor`
 @property (assign, nonatomic) CGFloat brightness;
 
-/// 最近一次触摸时的位置
-@property (nonatomic, assign, readonly) CGPoint trackingLocation;
-
-/// 最近一次触摸位置的颜色
-@property (nonatomic, strong, readonly, nullable) UIColor *trackingColor;
+/// 选中的颜色
+///
+/// 获取时，即获取 `trackingLocation` 对应的颜色
+/// 赋值时，即更新 `hue`、`saturation`、`brightness`
+@property (nonatomic, strong, nullable) UIColor *selectedColor;
 
 @end

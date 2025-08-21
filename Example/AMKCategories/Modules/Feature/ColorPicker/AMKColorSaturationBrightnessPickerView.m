@@ -34,7 +34,7 @@
     if (!_saturationBrightnessView) {
         __weak __typeof__(self)weakSelf = self;
         _saturationBrightnessView = [AMKColorSaturationBrightnessView.alloc init];
-        [_saturationBrightnessView addBlockForControlEvents:UIControlEventAllTouchEvents block:^(id  _Nonnull sender) {
+        [_saturationBrightnessView addBlockForControlEvents:UIControlEventValueChanged block:^(id  _Nonnull sender) {
             [weakSelf updateCursorView];
         }];
         [self addSubview:_saturationBrightnessView];
@@ -66,7 +66,7 @@
 
 - (void)customLayoutSubviews {
     [self.saturationBrightnessView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(20, 20, 20, 20));
+        make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
     [self updateCursorView];
 }
