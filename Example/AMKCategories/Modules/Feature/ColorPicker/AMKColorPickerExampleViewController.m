@@ -15,8 +15,8 @@
 @interface AMKColorPickerExampleViewController ()
 @property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessView *colorSaturationBrightnessView;
 @property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessPickerView *colorSaturationBrightnessPickerView;
-//@property (nonatomic, strong, readwrite, nullable) AMKColorHueView *colorHueView;
-//@property (nonatomic, strong, readwrite, nullable) AMKColorHuePickerView *colorHuePickerView;
+@property (nonatomic, strong, readwrite, nullable) AMKColorHueView *colorHueView;
+@property (nonatomic, strong, readwrite, nullable) AMKColorHuePickerView *colorHuePickerView;
 @end
 
 @implementation AMKColorPickerExampleViewController
@@ -75,11 +75,11 @@
 //        weakSelf.colorSaturationBrightnessPickerView.hue = arc4random() % 100 / 100.0;
 //    }];
     
-//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
-//    [self.stackView addArrangedSubview:self.colorHueView];
+    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHueView 色相视图（纯展示）" color:nil size:12];
+    [self.stackView addArrangedSubview:self.colorHueView];
     
-//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
-//    [self.stackView addArrangedSubview:self.colorHuePickerView];
+    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorHuePickerView 色相选择滑块（可交互）" color:nil size:12];
+    [self.stackView addArrangedSubview:self.colorHuePickerView];
 //    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
 //        weakSelf.colorHuePickerView.hue = arc4random() % 100 / 100.0;
 //    }];
@@ -143,28 +143,28 @@
     return _colorSaturationBrightnessPickerView;
 }
 
-//- (AMKColorHueView *)colorHueView {
-//    if (!_colorHueView) {
-//        _colorHueView = [AMKColorHueView.alloc init];
-//        _colorHueView.height = 5;
-//        _colorHueView.amk_cornerRadii = AMKCornerRadiiMakeAll(_colorHueView.height / 2);
-//    }
-//    return _colorHueView;
-//}
+- (AMKColorHueView *)colorHueView {
+    if (!_colorHueView) {
+        _colorHueView = [AMKColorHueView.alloc init];
+        _colorHueView.height = 5;
+        _colorHueView.amk_cornerRadii = AMKCornerRadiiMakeAll(_colorHueView.height / 2);
+    }
+    return _colorHueView;
+}
 
-//- (AMKColorHuePickerView *)colorHuePickerView {
-//    if (!_colorHuePickerView) {
-//        __weak __typeof__(self)weakSelf = self;
-//        _colorHuePickerView = [AMKColorHuePickerView.alloc init];
-//        _colorHuePickerView.height = 30;
-//        _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);
+- (AMKColorHuePickerView *)colorHuePickerView {
+    if (!_colorHuePickerView) {
+        __weak __typeof__(self)weakSelf = self;
+        _colorHuePickerView = [AMKColorHuePickerView.alloc init];
+        _colorHuePickerView.height = 30;
+        _colorHuePickerView.hueView.amk_cornerRadii = AMKCornerRadiiMakeAll(AMKColorHuePickerView.hueViewDefaultHeight / 2);
 //        _colorHuePickerView.hue = 0.2;
 //        _colorHuePickerView.hueChangedBlock = ^(AMKColorHuePickerView * _Nonnull colorHuePickerView) {
 //            weakSelf.colorSaturationBrightnessPickerView.hue = colorHuePickerView.hue;
 //        };
-//    }
-//    return _colorHuePickerView;
-//}
+    }
+    return _colorHuePickerView;
+}
 
 #pragma mark - Data & Networking
 

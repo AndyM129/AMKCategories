@@ -12,7 +12,7 @@
 typedef void(^AMKColorHuePickerViewBlock)(AMKColorHuePickerView *_Nonnull colorHuePickerView);
 
 /// 色相选择器
-@interface AMKColorHuePickerView : UIView
+@interface AMKColorHuePickerView : UIControl
 
 /// 色相视图
 @property (nonatomic, strong, readonly, nullable) AMKColorHueView *hueView;
@@ -20,14 +20,11 @@ typedef void(^AMKColorHuePickerViewBlock)(AMKColorHuePickerView *_Nonnull colorH
 /// 滑块
 @property (nonatomic, strong, readonly, nullable) UIView *thumbView;
 
-/// 当前的色相
-@property (nonatomic, assign, readwrite) CGFloat hue;
+/// 最近一次触摸时的色相
+@property (nonatomic, assign, readwrite) CGFloat trackingHue;
 
-/// 当前的颜色
-@property (nonatomic, strong, readwrite, nonnull) UIColor *color;
-
-/// 色相值变更时回调
-@property (nonatomic, copy, readwrite, nullable) AMKColorHuePickerViewBlock hueChangedBlock;
+/// 最近一次触摸时的颜色
+@property (nonatomic, strong, readwrite, nonnull) UIColor *trackingColor;
 
 @end
 

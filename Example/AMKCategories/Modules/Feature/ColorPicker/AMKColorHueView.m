@@ -14,7 +14,6 @@
 
 @implementation AMKColorHueView
 
-
 #pragma mark - Init Methods
 
 - (void)dealloc {
@@ -34,13 +33,13 @@
 
 #pragma mark - Layout Subviews
 
--(void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect {
     // 色相渐变
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
-    float step=0.166666666666667f;
-    CGFloat locs[7]={
+    float step = 0.166666666666667f;
+    CGFloat locs[7] = {
         0.00f,
         step,
         step*2,
@@ -49,7 +48,7 @@
         step*5,
         1.0f,
     };
-    NSArray *colors= @[
+    NSArray *colors = @[
         (id)[[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0] CGColor],
         (id)[[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0] CGColor],
         (id)[[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:1.0] CGColor],
