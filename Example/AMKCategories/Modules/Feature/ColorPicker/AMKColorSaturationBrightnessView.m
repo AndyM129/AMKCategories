@@ -17,12 +17,14 @@
 #pragma mark - Init Methods
 
 - (void)dealloc {
-    
+    [self removeObserverBlocks];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-
+        _hue = 0;
+        _saturation = 1;
+        _brightness = 1;
     }
     return self;
 }
@@ -80,7 +82,7 @@
     
     self.saturation = location.x / self.width;
     self.brightness = 1 - location.y / self.height;
-    NSLog(@"location:{%.2f, %.2f} => saturation:%.2f, brightness:%.2f", location.x, location.y, self.saturation, self.brightness);
+    //NSLog(@"location:{%.2f, %.2f} => saturation:%.2f, brightness:%.2f", location.x, location.y, self.saturation, self.brightness);
     !self.touchedBlock ?: self.touchedBlock(self, location);
 }
 

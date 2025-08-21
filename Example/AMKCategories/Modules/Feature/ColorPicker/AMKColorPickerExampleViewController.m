@@ -14,7 +14,7 @@
 
 @interface AMKColorPickerExampleViewController ()
 @property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessView *colorSaturationBrightnessView;
-//@property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessPickerView *colorSaturationBrightnessPickerView;
+@property (nonatomic, strong, readwrite, nullable) AMKColorSaturationBrightnessPickerView *colorSaturationBrightnessPickerView;
 //@property (nonatomic, strong, readwrite, nullable) AMKColorHueView *colorHueView;
 //@property (nonatomic, strong, readwrite, nullable) AMKColorHuePickerView *colorHuePickerView;
 @end
@@ -69,8 +69,8 @@
         weakSelf.colorSaturationBrightnessView.hue = arc4random() % 100 / 100.0;
     }];
     
-//    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessPickerView 色相&亮度 选择器（可交互）" color:nil size:12];
-//    [self.stackView addArrangedSubview:self.colorSaturationBrightnessPickerView];
+    [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessPickerView 指定色相的 色相&亮度 选择器（可交互）" color:nil size:12];
+    [self.stackView addArrangedSubview:self.colorSaturationBrightnessPickerView];
 //    [self.stackView addArrangedButton:@"换个色相" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
 //        weakSelf.colorSaturationBrightnessPickerView.hue = arc4random() % 100 / 100.0;
 //    }];
@@ -111,13 +111,14 @@
     return _colorSaturationBrightnessView;
 }
 
-//- (AMKColorSaturationBrightnessPickerView *)colorSaturationBrightnessPickerView {
-//    if (!_colorSaturationBrightnessPickerView) {
-//        _colorSaturationBrightnessPickerView = [AMKColorSaturationBrightnessPickerView.alloc init];
-//        _colorSaturationBrightnessPickerView.height = 150;
-//    }
-//    return _colorSaturationBrightnessPickerView;
-//}
+- (AMKColorSaturationBrightnessPickerView *)colorSaturationBrightnessPickerView {
+    if (!_colorSaturationBrightnessPickerView) {
+        _colorSaturationBrightnessPickerView = [AMKColorSaturationBrightnessPickerView.alloc init];
+        _colorSaturationBrightnessPickerView.height = 150;
+        _colorSaturationBrightnessPickerView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+    }
+    return _colorSaturationBrightnessPickerView;
+}
 
 //- (AMKColorHueView *)colorHueView {
 //    if (!_colorHueView) {
