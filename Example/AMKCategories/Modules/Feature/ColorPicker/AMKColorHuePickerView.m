@@ -24,8 +24,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _trackingHue = 0;
-        _trackingColor = [UIColor colorWithHue:_trackingHue saturation:1 brightness:1 alpha:1];
+        _selectedHue = 0;
+        _selectedColor = [UIColor colorWithHue:_selectedHue saturation:1 brightness:1 alpha:1];
         [self customLayoutSubviews];
     }
     return self;
@@ -57,20 +57,27 @@
     return _thumbView;
 }
 
-- (void)setTrackingHue:(CGFloat)trackingHue {
-    if (_trackingHue == trackingHue) {
+- (void)setSelectedHue:(CGFloat)trackingHue {
+    if (_selectedHue == trackingHue) {
         return;
     }
     
-    _trackingHue = MAX(0, MIN(trackingHue, 1));
-    _trackingColor = [UIColor colorWithHue:_trackingHue saturation:1 brightness:1 alpha:1];
+    _selectedHue = MAX(0, MIN(trackingHue, 1));
+    _selectedColor = nil;
     [self updateThumbView];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
-- (void)setColor:(UIColor *)color {
-    _trackingHue = color ? color.hue : 0;
-    _trackingColor = color ? color : [UIColor colorWithHue:_trackingHue saturation:1 brightness:1 alpha:1];
-    [self updateThumbView];
+- (UIColor *)selectedColor {
+    if (!_selectedColor) {
+        _selectedColor = [UIColor colorWithHue:_selectedHue saturation:1 brightness:1 alpha:1];
+    }
+    return _selectedColor;
+}
+
+@synthesize selectedColor = _selectedColor;
+- (void)setSelectedColor:(UIColor *)selectedColor {
+    [self setSelectedHue:selectedColor ? selectedColor.hue : 1];
 }
 
 #pragma mark - Data & Networking
@@ -105,9 +112,9 @@
 }
 
 - (void)updateThumbView {
-    [self.thumbView setBackgroundColor:self.trackingColor];
+    [self.thumbView setBackgroundColor:self.selectedColor];
     [self.thumbView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.hueView.mas_left).offset(self.trackingHue * self.hueView.width);
+        make.centerX.mas_equalTo(self.hueView.mas_left).offset(self.selectedHue * self.hueView.width);
     }];
 }
 
@@ -118,7 +125,7 @@
     CGFloat offsetX = MAX(self.hueView.left, MIN(location.x, self.hueView.right));
     //NSLog(@"%.2f ~> [%.2f, %.2f] => %.2f", location.x, self.colorHueView.left, self.colorHueView.right, offsetX);
     
-    self.trackingHue = offsetX / self.hueView.width;
+    self.selectedHue = offsetX / self.hueView.width;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {

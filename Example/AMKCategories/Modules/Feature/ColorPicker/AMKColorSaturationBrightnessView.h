@@ -31,8 +31,7 @@ typedef void(^AMKColorSaturationBrightnessViewTouchedBlock)(AMKColorSaturationBr
 
 /// 选中的颜色
 ///
-/// 获取时，即获取 `trackingLocation` 对应的颜色
-/// 赋值时，即更新 `hue`、`saturation`、`brightness`
+/// 赋值时，会更新 `hue`、`saturation`、`brightness`
 @property (nonatomic, strong, nullable) UIColor *selectedColor;
 
 @end
