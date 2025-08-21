@@ -26,4 +26,7 @@ typedef void(^AMKColorSaturationBrightnessViewTouchedBlock)(AMKColorSaturationBr
 /// 最近一次触摸时的位置
 @property (nonatomic, assign, readonly) CGPoint trackingLocation;
 
+/// 最近一次触摸位置的颜色
+@property (nonatomic, strong, readonly, nullable) UIColor *trackingColor;
+
 @end

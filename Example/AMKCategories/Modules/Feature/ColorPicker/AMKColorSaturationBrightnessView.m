@@ -36,6 +36,10 @@
     [self setNeedsDisplay];
 }
 
+- (UIColor *)trackingColor {
+    return [UIColor colorWithHue:_hue saturation:_saturation brightness:_brightness alpha:1];
+}
+
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews

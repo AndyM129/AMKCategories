@@ -53,15 +53,15 @@
     [super viewDidLoad];
     
     __weak __typeof__(self)weakSelf = self;
-//    [self.stackView addArrangedSeparatorWithTitle:@"UIColorPickerViewController 系统取色页" color:nil size:12];
-//    [self.stackView addArrangedButton:@"显示" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
-//        if (@available(iOS 14.0, *)) {
-//            UIColorPickerViewController *viewController = [UIColorPickerViewController.alloc init];
-//            [UIViewController amk_presentViewController:viewController animated:YES];
-//        } else {
-//            [MBProgressHUD amk_showTextHUDWithTitle:weakSelf.title message:@"Only iOS 14.0+" inView:nil responder:nil duration:2 animated:YES];
-//        }
-//    }];
+    [self.stackView addArrangedSeparatorWithTitle:@"UIColorPickerViewController 系统取色页" color:nil size:12];
+    [self.stackView addArrangedButton:@"显示" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
+        if (@available(iOS 14.0, *)) {
+            UIColorPickerViewController *viewController = [UIColorPickerViewController.alloc init];
+            [UIViewController amk_presentViewController:viewController animated:YES];
+        } else {
+            [MBProgressHUD amk_showTextHUDWithTitle:weakSelf.title message:@"Only iOS 14.0+" inView:nil responder:nil duration:2 animated:YES];
+        }
+    }];
     
     [self.stackView addArrangedSeparatorWithTitle:@"AMKColorSaturationBrightnessView 指定色相的 色相&亮度 视图" color:nil size:12];
     [self.stackView addArrangedSubview:self.colorSaturationBrightnessView];
@@ -106,16 +106,39 @@
 - (AMKColorSaturationBrightnessView *)colorSaturationBrightnessView {
     if (!_colorSaturationBrightnessView) {
         _colorSaturationBrightnessView = [AMKColorSaturationBrightnessView.alloc init];
-        _colorSaturationBrightnessView.height = 150;
+        _colorSaturationBrightnessView.height = 100;
     }
     return _colorSaturationBrightnessView;
 }
 
 - (AMKColorSaturationBrightnessPickerView *)colorSaturationBrightnessPickerView {
     if (!_colorSaturationBrightnessPickerView) {
+        __weak __typeof__(self)weakSelf = self;
         _colorSaturationBrightnessPickerView = [AMKColorSaturationBrightnessPickerView.alloc init];
-        _colorSaturationBrightnessPickerView.height = 150;
+        _colorSaturationBrightnessPickerView.height = 100;
         _colorSaturationBrightnessPickerView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+        
+        // 添加光标上的颜色预览
+        UIImageSymbolConfiguration *configuration = [UIImageSymbolConfiguration configurationWithPointSize:30];
+        UIImageView *previewView = [UIImageView.alloc initWithImage:[[[UIImage systemImageNamed:@"drop.fill" withConfiguration:configuration] imageByFlipVertical] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        previewView.tintColor = _colorSaturationBrightnessPickerView.saturationBrightnessView.trackingColor;
+        [_colorSaturationBrightnessPickerView setAssociateValue:previewView withKey:@"previewView"];
+        [_colorSaturationBrightnessPickerView.cursorView addSubview:previewView];
+        [previewView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(_colorSaturationBrightnessPickerView.cursorView.mas_centerX);
+            make.bottom.mas_equalTo(_colorSaturationBrightnessPickerView.cursorView.mas_top);
+        }];
+        [_colorSaturationBrightnessPickerView.saturationBrightnessView addBlockForControlEvents:UIControlEventAllTouchEvents block:^(id  _Nonnull sender) {
+            UIImageView *previewView = [weakSelf.colorSaturationBrightnessPickerView getAssociatedValueForKey:@"previewView"];
+            previewView.tintColor = weakSelf.colorSaturationBrightnessPickerView.saturationBrightnessView.trackingColor;
+        }];
+        
+        // 添加光标上的颜色预览的描边
+        UIImageView *previewOverlayView = [UIImageView.alloc initWithImage:[[[UIImage systemImageNamed:@"drop" withConfiguration:configuration] imageByFlipVertical] imageWithTintColor:UIColor.whiteColor]];
+        [previewView addSubview:previewOverlayView];
+        [previewOverlayView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(previewView);
+        }];
     }
     return _colorSaturationBrightnessPickerView;
 }

@@ -44,8 +44,8 @@
 
 - (UIImageView *)cursorView {
     if (!_cursorView) {
-        UIImageSymbolConfiguration *configuration = [UIImageSymbolConfiguration configurationWithPointSize:15];
-        UIImage *image = [[UIImage systemImageNamed:@"plus" withConfiguration:configuration] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *image = [UIImage systemImageNamed:@"plus" withConfiguration:[UIImageSymbolConfiguration configurationWithPointSize:15]];
+        image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         _cursorView = [UIImageView.alloc init];
         _cursorView.tintColor = [UIColor colorWithWhite:0.85 alpha:1];
