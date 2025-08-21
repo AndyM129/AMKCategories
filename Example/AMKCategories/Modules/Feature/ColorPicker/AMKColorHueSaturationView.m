@@ -22,14 +22,17 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.hue = AMKColorHueSaturationViewDefaultHue;
-        self.saturation = AMKColorHueSaturationViewDefaultSaturation;
-        self.brightness = AMKColorHueSaturationViewDefaultBrightness;
+
     }
     return self;
 }
 
 #pragma mark - Getters & Setters
+
+- (void)setHue:(CGFloat)hue {
+    _hue = MAX(0, MIN(hue, 1));
+    [self setNeedsDisplay];
+}
 
 #pragma mark - Data & Networking
 

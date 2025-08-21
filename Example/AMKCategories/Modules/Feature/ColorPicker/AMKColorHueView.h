@@ -1,0 +1,14 @@
+//
+//  AMKColorHueView.h
+//  AMKCategories_Example
+//
+//  Created by Meng Xinxin on 2025/8/21.
+//  Copyright © 2025 AndyM129. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+/// 色相视图
+@interface AMKColorHueView : UIView
+
+@end

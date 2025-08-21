@@ -92,6 +92,11 @@ Pod::Spec.new do |s|
         end
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
+            # CornerRadii 相关
+            view.subspec 'CornerRadii' do |cornerRadii|
+                cornerRadii.source_files = 'AMKCategories/Classes/UIKit/UIView/CornerRadii/*.{h,m}'
+                cornerRadii.dependency 'Aspects'
+            end
             # Interactions 交互相关
             view.subspec 'Interactions' do |interactions|
                 interactions.source_files = 'AMKCategories/Classes/UIKit/UIView/Interactions/*.{h,m}'
