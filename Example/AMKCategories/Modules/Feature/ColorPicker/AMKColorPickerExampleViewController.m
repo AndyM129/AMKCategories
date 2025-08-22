@@ -21,14 +21,14 @@
 
 @implementation AMKColorPickerExampleViewController
 
-+ (void)load {
-    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
-        [NSNotificationCenter.defaultCenter removeObserver:token];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIViewController amk_pushViewController:self.new animated:YES completion:nil];
-        });
-    }];
-}
+//+ (void)load {
+//    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull notification) {
+//        [NSNotificationCenter.defaultCenter removeObserver:token];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [UIViewController amk_pushViewController:self.new animated:YES completion:nil];
+//        });
+//    }];
+//}
 
 #pragma mark - Dealloc
 
