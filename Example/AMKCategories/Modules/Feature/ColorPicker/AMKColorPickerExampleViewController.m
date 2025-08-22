@@ -56,6 +56,7 @@
     [self addExample_AMKColorSaturationBrightnessPickerView];
     //[self addExample_AMKColorHueView];
     [self addExample_AMKColorHuePickerView];
+    [self addExample_UISlider];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -233,6 +234,43 @@
     [self.stackView addArrangedButton:@"换个颜色" controlEvents:UIControlEventTouchUpInside block:^(id sender) {
         weakSelf.colorHuePickerView.selectedColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     }];
+}
+
+- (void)addExample_UISlider {
+    [self.stackView addArrangedSeparatorWithTitle:@"UISlider" color:nil size:12];
+
+    UISlider *slider = [UISlider.alloc init];
+    slider.height = 30;
+    [slider setThumbImage:[UIImage imageWithColor:UIColor.orangeColor size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
+    [slider setMinimumTrackImage:[[UIImage imageWithColor:slider.tintColor size:CGSizeMake(3, 3)] resizableImageWithCapInsets:UIEdgeInsetsZero] forState:UIControlStateNormal];
+    [slider setMaximumTrackImage:[[UIImage imageWithColor:UIColor.lightGrayColor size:CGSizeMake(3, 3)] resizableImageWithCapInsets:UIEdgeInsetsZero] forState:UIControlStateNormal];
+    
+    // 显示值
+    UILabel *textLabel = [UILabel.alloc init];
+    textLabel.hidden = YES;
+    textLabel.layer.cornerRadius = 5;
+    textLabel.layer.masksToBounds = YES;
+    textLabel.textColor = UIColor.whiteColor;
+    textLabel.font = [UIFont systemFontOfSize:12];
+    textLabel.backgroundColor = UIColor.lightGrayColor;
+    [slider addSubview:textLabel];
+    
+    // 滑动时显示
+    __weak UILabel *weakTextLabel = textLabel;
+    [slider addBlockForControlEvents:UIControlEventTouchDown block:^(id  _Nonnull sender) {
+        weakTextLabel.hidden = NO;
+    }];
+    [slider addBlockForControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside|UIControlEventTouchCancel block:^(id  _Nonnull sender) {
+        weakTextLabel.hidden = YES;
+    }];
+    [slider addBlockForControlEvents:UIControlEventValueChanged block:^(UISlider *slider) {
+        weakTextLabel.text = [NSString stringWithFormat:@"%.2f", slider.value];
+        [weakTextLabel sizeToFit];
+        weakTextLabel.bottom = 0;
+        weakTextLabel.centerX = slider.value / (slider.maximumValue - slider.minimumValue) * (slider.width - slider.currentThumbImage.size.width) + slider.currentThumbImage.size.width / 2;
+    }];
+    
+    [self.stackView addArrangedSubview:slider];
 }
 
 #pragma mark - Notifications
