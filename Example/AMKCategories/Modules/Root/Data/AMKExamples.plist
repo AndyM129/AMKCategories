@@ -89,18 +89,13 @@
 							<array>
 								<dict>
 									<key>title</key>
-									<string>支持通过协议中定义的属性 进行取值</string>
+									<string>AMKProtocolProperties</string>
 									<key>subtitle</key>
-									<string></string>
+									<string>支持通过自定义协议中定义的属性 访问对应键的值</string>
 									<key>keywords</key>
 									<string></string>
 									<key>pageClassName</key>
-									<string>AMKCategories_Example.AMKSubStringViewController</string>
-									<key>pageParams</key>
-									<dict>
-										<key>moduleId</key>
-										<string>xxx</string>
-									</dict>
+									<string>AMKDictionaryProtocolPropertiesExampleViewController</string>
 								</dict>
 							</array>
 						</dict>

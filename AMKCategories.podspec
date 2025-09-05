@@ -205,6 +205,11 @@ Pod::Spec.new do |s|
         end
         # NSDictionary 相关扩展
         foundation.subspec 'NSDictionary' do |dictionary|
+            # ProtocolProperties 通过协议属性
+            dictionary.subspec 'ProtocolProperties' do |protocolProperties|
+                protocolProperties.source_files = 'AMKCategories/Classes/Foundation/NSDictionary/ProtocolProperties/*.{h,m}'
+                protocolProperties.public_header_files = 'AMKCategories/Classes/Foundation/NSDictionary/ProtocolProperties/*.h'
+            end
             # ObjectForKey 自定义类型取值
             dictionary.subspec 'ObjectForKey' do |objectForKey|
                 objectForKey.source_files = 'AMKCategories/Classes/Foundation/NSDictionary/ObjectForKey/*.{h,m}'
