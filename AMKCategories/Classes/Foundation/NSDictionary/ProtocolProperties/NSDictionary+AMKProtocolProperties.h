@@ -11,3 +11,5 @@
 @interface NSDictionary (AMKProtocolProperties)
 
 @end
+
+//#define AMKPPStringValue(PropertyName) PropertyName##__##stringValue

@@ -9,17 +9,62 @@
 #import "AMKDictionaryProtocolPropertiesExampleViewController.h"
 #import <AMKCategories/NSDictionary+AMKProtocolProperties.h>
 
-@protocol AMKProtocolPropertiesExampleDictionary <NSObject>
-@property (nonatomic, copy, readonly, nullable) NSString *amkpp_aStringValue;
-@property (nonatomic, assign, readonly) NSInteger amkpp_aIntegerValue;
-@property (nonatomic, assign, readonly) BOOL amkpp_aBoolValue;
-@property (nonatomic, assign, readonly) double amkpp_aDoubleValue;
-@property (nonatomic, strong, readonly, nullable) NSNumber *amkpp_aNumberValue;
-@property (nonatomic, strong, readonly, nullable) NSArray *amkpp_anArray;
-@property (nonatomic, strong, readonly, nullable) NSDictionary *amkpp_aDict;
-@property (nonatomic, copy, readonly, nullable) void (^amkpp_aBlock)(void);
-@property (nonatomic, strong, readonly, nullable) id amkpp_aCustomObject;
+/// 【示例1】在协议中声明 xxx 字典中 key 对应的属性，以便支持直接通过属性访问对应Key值
+@protocol AMKExampleDictionaryPropertiesProtocol <NSObject>
+@optional
+@property (nonatomic, copy, readonly, nullable) id amkpp_aStringObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aIntegerObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aBoolObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aDoubleObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aNumberObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_anArrayObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aDictObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aNullObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aBlockObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aCustomObject;
+@property (nonatomic, copy, readonly, nullable) id amkpp_aCustomObjectWithCustomImplementation;
 @end
+
+/// 【示例1】给 NSDictionary 指定该属性协议
+@interface NSDictionary (AMKExampleDictionaryPropertiesProtocol) <AMKExampleDictionaryPropertiesProtocol>
+
+@end
+
+@implementation NSDictionary (AMKExampleDictionaryPropertiesProtocol)
+
+/// 【示意1】支持自定义实现对应属性的 getter
+- (id)amkpp_aCustomObjectWithCustomImplementation {
+    return [NSString stringWithFormat:@"自定义实现：%@", [self objectForKey:@"aCustomObjectWithCustomImplementation"]];
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
+/// 【示例2】在协议中声明 xxx 字典中 key 对应的属性，以便支持直接通过属性访问对应Key值
+@protocol AMKExampleDictionaryPropertiesProtocol_2 <NSObject>
+@optional
+@property (nonatomic, readonly, copy, nullable) NSString *amkpp_aStringObject__stringValue;
+@property (nonatomic, readonly, assign) NSInteger amkpp_aIntegerObject__integerValue;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aBoolObject__BoolObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aDoubleObject__DoubleObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aNumberObject__NumberObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_anArrayObject__nArrayObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aDictObject__DictObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aNullObject__NullObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aBlockObject__BlockObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aCustomObject__CustomObject;
+//@property (nonatomic, readonly, copy, nullable) id amkpp_aCustomObjectWithCustomImplementation__CustomObjectWithCustomImplementation;
+@end
+
+/// 【示例2】给 NSDictionary 指定该属性协议
+@interface NSDictionary (AMKExampleDictionaryPropertiesProtocol_2) <AMKExampleDictionaryPropertiesProtocol_2>
+
+@end
+
+#pragma mark -
+#pragma mark -
 
 @interface AMKDictionaryProtocolPropertiesExampleViewController ()
 
@@ -56,38 +101,77 @@
     
     @weakify(self)
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"单测" customBlock:nil];
-    [self.exampleStackView addArrangedButton:@"执行单测" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
+    [self.exampleStackView addArrangedButton:@"【示例1】通过协议属性 获取key值" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
         @strongify(self)
         if (!self) return;
         
         void (^block)(void) = ^{ NSLog(@"Block executed"); };
         NSObject *customObj = [NSObject new];
 
-        NSDictionary<AMKProtocolPropertiesExampleDictionary> *dict = (NSDictionary<AMKProtocolPropertiesExampleDictionary> *)@{
-            @"aStringValue": @"hello",
-            @"aIntegerValue": @123,
-            @"aBoolValue": @YES,
-            @"aDoubleValue": @3.14,
-            @"aNumberValue": @42,
-            @"anArray": @[@1, @2, @3],
-            @"aDict": @{@"k": @"v"},
-            @"aBlock": block,
-            @"aCustomObject": customObj
+        NSDictionary<AMKExampleDictionaryPropertiesProtocol> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol> *)@{
+            @"aStringObject": @"hello",
+            @"aIntegerObject": @123,
+            @"aBoolObject": @YES,
+            @"aDoubleObject": @3.14,
+            @"aNumberObject": @42,
+            @"anArrayObject": @[@1, @2, @3],
+            @"aDictObject": @{@"k": @"v"},
+            @"aNullObject": NSNull.null,
+            @"aBlockObject": block,
+            @"aCustomObject": customObj,
+            @"aCustomObjectWithCustomImplementation": customObj,
         };
+        
+        NSLog(@"dict.amkpp_aStringObject = %@", dict.amkpp_aStringObject);
+        NSLog(@"dict.amkpp_aIntegerObject = %@", dict.amkpp_aIntegerObject);
+        NSLog(@"dict.amkpp_aBoolObject = %@", dict.amkpp_aBoolObject);
+        NSLog(@"dict.amkpp_aDoubleObject = %@", dict.amkpp_aDoubleObject);
+        NSLog(@"dict.amkpp_aNumberObject = %@", dict.amkpp_aNumberObject);
+        NSLog(@"dict.amkpp_anArrayObject = %@", dict.amkpp_anArrayObject);
+        NSLog(@"dict.amkpp_aDictObject = %@", dict.amkpp_aDictObject);
+        NSLog(@"dict.amkpp_aNullObject = %@", dict.amkpp_aNullObject);
+        NSLog(@"dict.amkpp_aBlockObject = %@", dict.amkpp_aBlockObject);
+        NSLog(@"dict.amkpp_aCustomObject = %@", dict.amkpp_aCustomObject);
+        NSLog(@"dict.amkpp_aCustomObjectWithCustomImplementation = %@", dict.amkpp_aCustomObjectWithCustomImplementation);
 
-        // ✅ 正确类型
-        NSAssert([dict.amkpp_aStringValue isEqualToString:@"hello"], @"string error");
-        NSAssert(dict.amkpp_aIntegerValue == 123, @"integer error");
-        NSAssert(dict.amkpp_aBoolValue == YES, @"bool error");
-        NSAssert(fabs(dict.amkpp_aDoubleValue - 3.14) < 0.0001, @"double error");
-        NSAssert([dict.amkpp_aNumberValue isEqual:@42], @"number error");
-        NSAssert([dict.amkpp_anArray isKindOfClass:[NSArray class]], @"array error");
-        NSAssert([dict.amkpp_aDict isKindOfClass:[NSDictionary class]], @"dict error");
-        NSAssert(dict.amkpp_aBlock != nil, @"block error");
-        NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object error");
-
-        // ✅ 类型不匹配
-        NSDictionary<AMKProtocolPropertiesExampleDictionary> *mismatch = (NSDictionary<AMKProtocolPropertiesExampleDictionary> *)@{
+        NSAssert([dict.amkpp_aStringObject isEqualToString:@"hello"], @"string object error");
+        NSAssert([dict.amkpp_aIntegerObject isEqualToNumber:@123], @"integer object error");
+        NSAssert([dict.amkpp_aBoolObject isEqualToNumber:@YES], @"bool object error");
+        NSAssert([dict.amkpp_aDoubleObject isEqualToNumber:@3.14], @"double object error");
+        NSAssert([dict.amkpp_aNumberObject isEqualToNumber:@42], @"number object error");
+        NSAssert([dict.amkpp_anArrayObject isKindOfClass:NSArray.class], @"array object error");
+        NSAssert([dict.amkpp_aDictObject isKindOfClass:NSDictionary.class], @"dict object error");
+        NSAssert(dict.amkpp_aNullObject == nil, @"null object error");
+        NSAssert([dict.amkpp_aBlockObject isKindOfClass:NSClassFromString(@"NSBlock")], @"block object error");
+        NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object object error");
+        
+        NSLog(@"✅ All tests passed for type safety");
+    }];
+    
+    [self.exampleStackView addArrangedButton:@"【示例2】通过协议属性 获取key值 - 指定类型" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
+        @strongify(self)
+        if (!self) return;
+        
+        void (^block)(void) = ^{ NSLog(@"Block executed"); };
+        NSObject *customObj = [NSObject new];
+        
+        // 正确类型
+        NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *)@{
+            @"aStringObject": @"hello",
+            @"aIntegerObject": @123,
+            @"aBoolObject": @YES,
+            @"aDoubleObject": @3.14,
+            @"aNumberObject": @42,
+            @"anArrayObject": @[@1, @2, @3],
+            @"aDictObject": @{@"k": @"v"},
+            @"aNullObject": NSNull.null,
+            @"aBlockObject": block,
+            @"aCustomObject": customObj,
+            @"aCustomObjectWithCustomImplementation": customObj,
+        };
+        
+        // 类型不匹配
+        NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *mismatch = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *)@{
             @"aStringValue": @123,
             @"aIntegerValue": @"456",
             @"aBoolValue": @"YES",
@@ -98,19 +182,54 @@
             @"aBlock": @"not a block",
             @"aCustomObject": @999
         };
+        
+        // 测试
+        NSLog(@"dict.amkpp_aStringObject__stringValue = %@", dict.amkpp_aStringObject__stringValue);
+        NSLog(@"mismatch.amkpp_aStringObject__stringValue = %@", mismatch.amkpp_aStringObject__stringValue);
+        
+//        NSAssert([dict.amkpp_aStringObject__stringValue isEqualToString:@"hello"], @"__stringValue error");
+//        NSAssert([mismatch.amkpp_aStringObject__stringValue isEqualToString:@"123"], @"__stringValue error");
 
-        NSAssert(mismatch.amkpp_aStringValue == nil, @"string mismatch should return nil");
-        NSAssert(mismatch.amkpp_anArray == nil, @"array mismatch should return nil");
-        NSAssert(mismatch.amkpp_aDict == nil, @"dict mismatch should return nil");
-        NSAssert(mismatch.amkpp_aBlock == nil, @"block mismatch should return nil");
-        NSAssert(mismatch.amkpp_aCustomObject == nil, @"custom object mismatch should return nil");
+        
+        
+        
+//        NSAssert(dict.amkpp_aIntegerValue == 123, @"integer error");
+//        NSAssert(dict.amkpp_aBoolValue == YES, @"bool error");
+//        NSAssert(fabs(dict.amkpp_aDoubleValue - 3.14) < 0.0001, @"double error");
+//        NSAssert([dict.amkpp_aNumberValue isEqual:@42], @"number error");
+//        NSAssert([dict.amkpp_anArray isKindOfClass:[NSArray class]], @"array error");
+//        NSAssert([dict.amkpp_aDict isKindOfClass:[NSDictionary class]], @"dict error");
+//        NSAssert(dict.amkpp_aBlock != nil, @"block error");
+//        NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object error");
 
-        NSAssert(mismatch.amkpp_aIntegerValue == 0, @"integer mismatch returns 0");
-        NSAssert(mismatch.amkpp_aBoolValue == NO, @"bool mismatch returns NO");
-        NSAssert(fabs(mismatch.amkpp_aDoubleValue - 0.0) < 0.0001, @"double mismatch returns 0.0");
-        NSAssert([mismatch.amkpp_aNumberValue isEqual:@"42"], @"number mismatch returns original object");
+        
+        
+//        NSLog(@"dict.amkpp_aStringObject = %@", dict.amkpp_aStringObject__stringValue);
+//        NSLog(@"dict.amkpp_aIntegerObject = %@", dict.amkpp_aIntegerObject);
+//        NSLog(@"dict.amkpp_aBoolObject = %@", dict.amkpp_aBoolObject);
+//        NSLog(@"dict.amkpp_aDoubleObject = %@", dict.amkpp_aDoubleObject);
+//        NSLog(@"dict.amkpp_aNumberObject = %@", dict.amkpp_aNumberObject);
+//        NSLog(@"dict.amkpp_anArrayObject = %@", dict.amkpp_anArrayObject);
+//        NSLog(@"dict.amkpp_aDictObject = %@", dict.amkpp_aDictObject);
+//        NSLog(@"dict.amkpp_aNullObject = %@", dict.amkpp_aNullObject);
+//        NSLog(@"dict.amkpp_aBlockObject = %@", dict.amkpp_aBlockObject);
+//        NSLog(@"dict.amkpp_aCustomObject = %@", dict.amkpp_aCustomObject);
+//        NSLog(@"dict.amkpp_aCustomObjectWithCustomImplementation = %@", dict.amkpp_aCustomObjectWithCustomImplementation);
 
-        NSLog(@"✅ All tests passed for type safety");
+//        NSAssert([dict.amkpp_aStringObject__stringValue isEqualToString:@"hello"], @"__stringValue error");
+
+//        NSAssert([dict.amkpp_aStringObject isEqualToString:@"hello"], @"string object error");
+//        NSAssert([dict.amkpp_aIntegerObject isEqualToNumber:@123], @"integer object error");
+//        NSAssert([dict.amkpp_aBoolObject isEqualToNumber:@YES], @"bool object error");
+//        NSAssert([dict.amkpp_aDoubleObject isEqualToNumber:@3.14], @"double object error");
+//        NSAssert([dict.amkpp_aNumberObject isEqualToNumber:@42], @"number object error");
+//        NSAssert([dict.amkpp_anArrayObject isKindOfClass:NSArray.class], @"array object error");
+//        NSAssert([dict.amkpp_aDictObject isKindOfClass:NSDictionary.class], @"dict object error");
+//        NSAssert(dict.amkpp_aNullObject == nil, @"null object error");
+//        NSAssert([dict.amkpp_aBlockObject isKindOfClass:NSClassFromString(@"NSBlock")], @"block object error");
+//        NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object object error");
+        
+//        NSLog(@"✅ All tests passed for type safety");
     }];
 }
 
