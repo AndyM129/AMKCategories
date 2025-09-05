@@ -84,6 +84,7 @@
 		88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499AD2D315A460045FC15 /* AMKExampleStackView.m */; };
 		88B499B12D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */; };
 		88BD1E1F2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD1E1E2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.m */; };
+		88BD20892E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD20882E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m */; };
 		88CC95D82959C00D00C0AD26 /* AMKLottieExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */; };
 		88CC95DB2959C53B00C0AD26 /* christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = 88CC95DA2959C53B00C0AD26 /* christmas.json */; };
 		88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC95E02959D90500C0AD26 /* WKNVipBenefitsAnimationView.m */; };
@@ -254,6 +255,8 @@
 		88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AMKExampleStackView+AMKExampleStackViewConveniences.m"; sourceTree = "<group>"; };
 		88BD1E1D2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKDictionaryProtocolPropertiesExampleViewController.h; sourceTree = "<group>"; };
 		88BD1E1E2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKDictionaryProtocolPropertiesExampleViewController.m; sourceTree = "<group>"; };
+		88BD20872E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AMKProtocolPropertiesExample.h"; sourceTree = "<group>"; };
+		88BD20882E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AMKProtocolPropertiesExample.m"; sourceTree = "<group>"; };
 		88CC95D62959C00D00C0AD26 /* AMKLottieExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMKLottieExampleViewController.h; sourceTree = "<group>"; };
 		88CC95D72959C00D00C0AD26 /* AMKLottieExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKLottieExampleViewController.m; sourceTree = "<group>"; };
 		88CC95DA2959C53B00C0AD26 /* christmas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas.json; sourceTree = "<group>"; };
@@ -973,6 +976,8 @@
 		88BD1E1C2E6AB64000165AD5 /* ProtocolProperties */ = {
 			isa = PBXGroup;
 			children = (
+				88BD20872E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.h */,
+				88BD20882E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m */,
 				88BD1E1D2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.h */,
 				88BD1E1E2E6AB67800165AD5 /* AMKDictionaryProtocolPropertiesExampleViewController.m */,
 			);
@@ -1287,6 +1292,7 @@
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
 				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
+				88BD20892E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m in Sources */,
 				8806D97F290BB4BB005DC5C1 /* AMKKeyPathCodingViewController.m in Sources */,
 				88B499AE2D315A460045FC15 /* AMKExampleStackView.m in Sources */,
 				887D9CFC2B3C2190004D0854 /* AMK8330ExampleViewController.m in Sources */,

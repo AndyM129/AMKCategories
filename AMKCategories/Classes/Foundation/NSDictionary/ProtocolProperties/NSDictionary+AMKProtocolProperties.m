@@ -58,23 +58,9 @@ static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
 @implementation NSDictionary (AMKProtocolProperties)
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    
-//    static NSRegularExpression *kProtocolPropertyNameRegex = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        NSError *error = nil;
-//        NSString *pattern = [NSString stringWithFormat:@"^%@([A-Za-z0-9_]+)(?:__([A-Za-z0-9_]*Value))?$", kProtocolPropertyNamePrefix];
-//        kProtocolPropertyNameRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
-//        NSAssert(kProtocolPropertyNameRegex != nil, @"kProtocolPropertyNameRegex init failed: %@", error);
-//    });
-    
     NSString *key = nil, *valueType = nil;
     NSString *selName = NSStringFromSelector(sel);
     if ([selName amkProtocolProperties_extractKey:&key valueType:&valueType]) {
-//        NSTextCheckingResult *match = [kProtocolPropertyNameRegex firstMatchInString:selName options:0 range:NSMakeRange(0, selName.length)];
-//        NSString *key = [match rangeAtIndex:1].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:1]];
-//        NSString *valueType = [match rangeAtIndex:2].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:2]];
-        
         IMP imp = NULL;
         const char *types = NULL;
         
