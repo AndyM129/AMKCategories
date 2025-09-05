@@ -11,19 +11,70 @@
 @implementation NSDictionary (AMKProtocolProperties)
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    static NSString *kPrefix = @"amkpp_";
+    static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
+    
+    static NSRegularExpression *kProtocolPropertyNameRegex = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSError *error = nil;
+        NSString *pattern = [NSString stringWithFormat:@"%@([a-zA-Z0-9_]+)(?:__([a-zA-Z_][a-zA-Z0-9_]*))?", kProtocolPropertyNamePrefix];
+        kProtocolPropertyNameRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+        NSAssert(kProtocolPropertyNameRegex != nil, @"kProtocolPropertyNameRegex init failed: %@", error);
+    });
+    
     NSString *selName = NSStringFromSelector(sel);
-    if ([selName hasPrefix:kPrefix]) {
-        // 动态生成 IMP
-        IMP imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
-            NSString *key = [selName substringFromIndex:kPrefix.length]; // 去掉前缀
-            id value = [selfDict objectForKey:key];
-            id result = value != NSNull.null ? value : nil;
-            return result;
-        });
-
-        // 使用 "@@:" 表示返回对象，接收 id 和 SEL
-        class_addMethod(self.class, sel, imp, "@@:");
+    if ([selName hasPrefix:kProtocolPropertyNamePrefix]) {
+        NSTextCheckingResult *match = [kProtocolPropertyNameRegex firstMatchInString:selName options:0 range:NSMakeRange(0, selName.length)];
+        NSString *key = [match rangeAtIndex:1].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:1]];
+        NSString *valueType = [match rangeAtIndex:2].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:2]];
+        
+        IMP imp = NULL;
+        const char *types = NULL;
+        
+        if (!valueType.length) { // 无类型后缀，直接返回对象
+            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return value == NSNull.null ? nil : value;
+            });
+            types = "@@:";
+        }
+        else if ([valueType isEqualToString:@"stringValue"]) {
+            imp = imp_implementationWithBlock(^NSString *(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return [value respondsToSelector:@selector(stringValue)] ? [value stringValue] : nil;
+            });
+            types = "@@:";
+        }
+        else if ([valueType isEqualToString:@"integerValue"]) {
+            imp = imp_implementationWithBlock(^NSInteger(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return [value respondsToSelector:@selector(integerValue)] ? [value integerValue] : 0;
+            });
+            types = "q@:"; // NSInteger = long long (64-bit)
+        }
+        else if ([valueType isEqualToString:@"boolValue"]) {
+            imp = imp_implementationWithBlock(^BOOL(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return [value respondsToSelector:@selector(boolValue)] ? [value boolValue] : NO;
+            });
+            types = "B@:";
+        }
+        else if ([valueType isEqualToString:@"doubleValue"]) {
+            imp = imp_implementationWithBlock(^double(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return [value respondsToSelector:@selector(doubleValue)] ? [value doubleValue] : 0.0;
+            });
+            types = "d@:";
+        }
+        else { // 未知后缀，按对象返回
+            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return value == NSNull.null ? nil : value;
+            });
+            types = "@@:";
+        }
+        
+        class_addMethod(self, sel, imp, types);
         return YES;
     }
     
