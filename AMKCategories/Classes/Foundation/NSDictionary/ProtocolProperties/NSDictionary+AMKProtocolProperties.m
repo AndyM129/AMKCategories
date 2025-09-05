@@ -90,6 +90,8 @@ static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
                 const char *types = "v@:@";
                 class_addMethod(self, sel, imp, types);
                 return YES;
+            } else {
+                NSAssert(NO, @"[NSDictionary+AMKProtocolProperties.m] Attempt to set value on a non-MutableDictionary instance: %@", self);
             }
         } else {
             IMP imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){

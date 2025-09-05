@@ -170,6 +170,31 @@
         NSAssert(mutableDict.amkpp_aCustomObject == customObj, @"custom object object error");
         NSLog(@"✅ All tests passed for type safety => %@", mutableDict);
     }];
+    
+    [self.exampleStackView addArrangedButton:@"执行单测：非 NSMutableDictionary 赋值" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
+        @strongify(self)
+        if (!self) return;
+        
+        void (^block)(void) = ^{ NSLog(@"Block executed"); };
+        NSObject *customObj = [NSObject new];
+        
+        // 验证
+        @try {
+            NSMutableDictionary<AMKExampleDictionaryPropertiesProtocol_2> *mutableDict = (id)@{};
+            mutableDict.amkpp_aStringObject = @"hello";
+            mutableDict.amkpp_aIntegerObject = @123;
+            mutableDict.amkpp_aBoolObject = @YES;
+            mutableDict.amkpp_aDoubleObject = @3.14;
+            mutableDict.amkpp_aNumberObject = @42;
+            mutableDict.amkpp_anArrayObject = @[@1, @2, @3];
+            mutableDict.amkpp_aDictObject = @{@"k": @"v"};
+            mutableDict.amkpp_aNullObject = NSNull.null;
+            mutableDict.amkpp_aBlockObject = block;
+            mutableDict.amkpp_aCustomObject = customObj;
+        } @catch (NSException * __unused exception) {
+            NSLog(@"%@", exception);
+        }
+    }];
 }
 
 //- (void)addExample_? {
