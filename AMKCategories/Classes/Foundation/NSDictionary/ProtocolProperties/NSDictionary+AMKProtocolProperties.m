@@ -11,22 +11,35 @@
 static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
 
 @interface NSString (AMKProtocolProperties)
-- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType;
+
+- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType isSetter:(BOOL *)isSetter;
+
 @end
 
 @implementation NSString (AMKProtocolProperties)
 
-- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType {
+- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType isSetter:(BOOL *)isSetter {
     // 将值重置
     if (outKey) *outKey = nil;
     if (outValueType) *outValueType = nil;
+    if (isSetter) *isSetter = NO;
+    
+    NSString *selName = self;
+    BOOL setter = [selName hasPrefix:@"set"] && [selName hasSuffix:@":"];
+    if (setter) {
+        if (isSetter) *isSetter = YES;
+        // 去掉 set 和 :
+        selName = [selName substringWithRange:NSMakeRange(3, selName.length-4)];
+        // 首字母小写
+        selName = [selName stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[selName substringToIndex:1] lowercaseString]];
+    }
     
     // 没有指定协议属性名前缀，则不再处理
-    if (![self hasPrefix:kProtocolPropertyNamePrefix]) {
+    if (![selName hasPrefix:kProtocolPropertyNamePrefix]) {
         return NO;
     }
     
-    NSString *rest = [self substringFromIndex:kProtocolPropertyNamePrefix.length];
+    NSString *rest = [selName substringFromIndex:kProtocolPropertyNamePrefix.length];
     NSRange sep = [rest rangeOfString:@"__" options:NSBackwardsSearch];
     
     // 没有 valueType，全部当成 key
@@ -36,7 +49,7 @@ static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
     // 可能有 valueType
     else {
         NSString *maybeValueType = [rest substringFromIndex:sep.location + sep.length];
-        
+
         // 没有 valueType，全部当成 key
         if (!maybeValueType.length || ![maybeValueType hasSuffix:@"Value"]) {
             if (outKey) *outKey = rest;
@@ -58,63 +71,106 @@ static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
 @implementation NSDictionary (AMKProtocolProperties)
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    NSString *key = nil, *valueType = nil;
-    NSString *selName = NSStringFromSelector(sel);
-    if ([selName amkProtocolProperties_extractKey:&key valueType:&valueType]) {
-        IMP imp = NULL;
-        const char *types = NULL;
-        
-        if (!valueType.length) { // 无类型后缀，直接返回对象
-            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
-                id value = selfDict[key];
-                return value == NSNull.null ? nil : value;
-            });
-            types = "@@:";
-        }
-        else if ([valueType isEqualToString:@"stringValue"]) {
-            imp = imp_implementationWithBlock(^NSString *(NSDictionary *selfDict){
-                id value = selfDict[key];
-                if ([value isKindOfClass:NSString.class]) {
-                    return value;
-                }
-                return [value respondsToSelector:@selector(stringValue)] ? [value stringValue] : nil;
-            });
-            types = "@@:";
-        }
-        else if ([valueType isEqualToString:@"integerValue"]) {
-            imp = imp_implementationWithBlock(^NSInteger(NSDictionary *selfDict){
-                id value = selfDict[key];
-                return [value respondsToSelector:@selector(integerValue)] ? [value integerValue] : 0;
-            });
-            types = "q@:"; // NSInteger = long long (64-bit)
-        }
-        else if ([valueType isEqualToString:@"boolValue"]) {
-            imp = imp_implementationWithBlock(^BOOL(NSDictionary *selfDict){
-                id value = selfDict[key];
-                return [value respondsToSelector:@selector(boolValue)] ? [value boolValue] : NO;
-            });
-            types = "B@:";
-        }
-        else if ([valueType isEqualToString:@"doubleValue"]) {
-            imp = imp_implementationWithBlock(^double(NSDictionary *selfDict){
-                id value = selfDict[key];
-                return [value respondsToSelector:@selector(doubleValue)] ? [value doubleValue] : 0.0;
-            });
-            types = "d@:";
-        }
-        else { // 未知后缀，按对象返回
-            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
-                id value = selfDict[key];
-                return value == NSNull.null ? nil : value;
-            });
-            types = "@@:";
-        }
-        
-        class_addMethod(self, sel, imp, types);
-        return YES;
-    }
+    NSString *key = nil;
+    NSString *valueType = nil;
+    BOOL isSetter = NO;
     
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName amkProtocolProperties_extractKey:&key valueType:&valueType isSetter:&isSetter]) {
+        if (isSetter) {
+            // 只对 NSMutableDictionary 生效
+            if ([self isSubclassOfClass:NSMutableDictionary.class]) {
+                IMP imp = imp_implementationWithBlock(^(NSMutableDictionary *selfDict, id obj){
+                    if (obj) {
+                        selfDict[key] = obj;
+                    } else {
+                        [selfDict removeObjectForKey:key];
+                    }
+                });
+                const char *types = "v@:@";
+                class_addMethod(self, sel, imp, types);
+                return YES;
+            }
+        } else {
+            IMP imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
+                id value = selfDict[key];
+                return value == NSNull.null ? nil : value;
+            });
+            const char *types = "@@:";
+            class_addMethod(self, sel, imp, types);
+            return YES;
+        }
+    }
+        
     return [super resolveInstanceMethod:sel];
 }
 
 @end
+
+#pragma mark -
+#pragma mark - 备份
+#pragma mark -
+
+//@implementation NSDictionary (AMKProtocolProperties)
+//
+//+ (BOOL)resolveInstanceMethod:(SEL)sel {
+//    NSString *key = nil, *valueType = nil;
+//    NSString *selName = NSStringFromSelector(sel);
+//    if ([selName amkProtocolProperties_extractKey:&key valueType:&valueType]) {
+//        IMP imp = NULL;
+//        const char *types = NULL;
+//        
+//        if (!valueType.length) { // 无类型后缀，直接返回对象
+//            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                return value == NSNull.null ? nil : value;
+//            });
+//            types = "@@:";
+//        }
+//        else if ([valueType isEqualToString:@"stringValue"]) {
+//            imp = imp_implementationWithBlock(^NSString *(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                if ([value isKindOfClass:NSString.class]) {
+//                    return value;
+//                }
+//                return [value respondsToSelector:@selector(stringValue)] ? [value stringValue] : nil;
+//            });
+//            types = "@@:";
+//        }
+//        else if ([valueType isEqualToString:@"integerValue"]) {
+//            imp = imp_implementationWithBlock(^NSInteger(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                return [value respondsToSelector:@selector(integerValue)] ? [value integerValue] : 0;
+//            });
+//            types = "q@:"; // NSInteger = long long (64-bit)
+//        }
+//        else if ([valueType isEqualToString:@"boolValue"]) {
+//            imp = imp_implementationWithBlock(^BOOL(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                return [value respondsToSelector:@selector(boolValue)] ? [value boolValue] : NO;
+//            });
+//            types = "B@:";
+//        }
+//        else if ([valueType isEqualToString:@"doubleValue"]) {
+//            imp = imp_implementationWithBlock(^double(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                return [value respondsToSelector:@selector(doubleValue)] ? [value doubleValue] : 0.0;
+//            });
+//            types = "d@:";
+//        }
+//        else { // 未知后缀，按对象返回
+//            imp = imp_implementationWithBlock(^id(NSDictionary *selfDict){
+//                id value = selfDict[key];
+//                return value == NSNull.null ? nil : value;
+//            });
+//            types = "@@:";
+//        }
+//        
+//        class_addMethod(self, sel, imp, types);
+//        return YES;
+//    }
+//    
+//    return [super resolveInstanceMethod:sel];
+//}
+//
+//@end

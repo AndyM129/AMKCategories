@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addExample_1];
-    //[self addExample_2];
+    [self addExample_2];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,8 +78,8 @@
         
         void (^block)(void) = ^{ NSLog(@"Block executed"); };
         NSObject *customObj = [NSObject new];
-
-        NSDictionary<AMKExampleDictionaryPropertiesProtocol_1> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_1> *)@{
+        
+        NSDictionary<AMKExampleDictionaryPropertiesProtocol_1> *dict = (id)@{
             @"aStringObject": @"hello",
             @"aIntegerObject": @123,
             @"aBoolObject": @YES,
@@ -93,6 +93,7 @@
             @"aCustomObjectWithCustomImplementation": customObj,
         };
         
+        // 调试
         NSLog(@"dict.amkpp_aStringObject = %@", dict.amkpp_aStringObject);
         NSLog(@"dict.amkpp_aIntegerObject = %@", dict.amkpp_aIntegerObject);
         NSLog(@"dict.amkpp_aBoolObject = %@", dict.amkpp_aBoolObject);
@@ -105,6 +106,7 @@
         NSLog(@"dict.amkpp_aCustomObject = %@", dict.amkpp_aCustomObject);
         NSLog(@"dict.amkpp_aCustomObjectWithCustomImplementation = %@", dict.amkpp_aCustomObjectWithCustomImplementation);
 
+        // 测试
         NSAssert([dict.amkpp_aStringObject isEqualToString:@"hello"], @"string object error");
         NSAssert([dict.amkpp_aIntegerObject isEqualToNumber:@123], @"integer object error");
         NSAssert([dict.amkpp_aBoolObject isEqualToNumber:@YES], @"bool object error");
@@ -116,11 +118,61 @@
         NSAssert([dict.amkpp_aBlockObject isKindOfClass:NSClassFromString(@"NSBlock")], @"block object error");
         NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object object error");
         
-        NSLog(@"✅ All tests passed for type safety");
+        NSLog(@"✅ All tests passed for type safety => %@", dict);
     }];
 }
 
-//- (void)addExample_2 {
+- (void)addExample_2 {
+    @weakify(self)
+    [self.exampleStackView addArrangedTitleLabelWithTitle:@"【示例2】通过协议属性 存&取key值 - id类型" customBlock:nil];
+    [self.exampleStackView addArrangedButton:@"执行单测" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {
+        @strongify(self)
+        if (!self) return;
+        
+        void (^block)(void) = ^{ NSLog(@"Block executed"); };
+        NSObject *customObj = [NSObject new];
+        
+        // 验证：各属性的 setter
+        NSMutableDictionary<AMKExampleDictionaryPropertiesProtocol_2> *mutableDict = (id)@{}.mutableCopy;
+        mutableDict.amkpp_aStringObject = @"hello";
+        mutableDict.amkpp_aIntegerObject = @123;
+        mutableDict.amkpp_aBoolObject = @YES;
+        mutableDict.amkpp_aDoubleObject = @3.14;
+        mutableDict.amkpp_aNumberObject = @42;
+        mutableDict.amkpp_anArrayObject = @[@1, @2, @3];
+        mutableDict.amkpp_aDictObject = @{@"k": @"v"};
+        mutableDict.amkpp_aNullObject = NSNull.null;
+        mutableDict.amkpp_aBlockObject = block;
+        mutableDict.amkpp_aCustomObject = customObj;
+        
+        // 调试（同时，验证了各属性的 getter）
+        NSLog(@"mutableDict.amkpp_aStringObject = %@", mutableDict.amkpp_aStringObject);
+        NSLog(@"mutableDict.amkpp_aIntegerObject = %@", mutableDict.amkpp_aIntegerObject);
+        NSLog(@"mutableDict.amkpp_aBoolObject = %@", mutableDict.amkpp_aBoolObject);
+        NSLog(@"mutableDict.amkpp_aDoubleObject = %@", mutableDict.amkpp_aDoubleObject);
+        NSLog(@"mutableDict.amkpp_aNumberObject = %@", mutableDict.amkpp_aNumberObject);
+        NSLog(@"mutableDict.amkpp_anArrayObject = %@", mutableDict.amkpp_anArrayObject);
+        NSLog(@"mutableDict.amkpp_aDictObject = %@", mutableDict.amkpp_aDictObject);
+        NSLog(@"mutableDict.amkpp_aNullObject = %@", mutableDict.amkpp_aNullObject);
+        NSLog(@"mutableDict.amkpp_aBlockObject = %@", mutableDict.amkpp_aBlockObject);
+        NSLog(@"mutableDict.amkpp_aCustomObject = %@", mutableDict.amkpp_aCustomObject);
+        
+        // 测试（同时，验证了各属性的 getter）
+        NSAssert([mutableDict.amkpp_aStringObject isEqualToString:@"hello"], @"string object error");
+        NSAssert([mutableDict.amkpp_aIntegerObject isEqualToNumber:@123], @"integer object error");
+        NSAssert([mutableDict.amkpp_aBoolObject isEqualToNumber:@YES], @"bool object error");
+        NSAssert([mutableDict.amkpp_aDoubleObject isEqualToNumber:@3.14], @"double object error");
+        NSAssert([mutableDict.amkpp_aNumberObject isEqualToNumber:@42], @"number object error");
+        NSAssert([mutableDict.amkpp_anArrayObject isKindOfClass:NSArray.class], @"array object error");
+        NSAssert([mutableDict.amkpp_aDictObject isKindOfClass:NSDictionary.class], @"dict object error");
+        NSAssert(mutableDict.amkpp_aNullObject == nil, @"null object error");
+        NSAssert([mutableDict.amkpp_aBlockObject isKindOfClass:NSClassFromString(@"NSBlock")], @"block object error");
+        NSAssert(mutableDict.amkpp_aCustomObject == customObj, @"custom object object error");
+        NSLog(@"✅ All tests passed for type safety => %@", mutableDict);
+    }];
+}
+
+//- (void)addExample_? {
 //    @weakify(self)
 //    [self.exampleStackView addArrangedTitleLabelWithTitle:@"【示例2】通过协议属性 获取key值 - 指定类型" customBlock:nil];
 //    [self.exampleStackView addArrangedButton:@"执行单测" customBlock:nil touchUpInsideBlock:^(UIButton * _Nullable button) {

@@ -58,22 +58,35 @@ NS_ASSUME_NONNULL_END
 /// 【示例1】在协议中声明 xxx 字典中 key 对应的 只读属性，以便支持直接通过属性访问对应Key值
 @protocol AMKExampleDictionaryPropertiesProtocol_1 <NSObject>
 @optional
-@property (nonatomic, copy, readonly, nullable) id amkpp_aStringObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aIntegerObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aBoolObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aDoubleObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aNumberObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_anArrayObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aDictObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aNullObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aBlockObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aCustomObject;
-@property (nonatomic, copy, readonly, nullable) id amkpp_aCustomObjectWithCustomImplementation;
+@property (nonatomic, readonly, nullable) id amkpp_aStringObject;
+@property (nonatomic, readonly, nullable) id amkpp_aIntegerObject;
+@property (nonatomic, readonly, nullable) id amkpp_aBoolObject;
+@property (nonatomic, readonly, nullable) id amkpp_aDoubleObject;
+@property (nonatomic, readonly, nullable) id amkpp_aNumberObject;
+@property (nonatomic, readonly, nullable) id amkpp_anArrayObject;
+@property (nonatomic, readonly, nullable) id amkpp_aDictObject;
+@property (nonatomic, readonly, nullable) id amkpp_aNullObject;
+@property (nonatomic, readonly, nullable) id amkpp_aBlockObject;
+@property (nonatomic, readonly, nullable) id amkpp_aCustomObject;
+@property (nonatomic, readonly, nullable) id amkpp_aCustomObjectWithCustomImplementation;
 @end
 
-/// 【示例1】给 NSDictionary 指定该属性协议
-@interface NSDictionary (AMKExampleDictionaryPropertiesProtocol_1) <AMKExampleDictionaryPropertiesProtocol_1>
+#pragma mark - 示例2
 
+/// 【示例2】在协议中声明 xxx 字典中 key 对应的 读写属性，以便支持直接通过属性访问对应Key值
+@protocol AMKExampleDictionaryPropertiesProtocol_2 <NSObject>
+@optional
+@property (nonatomic, readwrite, nullable) id amkpp_aStringObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aIntegerObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aBoolObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aDoubleObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aNumberObject;
+@property (nonatomic, readwrite, nullable) id amkpp_anArrayObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aDictObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aNullObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aBlockObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aCustomObject;
+@property (nonatomic, readwrite, nullable) id amkpp_aCustomObjectWithCustomImplementation;
 @end
 
 //#pragma mark - 示例9
