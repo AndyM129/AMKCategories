@@ -8,25 +8,72 @@
 #import "NSDictionary+AMKProtocolProperties.h"
 #import <objc/runtime.h>
 
+static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
+
+@interface NSString (AMKProtocolProperties)
+- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType;
+@end
+
+@implementation NSString (AMKProtocolProperties)
+
+- (BOOL)amkProtocolProperties_extractKey:(NSString * _Nullable * _Nullable)outKey valueType:(NSString * _Nullable * _Nullable)outValueType {
+    // 将值重置
+    if (outKey) *outKey = nil;
+    if (outValueType) *outValueType = nil;
+    
+    // 没有指定协议属性名前缀，则不再处理
+    if (![self hasPrefix:kProtocolPropertyNamePrefix]) {
+        return NO;
+    }
+    
+    NSString *rest = [self substringFromIndex:kProtocolPropertyNamePrefix.length];
+    NSRange sep = [rest rangeOfString:@"__" options:NSBackwardsSearch];
+    
+    // 没有 valueType，全部当成 key
+    if (sep.location == NSNotFound) {
+        if (outKey) *outKey = rest;
+    }
+    // 可能有 valueType
+    else {
+        NSString *maybeValueType = [rest substringFromIndex:sep.location + sep.length];
+        
+        // 没有 valueType，全部当成 key
+        if (!maybeValueType.length || ![maybeValueType hasSuffix:@"Value"]) {
+            if (outKey) *outKey = rest;
+        }
+        // 有 valueType
+        else {
+            if (outKey) *outKey = [rest substringToIndex:sep.location];
+            if (outValueType) *outValueType = maybeValueType;
+        }
+    }
+    return YES;
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
 @implementation NSDictionary (AMKProtocolProperties)
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    static NSString *kProtocolPropertyNamePrefix = @"amkpp_";
     
-    static NSRegularExpression *kProtocolPropertyNameRegex = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSError *error = nil;
-        NSString *pattern = [NSString stringWithFormat:@"%@([a-zA-Z0-9_]+)(?:__([a-zA-Z_][a-zA-Z0-9_]*))?", kProtocolPropertyNamePrefix];
-        kProtocolPropertyNameRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
-        NSAssert(kProtocolPropertyNameRegex != nil, @"kProtocolPropertyNameRegex init failed: %@", error);
-    });
+//    static NSRegularExpression *kProtocolPropertyNameRegex = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        NSError *error = nil;
+//        NSString *pattern = [NSString stringWithFormat:@"^%@([A-Za-z0-9_]+)(?:__([A-Za-z0-9_]*Value))?$", kProtocolPropertyNamePrefix];
+//        kProtocolPropertyNameRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+//        NSAssert(kProtocolPropertyNameRegex != nil, @"kProtocolPropertyNameRegex init failed: %@", error);
+//    });
     
+    NSString *key = nil, *valueType = nil;
     NSString *selName = NSStringFromSelector(sel);
-    if ([selName hasPrefix:kProtocolPropertyNamePrefix]) {
-        NSTextCheckingResult *match = [kProtocolPropertyNameRegex firstMatchInString:selName options:0 range:NSMakeRange(0, selName.length)];
-        NSString *key = [match rangeAtIndex:1].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:1]];
-        NSString *valueType = [match rangeAtIndex:2].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:2]];
+    if ([selName amkProtocolProperties_extractKey:&key valueType:&valueType]) {
+//        NSTextCheckingResult *match = [kProtocolPropertyNameRegex firstMatchInString:selName options:0 range:NSMakeRange(0, selName.length)];
+//        NSString *key = [match rangeAtIndex:1].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:1]];
+//        NSString *valueType = [match rangeAtIndex:2].location == NSNotFound ? nil : [selName substringWithRange:[match rangeAtIndex:2]];
         
         IMP imp = NULL;
         const char *types = NULL;
@@ -41,6 +88,9 @@
         else if ([valueType isEqualToString:@"stringValue"]) {
             imp = imp_implementationWithBlock(^NSString *(NSDictionary *selfDict){
                 id value = selfDict[key];
+                if ([value isKindOfClass:NSString.class]) {
+                    return value;
+                }
                 return [value respondsToSelector:@selector(stringValue)] ? [value stringValue] : nil;
             });
             types = "@@:";

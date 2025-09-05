@@ -45,6 +45,7 @@
 /// 【示例2】在协议中声明 xxx 字典中 key 对应的属性，以便支持直接通过属性访问对应Key值
 @protocol AMKExampleDictionaryPropertiesProtocol_2 <NSObject>
 @optional
+// 正确使用：声明类型 与 类型后缀 一致
 @property (nonatomic, readonly, copy, nullable) NSString *amkpp_aStringObject__stringValue;
 @property (nonatomic, readonly, assign) NSInteger amkpp_aIntegerObject__integerValue;
 //@property (nonatomic, readonly, copy, nullable) id amkpp_aBoolObject__BoolObject;
@@ -56,6 +57,9 @@
 //@property (nonatomic, readonly, copy, nullable) id amkpp_aBlockObject__BlockObject;
 //@property (nonatomic, readonly, copy, nullable) id amkpp_aCustomObject__CustomObject;
 //@property (nonatomic, readonly, copy, nullable) id amkpp_aCustomObjectWithCustomImplementation__CustomObjectWithCustomImplementation;
+
+// 异常测试：声明类型 与 类型后缀 不一致
+//@property (nonatomic, readonly, copy, nullable) NSNumber *amkpp_aStringObject__numberValue;
 @end
 
 /// 【示例2】给 NSDictionary 指定该属性协议
@@ -170,42 +174,9 @@
             @"aCustomObjectWithCustomImplementation": customObj,
         };
         
-        // 类型不匹配
-        NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *mismatch = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *)@{
-            @"aStringValue": @123,
-            @"aIntegerValue": @"456",
-            @"aBoolValue": @"YES",
-            @"aDoubleValue": @"3.1415",
-            @"aNumberValue": @"42",
-            @"anArray": @{@"key": @"value"},
-            @"aDict": @[@1, @2],
-            @"aBlock": @"not a block",
-            @"aCustomObject": @999
-        };
-        
-        // 测试
+        // 调试
         NSLog(@"dict.amkpp_aStringObject__stringValue = %@", dict.amkpp_aStringObject__stringValue);
-        NSLog(@"mismatch.amkpp_aStringObject__stringValue = %@", mismatch.amkpp_aStringObject__stringValue);
-        
-//        NSAssert([dict.amkpp_aStringObject__stringValue isEqualToString:@"hello"], @"__stringValue error");
-//        NSAssert([mismatch.amkpp_aStringObject__stringValue isEqualToString:@"123"], @"__stringValue error");
-
-        
-        
-        
-//        NSAssert(dict.amkpp_aIntegerValue == 123, @"integer error");
-//        NSAssert(dict.amkpp_aBoolValue == YES, @"bool error");
-//        NSAssert(fabs(dict.amkpp_aDoubleValue - 3.14) < 0.0001, @"double error");
-//        NSAssert([dict.amkpp_aNumberValue isEqual:@42], @"number error");
-//        NSAssert([dict.amkpp_anArray isKindOfClass:[NSArray class]], @"array error");
-//        NSAssert([dict.amkpp_aDict isKindOfClass:[NSDictionary class]], @"dict error");
-//        NSAssert(dict.amkpp_aBlock != nil, @"block error");
-//        NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object error");
-
-        
-        
-//        NSLog(@"dict.amkpp_aStringObject = %@", dict.amkpp_aStringObject__stringValue);
-//        NSLog(@"dict.amkpp_aIntegerObject = %@", dict.amkpp_aIntegerObject);
+        NSLog(@"dict.amkpp_aIntegerObject__integerValue = %zd", dict.amkpp_aIntegerObject__integerValue);
 //        NSLog(@"dict.amkpp_aBoolObject = %@", dict.amkpp_aBoolObject);
 //        NSLog(@"dict.amkpp_aDoubleObject = %@", dict.amkpp_aDoubleObject);
 //        NSLog(@"dict.amkpp_aNumberObject = %@", dict.amkpp_aNumberObject);
@@ -216,10 +187,9 @@
 //        NSLog(@"dict.amkpp_aCustomObject = %@", dict.amkpp_aCustomObject);
 //        NSLog(@"dict.amkpp_aCustomObjectWithCustomImplementation = %@", dict.amkpp_aCustomObjectWithCustomImplementation);
 
-//        NSAssert([dict.amkpp_aStringObject__stringValue isEqualToString:@"hello"], @"__stringValue error");
-
-//        NSAssert([dict.amkpp_aStringObject isEqualToString:@"hello"], @"string object error");
-//        NSAssert([dict.amkpp_aIntegerObject isEqualToNumber:@123], @"integer object error");
+        // 测试
+        NSAssert([dict.amkpp_aStringObject__stringValue isEqualToString:@"hello"], @"StringObject__stringValue error");
+        NSAssert(dict.amkpp_aIntegerObject__integerValue == 123, @"IntegerObject__integerValue error");
 //        NSAssert([dict.amkpp_aBoolObject isEqualToNumber:@YES], @"bool object error");
 //        NSAssert([dict.amkpp_aDoubleObject isEqualToNumber:@3.14], @"double object error");
 //        NSAssert([dict.amkpp_aNumberObject isEqualToNumber:@42], @"number object error");
