@@ -79,7 +79,7 @@
         void (^block)(void) = ^{ NSLog(@"Block executed"); };
         NSObject *customObj = [NSObject new];
 
-        NSDictionary<AMKExampleDictionaryPropertiesProtocol> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol> *)@{
+        NSDictionary<AMKExampleDictionaryPropertiesProtocol_1> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_1> *)@{
             @"aStringObject": @"hello",
             @"aIntegerObject": @123,
             @"aBoolObject": @YES,

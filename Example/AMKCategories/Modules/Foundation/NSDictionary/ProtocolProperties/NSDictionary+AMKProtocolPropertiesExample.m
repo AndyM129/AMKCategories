@@ -10,7 +10,7 @@
 
 #pragma mark - 示例1
 
-@implementation NSDictionary (AMKExampleDictionaryPropertiesProtocol)
+@implementation NSDictionary (AMKExampleDictionaryPropertiesProtocol_1)
 
 /// 【示意1】支持自定义实现对应属性的 getter
 - (id)amkpp_aCustomObjectWithCustomImplementation {

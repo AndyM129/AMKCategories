@@ -11,7 +11,7 @@
 #pragma mark - 示例1
 
 /// 【示例1】在协议中声明 xxx 字典中 key 对应的属性，以便支持直接通过属性访问对应Key值
-@protocol AMKExampleDictionaryPropertiesProtocol <NSObject>
+@protocol AMKExampleDictionaryPropertiesProtocol_1 <NSObject>
 @optional
 @property (nonatomic, copy, readonly, nullable) id amkpp_aStringObject;
 @property (nonatomic, copy, readonly, nullable) id amkpp_aIntegerObject;
@@ -27,7 +27,7 @@
 @end
 
 /// 【示例1】给 NSDictionary 指定该属性协议
-@interface NSDictionary (AMKExampleDictionaryPropertiesProtocol) <AMKExampleDictionaryPropertiesProtocol>
+@interface NSDictionary (AMKExampleDictionaryPropertiesProtocol_1) <AMKExampleDictionaryPropertiesProtocol_1>
 
 @end
 
