@@ -8,6 +8,12 @@
 
 #import "NSDictionary+AMKProtocolPropertiesExample.h"
 
+#pragma mark - 需要考虑的类型
+
+@implementation AMKCustomObject
+
+@end
+
 #pragma mark - 示例1
 
 @implementation NSDictionary (AMKExampleDictionaryPropertiesProtocol_1)

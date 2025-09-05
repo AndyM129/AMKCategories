@@ -131,7 +131,7 @@
 //        NSObject *customObj = [NSObject new];
 //        
 //        // 正确类型
-//        NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_2> *)@{
+//        NSDictionary<AMKExampleDictionaryPropertiesProtocol_9> *dict = (NSDictionary<AMKExampleDictionaryPropertiesProtocol_9> *)@{
 //            @"aStringObject": @"hello",
 //            @"aIntegerObject": @123,
 //            @"aBoolObject": @YES,
