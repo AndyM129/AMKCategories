@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - 示例1
 
-/// 【示例1】在协议中声明 xxx 字典中 key 对应的 只读属性，以便支持直接通过属性访问对应Key值
+/// 【示例1】在协议中声明 xxx 字典中 key 对应的「只读属性」，以便支持直接通过属性访问对应Key值
 @protocol AMKExampleDictionaryPropertiesProtocol_1 <NSObject>
 @optional
 @property (nonatomic, readonly, nullable) id amkpp_aStringObject;
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - 示例2
 
-/// 【示例2】在协议中声明 xxx 字典中 key 对应的 读写属性，以便支持直接通过属性访问对应Key值
+/// 【示例2】在协议中声明 xxx 字典中 key 对应的「读写属性」，以便支持直接通过属性访问对应Key值
 @protocol AMKExampleDictionaryPropertiesProtocol_2 <NSObject>
 @optional
 @property (nonatomic, readwrite, nullable) id amkpp_aStringObject;
