@@ -516,6 +516,7 @@
 		8806D95B290BB4BA005DC5C1 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				88BD1E162E6A8DB000165AD5 /* NSDictionary */,
 				8806D95E290BB4BA005DC5C1 /* NSBundle */,
 				8806D965290BB4BA005DC5C1 /* NSString */,
 				8806D96A290BB4BA005DC5C1 /* NSObject */,
@@ -956,6 +957,13 @@
 				88B499B02D315B160045FC15 /* AMKExampleStackView+AMKExampleStackViewConveniences.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		88BD1E162E6A8DB000165AD5 /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSDictionary;
 			sourceTree = "<group>";
 		};
 		88CC95D52959BFEB00C0AD26 /* Lottie */ = {

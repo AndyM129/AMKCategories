@@ -6,23 +6,6 @@
 	<string>组件示例库</string>
 	<key>subtitle</key>
 	<string></string>
-	<key>【模板】subExamples</key>
-	<array>
-		<dict>
-			<key>title</key>
-			<string>标题</string>
-			<key>subtitle</key>
-			<string>介绍、说明</string>
-			<key>keywords</key>
-			<string></string>
-			<key>pageClassName</key>
-			<string></string>
-			<key>pageParams</key>
-			<dict/>
-			<key>subExamples</key>
-			<array/>
-		</dict>
-	</array>
 	<key>subExamples</key>
 	<array>
 		<dict>
@@ -92,6 +75,32 @@
 									<string></string>
 									<key>pageClassName</key>
 									<string>AMKBundleResourceRequestExampleViewController</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>title</key>
+							<string>NSDictionary</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>keywords</key>
+							<string></string>
+							<key>subExamples</key>
+							<array>
+								<dict>
+									<key>title</key>
+									<string>支持通过协议中定义的属性 进行取值</string>
+									<key>subtitle</key>
+									<string></string>
+									<key>keywords</key>
+									<string></string>
+									<key>pageClassName</key>
+									<string>AMKCategories_Example.AMKSubStringViewController</string>
+									<key>pageParams</key>
+									<dict>
+										<key>moduleId</key>
+										<string>xxx</string>
+									</dict>
 								</dict>
 							</array>
 						</dict>
@@ -541,5 +550,41 @@
 			</array>
 		</dict>
 	</array>
+	<key>💡以下配置，均为模板，可直接复制、使用</key>
+	<dict>
+		<key>子示例</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>标题</string>
+				<key>subtitle</key>
+				<string>介绍、说明</string>
+				<key>keywords</key>
+				<string></string>
+				<key>pageClassName</key>
+				<string></string>
+				<key>pageParams</key>
+				<dict/>
+				<key>subExamples</key>
+				<array/>
+			</dict>
+		</array>
+		<key>子示例 - 指定 moduleId，以便动态添加绑定的示例用法</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>标题</string>
+				<key>subtitle</key>
+				<string>介绍、说明</string>
+				<key>keywords</key>
+				<string></string>
+				<key>pageParams</key>
+				<dict>
+					<key>moduleId</key>
+					<string>xxx</string>
+				</dict>
+			</dict>
+		</array>
+	</dict>
 </dict>
 </plist>

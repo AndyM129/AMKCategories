@@ -102,3 +102,213 @@
 @end
 
 #endif
+
+
+
+
+
+#import <objc/runtime.h>
+
+@protocol AMKProtocolPropertiesExampleDictionary <NSObject>
+@property (nonatomic, copy, readonly, nullable) NSString *amkpp_aStringValue;
+@property (nonatomic, assign, readonly) NSInteger amkpp_aIntegerValue;
+@property (nonatomic, assign, readonly) BOOL amkpp_aBoolValue;
+@property (nonatomic, assign, readonly) double amkpp_aDoubleValue;
+@property (nonatomic, strong, readonly, nullable) NSNumber *amkpp_aNumberValue;
+@property (nonatomic, strong, readonly, nullable) NSArray *amkpp_anArray;
+@property (nonatomic, strong, readonly, nullable) NSDictionary *amkpp_aDict;
+@property (nonatomic, copy, readonly, nullable) void (^amkpp_aBlock)(void);
+@property (nonatomic, strong, readonly, nullable) id amkpp_aCustomObject;
+@end
+
+@interface NSDictionary (AMKProtocolProperties)
+@end
+
+@implementation NSDictionary (AMKProtocolProperties)
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    struct objc_method_description methodDesc = protocol_getMethodDescription(@protocol(AMKProtocolPropertiesExampleDictionary), sel, YES, YES);
+    if (methodDesc.name == NULL) {
+        return [super resolveInstanceMethod:sel];
+    }
+
+    const char *encoding = methodDesc.types;
+
+    switch (encoding[0]) {
+        case _C_ID:
+            class_addMethod(self, sel, (IMP)amkProtocolProperties_dynamicGetter_id_safe, encoding);
+            break;
+        case _C_INT:
+        case _C_LNG_LNG:
+            class_addMethod(self, sel, (IMP)amkProtocolProperties_dynamicGetter_integer, encoding);
+            break;
+        case _C_BOOL:
+            class_addMethod(self, sel, (IMP)amkProtocolProperties_dynamicGetter_bool, encoding);
+            break;
+        case _C_DBL:
+        case _C_FLT:
+            class_addMethod(self, sel, (IMP)amkProtocolProperties_dynamicGetter_double, encoding);
+            break;
+        default:
+            class_addMethod(self, sel, (IMP)amkProtocolProperties_dynamicGetter_id_safe, encoding);
+            break;
+    }
+    return YES;
+}
+
+#pragma mark - 动态 Getter
+
+static NSString *amkProtocolProperties_keyFromSelector(SEL _cmd) {
+    NSString *selName = NSStringFromSelector(_cmd);
+    return [selName stringByReplacingOccurrencesOfString:@"amkpp_" withString:@""];
+}
+
+static id amkProtocolProperties_dynamicGetter_id_safe(id self, SEL _cmd) {
+    NSString *key = amkProtocolProperties_keyFromSelector(_cmd);
+    id value = [self objectForKey:key];
+
+    if (value == nil || value == [NSNull null]) {
+        return nil;
+    }
+
+    // 获取协议属性类型
+    objc_property_t property = class_getProperty([self class], sel_getName(_cmd));
+    if (!property) return value;
+
+    const char *typeEncoding = property_copyAttributeValue(property, "T");
+    if (!typeEncoding) return value;
+
+    id result = nil;
+
+    if (typeEncoding[0] == _C_ID) {
+        // 对象类型，解析类名
+        char *className = property_copyAttributeValue(property, "T");
+        if (className) {
+            NSString *clsName = [NSString stringWithUTF8String:className];
+            // 属性编码可能是 @"NSString"
+            if ([clsName hasPrefix:@"@\""] && clsName.length > 3) {
+                NSString *expectedClassName = [clsName substringWithRange:NSMakeRange(2, clsName.length - 3)];
+                Class expectedClass = NSClassFromString(expectedClassName);
+                if ([value isKindOfClass:expectedClass]) {
+                    result = value;
+                } else {
+                    result = nil; // 类型不匹配返回 nil
+                }
+            } else {
+                result = value;
+            }
+            free(className);
+        } else {
+            result = value;
+        }
+    } else {
+        // 非对象类型，返回 nil
+        result = nil;
+    }
+
+    free((void *)typeEncoding);
+    return result;
+}
+
+static NSInteger amkProtocolProperties_dynamicGetter_integer(id self, SEL _cmd) {
+    id value = [self objectForKey:amkProtocolProperties_keyFromSelector(_cmd)];
+    return [value respondsToSelector:@selector(integerValue)] ? [value integerValue] : 0;
+}
+
+static BOOL amkProtocolProperties_dynamicGetter_bool(id self, SEL _cmd) {
+    id value = [self objectForKey:amkProtocolProperties_keyFromSelector(_cmd)];
+    return [value respondsToSelector:@selector(boolValue)] ? [value boolValue] : NO;
+}
+
+static double amkProtocolProperties_dynamicGetter_double(id self, SEL _cmd) {
+    id value = [self objectForKey:amkProtocolProperties_keyFromSelector(_cmd)];
+    return [value respondsToSelector:@selector(doubleValue)] ? [value doubleValue] : 0.0;
+}
+
+@end
+
+#pragma mark - 测试
+
+@interface Test : NSObject
+@end
+
+@implementation Test
+
++ (void)load {
+    id __block token = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        [NSNotificationCenter.defaultCenter removeObserver:token];
+        [self test_1];
+        [self test_2];
+    }];
+}
+
++ (void)test_1 {
+    void (^block)(void) = ^{ NSLog(@"Block executed"); };
+    NSObject *customObj = [NSObject new];
+    
+    NSDictionary<AMKProtocolPropertiesExampleDictionary> *dict = (NSDictionary<AMKProtocolPropertiesExampleDictionary> *)@{
+        @"aStringValue": @"hello",
+        @"aIntegerValue": @123,
+        @"aBoolValue": @YES,
+        @"aDoubleValue": @3.14,
+        @"aNumberValue": @42,
+        @"anArray": @[@1, @2, @3],
+        @"aDict": @{@"k": @"v"},
+        @"aBlock": block,
+        @"aCustomObject": customObj
+    };
+    
+    NSAssert([dict.amkpp_aStringValue isEqualToString:@"hello"], @"string error");
+    NSAssert(dict.amkpp_aIntegerValue == 123, @"integer error");
+    NSAssert(dict.amkpp_aBoolValue == YES, @"bool error");
+    NSAssert(fabs(dict.amkpp_aDoubleValue - 3.14) < 0.0001, @"double error");
+    NSAssert([dict.amkpp_aNumberValue isEqual:@42], @"number error");
+    NSAssert([dict.amkpp_anArray isKindOfClass:[NSArray class]] && [(NSArray *)dict.amkpp_anArray count] == 3, @"array error");
+    NSAssert([dict.amkpp_aDict isKindOfClass:[NSDictionary class]] && dict.amkpp_aDict[@"k"], @"dict error");
+    NSAssert(dict.amkpp_aBlock != nil, @"block error");
+    NSAssert(dict.amkpp_aCustomObject == customObj, @"custom object error");
+    
+    NSLog(@"✅ All tests passed with safe arbitrary types");
+}
+
++ (void)test_2 {
+    NSDictionary<AMKProtocolPropertiesExampleDictionary> *dict = (NSDictionary<AMKProtocolPropertiesExampleDictionary> *)@{
+        // 协议是 NSString，实际是 NSNumber
+        @"aStringValue": @123,
+        // 协议是 NSInteger，实际是 NSString
+        @"aIntegerValue": @"456",
+        // 协议是 BOOL，实际是 NSString
+        @"aBoolValue": @"YES",
+        // 协议是 double，实际是 NSString
+        @"aDoubleValue": @"3.1415",
+        // 协议是 NSNumber，实际是 NSString
+        @"aNumberValue": @"42",
+        // 协议是 NSArray，实际是 NSDictionary
+        @"anArray": @{@"key": @"value"},
+        // 协议是 NSDictionary，实际是 NSArray
+        @"aDict": @[@1, @2],
+        // 协议是 Block，实际是 NSString
+        @"aBlock": @"not a block",
+        // 协议是 NSObject，自定义对象，实际是 NSNumber
+        @"aCustomObject": @999
+    };
+
+    // 对象类型不匹配，应返回 nil
+    NSAssert(dict.amkpp_aStringValue == nil, @"string mismatch should return nil");
+    NSAssert(dict.amkpp_anArray == nil, @"array mismatch should return nil");
+    NSAssert(dict.amkpp_aDict == nil, @"dict mismatch should return nil");
+    NSAssert(dict.amkpp_aBlock == nil, @"block mismatch should return nil");
+    NSAssert(dict.amkpp_aCustomObject == nil, @"custom object mismatch should return nil");
+
+    // 基本类型属性，如果能转换 NSNumber，则返回对应值，否则返回默认值
+    NSAssert(dict.amkpp_aIntegerValue == 0, @"integer mismatch returns 0");
+    NSAssert(dict.amkpp_aBoolValue == NO, @"bool mismatch returns NO");
+    NSAssert(fabs(dict.amkpp_aDoubleValue - 0.0) < 0.0001, @"double mismatch returns 0.0");
+
+    // NSNumber 类型属性，协议是 NSNumber，但实际是 NSString → 不会 crash，返回原对象
+    NSAssert([dict.amkpp_aNumberValue isEqual:@"42"], @"number mismatch returns original object");
+
+    NSLog(@"✅ All type mismatch tests passed");
+}
+
+@end
