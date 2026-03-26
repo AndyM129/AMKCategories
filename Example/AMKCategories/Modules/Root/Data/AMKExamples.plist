@@ -540,6 +540,14 @@
 							<key>pageClassName</key>
 							<string>AMKColorPickerExampleViewController</string>
 						</dict>
+						<dict>
+							<key>title</key>
+							<string>WK 10130 Example：BDERectSelectionView</string>
+							<key>subtitle</key>
+							<string></string>
+							<key>pageClassName</key>
+							<string>AMK10310ExampleViewController</string>
+						</dict>
 					</array>
 				</dict>
 			</array>

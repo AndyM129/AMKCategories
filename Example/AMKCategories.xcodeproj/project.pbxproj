@@ -72,6 +72,8 @@
 		888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */; };
 		888D8F152977F25F00B8F26F /* BundleResourceRequest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */; };
 		888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
+		889150692F7553A000F01776 /* AMK10310ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889150682F7553A000F01776 /* AMK10310ExampleViewController.m */; };
+		8891506C2F7555C900F01776 /* BDERectSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891506B2F7555C900F01776 /* BDERectSelectionView.m */; };
 		8891AE402B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */; };
 		889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452822CC8D33C002841C3 /* AMK9130ExampleViewController.m */; };
 		889452862CC8DC59002841C3 /* AMK9130PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452852CC8DC59002841C3 /* AMK9130PresentedViewController.m */; };
@@ -231,6 +233,10 @@
 		888D8F122977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMKBundleResourceRequestExampleViewController.m; sourceTree = "<group>"; };
 		888D8F142977F25F00B8F26F /* BundleResourceRequest.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BundleResourceRequest.xcassets; sourceTree = "<group>"; };
 		888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MyOnDemandResources_1.jpeg; sourceTree = "<group>"; };
+		889150672F7553A000F01776 /* AMK10310ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK10310ExampleViewController.h; sourceTree = "<group>"; };
+		889150682F7553A000F01776 /* AMK10310ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10310ExampleViewController.m; sourceTree = "<group>"; };
+		8891506A2F7555C900F01776 /* BDERectSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDERectSelectionView.h; sourceTree = "<group>"; };
+		8891506B2F7555C900F01776 /* BDERectSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDERectSelectionView.m; sourceTree = "<group>"; };
 		8891AE3E2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPopupContentMainView.h; sourceTree = "<group>"; };
 		8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPopupContentMainView.m; sourceTree = "<group>"; };
 		889452812CC8D33C002841C3 /* AMK9130ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK9130ExampleViewController.h; sourceTree = "<group>"; };
@@ -756,6 +762,7 @@
 		8852B45A2B026736004DED8F /* Wenku */ = {
 			isa = PBXGroup;
 			children = (
+				889150662F75537F00F01776 /* 10310 */,
 				889452802CC8D31B002841C3 /* 9130 */,
 				8873BB392B60C55C004E7DFE /* 8350 */,
 				887D9CF92B3C216C004D0854 /* 8330 */,
@@ -894,6 +901,17 @@
 				888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		889150662F75537F00F01776 /* 10310 */ = {
+			isa = PBXGroup;
+			children = (
+				889150672F7553A000F01776 /* AMK10310ExampleViewController.h */,
+				889150682F7553A000F01776 /* AMK10310ExampleViewController.m */,
+				8891506A2F7555C900F01776 /* BDERectSelectionView.h */,
+				8891506B2F7555C900F01776 /* BDERectSelectionView.m */,
+			);
+			path = 10310;
 			sourceTree = "<group>";
 		};
 		889452802CC8D31B002841C3 /* 9130 */ = {
@@ -1290,6 +1308,7 @@
 				8831D7FA2A53C4D800BABB4D /* AMKScreenRightEdgePanGestureRecognizerExampleViewController.m in Sources */,
 				881E14042E56F10F00076F94 /* AMKColorHuePickerView.m in Sources */,
 				8806D979290BB4BB005DC5C1 /* AMKLifeCircleBlockExampleViewController.m in Sources */,
+				889150692F7553A000F01776 /* AMK10310ExampleViewController.m in Sources */,
 				88D493632B67D74F009DFF56 /* WKNVoiceRecognitionPopupViewConstants.m in Sources */,
 				88CC95E12959D90500C0AD26 /* WKNVipBenefitsAnimationView.m in Sources */,
 				88BD20892E6AF47400165AD5 /* NSDictionary+AMKProtocolPropertiesExample.m in Sources */,
@@ -1320,6 +1339,7 @@
 				888D8F132977EFE800B8F26F /* AMKBundleResourceRequestExampleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* AMKRootViewController.m in Sources */,
 				88A0541A295D9E8D001B2CCE /* AMKLifeCircleTabBarSubViewController.m in Sources */,
+				8891506C2F7555C900F01776 /* BDERectSelectionView.m in Sources */,
 				8806D974290BB4BA005DC5C1 /* AMKContentHuggingPriorityControl.m in Sources */,
 				887F16AC2941929400253DE8 /* NSObject+AMKERuntimeInfo.m in Sources */,
 				887D9CFF2B3C2352004D0854 /* UIMenuController+wk8330.m in Sources */,
