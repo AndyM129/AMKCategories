@@ -129,13 +129,15 @@
             break;
         }
         case UIGestureRecognizerStateChanged: {
+            // 获取本次及前一次 的移动手势位置
             CGPoint previousLocation = [[self getAssociatedValueForKey:kPreviousLocationKey] CGPointValue];
             CGPoint currentLocation = [self.panGestureRecognizer locationInView:self];
             [self setAssociateValue:@(currentLocation) withKey:kPreviousLocationKey];
             
+            // 根据本次与前一次 移动距离差 计算新的位置
             CGRect selectionViewFrame = self.selectionView.frame;
-            selectionViewFrame.origin.x += currentLocation.x - previousLocation.x;
-            selectionViewFrame.origin.y += currentLocation.y - previousLocation.y;
+            selectionViewFrame.origin.x = MAX(0, MIN(selectionViewFrame.origin.x + currentLocation.x - previousLocation.x, self.bounds.size.width - selectionViewFrame.size.width));
+            selectionViewFrame.origin.y = MAX(0, MIN(selectionViewFrame.origin.y + currentLocation.y - previousLocation.y, self.bounds.size.height - selectionViewFrame.size.height));
             self.selectionView.frame = selectionViewFrame;
             break;
         }
