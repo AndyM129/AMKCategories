@@ -47,7 +47,7 @@
         containerCiew.height = 400;
         
         BDERectSelectionView *rectSelectionView = [BDERectSelectionView.alloc init];
-        rectSelectionView.selectionRect = CGRectMake(10, 10, 150, 50);
+        rectSelectionView.selectionRect = CGRectMake(10, 10, 250, 150);
         rectSelectionView.backgroundColor = [UIColor colorWithRed:167/255.0 green:185/255.0 blue:223/255.0 alpha:1.0];;
         [containerCiew addSubview:rectSelectionView];
         [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {

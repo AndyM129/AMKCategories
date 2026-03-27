@@ -10,6 +10,8 @@
 
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;
+//@property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, assign, readwrite) BDERectSelectionViewHandleType movingHandleType;
 @end
 
 @implementation BDERectSelectionView
@@ -40,30 +42,56 @@
     return _overlayLayer;
 }
 
+//- (UIPanGestureRecognizer *)panGestureRecognizer {
+//    if ()
+//}
+
+- (void)setSelectionRect:(CGRect)selectionRect {
+    _selectionRect = selectionRect;
+    [self updateOverlayLayer];
+}
+
 #pragma mark - Data & Networking
 
 #pragma mark - Layout Subviews
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
-
-- (void)updateConstraints {
-    // Coding ...
-    
-    //according to apple super should be called at end of method
-    [super updateConstraints];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
-        
+    [self updateOverlayLayer];
+}
+
+- (void)updateOverlayLayer {
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
     UIBezierPath *clearPath = [UIBezierPath bezierPathWithRect:self.selectionRect];
     [path appendPath:clearPath];
     [path setUsesEvenOddFillRule:YES];
     self.overlayLayer.path = path.CGPath;
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint toucheBeganPoint = [touches.anyObject locationInView:self];
+    self.movingHandleType = [self handleTypeWithPoint:toucheBeganPoint];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:self];
+    CGPoint touchPreviousLocation = [touch previousLocationInView:self];
+    
+    switch (self.movingHandleType) {
+        case BDERectSelectionViewHandleTypeCenter: {
+            CGRect selectionRect = self.selectionRect;
+            selectionRect.origin.x += touchLocation.x - touchPreviousLocation.x;
+            selectionRect.origin.y += touchLocation.y - touchPreviousLocation.y;
+            self.selectionRect = selectionRect;
+            break;
+        }
+        default: break;
+    }
+}
+
+//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
+//- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
 
 #pragma mark - Action Methods
 
@@ -74,5 +102,9 @@
 #pragma mark - Protocol
 
 #pragma mark - Helper Methods
+
+- (BDERectSelectionViewHandleType)handleTypeWithPoint:(CGPoint)point {
+    return BDERectSelectionViewHandleTypeCenter;
+}
 
 @end
