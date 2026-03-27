@@ -108,6 +108,13 @@ Pod::Spec.new do |s|
                 viewLevel.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
+        # UIGestureRecognizer 相关
+        uikit.subspec 'UIGestureRecognizer' do |gestureRecognizer|
+            # 扩展方法 相关
+            gestureRecognizer.subspec 'UIGestureRecognizerExtensionMethods' do |extensionMethods|
+                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIGestureRecognizer/UIGestureRecognizerExtensionMethods/*.{h,m}'
+            end
+        end
         # UIResponder 相关
         uikit.subspec 'UIResponder' do |responder|
             # 扩展方法 相关

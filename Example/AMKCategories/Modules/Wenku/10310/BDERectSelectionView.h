@@ -21,7 +21,10 @@ typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
 /// 半透明黑遮罩层，可自行修改背景色
 @property (nonatomic, strong, readonly, nullable) CAShapeLayer *overlayLayer;
 
-/// 当前选中的区域
-@property (nonatomic, assign, readwrite) CGRect selectionRect;
+/// 选区视图，拖拽四角或中心时 会同步更新其 `frame`
+@property (nonatomic, strong, readonly, nullable) UIView *selectionView;
+
+/// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
+@property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 
 @end
