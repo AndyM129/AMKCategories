@@ -8,6 +8,7 @@
 
 #import "AMK10310ExampleViewController.h"
 #import "BDERectSelectionView.h"
+#import <AMKCategories/UIImageView+AMKUIImageViewExtensionMethods.h>
 
 @interface AMK10310ExampleViewController ()
 
@@ -82,7 +83,8 @@
         [rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
             BDERectSelectionView *weakRectSelectionView = (id)panGestureRecognizer.view;
             UIImageView *previewImageView = [weakSelf.exampleStackView viewWithTag:260330150315];
-            previewImageView.image = [weakImageView.image imageByCropToRect:weakRectSelectionView.selectionView.frame];
+            CGRect imageRect = [weakImageView amk_convertRectToImage:weakRectSelectionView.selectionView.frame];
+            previewImageView.image = [weakImageView.image imageByCropToRect:imageRect];
         }];
         [imageView addSubview:rectSelectionView];
         [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
