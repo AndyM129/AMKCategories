@@ -91,6 +91,13 @@ Pod::Spec.new do |s|
                 drawing.dependency 'AMKCategories/Foundation/NSObject/MethodSwizzling'
             end
         end
+        # UIImageView 相关
+        uikit.subspec 'UIImageView' do |imageView|
+            # UIImageView 相关扩展
+            imageView.subspec 'ExtensionMethods' do |extensionMethods|
+                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIImageView/ExtensionMethods/*.{h,m}'
+            end
+        end
         # UIView 视图相关
         uikit.subspec 'UIView' do |view|
             # CornerRadii 相关
@@ -112,8 +119,8 @@ Pod::Spec.new do |s|
         # UIGestureRecognizer 相关
         uikit.subspec 'UIGestureRecognizer' do |gestureRecognizer|
             # 扩展方法 相关
-            gestureRecognizer.subspec 'UIGestureRecognizerExtensionMethods' do |extensionMethods|
-                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIGestureRecognizer/UIGestureRecognizerExtensionMethods/*.{h,m}'
+            gestureRecognizer.subspec 'ExtensionMethods' do |extensionMethods|
+                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIGestureRecognizer/ExtensionMethods/*.{h,m}'
             end
         end
         # UIResponder 相关

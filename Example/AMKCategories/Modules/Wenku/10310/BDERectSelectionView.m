@@ -93,18 +93,18 @@
                     break;
                 }
                 case BDERectSelectionViewHandleTypeTopRight: {
-                    make.centerX.mas_equalTo(self.selectionView.mas_right);
-                    make.centerY.mas_equalTo(self.selectionView.mas_top);
+                    make.right.mas_equalTo(self.selectionView.mas_right);
+                    make.top.mas_equalTo(self.selectionView.mas_top);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomRight: {
-                    make.centerX.mas_equalTo(self.selectionView.mas_right);
-                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    make.right.mas_equalTo(self.selectionView.mas_right);
+                    make.bottom.mas_equalTo(self.selectionView.mas_bottom);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomLeft: {
-                    make.centerX.mas_equalTo(self.selectionView.mas_left);
-                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    make.left.mas_equalTo(self.selectionView.mas_left);
+                    make.bottom.mas_equalTo(self.selectionView.mas_bottom);
                     break;
                 }
                 default: break;

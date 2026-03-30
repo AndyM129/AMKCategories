@@ -42,12 +42,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __weak __typeof__(self)weakSelf = self;
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"BDERectSelectionView" customBlock:nil];
+    [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"自由选区" customBlock:nil];
     [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerView) {
         containerView.height = 500;
         containerView.backgroundColor = UIColor.blackColor;
         
         UIImageView *imageView = [UIImageView.alloc init];
+        __weak UIImageView *weakImageView = imageView;
         imageView.userInteractionEnabled = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.image = [UIImage imageNamed:@"amk_10310_example_img_01"];
@@ -56,15 +59,46 @@
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
         
+        CGFloat kSelectionHandleImageViewTransformOffset = 3;
         BDERectSelectionView *rectSelectionView = [BDERectSelectionView.alloc init];
-        rectSelectionView.contentInsets = UIEdgeInsetsMake(25, 25, 25, 25);
+        rectSelectionView.contentInsets = UIEdgeInsetsMake(0, 25, 0, 25);
         rectSelectionView.selectionView.frame = CGRectMake(25, 25, 200, 150);
         [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
-            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -3, -3);
+            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
+        }];
+        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-90) fitSize:YES];
+            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
+        }];
+        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-180) fitSize:YES];
+            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
+        }];
+        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-270) fitSize:YES];
+            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
+        }];
+        [rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
+            BDERectSelectionView *weakRectSelectionView = (id)panGestureRecognizer.view;
+            UIImageView *previewImageView = [weakSelf.exampleStackView viewWithTag:260330150315];
+            previewImageView.image = [weakImageView.image imageByCropToRect:weakRectSelectionView.selectionView.frame];
         }];
         [imageView addSubview:rectSelectionView];
         [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
+        }];
+    }];
+    
+    [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"选区结果" customBlock:nil];
+    [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerView) {
+        containerView.height = 100;
+        
+        UIImageView *previewImageView = [UIImageView.alloc init];
+        previewImageView.tag = 260330150315;
+        previewImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [containerView addSubview:previewImageView];
+        [previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
     }];
