@@ -13,44 +13,55 @@
 
 #pragma mark - Getters & Setters
 
-//- (CGRect)amk_imageRect {
-//    // 若当前视图无有效size，则直接返回 CGRectZero
-//    if (self.bounds.size.width <= FLT_EPSILON || self.bounds.size.height <= FLT_EPSILON) {
-//        return CGRectZero;
-//    }
-//    
-//    // 若当前图像无有效size，则直接返回 CGRectZero
-//    if (!self.image || self.image.size.width <= FLT_EPSILON || self.image.size.height <= FLT_EPSILON) {
-//        return CGRectZero;
-//    }
-//    
-//    // 分情况计算
-//    if (self.contentMode == UIViewContentModeScaleAspectFit) {
-//        CGRect imageRect = CGRectZero;
-//        imageRect.size = self.image.size;
-//        imageRect.origin.x = (CGRectGetWidth(self.bounds) - imageRect.size.width) / 2;
-//        imageRect.origin.y = (CGRectGetHeight(self.bounds) - imageRect.size.height) / 2;
-//        return imageRect;
-//    }
-//    
-//    // 其他为处理情况，则直接返回 CGRectZero
-//    NSAssert(NO, @"暂未支持对当前 contentMode(%ld) 的处理", self.contentMode);
-//    return CGRectZero;
-//}
+- (CGRect)amk_imageRect {
+    // 若当前图像无有效size，则直接返回 CGRectZero
+    CGSize imageSize = !self.image ? CGSizeZero : self.image.size;
+    if (imageSize.width < FLT_EPSILON || imageSize.height < FLT_EPSILON) {
+        return CGRectZero;
+    }
+    
+    // 若当前视图无有效size，则直接返回 CGRectZero
+    CGSize viewSize = self.bounds.size;
+    if (viewSize.width < FLT_EPSILON || viewSize.height < FLT_EPSILON) {
+        return CGRectZero;
+    }
+    
+    // 分情况计算
+    if (self.contentMode == UIViewContentModeScaleAspectFit) {
+        // 计算缩放比例
+        CGFloat scaleW = viewSize.width / imageSize.width;
+        CGFloat scaleH = viewSize.height / imageSize.height;
+        CGFloat scale = MIN(scaleW, scaleH);
+        
+        // 计算显示尺寸
+        CGFloat displayWidth = imageSize.width * scale;
+        CGFloat displayHeight = imageSize.height * scale;
+        
+        // 居中
+        CGFloat x = MAX(0, (viewSize.width - displayWidth) * 0.5);
+        CGFloat y = MAX(0, (viewSize.height - displayHeight) * 0.5);
+        
+        return CGRectMake(x, y, displayWidth, displayHeight);
+    }
+
+    // 其他情况 fallback 为 bounds（避免调用方异常）
+    NSAssert(NO, @"暂未支持对当前 contentMode(%ld) 的处理", (long)self.contentMode);
+    return self.bounds;
+}
 
 #pragma mark - Data & Networking
 
 #pragma mark - Public Methods
 
-- (CGRect)amk_convertRectToImage:(CGRect)rect {
+- (CGRect)amk_convertRectToImageCoordinate:(CGRect)viewRect {
     NSAssert(self.image != nil, @"image 不能为空");
     
     CGSize imageSize = self.image.size;
     CGSize viewSize = self.bounds.size;
-    if (imageSize.width <= 0 || imageSize.height <= 0 || viewSize.width <= 0 || viewSize.height <= 0) {
+    if (imageSize.width < FLT_EPSILON || imageSize.height < FLT_EPSILON || viewSize.width < FLT_EPSILON || viewSize.height < FLT_EPSILON) {
         return CGRectZero;
     }
-
+    
     // 1. 计算 scale
     CGFloat scale = MIN(viewSize.width / imageSize.width, viewSize.height / imageSize.height);
 
@@ -61,13 +72,13 @@
     CGFloat offsetY = (viewSize.height - displaySize.height) * 0.5;
     CGRect imageDisplayRect = CGRectMake(offsetX, offsetY, displaySize.width, displaySize.height);
 
-    // 3. 转换 rect -> imageDisplayRect 内坐标
-    CGRect intersectRect = CGRectIntersection(rect, imageDisplayRect);
-
+    // 3. 转换 viewRect -> imageDisplayRect 内坐标
+    CGRect intersectRect = CGRectIntersection(viewRect, imageDisplayRect);
+    
     if (CGRectIsNull(intersectRect)) {
         return CGRectZero;
     }
-
+    
     // ⚠️ 注意：必须减去 offset
     CGFloat x = (intersectRect.origin.x - imageDisplayRect.origin.x) / scale;
     CGFloat y = (intersectRect.origin.y - imageDisplayRect.origin.y) / scale;

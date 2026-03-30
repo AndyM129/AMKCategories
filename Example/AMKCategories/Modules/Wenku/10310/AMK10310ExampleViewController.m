@@ -84,13 +84,19 @@
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
         }];
         [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
-            CGRect imageRect = [weakSelf.imageView amk_convertRectToImage:weakSelf.rectSelectionView.selectionView.frame];
+            CGRect imageRect = [weakSelf.imageView amk_convertRectToImageCoordinate:weakSelf.rectSelectionView.selectionView.frame];
             weakSelf.previewImageView.image = [weakSelf.imageView.image imageByCropToRect:imageRect];
         }];
         [weakSelf.imageView addSubview:weakSelf.rectSelectionView];
         [weakSelf.rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
+        
+//        [weakSelf.imageView addObserverBlockForKeyPath:@"bounds" block:^(UIView *_Nonnull view, NSValue *oldVal, NSValue *newVal) {
+//            if (![newVal isEqualToValue:oldVal]) {
+//                <#code#>
+//            }
+//        }];
     }];
     
     [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"选区结果" customBlock:nil];
