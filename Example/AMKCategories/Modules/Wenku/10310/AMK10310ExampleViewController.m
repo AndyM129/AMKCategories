@@ -11,7 +11,9 @@
 #import <AMKCategories/UIImageView+AMKUIImageViewExtensionMethods.h>
 
 @interface AMK10310ExampleViewController ()
-
+@property (nonatomic, strong, readwrite, nullable) UIImageView *imageView;
+@property (nonatomic, strong, readwrite, nullable) BDERectSelectionView *rectSelectionView;
+@property (nonatomic, strong, readwrite, nullable) UIImageView *previewImageView;
 @end
 
 @implementation AMK10310ExampleViewController
@@ -50,44 +52,43 @@
         containerView.height = 500;
         containerView.backgroundColor = UIColor.blackColor;
         
-        UIImageView *imageView = [UIImageView.alloc init];
-        __weak UIImageView *weakImageView = imageView;
-        imageView.userInteractionEnabled = YES;
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.image = [UIImage imageNamed:@"amk_10310_example_img_01"];
-        [containerView addSubview:imageView];
-        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        // 图片视图
+        weakSelf.imageView = [UIImageView.alloc init];
+        weakSelf.imageView.userInteractionEnabled = YES;
+        weakSelf.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        weakSelf.imageView.image = [UIImage imageNamed:@"amk_10310_example_img_01"];
+        [containerView addSubview:weakSelf.imageView];
+        [weakSelf.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
         
+        // 矩形选区视图
         CGFloat kSelectionHandleImageViewTransformOffset = 3;
-        BDERectSelectionView *rectSelectionView = [BDERectSelectionView.alloc init];
-        rectSelectionView.contentInsets = UIEdgeInsetsMake(0, 25, 0, 25);
-        rectSelectionView.selectionView.frame = CGRectMake(25, 25, 200, 150);
-        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        weakSelf.rectSelectionView = [BDERectSelectionView.alloc init];
+        weakSelf.rectSelectionView.contentInsets = UIEdgeInsetsMake(0, 25, 0, 25);
+        weakSelf.rectSelectionView.selectionView.frame = CGRectMake(25, 25, 200, 150);
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
         }];
-        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-90) fitSize:YES];
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
         }];
-        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-180) fitSize:YES];
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
         }];
-        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-270) fitSize:YES];
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
         }];
-        [rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
-            BDERectSelectionView *weakRectSelectionView = (id)panGestureRecognizer.view;
-            UIImageView *previewImageView = [weakSelf.exampleStackView viewWithTag:260330150315];
-            CGRect imageRect = [weakImageView amk_convertRectToImage:weakRectSelectionView.selectionView.frame];
-            previewImageView.image = [weakImageView.image imageByCropToRect:imageRect];
+        [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
+            CGRect imageRect = [weakSelf.imageView amk_convertRectToImage:weakSelf.rectSelectionView.selectionView.frame];
+            weakSelf.previewImageView.image = [weakSelf.imageView.image imageByCropToRect:imageRect];
         }];
-        [imageView addSubview:rectSelectionView];
-        [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [weakSelf.imageView addSubview:weakSelf.rectSelectionView];
+        [weakSelf.rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
     }];
@@ -96,11 +97,11 @@
     [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerView) {
         containerView.height = 100;
         
-        UIImageView *previewImageView = [UIImageView.alloc init];
-        previewImageView.tag = 260330150315;
-        previewImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [containerView addSubview:previewImageView];
-        [previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        // 结果预览
+        weakSelf.previewImageView = [UIImageView.alloc init];
+        weakSelf.previewImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [containerView addSubview:weakSelf.previewImageView];
+        [weakSelf.previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
     }];
