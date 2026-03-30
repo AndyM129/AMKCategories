@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BDERectSelectionView;
 
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
     BDERectSelectionViewHandleTypeCenter = 0, // 用于拖动整体
@@ -14,7 +15,10 @@ typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
     BDERectSelectionViewHandleTypeTopRight,
     BDERectSelectionViewHandleTypeBottomRight,
     BDERectSelectionViewHandleTypeBottomLeft,
+    BDERectSelectionViewHandleTypeCount,
 };
+
+typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionView *_Nullable rectSelectionView, UIImageView *_Nullable selectionHandleImageView);
 
 @interface BDERectSelectionView : UIView
 
@@ -29,5 +33,9 @@ typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
 
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
+
+- (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType;
+
+- (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok _Nullable)layoutBlcok;
 
 @end

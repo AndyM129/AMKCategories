@@ -58,7 +58,11 @@
         
         BDERectSelectionView *rectSelectionView = [BDERectSelectionView.alloc init];
         rectSelectionView.contentInsets = UIEdgeInsetsMake(25, 25, 25, 25);
-        rectSelectionView.selectionView.frame = CGRectMake(10, 10, 200, 150);
+        rectSelectionView.selectionView.frame = CGRectMake(25, 25, 200, 150);
+        [rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
+            selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -3, -3);
+        }];
         [imageView addSubview:rectSelectionView];
         [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);

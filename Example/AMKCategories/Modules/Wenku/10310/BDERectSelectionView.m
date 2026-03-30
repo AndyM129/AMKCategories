@@ -13,6 +13,7 @@
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;
 @property (nonatomic, strong, readwrite, nullable) UIView *selectionView;
+@property (nonatomic, strong, readwrite, nullable) NSMutableDictionary<NSNumber *, UIImageView *> *selectionHandleImageViews;
 @property (nonatomic, strong, readwrite, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, assign, readwrite) BDERectSelectionViewHandleType movingHandleType;
 @end
@@ -40,7 +41,7 @@
         _overlayLayer = [CAShapeLayer layer];
         _overlayLayer.fillRule = kCAFillRuleEvenOdd;
         _overlayLayer.fillColor = [UIColor.blackColor colorWithAlphaComponent:0.5].CGColor;
-        [self.layer addSublayer:_overlayLayer];
+        [self.layer insertSublayer:_overlayLayer atIndex:0];
     }
     return _overlayLayer;
 }
@@ -57,6 +58,66 @@
         [self addSubview:_selectionView];
     }
     return _selectionView;
+}
+
+- (NSMutableDictionary<NSNumber *,UIImageView *> *)selectionHandleImageViews {
+    if (!_selectionHandleImageViews) {
+        _selectionHandleImageViews = @{}.mutableCopy;
+    }
+    return _selectionHandleImageViews;
+}
+
+- (UIImageView *)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType {
+    return [self selectionHandleImageViewWithType:handleType layoutBlcok:nil];
+}
+
+- (UIImageView *)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok)layoutBlcok {
+    if (handleType < 0 || handleType >= BDERectSelectionViewHandleTypeCount) {
+        return nil;
+    }
+    
+    UIImageView *selectionHandleImageView = self.selectionHandleImageViews[@(handleType)];
+    if (!selectionHandleImageView) {
+        selectionHandleImageView = [UIImageView.alloc init];
+        [self.selectionView addSubview:selectionHandleImageView];
+        [selectionHandleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            switch (handleType) {
+                case BDERectSelectionViewHandleTypeCenter: {
+                    make.centerX.mas_equalTo(self.selectionView.mas_centerX);
+                    make.centerY.mas_equalTo(self.selectionView.mas_centerY);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeTopLeft: {
+                    make.left.mas_equalTo(self.selectionView.mas_left);
+                    make.top.mas_equalTo(self.selectionView.mas_top);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeTopRight: {
+                    make.centerX.mas_equalTo(self.selectionView.mas_right);
+                    make.centerY.mas_equalTo(self.selectionView.mas_top);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeBottomRight: {
+                    make.centerX.mas_equalTo(self.selectionView.mas_right);
+                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeBottomLeft: {
+                    make.centerX.mas_equalTo(self.selectionView.mas_left);
+                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    break;
+                }
+                default: break;
+            }
+        }];
+        self.selectionHandleImageViews[@(handleType)] = selectionHandleImageView;
+    }
+    
+    if (layoutBlcok) {
+        layoutBlcok(self, selectionHandleImageView);
+    }
+    
+    return selectionHandleImageView;
 }
 
 - (UIPanGestureRecognizer *)panGestureRecognizer {
