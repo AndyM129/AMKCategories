@@ -181,10 +181,10 @@
             BDERectSelectionViewHandleType movingHandleType = [[self getAssociatedValueForKey:kMovingHandleTypeKey] integerValue];
             switch (movingHandleType) {
                 case BDERectSelectionViewHandleTypeTopLeft: {
-                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
-                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
-                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
-                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
+                    selectionViewEndFrame.size.width = CGRectGetWidth(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
+                    selectionViewEndFrame.size.height = CGRectGetHeight(selectionViewBeganFrame) - (CGRectGetMinY(selectionViewEndFrame) - CGRectGetMinY(selectionViewBeganFrame));
                     break;
                 }
                 case BDERectSelectionViewHandleTypeTopRight: {
@@ -202,15 +202,15 @@
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomLeft: {
-                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
-//                    selectionViewEndFrame.origin.y = MAX(selectionViewBeganFrame.origin.y, MIN(currentLocation.y, CGRectGetMinY(selectionViewBeganFrame)));
-                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
-//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+//                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+//                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(selectionViewBeganFrame), MIN(currentLocation.y, CGRectGetMaxY(contentRect)));
+//                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
+//                    selectionViewEndFrame.size.height = CGRectGetHeight(selectionViewBeganFrame) - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
                     break;
                 }
                 default: {
-                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(selectionViewEndFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewEndFrame.size.width));
-                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(selectionViewEndFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewEndFrame.size.height));
+                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(selectionViewEndFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewEndFrame.size.width));
+                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(selectionViewEndFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewEndFrame.size.height));
                     break;
                 }
             }
