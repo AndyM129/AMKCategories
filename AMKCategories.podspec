@@ -27,7 +27,6 @@ Pod::Spec.new do |s|
         defaultSubspec.dependency 'AMKCategories/WebKit'
         defaultSubspec.dependency 'AMKCategories/UIKit'
         defaultSubspec.dependency 'AMKCategories/QuartzCore'
-        defaultSubspec.dependency 'AMKCategories/CoreGraphics'
         defaultSubspec.dependency 'AMKCategories/Foundation'
     end
     
@@ -180,6 +179,13 @@ Pod::Spec.new do |s|
                 extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIColor/UIColorExtensionMethods/*.{h,m}'
             end
         end
+        
+        # UIGeometry 相关
+        uikit.subspec 'UIGeometry' do |geometry|
+            geometry.subspec 'ExtensionMethods' do |extensionMethods|
+                extensionMethods.source_files = 'AMKCategories/Classes/UIKit/UIGeometry/ExtensionMethods/*.{h,m,mm}'
+            end
+        end
     end
     
     # QuartzCore 通用扩展
@@ -193,14 +199,6 @@ Pod::Spec.new do |s|
         end
     end
     
-    # CoreGraphics 通用扩展
-    s.subspec 'CoreGraphics' do |coreGraphics|
-        # CGGeometry 相关扩展
-        coreGraphics.subspec 'ExtensionMethods' do |extensionMethods|
-            extensionMethods.source_files = 'AMKCategories/Classes/CoreGraphics/ExtensionMethods/*.{h,m,mm}'
-        end
-    end
-
     # Foundation 通用扩展
     s.subspec 'Foundation' do |foundation|
         # NSBundle 相关扩展

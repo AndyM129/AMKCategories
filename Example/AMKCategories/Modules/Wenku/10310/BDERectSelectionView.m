@@ -7,17 +7,9 @@
 //
 
 #import "BDERectSelectionView.h"
-#import <AMKCategories/CGGeometry+AMKCGGeometryExtensionMethods.h>
+#import <AMKCategories/UIGeometry+AMKUIGeometryExtensionMethods.h>
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
 #import <AMKCategories/UIView+AMKInteractions.h>
-
-static BOOL kDebugEnable = YES;
-
-// ⬇︎ 可手动解开注释，以启用 Debug Log
-#define BDERectSelectionViewLog(FORMAT, ...) fprintf(stderr, "%s 【%s】🧵 %s ➤ %s 📍%s #%d\n", NSDate.new.description.UTF8String, "BDERectSelectionView", dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String], __FUNCTION__, __LINE__)
-#ifndef BDERectSelectionViewLog
-#define BDERectSelectionViewLog(...) {}
-#endif
 
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;

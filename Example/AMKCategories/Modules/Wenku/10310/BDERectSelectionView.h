@@ -43,3 +43,11 @@ typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionVi
 - (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok _Nullable)layoutBlcok;
 
 @end
+
+#pragma mark -
+
+// ⬇︎ 可手动解开注释，以启用 Debug Log
+//#define BDERectSelectionViewLog(FORMAT, ...) fprintf(stderr, "%s 【%s】🧵 %s ➤ %s 📍%s #%d\n", NSDate.new.description.UTF8String, "BDERectSelectionView", dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String], __FUNCTION__, __LINE__)
+#ifndef BDERectSelectionViewLog
+#define BDERectSelectionViewLog(...) {}
+#endif
