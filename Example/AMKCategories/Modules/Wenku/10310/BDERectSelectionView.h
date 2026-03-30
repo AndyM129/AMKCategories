@@ -10,6 +10,7 @@
 @class BDERectSelectionView;
 
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
+    BDERectSelectionViewHandleTypeUnknown = -1,
     BDERectSelectionViewHandleTypeCenter = 0, // 用于拖动整体
     BDERectSelectionViewHandleTypeTopLeft,
     BDERectSelectionViewHandleTypeTopRight,

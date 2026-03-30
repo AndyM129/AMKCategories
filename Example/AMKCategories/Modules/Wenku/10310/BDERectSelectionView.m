@@ -11,6 +11,14 @@
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
 #import <AMKCategories/UIView+AMKInteractions.h>
 
+static BOOL kDebugEnable = YES;
+
+// ⬇︎ 可手动解开注释，以启用 Debug Log
+#define BDERectSelectionViewLog(FORMAT, ...) fprintf(stderr, "%s 【%s】🧵 %s ➤ %s 📍%s #%d\n", NSDate.new.description.UTF8String, "BDERectSelectionView", dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String], __FUNCTION__, __LINE__)
+#ifndef BDERectSelectionViewLog
+#define BDERectSelectionViewLog(...) {}
+#endif
+
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;
 @property (nonatomic, strong, readwrite, nullable) UIView *selectionView;
@@ -166,7 +174,7 @@
         case UIGestureRecognizerStateBegan: {
             CGPoint beganLocation = [self.panGestureRecognizer locationInView:self];
             BDERectSelectionViewHandleType movingHandleType = [self handleTypeWithPoint:beganLocation];
-            if (!CGRectContainsPoint(self.selectionView.frame, beganLocation)) {
+            if (movingHandleType == BDERectSelectionViewHandleTypeUnknown) {
                 [self.panGestureRecognizer amk_cancelsTouches];
             } else {
                 [self setAssociateValue:@(beganLocation) withKey:kBeganLocationKey];
@@ -194,8 +202,9 @@
                     break;
                 }
                 case BDERectSelectionViewHandleTypeTopRight: {
-                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
-//                    selectionViewEndFrame.size.width = CGRectGetWidth(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
+                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame) - minSelectionSize.height));
+                    selectionViewEndFrame.size.width = MAX(CGRectGetMinX(selectionViewBeganFrame) + minSelectionSize.width, MIN(currentLocation.x, CGRectGetMaxX(contentRect))) - CGRectGetMinX(selectionViewBeganFrame);
+                    //CGRectGetMaxX(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
                     selectionViewEndFrame.size.height = CGRectGetHeight(selectionViewBeganFrame) - (CGRectGetMinY(selectionViewEndFrame) - CGRectGetMinY(selectionViewBeganFrame));
 
                     
@@ -245,15 +254,19 @@
 
 - (BDERectSelectionViewHandleType)handleTypeWithPoint:(CGPoint)point {
     CGPoint pointInSelectionView = [self convertPoint:point toView:self.selectionView];
-    __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeCenter;
+    __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeUnknown;
     [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
         CGRect selectionHandleImageViewFrame = selectionHandleImageView.frame;
         selectionHandleImageViewFrame = AMKCGRectEdgeInsets(selectionHandleImageView.frame, selectionHandleImageView.amk_interactionEdgeInsets);
         if (CGRectContainsPoint(selectionHandleImageViewFrame, pointInSelectionView)) {
+            BDERectSelectionViewLog(@"point %@ => %@", @(point), handleTypeNumber);
             handleType = handleTypeNumber.integerValue;
             *stop = YES;
         }
     }];
+    if (handleType == BDERectSelectionViewHandleTypeUnknown && CGRectContainsPoint(self.selectionView.bounds, pointInSelectionView)) {
+        handleType = BDERectSelectionViewHandleTypeCenter;
+    }
     return handleType;
 }
 
