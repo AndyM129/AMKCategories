@@ -204,16 +204,7 @@ static BOOL kDebugEnable = YES;
                 case BDERectSelectionViewHandleTypeTopRight: {
                     selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame) - minSelectionSize.height));
                     selectionViewEndFrame.size.width = MAX(CGRectGetMinX(selectionViewBeganFrame) + minSelectionSize.width, MIN(currentLocation.x, CGRectGetMaxX(contentRect))) - CGRectGetMinX(selectionViewBeganFrame);
-                    //CGRectGetMaxX(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
                     selectionViewEndFrame.size.height = CGRectGetHeight(selectionViewBeganFrame) - (CGRectGetMinY(selectionViewEndFrame) - CGRectGetMinY(selectionViewBeganFrame));
-
-                    
-                    
-                    
-//                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(selectionViewBeganFrame), MIN(currentLocation.x, contentRect.origin.x + contentRect.size.width));
-//                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
-//                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
-//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomRight: {
@@ -224,9 +215,9 @@ static BOOL kDebugEnable = YES;
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomLeft: {
-                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame) - minSelectionSize.width));
                     selectionViewEndFrame.size.width = CGRectGetWidth(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
-                    selectionViewEndFrame.size.height = MAX(0, MIN(CGRectGetHeight(selectionViewBeganFrame) + (currentLocation.y - beganLocation.y), CGRectGetMaxY(contentRect) - CGRectGetMinY(selectionViewBeganFrame)));
+                    selectionViewEndFrame.size.height = MAX(minSelectionSize.height, MIN(CGRectGetHeight(selectionViewBeganFrame) + currentLocation.y - beganLocation.y, CGRectGetMaxY(contentRect) - CGRectGetMinY(selectionViewBeganFrame)));
                     break;
                 }
                 default: {
