@@ -28,7 +28,7 @@
 #pragma mark - Dealloc
 
 - (void)dealloc {
-    
+    [self.imageView removeObserverBlocks];
 }
 
 #pragma mark - Init Methods
@@ -57,6 +57,12 @@
         weakSelf.imageView.userInteractionEnabled = YES;
         weakSelf.imageView.contentMode = UIViewContentModeScaleAspectFit;
         weakSelf.imageView.image = [UIImage imageNamed:@"amk_10310_example_img_01"];
+        [weakSelf.imageView addObserverBlockForKeyPath:@"bounds" block:^(UIView *_Nonnull view, NSValue *oldVal, NSValue *newVal) {
+            if (![newVal isEqualToValue:oldVal]) {
+                CGRect imageRect = weakSelf.imageView.amk_imageRect;
+                weakSelf.rectSelectionView.contentInsets = UIEdgeInsetsMake(imageRect.origin.y, imageRect.origin.x, imageRect.origin.y, imageRect.origin.x);
+            }
+        }];
         [containerView addSubview:weakSelf.imageView];
         [weakSelf.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
@@ -65,7 +71,6 @@
         // 矩形选区视图
         CGFloat kSelectionHandleImageViewTransformOffset = 3;
         weakSelf.rectSelectionView = [BDERectSelectionView.alloc init];
-        weakSelf.rectSelectionView.contentInsets = UIEdgeInsetsMake(0, 25, 0, 25);
         weakSelf.rectSelectionView.selectionView.frame = CGRectMake(25, 25, 200, 150);
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
@@ -91,12 +96,6 @@
         [weakSelf.rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
-        
-//        [weakSelf.imageView addObserverBlockForKeyPath:@"bounds" block:^(UIView *_Nonnull view, NSValue *oldVal, NSValue *newVal) {
-//            if (![newVal isEqualToValue:oldVal]) {
-//                <#code#>
-//            }
-//        }];
     }];
     
     [self.exampleStackView addArrangedSubtitleLabelWithTitle:@"选区结果" customBlock:nil];

@@ -54,44 +54,72 @@
 #pragma mark - Public Methods
 
 - (CGRect)amk_convertRectToImageCoordinate:(CGRect)viewRect {
-    NSAssert(self.image != nil, @"image 不能为空");
+    // 若当前图像无有效size，则直接返回 CGRectZero
+    CGSize imageSize = !self.image ? CGSizeZero : self.image.size;
+    if (imageSize.width < FLT_EPSILON || imageSize.height < FLT_EPSILON) {
+        return CGRectZero;
+    }
     
-    CGSize imageSize = self.image.size;
+    // 若当前视图无有效size，则直接返回 CGRectZero
     CGSize viewSize = self.bounds.size;
-    if (imageSize.width < FLT_EPSILON || imageSize.height < FLT_EPSILON || viewSize.width < FLT_EPSILON || viewSize.height < FLT_EPSILON) {
+    if (viewSize.width < FLT_EPSILON || viewSize.height < FLT_EPSILON) {
         return CGRectZero;
     }
     
-    // 1. 计算 scale
-    CGFloat scale = MIN(viewSize.width / imageSize.width, viewSize.height / imageSize.height);
+    // 分情况计算
+    if (self.contentMode == UIViewContentModeScaleAspectFit) {
+        // 1. 计算 scale
+        CGFloat scale = MIN(viewSize.width / imageSize.width, viewSize.height / imageSize.height);
+        if (scale < FLT_EPSILON) {
+            return CGRectZero;
+        }
+        
+        // 2. 计算 image 实际显示区域
+        CGSize displaySize = CGSizeMake(imageSize.width * scale, imageSize.height * scale);
+        CGFloat offsetX = (viewSize.width - displaySize.width) * 0.5;
+        CGFloat offsetY = (viewSize.height - displaySize.height) * 0.5;
+        CGRect imageDisplayRect = CGRectMake(offsetX, offsetY, displaySize.width, displaySize.height);
+        
+        // 3. 求交集：转换 viewRect -> imageDisplayRect 内坐标
+        CGRect intersectRect = CGRectIntersection(viewRect, imageDisplayRect);
+        if (CGRectIsNull(intersectRect) || CGRectIsEmpty(intersectRect)) {
+            return CGRectZero;
+        }
+        
+        // 4. 转换坐标
+        CGFloat x = (intersectRect.origin.x - offsetX) / scale;
+        CGFloat y = (intersectRect.origin.y - offsetY) / scale;
+        CGFloat w = intersectRect.size.width / scale;
+        CGFloat h = intersectRect.size.height / scale;
+        
+        // ⚠️ 浮点修正（非常关键）
+        CGFloat epsilon = 1.0 / scale; // 1px 对应到 image 空间的误差
+        CGFloat maxW = imageSize.width;
+        CGFloat maxH = imageSize.height;
 
-    // 2. 计算 image 实际显示区域
-    CGSize displaySize = CGSizeMake(imageSize.width * scale, imageSize.height * scale);
-
-    CGFloat offsetX = (viewSize.width - displaySize.width) * 0.5;
-    CGFloat offsetY = (viewSize.height - displaySize.height) * 0.5;
-    CGRect imageDisplayRect = CGRectMake(offsetX, offsetY, displaySize.width, displaySize.height);
-
-    // 3. 转换 viewRect -> imageDisplayRect 内坐标
-    CGRect intersectRect = CGRectIntersection(viewRect, imageDisplayRect);
-    
-    if (CGRectIsNull(intersectRect)) {
-        return CGRectZero;
+        // 5. clamp 到 image 边界
+        x = MAX(0, MIN(x, maxW));
+        y = MAX(0, MIN(y, maxH));
+        w = MAX(0, MIN(w, maxW - x));
+        h = MAX(0, MIN(h, maxH - y));
+        
+        // 边界吸附（避免 199.999 这种）
+        if (fabs((x + w) - maxW) < epsilon) {
+            w = maxW - x;
+        }
+        if (fabs((y + h) - maxH) < epsilon) {
+            h = maxH - y;
+        }
+        
+        CGRect result = CGRectMake(x, y, w, h);
+        if (fabs(result.origin.x) < epsilon) result.origin.x = 0;
+        if (fabs(result.origin.y) < epsilon) result.origin.y = 0;
+        return result;
     }
     
-    // ⚠️ 注意：必须减去 offset
-    CGFloat x = (intersectRect.origin.x - imageDisplayRect.origin.x) / scale;
-    CGFloat y = (intersectRect.origin.y - imageDisplayRect.origin.y) / scale;
-    CGFloat w = intersectRect.size.width / scale;
-    CGFloat h = intersectRect.size.height / scale;
-
-    CGRect result = CGRectMake(x, y, w, h);
-
-    // 4. 防止越界
-    CGRect imageBounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
-    result = CGRectIntersection(result, imageBounds);
-
-    return result;
+    // 其他情况 fallback 为 CGRectZero
+    NSAssert(NO, @"暂未支持对当前 contentMode(%ld) 的处理", (long)self.contentMode);
+    return CGRectZero;
 }
 
 #pragma mark - Private Methods
