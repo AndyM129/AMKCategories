@@ -151,8 +151,8 @@
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
     static void *kBeganLocationKey = &kBeganLocationKey;
+    static void *kMovingHandleTypeKey = &kMovingHandleTypeKey;
     static void *kBeganFrameKey = &kBeganFrameKey;
-    CGRect contentRect = AMKCGRectEdgeInsets(self.bounds, self.contentInsets);
     
     switch (panGestureRecognizer.state) {
         case UIGestureRecognizerStatePossible: {
@@ -160,24 +160,61 @@
         }
         case UIGestureRecognizerStateBegan: {
             CGPoint beganLocation = [self.panGestureRecognizer locationInView:self];
+            BDERectSelectionViewHandleType movingHandleType = [self handleTypeWithPoint:beganLocation];
             if (!CGRectContainsPoint(self.selectionView.frame, beganLocation)) {
                 [self.panGestureRecognizer amk_cancelsTouches];
             } else {
                 [self setAssociateValue:@(beganLocation) withKey:kBeganLocationKey];
+                [self setAssociateValue:@(movingHandleType) withKey:kMovingHandleTypeKey];
                 [self setAssociateValue:@(self.selectionView.frame) withKey:kBeganFrameKey];
             }
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            // 获取本次及开始时 的移动手势位置
             CGPoint beganLocation = [[self getAssociatedValueForKey:kBeganLocationKey] CGPointValue];
             CGPoint currentLocation = [self.panGestureRecognizer locationInView:self];
+            CGRect selectionViewBeganFrame = [[self getAssociatedValueForKey:kBeganFrameKey] CGRectValue];
+            CGRect contentRect = AMKCGRectEdgeInsets(self.bounds, self.contentInsets);
+            CGRect selectionViewEndFrame = selectionViewBeganFrame;
             
             // 根据本次及开始时 移动距离差 计算新的位置
-            CGRect selectionViewFrame = [[self getAssociatedValueForKey:kBeganFrameKey] CGRectValue];
-            selectionViewFrame.origin.x = MAX(contentRect.origin.x, MIN(selectionViewFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewFrame.size.width));
-            selectionViewFrame.origin.y = MAX(contentRect.origin.y, MIN(selectionViewFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewFrame.size.height));
-            self.selectionView.frame = selectionViewFrame;
+            BDERectSelectionViewHandleType movingHandleType = [[self getAssociatedValueForKey:kMovingHandleTypeKey] integerValue];
+            switch (movingHandleType) {
+                case BDERectSelectionViewHandleTypeTopLeft: {
+                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
+                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
+                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeTopRight: {
+//                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(selectionViewBeganFrame), MIN(currentLocation.x, contentRect.origin.x + contentRect.size.width));
+//                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
+//                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
+//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeBottomRight: {
+//                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+//                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
+//                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
+//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    break;
+                }
+                case BDERectSelectionViewHandleTypeBottomLeft: {
+                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
+//                    selectionViewEndFrame.origin.y = MAX(selectionViewBeganFrame.origin.y, MIN(currentLocation.y, CGRectGetMinY(selectionViewBeganFrame)));
+                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
+//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    break;
+                }
+                default: {
+                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(selectionViewEndFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewEndFrame.size.width));
+                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(selectionViewEndFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewEndFrame.size.height));
+                    break;
+                }
+            }
+            self.selectionView.frame = selectionViewEndFrame;
             break;
         }
         case UIGestureRecognizerStateEnded:
@@ -195,7 +232,15 @@
 #pragma mark - Helper Methods
 
 - (BDERectSelectionViewHandleType)handleTypeWithPoint:(CGPoint)point {
-    return BDERectSelectionViewHandleTypeCenter;
+    CGPoint pointInSelectionView = [self convertPoint:point toView:self.selectionView];
+    __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeCenter;
+    [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
+        if (CGRectContainsPoint(selectionHandleImageView.frame, pointInSelectionView)) {
+            handleType = handleTypeNumber.integerValue;
+            *stop = YES;
+        }
+    }];
+    return handleType;
 }
 
 @end
