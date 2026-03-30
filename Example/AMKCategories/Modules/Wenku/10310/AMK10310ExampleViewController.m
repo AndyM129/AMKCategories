@@ -74,7 +74,7 @@
         static UIEdgeInsets kSelectionHandleImageViewInteractionEdgeInsets = {-10, -10, -10, -10};
         weakSelf.rectSelectionView = [BDERectSelectionView.alloc init];
         weakSelf.rectSelectionView.selectionView.frame = CGRectMake(25, 25, 150, 200);
-        weakSelf.rectSelectionView.minSelectionSize = CGSizeMake(30, 40);
+        weakSelf.rectSelectionView.minSelectionSize = CGSizeMake(60, 80);
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
             selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
