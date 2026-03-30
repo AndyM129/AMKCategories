@@ -208,10 +208,8 @@ static BOOL kDebugEnable = YES;
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomRight: {
-//                    selectionViewEndFrame.origin.x = MAX(contentRect.origin.x, MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame)));
-//                    selectionViewEndFrame.origin.y = MAX(contentRect.origin.y, MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame)));
-//                    selectionViewEndFrame.size.width = selectionViewBeganFrame.size.width - (selectionViewEndFrame.origin.x - selectionViewBeganFrame.origin.x);
-//                    selectionViewEndFrame.size.height = selectionViewBeganFrame.size.height - (selectionViewEndFrame.origin.y - selectionViewBeganFrame.origin.y);
+                    selectionViewEndFrame.size.width = MAX(minSelectionSize.width, MIN(CGRectGetWidth(selectionViewBeganFrame) + currentLocation.x - beganLocation.x, CGRectGetMaxX(contentRect) - CGRectGetMinX(selectionViewBeganFrame)));
+                    selectionViewEndFrame.size.height = MAX(minSelectionSize.height, MIN(CGRectGetHeight(selectionViewBeganFrame) + currentLocation.y - beganLocation.y, CGRectGetMaxY(contentRect) - CGRectGetMinY(selectionViewBeganFrame)));
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomLeft: {
