@@ -31,6 +31,9 @@ typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionVi
 /// 内容边距，仅在内容区域 可以调整选区，默认值为 `UIEdgeInsetsZero`
 @property (nonatomic, assign, readwrite) UIEdgeInsets contentInsets;
 
+/// 选区的最小尺寸，默认 `CGSizeZero`，即不设限
+@property (nonatomic, assign, readwrite) CGSize minSelectionSize;
+
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 
