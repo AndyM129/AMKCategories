@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
         defaultSubspec.dependency 'AMKCategories/WebKit'
         defaultSubspec.dependency 'AMKCategories/UIKit'
         defaultSubspec.dependency 'AMKCategories/QuartzCore'
+        defaultSubspec.dependency 'AMKCategories/CoreGraphics'
         defaultSubspec.dependency 'AMKCategories/Foundation'
     end
     
@@ -182,6 +183,14 @@ Pod::Spec.new do |s|
             animation.subspec 'AnimationDelegate' do |animationDelegate|
                 animationDelegate.source_files = 'AMKCategories/Classes/QuartzCore/CAAnimation/AnimationDelegate/*.{h,m,mm}'
             end
+        end
+    end
+    
+    # CoreGraphics 通用扩展
+    s.subspec 'CoreGraphics' do |coreGraphics|
+        # CGGeometry 相关扩展
+        coreGraphics.subspec 'ExtensionMethods' do |extensionMethods|
+            extensionMethods.source_files = 'AMKCategories/Classes/CoreGraphics/ExtensionMethods/*.{h,m,mm}'
         end
     end
 

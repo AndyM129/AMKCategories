@@ -74,6 +74,7 @@
 		888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 888D8F172977F34B00B8F26F /* MyOnDemandResources_1.jpeg */; settings = {ASSET_TAGS = (MyOnDemandResources, ); }; };
 		889150692F7553A000F01776 /* AMK10310ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889150682F7553A000F01776 /* AMK10310ExampleViewController.m */; };
 		8891506C2F7555C900F01776 /* BDERectSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891506B2F7555C900F01776 /* BDERectSelectionView.m */; };
+		889151D52F7A210E00F01776 /* Wenku10310.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889151D42F7A210E00F01776 /* Wenku10310.xcassets */; };
 		8891AE402B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */; };
 		889452832CC8D33C002841C3 /* AMK9130ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452822CC8D33C002841C3 /* AMK9130ExampleViewController.m */; };
 		889452862CC8DC59002841C3 /* AMK9130PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889452852CC8DC59002841C3 /* AMK9130PresentedViewController.m */; };
@@ -237,6 +238,7 @@
 		889150682F7553A000F01776 /* AMK10310ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMK10310ExampleViewController.m; sourceTree = "<group>"; };
 		8891506A2F7555C900F01776 /* BDERectSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDERectSelectionView.h; sourceTree = "<group>"; };
 		8891506B2F7555C900F01776 /* BDERectSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDERectSelectionView.m; sourceTree = "<group>"; };
+		889151D42F7A210E00F01776 /* Wenku10310.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Wenku10310.xcassets; sourceTree = "<group>"; };
 		8891AE3E2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKNVoiceRecognitionPopupContentMainView.h; sourceTree = "<group>"; };
 		8891AE3F2B677F980056BB61 /* WKNVoiceRecognitionPopupContentMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKNVoiceRecognitionPopupContentMainView.m; sourceTree = "<group>"; };
 		889452812CC8D33C002841C3 /* AMK9130ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMK9130ExampleViewController.h; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 				889150682F7553A000F01776 /* AMK10310ExampleViewController.m */,
 				8891506A2F7555C900F01776 /* BDERectSelectionView.h */,
 				8891506B2F7555C900F01776 /* BDERectSelectionView.m */,
+				889151D42F7A210E00F01776 /* Wenku10310.xcassets */,
 			);
 			path = 10310;
 			sourceTree = "<group>";
@@ -1164,6 +1167,7 @@
 			files = (
 				886F3E062A6E6C130059C0B4 /* wk8250_wkeditorhelper.html in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				889151D52F7A210E00F01776 /* Wenku10310.xcassets in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8806D97E290BB4BB005DC5C1 /* AMKEmojiStringViewController.txt in Resources */,
 				888D8F182977F34B00B8F26F /* MyOnDemandResources_1.jpeg in Resources */,

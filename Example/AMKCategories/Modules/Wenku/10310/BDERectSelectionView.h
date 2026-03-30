@@ -24,6 +24,9 @@ typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
 /// 选区视图，拖拽四角或中心时 会同步更新其 `frame`
 @property (nonatomic, strong, readonly, nullable) UIView *selectionView;
 
+/// 内容边距，仅在内容区域 可以调整选区，默认值为 `UIEdgeInsetsZero`
+@property (nonatomic, assign, readwrite) UIEdgeInsets contentInsets;
+
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 

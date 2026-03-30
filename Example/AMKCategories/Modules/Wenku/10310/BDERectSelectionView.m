@@ -7,6 +7,7 @@
 //
 
 #import "BDERectSelectionView.h"
+#import <AMKCategories/CGGeometry+AMKCGGeometryExtensionMethods.h>
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
 
 @interface BDERectSelectionView ()
@@ -85,36 +86,12 @@
     self.overlayLayer.path = path.CGPath;
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    CGPoint toucheBeganPoint = [touches.anyObject locationInView:self];
-//    self.movingHandleType = [self handleTypeWithPoint:toucheBeganPoint];
-//}
-//
-//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    UITouch *touch = [touches anyObject];
-//    CGPoint touchLocation = [touch locationInView:self];
-//    CGPoint touchPreviousLocation = [touch previousLocationInView:self];
-//    
-//    switch (self.movingHandleType) {
-//        case BDERectSelectionViewHandleTypeCenter: {
-//            CGRect selectionRect = self.selectionRect;
-//            selectionRect.origin.x += touchLocation.x - touchPreviousLocation.x;
-//            selectionRect.origin.y += touchLocation.y - touchPreviousLocation.y;
-//            self.selectionRect = selectionRect;
-//            break;
-//        }
-//        default: break;
-//    }
-//}
-
-//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
-//- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event;
-
 #pragma mark - Action Methods
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
     static void *kBeganLocationKey = &kBeganLocationKey;
     static void *kBeganFrameKey = &kBeganFrameKey;
+    CGRect contentRect = AMKCGRectEdgeInsets(self.bounds, self.contentInsets);
     
     switch (panGestureRecognizer.state) {
         case UIGestureRecognizerStatePossible: {
@@ -137,8 +114,8 @@
             
             // 根据本次及开始时 移动距离差 计算新的位置
             CGRect selectionViewFrame = [[self getAssociatedValueForKey:kBeganFrameKey] CGRectValue];
-            selectionViewFrame.origin.x = MAX(0, MIN(selectionViewFrame.origin.x + currentLocation.x - beganLocation.x, self.bounds.size.width - selectionViewFrame.size.width));
-            selectionViewFrame.origin.y = MAX(0, MIN(selectionViewFrame.origin.y + currentLocation.y - beganLocation.y, self.bounds.size.height - selectionViewFrame.size.height));
+            selectionViewFrame.origin.x = MAX(contentRect.origin.x, MIN(selectionViewFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewFrame.size.width));
+            selectionViewFrame.origin.y = MAX(contentRect.origin.y, MIN(selectionViewFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewFrame.size.height));
             self.selectionView.frame = selectionViewFrame;
             break;
         }

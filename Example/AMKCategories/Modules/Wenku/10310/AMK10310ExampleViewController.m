@@ -43,15 +43,25 @@
     [super viewDidLoad];
     
     [self.exampleStackView addArrangedTitleLabelWithTitle:@"BDERectSelectionView" customBlock:nil];
-    [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerCiew) {
-        containerCiew.height = 400;
+    [self.exampleStackView addArrangedContainerViewWithCustomBlock:^(UIView * _Nullable containerView) {
+        containerView.height = 500;
+        containerView.backgroundColor = UIColor.blackColor;
+        
+        UIImageView *imageView = [UIImageView.alloc init];
+        imageView.userInteractionEnabled = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageNamed:@"amk_10310_example_img_01"];
+        [containerView addSubview:imageView];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
+        }];
         
         BDERectSelectionView *rectSelectionView = [BDERectSelectionView.alloc init];
-        rectSelectionView.selectionView.frame = CGRectMake(10, 10, 250, 150);
-        rectSelectionView.backgroundColor = [UIColor colorWithRed:167/255.0 green:185/255.0 blue:223/255.0 alpha:1.0];;
-        [containerCiew addSubview:rectSelectionView];
+        rectSelectionView.contentInsets = UIEdgeInsetsMake(25, 25, 25, 25);
+        rectSelectionView.selectionView.frame = CGRectMake(10, 10, 200, 150);
+        [imageView addSubview:rectSelectionView];
         [rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(containerCiew);
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
     }];
 }
