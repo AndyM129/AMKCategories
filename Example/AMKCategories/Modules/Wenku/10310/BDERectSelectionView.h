@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
 
 typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionView *_Nullable rectSelectionView, UIImageView *_Nullable selectionHandleImageView);
 
+/// 矩形区域选择视图
 @interface BDERectSelectionView : UIView
 
 /// 半透明黑遮罩层，可自行修改背景色
@@ -38,8 +39,7 @@ typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionVi
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 
-- (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType;
-
+/// 获取指定 `handleType` 对应的 `selectionHandleImageView`，并支持直接在 `layoutBlcok` 中进行布局&样式的更新
 - (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok _Nullable)layoutBlcok;
 
 @end
