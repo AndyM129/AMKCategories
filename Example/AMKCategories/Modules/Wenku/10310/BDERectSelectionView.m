@@ -9,6 +9,7 @@
 #import "BDERectSelectionView.h"
 #import <AMKCategories/CGGeometry+AMKCGGeometryExtensionMethods.h>
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
+#import <AMKCategories/UIView+AMKInteractions.h>
 
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;
@@ -234,7 +235,9 @@
     CGPoint pointInSelectionView = [self convertPoint:point toView:self.selectionView];
     __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeCenter;
     [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
-        if (CGRectContainsPoint(selectionHandleImageView.frame, pointInSelectionView)) {
+        CGRect selectionHandleImageViewFrame = selectionHandleImageView.frame;
+        selectionHandleImageViewFrame = AMKCGRectEdgeInsets(selectionHandleImageView.frame, selectionHandleImageView.amk_interactionEdgeInsets);
+        if (CGRectContainsPoint(selectionHandleImageViewFrame, pointInSelectionView)) {
             handleType = handleTypeNumber.integerValue;
             *stop = YES;
         }
