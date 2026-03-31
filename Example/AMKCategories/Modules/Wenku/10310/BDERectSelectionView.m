@@ -65,7 +65,7 @@
     _minSelectionSize = CGSizeMake(MAX(0, minSelectionSize.width), MAX(0, minSelectionSize.height));
 }
 
-- (NSMutableDictionary<NSNumber *,UIImageView *> *)selectionHandleImageViews {
+- (NSMutableDictionary<NSNumber *, UIImageView *> *)selectionHandleImageViews {
     if (!_selectionHandleImageViews) {
         _selectionHandleImageViews = @{}.mutableCopy;
     }
