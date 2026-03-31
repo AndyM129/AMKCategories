@@ -72,6 +72,10 @@
     return _selectionHandleImageViews;
 }
 
+- (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType {
+    return [self selectionHandleImageViewWithType:handleType layoutBlcok:nil];
+}
+
 - (UIImageView *)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok)layoutBlcok {
     if (handleType < 0 || handleType >= BDERectSelectionViewHandleTypeCount) {
         return nil;

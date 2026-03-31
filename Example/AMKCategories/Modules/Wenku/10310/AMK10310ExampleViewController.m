@@ -70,38 +70,11 @@
             weakSelf.imageView.transform = artImageTransform;
             
             // 将被缩放的 四个角的控制点视图，反向缩放，以保持视觉大小的不变
-//            CGAffineTransform cropImgViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1 / scaleFactor, 1 / scaleFactor);
-//            weakSelf.cropLTImgView.transform = cropImgViewTransform;
-//            weakSelf.cropRTImgView.transform = cropImgViewTransform;
-//            weakSelf.cropLBImgView.transform = cropImgViewTransform;
-//            weakSelf.cropRBImgView.transform = cropImgViewTransform;
-//            
-//            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
-//                selectionHandleImageView.image = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
-//                selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
-//                selectionHandleImageView.amk_interactionEdgeInsets = kSelectionHandleImageViewInteractionEdgeInsets;
-//            }];
-//            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
-//                selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-90) fitSize:YES];
-//                selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, -kSelectionHandleImageViewTransformOffset);
-//                selectionHandleImageView.amk_interactionEdgeInsets = kSelectionHandleImageViewInteractionEdgeInsets;
-//            }];
-//            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
-//                selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-180) fitSize:YES];
-//                selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
-//                selectionHandleImageView.amk_interactionEdgeInsets = kSelectionHandleImageViewInteractionEdgeInsets;
-//            }];
-//            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
-//                selectionHandleImageView.image = [[UIImage imageNamed:@"amk_10310_example_img_handle_tl"] imageByRotate:DegreesToRadians(-270) fitSize:YES];
-//                selectionHandleImageView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, -kSelectionHandleImageViewTransformOffset, kSelectionHandleImageViewTransformOffset);
-//                selectionHandleImageView.amk_interactionEdgeInsets = kSelectionHandleImageViewInteractionEdgeInsets;
-//            }];
-//            [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
-//                CGRect imageRect = [weakSelf.imageView amk_convertRectToImageCoordinate:weakSelf.rectSelectionView.selectionView.frame];
-//                weakSelf.previewImageView.image = [weakSelf.imageView.image imageByCropToRect:imageRect];
-//            }];
-            
-
+            CGAffineTransform selectionHandleImageViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1 / scaleFactor, 1 / scaleFactor);
+            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft].transform = selectionHandleImageViewTransform;
+            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight].transform = selectionHandleImageViewTransform;
+            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight].transform = selectionHandleImageViewTransform;
+            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft].transform = selectionHandleImageViewTransform;
         }];
         [subtitleLabel addSubview:rotateButton];
         [rotateButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -130,47 +103,41 @@
         }];
         
         // 矩形选区视图
-        CGFloat selectionHandleImageViewTransformOffset = 3;
-        UIEdgeInsets selectionHandleImageViewInteractionEdgeInsets = {-10, -10, -10, -10};
-        UIImage *selectionHandleImage = [UIImage imageNamed:@"amk_10310_example_img_handle_tl"];
-        CGSize selectionHandleViewSize = CGSizeMake(24, 24);
+        UIImage *selectionHandleImage = [UIImage imageNamed:@"amk_10310_example_img_handle_tl_new"];
+        CGSize selectionHandleViewSize = CGSizeMake(42, 42);
         weakSelf.rectSelectionView = [BDERectSelectionView.alloc init];
         weakSelf.rectSelectionView.selectionView.frame = CGRectMake(25, 25, 150, 200);
         weakSelf.rectSelectionView.minSelectionSize = CGSizeMake(60, 80);
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = selectionHandleImage;
-            selectionHandleImageView.amk_interactionEdgeInsets = selectionHandleImageViewInteractionEdgeInsets;
             [selectionHandleImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(selectionHandleViewSize);
-                make.top.mas_equalTo(-selectionHandleImageViewTransformOffset);
-                make.left.mas_equalTo(-selectionHandleImageViewTransformOffset);
+                make.size.mas_equalTo(selectionHandleViewSize);
+                make.centerY.mas_equalTo(selectionHandleImageView.superview.mas_top);
+                make.centerX.mas_equalTo(selectionHandleImageView.superview.mas_left);
             }];
         }];
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-90) fitSize:YES];
-            selectionHandleImageView.amk_interactionEdgeInsets = selectionHandleImageViewInteractionEdgeInsets;
             [selectionHandleImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(selectionHandleViewSize);
-                make.top.mas_equalTo(-selectionHandleImageViewTransformOffset);
-                make.right.mas_equalTo(selectionHandleImageViewTransformOffset);
+                make.size.mas_equalTo(selectionHandleViewSize);
+                make.centerY.mas_equalTo(selectionHandleImageView.superview.mas_top);
+                make.centerX.mas_equalTo(selectionHandleImageView.superview.mas_right);
             }];
         }];
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-180) fitSize:YES];
-            selectionHandleImageView.amk_interactionEdgeInsets = selectionHandleImageViewInteractionEdgeInsets;
             [selectionHandleImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(selectionHandleViewSize);
-                make.bottom.mas_equalTo(selectionHandleImageViewTransformOffset);
-                make.right.mas_equalTo(selectionHandleImageViewTransformOffset);
+                make.size.mas_equalTo(selectionHandleViewSize);
+                make.centerY.mas_equalTo(selectionHandleImageView.superview.mas_bottom);
+                make.centerX.mas_equalTo(selectionHandleImageView.superview.mas_right);
             }];
         }];
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-270) fitSize:YES];
-            selectionHandleImageView.amk_interactionEdgeInsets = selectionHandleImageViewInteractionEdgeInsets;
             [selectionHandleImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(selectionHandleViewSize);
-                make.bottom.mas_equalTo(selectionHandleImageViewTransformOffset);
-                make.left.mas_equalTo(-selectionHandleImageViewTransformOffset);
+                make.size.mas_equalTo(selectionHandleViewSize);
+                make.centerY.mas_equalTo(selectionHandleImageView.superview.mas_bottom);
+                make.centerX.mas_equalTo(selectionHandleImageView.superview.mas_left);
             }];
         }];
         [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {

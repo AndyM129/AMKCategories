@@ -39,6 +39,9 @@ typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionVi
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 
+/// 获取指定 `handleType` 对应的 `selectionHandleImageView`
+- (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType;
+
 /// 获取指定 `handleType` 对应的 `selectionHandleImageView`，并支持直接在 `layoutBlcok` 中进行布局&样式的更新
 - (UIImageView *_Nullable)selectionHandleImageViewWithType:(BDERectSelectionViewHandleType)handleType layoutBlcok:(BDERectSelectionViewHandleImageViewLayoutBlcok _Nullable)layoutBlcok;
 
