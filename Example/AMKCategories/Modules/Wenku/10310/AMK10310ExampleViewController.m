@@ -15,7 +15,7 @@
 @interface AMK10310ExampleViewController ()
 @property (nonatomic, strong, readwrite, nullable) UIImageView *imageView;
 @property (nonatomic, strong, readwrite, nullable) BDERectSelectionView *rectSelectionView;
-@property (nonatomic, strong, readwrite, nullable) UIImageView *previewImageView;
+@property (nonatomic, strong, readwrite, nullable) UIImageView *resultImageView;
 @property (nonatomic, assign, readwrite) NSInteger rotateDegrees; //!< 向左旋转：已旋转度数，默认 0
 @end
 
@@ -56,26 +56,7 @@
         UIButton *rotateButton = [UIButton.alloc init];
         rotateButton.tintColor = subtitleLabel.tintColor;
         [rotateButton setImage:[[UIImage imageNamed:@"amk_10310_example_rotate_n"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        [rotateButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-            //[MBProgressHUD amk_showTextHUDWithMessage:@"旋转" inView:weakSelf.view responder:nil duration:1 animated:YES];
-            
-            weakSelf.rotateDegrees = weakSelf.rotateDegrees - 90;
-            CGFloat scaleFactor = (weakSelf.rotateDegrees / 90 % 2 == 0) ? 1 : (weakSelf.imageView.width / weakSelf.imageView.height);
-            NSLog(@"scaleFactor = %.2f", scaleFactor);
-            
-            // 修正选区视图的方向、大小
-            CGAffineTransform artImageTransform = CGAffineTransformIdentity;
-            artImageTransform = CGAffineTransformRotate(artImageTransform, DegreesToRadians(weakSelf.rotateDegrees)); // 旋转
-            artImageTransform = CGAffineTransformScale(artImageTransform, scaleFactor, scaleFactor); // 缩放
-            weakSelf.imageView.transform = artImageTransform;
-            
-            // 将被缩放的 四个角的控制点视图，反向缩放，以保持视觉大小的不变
-            CGAffineTransform selectionHandleImageViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1 / scaleFactor, 1 / scaleFactor);
-            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft].transform = selectionHandleImageViewTransform;
-            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight].transform = selectionHandleImageViewTransform;
-            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight].transform = selectionHandleImageViewTransform;
-            [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft].transform = selectionHandleImageViewTransform;
-        }];
+        [rotateButton addTarget:weakSelf action:@selector(rotateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [subtitleLabel addSubview:rotateButton];
         [rotateButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(36);
@@ -141,8 +122,7 @@
             }];
         }];
         [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
-            CGRect imageRect = [weakSelf.imageView amk_convertRectToImageCoordinate:weakSelf.rectSelectionView.selectionView.frame];
-            weakSelf.previewImageView.image = [weakSelf.imageView.image imageByCropToRect:imageRect];
+            [weakSelf updateResultImageView:panGestureRecognizer];
         }];
         [weakSelf.imageView addSubview:weakSelf.rectSelectionView];
         [weakSelf.rectSelectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,10 +135,10 @@
         containerView.height = 100;
         
         // 结果预览
-        weakSelf.previewImageView = [UIImageView.alloc init];
-        weakSelf.previewImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [containerView addSubview:weakSelf.previewImageView];
-        [weakSelf.previewImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        weakSelf.resultImageView = [UIImageView.alloc init];
+        weakSelf.resultImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [containerView addSubview:weakSelf.resultImageView];
+        [weakSelf.resultImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
     }];
@@ -188,19 +168,34 @@
 
 #pragma mark - Action Methods
 
-//- (void)rightBarButtonItemClicked:(id)sender {
-//    NSString *title = @"相关调试功能";
-//    NSString *message = nil;
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
-//    [alertController addAction:[UIAlertAction actionWithTitle:@"模板库" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        UIViewController *viewController = [UIViewController.alloc init];
-//        viewController.
-//
-//
-//    }]];
-//    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-//    [self presentViewController:alertController animated:YES completion:nil];
-//}
+- (void)rotateButtonClicked:(id)sender {
+    //[MBProgressHUD amk_showTextHUDWithMessage:@"旋转" inView:weakSelf.view responder:nil duration:1 animated:YES];
+    
+    self.rotateDegrees = self.rotateDegrees - 90;
+    CGFloat scaleFactor = (self.rotateDegrees / 90 % 2 == 0) ? 1 : (self.imageView.width / self.imageView.height);
+    NSLog(@"scaleFactor = %.2f", scaleFactor);
+    
+    // 修正选区视图的方向、大小
+    CGAffineTransform artImageTransform = CGAffineTransformIdentity;
+    artImageTransform = CGAffineTransformRotate(artImageTransform, DegreesToRadians(self.rotateDegrees)); // 旋转
+    artImageTransform = CGAffineTransformScale(artImageTransform, scaleFactor, scaleFactor); // 缩放
+    self.imageView.transform = artImageTransform;
+    
+    // 将被缩放的 四个角的控制点视图，反向缩放，以保持视觉大小的不变
+    CGAffineTransform selectionHandleImageViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1 / scaleFactor, 1 / scaleFactor);
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft].transform = selectionHandleImageViewTransform;
+    
+    // 更新结果
+    [self updateResultImageView:sender];
+}
+
+- (void)updateResultImageView:(id)sender {
+    CGRect imageRect = [self.imageView amk_convertRectToImageCoordinate:self.rectSelectionView.selectionView.frame];
+    self.resultImageView.image = [[self.imageView.image imageByCropToRect:imageRect] imageByRotate:DegreesToRadians(-self.rotateDegrees) fitSize:YES];
+}
 
 #pragma mark - Notifications
 
