@@ -122,6 +122,18 @@
                 make.centerX.mas_equalTo(selectionHandleImageView.superview.mas_left);
             }];
         }];
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTop layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        }];
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        }];
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottom layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        }];
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+            selectionHandleImageView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        }];
         [weakSelf.rectSelectionView.panGestureRecognizer addActionBlock:^(UIPanGestureRecognizer *panGestureRecognizer) {
             [weakSelf updateResultImageView:panGestureRecognizer];
         }];

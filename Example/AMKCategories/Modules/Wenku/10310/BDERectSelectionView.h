@@ -11,11 +11,22 @@
 
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
     BDERectSelectionViewHandleTypeUnknown = -1,
-    BDERectSelectionViewHandleTypeCenter = 0, // 用于拖动整体
+    
+    // 中间
+    BDERectSelectionViewHandleTypeCenter = 0, //!< 用于拖动整体
+    
+    // 四角
     BDERectSelectionViewHandleTypeTopLeft,
     BDERectSelectionViewHandleTypeTopRight,
     BDERectSelectionViewHandleTypeBottomRight,
     BDERectSelectionViewHandleTypeBottomLeft,
+    
+    // 四边
+    BDERectSelectionViewHandleTypeTop,
+    BDERectSelectionViewHandleTypeRight,
+    BDERectSelectionViewHandleTypeBottom,
+    BDERectSelectionViewHandleTypeLeft,
+    
     BDERectSelectionViewHandleTypeCount,
 };
 
