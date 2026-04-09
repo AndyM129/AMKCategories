@@ -12,15 +12,15 @@
 /// 矩形区域选择视图 - 控制点
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
     BDERectSelectionViewHandleTypeUnknown       = 0, //!< 矩形区域选择视图 - 控制点 - 未知，默认值
-    BDERectSelectionViewHandleTypeTopLeft       = 1, //!< 矩形区域选择视图 - 控制点 - 四角 - 左上角 ┏
-    BDERectSelectionViewHandleTypeTopRight      = 2, //!< 矩形区域选择视图 - 控制点 - 四角 - 右上角 ┓
-    BDERectSelectionViewHandleTypeBottomRight   = 3, //!< 矩形区域选择视图 - 控制点 - 四角 - 右下角 ┛
-    BDERectSelectionViewHandleTypeBottomLeft    = 4, //!< 矩形区域选择视图 - 控制点 - 四角 - 左下角 ┗
-    BDERectSelectionViewHandleTypeTop           = 5, //!< 矩形区域选择视图 - 控制点 - 四边 - 上边
-    BDERectSelectionViewHandleTypeRight         = 6, //!< 矩形区域选择视图 - 控制点 - 四边 - 右边
-    BDERectSelectionViewHandleTypeBottom        = 7, //!< 矩形区域选择视图 - 控制点 - 四边 - 下边
-    BDERectSelectionViewHandleTypeLeft          = 8, //!< 矩形区域选择视图 - 控制点 - 四边 - 左边
-    BDERectSelectionViewHandleTypeCenter        = 9, //!< 矩形区域选择视图 - 控制点 - 中间，用于拖动整体
+    BDERectSelectionViewHandleTypeLeftTop       = 1, //!< 矩形区域选择视图 - 控制点 - 四角 - 左上角 ┏
+    BDERectSelectionViewHandleTypeRightTop      = 2, //!< 矩形区域选择视图 - 控制点 - 四角 - 右上角 ┓
+    BDERectSelectionViewHandleTypeRightBottom   = 3, //!< 矩形区域选择视图 - 控制点 - 四角 - 右下角 ┛
+    BDERectSelectionViewHandleTypeLeftBottom    = 4, //!< 矩形区域选择视图 - 控制点 - 四角 - 左下角 ┗
+    BDERectSelectionViewHandleTypeTop           = 5, //!< 矩形区域选择视图 - 控制点 - 四边 - 上边 ┳
+    BDERectSelectionViewHandleTypeRight         = 6, //!< 矩形区域选择视图 - 控制点 - 四边 - 右边 ┫
+    BDERectSelectionViewHandleTypeBottom        = 7, //!< 矩形区域选择视图 - 控制点 - 四边 - 下边 ┻
+    BDERectSelectionViewHandleTypeLeft          = 8, //!< 矩形区域选择视图 - 控制点 - 四边 - 左边 ┣
+    BDERectSelectionViewHandleTypeBody          = 9, //!< 矩形区域选择视图 - 控制点 - 整体 □
     BDERectSelectionViewHandleTypeCount,             //!< 矩形区域选择视图 - 控制点 总个数
 };
 

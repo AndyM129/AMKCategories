@@ -91,19 +91,19 @@
         weakSelf.rectSelectionView.minSelectionSize = CGSizeMake(60, 80);
         weakSelf.rectSelectionView.cornerHandleSize = CGSizeMake(42, 42);
         weakSelf.rectSelectionView.sideHandleSize = 40;
-        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeLeftTop layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = selectionHandleImage;
             selectionHandleImageView.amk_interactionEdgeInsets = UIEdgeInsetsMake(-FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON);
         }];
-        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRightTop layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-90) fitSize:YES];
             selectionHandleImageView.amk_interactionEdgeInsets = UIEdgeInsetsMake(-FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON);
         }];
-        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRightBottom layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-180) fitSize:YES];
             selectionHandleImageView.amk_interactionEdgeInsets = UIEdgeInsetsMake(-FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON);
         }];
-        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
+        [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeLeftBottom layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = [selectionHandleImage imageByRotate:DegreesToRadians(-270) fitSize:YES];
             selectionHandleImageView.amk_interactionEdgeInsets = UIEdgeInsetsMake(-FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON, -FLT_EPSILON);
         }];
@@ -185,10 +185,10 @@
     
     // 将被缩放的 四个角的控制点视图，反向缩放，以保持视觉大小的不变
     CGAffineTransform selectionHandleImageViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1 / scaleFactor, 1 / scaleFactor);
-    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft].transform = selectionHandleImageViewTransform;
-    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopRight].transform = selectionHandleImageViewTransform;
-    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomRight].transform = selectionHandleImageViewTransform;
-    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottomLeft].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeLeftTop].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRightTop].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRightBottom].transform = selectionHandleImageViewTransform;
+    [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeLeftBottom].transform = selectionHandleImageViewTransform;
     [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTop].transform = selectionHandleImageViewTransform;
     [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeRight].transform = selectionHandleImageViewTransform;
     [self.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeBottom].transform = selectionHandleImageViewTransform;
