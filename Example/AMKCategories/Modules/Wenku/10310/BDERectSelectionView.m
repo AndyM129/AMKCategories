@@ -11,6 +11,21 @@
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
 #import <AMKCategories/UIView+AMKInteractions.h>
 
+NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleType handleType) {
+#   pragma push_macro("case_NSStringFromBDERectSelectionViewHandleType")
+#   define case_NSStringFromBDERectSelectionViewHandleType(CASE) BDERectSelectionViewHandleType##CASE: return [NSString stringWithFormat:@#CASE @"(%ld)", BDERectSelectionViewHandleType##CASE];
+    switch (handleType) {
+        case case_NSStringFromBDERectSelectionViewHandleType(Unknown);
+        case case_NSStringFromBDERectSelectionViewHandleType(Center);
+        case case_NSStringFromBDERectSelectionViewHandleType(TopLeft);
+        case case_NSStringFromBDERectSelectionViewHandleType(TopRight);
+        case case_NSStringFromBDERectSelectionViewHandleType(BottomRight);
+        case case_NSStringFromBDERectSelectionViewHandleType(BottomLeft);
+        default: return [NSString stringWithFormat:@"Undefined(%ld)", handleType];
+    }
+#   pragma pop_macro("case_NSStringFromBDERectSelectionViewHandleType")
+}
+
 @interface BDERectSelectionView ()
 @property (nonatomic, strong, readwrite, nullable) CAShapeLayer *overlayLayer;
 @property (nonatomic, strong, readwrite, nullable) UIView *selectionView;
@@ -20,7 +35,6 @@
 @end
 
 @implementation BDERectSelectionView
-
 
 #pragma mark - Init Methods
 
@@ -179,7 +193,7 @@
             CGPoint beganLocation = [[self getAssociatedValueForKey:kBeganLocationKey] CGPointValue];
             CGPoint currentLocation = [self.panGestureRecognizer locationInView:self];
             CGRect selectionViewBeganFrame = [[self getAssociatedValueForKey:kBeganFrameKey] CGRectValue];
-            CGRect contentRect = AMKCGRectEdgeInsets(self.bounds, self.contentInsets);
+            CGRect contentRect = UIEdgeInsetsInsetRect(self.bounds, self.contentInsets);
             CGRect selectionViewEndFrame = selectionViewBeganFrame;
             CGSize minSelectionSize = self.minSelectionSize;
             
@@ -237,17 +251,17 @@
     CGPoint pointInSelectionView = [self convertPoint:point toView:self.selectionView];
     __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeUnknown;
     [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
-        CGRect selectionHandleImageViewFrame = selectionHandleImageView.frame;
-        selectionHandleImageViewFrame = AMKCGRectEdgeInsets(selectionHandleImageView.frame, selectionHandleImageView.amk_interactionEdgeInsets);
+        CGRect selectionHandleImageViewFrame = UIEdgeInsetsInsetRect(selectionHandleImageView.frame, selectionHandleImageView.amk_interactionEdgeInsets);
         if (CGRectContainsPoint(selectionHandleImageViewFrame, pointInSelectionView)) {
-            BDERectSelectionViewLog(@"point %@ => %@", @(point), handleTypeNumber);
             handleType = handleTypeNumber.integerValue;
             *stop = YES;
         }
     }];
-    if (handleType == BDERectSelectionViewHandleTypeUnknown && CGRectContainsPoint(self.selectionView.bounds, pointInSelectionView)) {
+    if (handleType == BDERectSelectionViewHandleTypeUnknown && CGRectContainsPoint(UIEdgeInsetsInsetRect(self.selectionView.bounds, self.selectionView.amk_interactionEdgeInsets), pointInSelectionView)) {
         handleType = BDERectSelectionViewHandleTypeCenter;
     }
+    
+    BDERectSelectionViewLog(@"handle %@ at %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point));
     return handleType;
 }
 
