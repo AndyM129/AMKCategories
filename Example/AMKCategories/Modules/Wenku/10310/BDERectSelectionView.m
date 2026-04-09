@@ -210,6 +210,9 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
     
     switch (panGestureRecognizer.state) {
         case UIGestureRecognizerStatePossible: {
+            CGPoint point = [self.panGestureRecognizer locationInView:self];
+            BDERectSelectionViewHandleType handleType = [self handleTypeWithPoint:point];
+            BDERectSelectionViewLog(@"possible handle %@ at %@ in %@ ⤢ %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point), @(self.selectionView.frame), @(UIEdgeInsetsInsetRect(self.selectionView.frame, self.selectionView.amk_interactionEdgeInsets)));
             break;
         }
         case UIGestureRecognizerStateBegan: {
@@ -303,20 +306,26 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
 #pragma mark - Helper Methods
 
 - (BDERectSelectionViewHandleType)handleTypeWithPoint:(CGPoint)point {
-    CGPoint pointInSelectionView = [self convertPoint:point toView:self.selectionView];
     __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeUnknown;
     [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
-        CGRect selectionHandleImageViewFrame = UIEdgeInsetsInsetRect(selectionHandleImageView.frame, selectionHandleImageView.amk_interactionEdgeInsets);
-        if (CGRectContainsPoint(selectionHandleImageViewFrame, pointInSelectionView)) {
+        CGRect selectionHandleImageViewFrame = selectionHandleImageView.frame;
+        CGRect selectionHandleImageViewInteractionRect = UIEdgeInsetsInsetRect(selectionHandleImageViewFrame, selectionHandleImageView.amk_interactionEdgeInsets);
+        CGRect selectionHandleImageViewInteractionRectInSelf = [self.selectionView convertRect:selectionHandleImageViewInteractionRect toView:self];
+        if (CGRectContainsPoint(selectionHandleImageViewInteractionRectInSelf, point)) {
             handleType = handleTypeNumber.integerValue;
             *stop = YES;
         }
     }];
-    if (handleType == BDERectSelectionViewHandleTypeUnknown && CGRectContainsPoint(UIEdgeInsetsInsetRect(self.selectionView.bounds, self.selectionView.amk_interactionEdgeInsets), pointInSelectionView)) {
-        handleType = BDERectSelectionViewHandleTypeCenter;
+    
+    if (handleType == BDERectSelectionViewHandleTypeUnknown) {
+        CGRect selectionViewFrame = self.selectionView.frame;
+        CGRect selectionViewInteractionRectInSelf = UIEdgeInsetsInsetRect(selectionViewFrame, self.selectionView.amk_interactionEdgeInsets);
+        if (CGRectContainsPoint(selectionViewInteractionRectInSelf, point)) {
+            handleType = BDERectSelectionViewHandleTypeCenter;
+        }
     }
     
-    BDERectSelectionViewLog(@"handle %@ at %@ in %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point), @(UIEdgeInsetsInsetRect(self.selectionView.bounds, self.selectionView.amk_interactionEdgeInsets)));
+    BDERectSelectionViewLog(@"handle %@ at %@ in %@ ⤢ %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point), @(self.selectionView.frame), @(UIEdgeInsetsInsetRect(self.selectionView.frame, self.selectionView.amk_interactionEdgeInsets)));
     return handleType;
 }
 
