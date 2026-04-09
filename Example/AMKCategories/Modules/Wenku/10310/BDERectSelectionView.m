@@ -52,6 +52,10 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.contentInsets = UIEdgeInsetsZero;
+        self.minSelectionSize = CGSizeZero;
+        self.cornerHandleSize = CGSizeMake(40, 40);
+        self.sideHandleSize = 40;
         self.panGestureRecognizer.enabled = YES;
     }
     return self;
@@ -110,54 +114,60 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
         [selectionHandleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             switch (handleType) {
                 case BDERectSelectionViewHandleTypeCenter: {
-                    make.centerX.mas_equalTo(self.selectionView.mas_centerX);
-                    make.centerY.mas_equalTo(self.selectionView.mas_centerY);
+                    make.centerX.mas_equalTo(self.selectionView);
+                    make.centerY.mas_equalTo(self.selectionView);
+                    make.width.mas_equalTo(self.selectionView);
+                    make.height.mas_equalTo(self.selectionView);
                     break;
                 }
                     
                 case BDERectSelectionViewHandleTypeTopLeft: {
-                    make.left.mas_equalTo(self.selectionView.mas_left);
-                    make.top.mas_equalTo(self.selectionView.mas_top);
+                    make.centerX.mas_equalTo(self.selectionView.mas_left);
+                    make.centerY.mas_equalTo(self.selectionView.mas_top);
+                    make.size.mas_equalTo(self.cornerHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeTopRight: {
-                    make.right.mas_equalTo(self.selectionView.mas_right);
-                    make.top.mas_equalTo(self.selectionView.mas_top);
+                    make.centerX.mas_equalTo(self.selectionView.mas_right);
+                    make.centerY.mas_equalTo(self.selectionView.mas_top);
+                    make.size.mas_equalTo(self.cornerHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomRight: {
-                    make.right.mas_equalTo(self.selectionView.mas_right);
-                    make.bottom.mas_equalTo(self.selectionView.mas_bottom);
+                    make.centerX.mas_equalTo(self.selectionView.mas_right);
+                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    make.size.mas_equalTo(self.cornerHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottomLeft: {
-                    make.left.mas_equalTo(self.selectionView.mas_left);
-                    make.bottom.mas_equalTo(self.selectionView.mas_bottom);
+                    make.centerX.mas_equalTo(self.selectionView.mas_left);
+                    make.centerY.mas_equalTo(self.selectionView.mas_bottom);
+                    make.size.mas_equalTo(self.cornerHandleSize);
                     break;
                 }
                     
                 case BDERectSelectionViewHandleTypeTop: {
-                    make.left.right.mas_equalTo(self.selectionView).inset(15);
+                    make.left.right.mas_equalTo(self.selectionView).inset(self.cornerHandleSize.width / 2);
                     make.centerY.mas_equalTo(self.selectionView.mas_top);
-                    make.height.mas_equalTo(30);
+                    make.height.mas_equalTo(self.sideHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeRight: {
-                    make.top.bottom.mas_equalTo(self.selectionView).inset(15);
+                    make.top.bottom.mas_equalTo(self.selectionView).inset(self.cornerHandleSize.height / 2);
                     make.centerX.mas_equalTo(self.selectionView.mas_right);
-                    make.width.mas_equalTo(30);
+                    make.width.mas_equalTo(self.sideHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottom: {
-                    make.left.right.mas_equalTo(self.selectionView).inset(15);
+                    make.left.right.mas_equalTo(self.selectionView).inset(self.cornerHandleSize.width / 2);
                     make.centerY.mas_equalTo(self.selectionView.mas_bottom);
-                    make.height.mas_equalTo(30);
+                    make.height.mas_equalTo(self.sideHandleSize);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeLeft: {
-                    make.top.bottom.mas_equalTo(self.selectionView).inset(15);
+                    make.top.bottom.mas_equalTo(self.selectionView).inset(self.cornerHandleSize.height / 2);
                     make.centerX.mas_equalTo(self.selectionView.mas_left);
-                    make.width.mas_equalTo(30);
+                    make.width.mas_equalTo(self.sideHandleSize);
                     break;
                 }
                     
@@ -265,12 +275,12 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
                 }
                     
                 case BDERectSelectionViewHandleTypeTop: {
-                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(currentLocation.y, CGRectGetMaxY(selectionViewBeganFrame) - minSelectionSize.height));
+                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(CGRectGetMinY(selectionViewBeganFrame) + locationOffset.y, CGRectGetMaxY(selectionViewBeganFrame) - minSelectionSize.height));
                     selectionViewEndFrame.size.height = CGRectGetHeight(selectionViewBeganFrame) - (CGRectGetMinY(selectionViewEndFrame) - CGRectGetMinY(selectionViewBeganFrame));
                     break;
                 }
                 case BDERectSelectionViewHandleTypeRight: {
-                    selectionViewEndFrame.size.width = MAX(CGRectGetMinX(selectionViewBeganFrame) + minSelectionSize.width, MIN(currentLocation.x, CGRectGetMaxX(contentRect))) - CGRectGetMinX(selectionViewBeganFrame);
+                    selectionViewEndFrame.size.width = MAX(CGRectGetMinX(selectionViewBeganFrame) + minSelectionSize.width, MIN(CGRectGetMaxX(selectionViewBeganFrame) + locationOffset.x, CGRectGetMaxX(contentRect))) - CGRectGetMinX(selectionViewBeganFrame);
                     break;
                 }
                 case BDERectSelectionViewHandleTypeBottom: {
@@ -278,14 +288,14 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
                     break;
                 }
                 case BDERectSelectionViewHandleTypeLeft: {
-                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(currentLocation.x, CGRectGetMaxX(selectionViewBeganFrame) - minSelectionSize.width));
+                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(CGRectGetMinX(selectionViewBeganFrame) + locationOffset.x, CGRectGetMaxX(selectionViewBeganFrame) - minSelectionSize.width));
                     selectionViewEndFrame.size.width = CGRectGetWidth(selectionViewBeganFrame) - (CGRectGetMinX(selectionViewEndFrame) - CGRectGetMinX(selectionViewBeganFrame));
                     break;
                 }
                     
                 default: {
-                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(selectionViewEndFrame.origin.x + currentLocation.x - beganLocation.x, contentRect.origin.x + contentRect.size.width - selectionViewEndFrame.size.width));
-                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(selectionViewEndFrame.origin.y + currentLocation.y - beganLocation.y, contentRect.origin.y + contentRect.size.height - selectionViewEndFrame.size.height));
+                    selectionViewEndFrame.origin.x = MAX(CGRectGetMinX(contentRect), MIN(CGRectGetMinX(selectionViewBeganFrame) + locationOffset.x, CGRectGetMaxX(contentRect) - CGRectGetWidth(selectionViewBeganFrame)));
+                    selectionViewEndFrame.origin.y = MAX(CGRectGetMinY(contentRect), MIN(CGRectGetMinY(selectionViewBeganFrame) + locationOffset.y, CGRectGetMaxY(contentRect) - CGRectGetHeight(selectionViewBeganFrame)));
                     break;
                 }
             }

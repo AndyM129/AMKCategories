@@ -49,6 +49,12 @@ typedef void(^BDERectSelectionViewHandleImageViewLayoutBlcok)(BDERectSelectionVi
 /// 选区的最小尺寸，默认 `CGSizeZero`，即不设限
 @property (nonatomic, assign, readwrite) CGSize minSelectionSize;
 
+/// 四个角 控制点的大小，默认 `40*40` —— 请在设置对应的 `selectionHandleImageView` 之前赋值
+@property (nonatomic, assign, readwrite) CGSize cornerHandleSize;
+
+/// 四个边 控制点的大小（即 宽或高），默认 `40` —— 请在设置对应的 `selectionHandleImageView` 之前赋值
+@property (nonatomic, assign, readwrite) CGFloat sideHandleSize;
+
 /// 平移手势，以便处理 `selectionView` 四角拖拽、中心移动
 @property (nonatomic, strong, readonly, nullable) UIPanGestureRecognizer *panGestureRecognizer;
 
