@@ -261,7 +261,7 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
         handleType = BDERectSelectionViewHandleTypeCenter;
     }
     
-    BDERectSelectionViewLog(@"handle %@ at %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point));
+    BDERectSelectionViewLog(@"handle %@ at %@ in %@", NSStringFromBDERectSelectionViewHandleType(handleType), @(point), @(UIEdgeInsetsInsetRect(self.selectionView.bounds, self.selectionView.amk_interactionEdgeInsets)));
     return handleType;
 }
 

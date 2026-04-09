@@ -88,6 +88,7 @@
         CGSize selectionHandleViewSize = CGSizeMake(42, 42);
         weakSelf.rectSelectionView = [BDERectSelectionView.alloc init];
         weakSelf.rectSelectionView.selectionView.frame = CGRectMake(25, 25, 150, 200);
+        weakSelf.rectSelectionView.selectionView.amk_interactionEdgeInsets = UIEdgeInsetsMake(-20, -20, -20, -20);
         weakSelf.rectSelectionView.minSelectionSize = CGSizeMake(60, 80);
         [weakSelf.rectSelectionView selectionHandleImageViewWithType:BDERectSelectionViewHandleTypeTopLeft layoutBlcok:^(BDERectSelectionView * _Nullable rectSelectionView, UIImageView * _Nullable selectionHandleImageView) {
             selectionHandleImageView.image = selectionHandleImage;
