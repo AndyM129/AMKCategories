@@ -9,25 +9,19 @@
 #import <UIKit/UIKit.h>
 @class BDERectSelectionView;
 
+/// 矩形区域选择视图 - 控制点
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
-    BDERectSelectionViewHandleTypeUnknown = -1,
-    
-    // 中间
-    BDERectSelectionViewHandleTypeCenter = 0, //!< 用于拖动整体
-    
-    // 四角
-    BDERectSelectionViewHandleTypeTopLeft,
-    BDERectSelectionViewHandleTypeTopRight,
-    BDERectSelectionViewHandleTypeBottomRight,
-    BDERectSelectionViewHandleTypeBottomLeft,
-    
-    // 四边
-    BDERectSelectionViewHandleTypeTop,
-    BDERectSelectionViewHandleTypeRight,
-    BDERectSelectionViewHandleTypeBottom,
-    BDERectSelectionViewHandleTypeLeft,
-    
-    BDERectSelectionViewHandleTypeCount,
+    BDERectSelectionViewHandleTypeUnknown       = 0, //!< 矩形区域选择视图 - 控制点 - 未知，默认值
+    BDERectSelectionViewHandleTypeTopLeft       = 1, //!< 矩形区域选择视图 - 控制点 - 四角 - 左上角 ┏
+    BDERectSelectionViewHandleTypeTopRight      = 2, //!< 矩形区域选择视图 - 控制点 - 四角 - 右上角 ┓
+    BDERectSelectionViewHandleTypeBottomRight   = 3, //!< 矩形区域选择视图 - 控制点 - 四角 - 右下角 ┛
+    BDERectSelectionViewHandleTypeBottomLeft    = 4, //!< 矩形区域选择视图 - 控制点 - 四角 - 左下角 ┗
+    BDERectSelectionViewHandleTypeTop           = 5, //!< 矩形区域选择视图 - 控制点 - 四边 - 上边
+    BDERectSelectionViewHandleTypeRight         = 6, //!< 矩形区域选择视图 - 控制点 - 四边 - 右边
+    BDERectSelectionViewHandleTypeBottom        = 7, //!< 矩形区域选择视图 - 控制点 - 四边 - 下边
+    BDERectSelectionViewHandleTypeLeft          = 8, //!< 矩形区域选择视图 - 控制点 - 四边 - 左边
+    BDERectSelectionViewHandleTypeCenter        = 9, //!< 矩形区域选择视图 - 控制点 - 中间，用于拖动整体
+    BDERectSelectionViewHandleTypeCount,             //!< 矩形区域选择视图 - 控制点 总个数
 };
 
 FOUNDATION_EXPORT NSString * _Nullable NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleType handleType);
