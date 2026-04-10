@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class BDERectSelectionView;
 
-/// 矩形区域选择视图 - 控制点
+/// 矩形区域选择视图 - 控制点（在手势拖拽时，会从 `1` 开始递增查找实际响应该交互的控制点）
 typedef NS_ENUM(NSInteger, BDERectSelectionViewHandleType) {
     BDERectSelectionViewHandleTypeUnknown       = 0, //!< 矩形区域选择视图 - 控制点 - 未知，默认值
     BDERectSelectionViewHandleTypeLeftTop       = 1, //!< 矩形区域选择视图 - 控制点 - 四角 - 左上角 ┏

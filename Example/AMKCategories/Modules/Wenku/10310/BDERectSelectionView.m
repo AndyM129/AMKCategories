@@ -10,6 +10,7 @@
 #import <AMKCategories/UIGeometry+AMKUIGeometryExtensionMethods.h>
 #import <AMKCategories/UIGestureRecognizer+AMKUIGestureRecognizerExtensionMethods.h>
 #import <AMKCategories/UIView+AMKInteractions.h>
+#import <AMKCategories/NSDictionary+AMKObjectForKey.h>
 
 NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleType handleType) {
 #   pragma push_macro("case_NSStringFromBDERectSelectionViewHandleType")
@@ -310,7 +311,9 @@ NSString *NSStringFromBDERectSelectionViewHandleType(BDERectSelectionViewHandleT
 
 - (BDERectSelectionViewHandleType)handleTypeWithPoint:(CGPoint)point {
     __block BDERectSelectionViewHandleType handleType = BDERectSelectionViewHandleTypeUnknown;
-    [self.selectionHandleImageViews enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, UIImageView * _Nonnull selectionHandleImageView, BOOL * _Nonnull stop) {
+    NSArray<NSNumber *> * allKeysSorted = [self.selectionHandleImageViews.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    [allKeysSorted enumerateObjectsUsingBlock:^(NSNumber * _Nonnull handleTypeNumber, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIImageView *selectionHandleImageView = [self.selectionHandleImageViews objectForKey:handleTypeNumber];
         CGRect selectionHandleImageViewFrame = selectionHandleImageView.frame;
         CGRect selectionHandleImageViewRectInSelf = [self.selectionView convertRect:selectionHandleImageViewFrame toView:self];
         CGRect selectionHandleImageViewInteractionRectInSelf = UIEdgeInsetsInsetRect(selectionHandleImageViewRectInSelf, selectionHandleImageView.amk_interactionEdgeInsets);
