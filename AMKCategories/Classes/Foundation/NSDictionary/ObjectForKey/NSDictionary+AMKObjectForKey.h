@@ -7,8 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface NSDictionary<__covariant KeyType, __covariant ObjectType> (AMKObjectForKey)
 
 - (BOOL)amk_boolForKey:(id _Nullable)key;
@@ -67,6 +65,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath;
 - (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator;
 
+// 支持指定默认值：当 NSDictionary 中对应 key/keyPath 的值 length=0 时，会优先取 defaultValue
+- (NSString *_Nullable)amk_stringForKey:(id _Nullable)key default:(NSString *_Nullable)defaultValue;
+- (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath default:(NSString *_Nullable)defaultValue;
+- (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator default:(NSString *_Nullable)defaultValue;
+
 - (NSURL *_Nullable)amk_URLForKey:(id _Nullable)key;
 - (NSURL *_Nullable)amk_URLForKeyPath:(NSString *_Nullable)keyPath;
 - (NSURL *_Nullable)amk_URLForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator;
@@ -83,12 +86,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDictionary *_Nullable)amk_dictionaryForKeyPath:(NSString *_Nullable)keyPath;
 - (NSDictionary *_Nullable)amk_dictionaryForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator;
 
+- (id _Nullable)amk_objectForKey:(id _Nullable)key asClass:(Class _Nonnull)cls;
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath asClass:(Class _Nonnull)cls;
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator asClass:(Class _Nonnull)cls;
+
 - (id _Nullable)amk_objectForKey:(id _Nullable)key;
 - (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath;
 - (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator;
 
 @end
-
-NS_ASSUME_NONNULL_END
-
-

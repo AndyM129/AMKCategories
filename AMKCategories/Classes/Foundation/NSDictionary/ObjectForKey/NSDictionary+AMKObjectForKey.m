@@ -6,126 +6,8 @@
 //
 
 #import "NSDictionary+AMKObjectForKey.h"
+#import "NSString+AMKDate.h"
 #import <objc/message.h>
-
-/** Parse string to date.（参考 YYModel <https://github.com/ibireme/YYModel>） */
-#define amk_force_inline __inline__ __attribute__((always_inline))
-static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSString *string) {
-    typedef NSDate* (^AMKNSDateParseBlock)(NSString *string);
-#   define kParserNum 34
-    static AMKNSDateParseBlock blocks[kParserNum + 1] = {0};
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        {
-            /*
-             2014-01-20  // Google
-             */
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-            formatter.dateFormat = @"yyyy-MM-dd";
-            blocks[10] = ^(NSString *string) { return [formatter dateFromString:string]; };
-        }
-        
-        {
-            /*
-             2014-01-20 12:24:48
-             2014-01-20T12:24:48   // Google
-             2014-01-20 12:24:48.000
-             2014-01-20T12:24:48.000
-             */
-            NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
-            formatter1.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter1.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-            formatter1.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
-            
-            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
-            formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter2.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-            formatter2.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-            
-            NSDateFormatter *formatter3 = [[NSDateFormatter alloc] init];
-            formatter3.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter3.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-            formatter3.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS";
-            
-            NSDateFormatter *formatter4 = [[NSDateFormatter alloc] init];
-            formatter4.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter4.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-            formatter4.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
-            
-            blocks[19] = ^(NSString *string) {
-                if ([string characterAtIndex:10] == 'T') {
-                    return [formatter1 dateFromString:string];
-                } else {
-                    return [formatter2 dateFromString:string];
-                }
-            };
-            
-            blocks[23] = ^(NSString *string) {
-                if ([string characterAtIndex:10] == 'T') {
-                    return [formatter3 dateFromString:string];
-                } else {
-                    return [formatter4 dateFromString:string];
-                }
-            };
-        }
-        
-        {
-            /*
-             2014-01-20T12:24:48Z        // Github, Apple
-             2014-01-20T12:24:48+0800    // Facebook
-             2014-01-20T12:24:48+12:00   // Google
-             2014-01-20T12:24:48.000Z
-             2014-01-20T12:24:48.000+0800
-             2014-01-20T12:24:48.000+12:00
-             */
-            NSDateFormatter *formatter = [NSDateFormatter new];
-            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
-            
-            NSDateFormatter *formatter2 = [NSDateFormatter new];
-            formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter2.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
-            
-            blocks[20] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[24] = ^(NSString *string) { return [formatter dateFromString:string]?: [formatter2 dateFromString:string]; };
-            blocks[25] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[28] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
-            blocks[29] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
-        }
-        
-        {
-            /*
-             Fri Sep 04 00:12:21 +0800 2015 // Weibo, Twitter
-             Fri Sep 04 00:12:21.000 +0800 2015
-             */
-            NSDateFormatter *formatter = [NSDateFormatter new];
-            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
-            
-            NSDateFormatter *formatter2 = [NSDateFormatter new];
-            formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter2.dateFormat = @"EEE MMM dd HH:mm:ss.SSS Z yyyy";
-            
-            blocks[30] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[34] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
-        }
-    });
-    if (!string) return nil;
-    if (string.length > kParserNum) return nil;
-    AMKNSDateParseBlock parser = blocks[string.length];
-    if (!parser) return nil;
-    return parser(string);
-#   undef kParserNum
-}
-#undef amk_force_inline
-
-
-
-#pragma mark -
-
-
 
 @interface NSPredicate(_AMKObjectForKey)
 
@@ -171,40 +53,16 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
 
 @end
 
-
-
+#pragma mark -
 #pragma mark -
 
+@interface NSObject (_AMKObjectForKey_CrashProtector)
 
-
-@interface NSArray(_AMKObjectForKey)
 - (id _Nullable)amk_objectForKeyPathWithComponents:(NSArray<NSString *> *_Nullable)keyPathComponents;
-@end
-
-@implementation NSArray (_AMKObjectForKey)
-
-- (id _Nullable)amk_objectForKeyPathWithComponents:(NSArray<NSString *> *_Nullable)keyPathComponents {
-    __block NSMutableArray *objectsForKeyPathComponents = [NSMutableArray arrayWithCapacity:keyPathComponents.count];
-    [self enumerateObjectsUsingBlock:^(id _Nonnull object, NSUInteger objectIndex, BOOL * _Nonnull stop) {
-        if ([object isKindOfClass:NSDictionary.class] || [object isKindOfClass:NSArray.class]) {
-            id objectForKeyPathComponents = [object amk_objectForKeyPathWithComponents:keyPathComponents];
-            if (objectForKeyPathComponents) {
-                [objectsForKeyPathComponents addObject:objectForKeyPathComponents];
-            }
-        }
-    }];
-    return objectsForKeyPathComponents;
-}
 
 @end
 
-
-
-#pragma mark -
-
-
-
-@implementation NSDictionary (AMKObjectForKey)
+@implementation NSObject (_AMKObjectForKey_CrashProtector)
 
 - (BOOL)amk_boolForKey:(id _Nullable)key {
     return [self amk_boolForKeyPath:key separatingWithString:nil];
@@ -348,15 +206,15 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
     return UIEdgeInsetsZero;
 }
 
-- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKey:(id _Nullable)key {
+- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKey:(id _Nullable)key API_AVAILABLE(ios(11.0),tvos(11.0),watchos(4.0)) {
     return [self amk_NSDirectionalEdgeInsetsForKeyPath:key separatingWithString:nil];
 }
 
-- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKeyPath:(NSString *_Nullable)keyPath {
+- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKeyPath:(NSString *_Nullable)keyPath API_AVAILABLE(ios(11.0),tvos(11.0),watchos(4.0)) {
     return [self amk_NSDirectionalEdgeInsetsForKeyPath:keyPath separatingWithString:@"."];
 }
 
-- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator {
+- (NSDirectionalEdgeInsets)amk_NSDirectionalEdgeInsetsForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator API_AVAILABLE(ios(11.0),tvos(11.0),watchos(4.0)) {
     id value = [self amk_objectForKeyPath:keyPath separatingWithString:separator];
     if ([value isKindOfClass:[NSValue class]]) return [value directionalEdgeInsetsValue];
     if ([value isKindOfClass:[NSString class]]) return NSDirectionalEdgeInsetsFromString(value);
@@ -392,21 +250,38 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
 }
 
 - (NSString *_Nullable)amk_stringForKey:(id _Nullable)key {
-    return [self amk_stringForKeyPath:key separatingWithString:nil];
+    return [self amk_stringForKeyPath:key separatingWithString:nil default:nil];
 }
 
 - (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath {
-    return [self amk_stringForKeyPath:keyPath separatingWithString:@"."];
+    return [self amk_stringForKeyPath:keyPath separatingWithString:@"." default:nil];
 }
 
 - (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator {
+    return [self amk_stringForKeyPath:keyPath separatingWithString:separator default:nil];
+}
+
+- (NSString *_Nullable)amk_stringForKey:(id _Nullable)key default:(NSString *)defaultValue {
+    return [self amk_stringForKeyPath:key separatingWithString:nil default:defaultValue];
+}
+
+- (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath default:(NSString *)defaultValue {
+    return [self amk_stringForKeyPath:keyPath separatingWithString:@"." default:defaultValue];
+}
+
+- (NSString *_Nullable)amk_stringForKeyPath:(NSString *_Nullable)keyPath separatingWithString:(NSString *_Nullable)separator default:(NSString *)defaultValue {
     id value = [self amk_objectForKeyPath:keyPath separatingWithString:separator];
-    if ([value isKindOfClass:[NSString class]]) {
-        return value;
+    
+    NSString *string = nil;
+    if (value == NSNull.null) {
+        string = nil;
+    } else if ([value isKindOfClass:[NSString class]]) {
+        string = value;
     } else if ([value respondsToSelector:@selector(stringValue)]) {
-        return [value stringValue];
+        string = [value stringValue];
     }
-    return nil;
+    string = string.length ? string : (defaultValue ?: string);
+    return string;
 }
 
 - (NSURL *_Nullable)amk_URLForKey:(id _Nullable)key {
@@ -463,7 +338,7 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
         }
         
         // 若value是非数字字符串，则将其格式化解析返回
-        return _AMKNSDateFromString(value);
+        return [value amk_date];
     }
     
     // 无法解析则返回空
@@ -496,6 +371,19 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
     return [value isKindOfClass:[NSDictionary class]] ? value : nil;
 }
 
+- (id _Nullable)amk_objectForKey:(id _Nullable)key asClass:(Class _Nonnull)cls {
+    return [self amk_objectForKeyPath:key separatingWithString:nil asClass:cls];
+}
+
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath asClass:(Class _Nonnull)cls {
+    return [self amk_objectForKeyPath:keyPath separatingWithString:@"." asClass:cls];
+}
+
+- (id _Nullable)amk_objectForKeyPath:(NSString * _Nullable)keyPath separatingWithString:(NSString * _Nullable)separator asClass:(Class _Nonnull)cls {
+    id object = [self amk_objectForKeyPath:keyPath separatingWithString:separator];
+    return [object isKindOfClass:cls] ? object : nil;
+}
+
 - (id _Nullable)amk_objectForKey:(id _Nullable)key {
     return [self amk_objectForKeyPath:key separatingWithString:nil];
 }
@@ -510,12 +398,50 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
     if (keyPath && [keyPath isKindOfClass:NSString.class] && keyPath.length && separator && [separator isKindOfClass:NSString.class] && separator.length) {
         keyPathComponents = [keyPath componentsSeparatedByString:separator];
     } else {
-        keyPathComponents = (id)keyPath;
+        if ([keyPath isKindOfClass:NSArray.class]) {
+            keyPathComponents = (NSArray *)keyPath;
+        } else if ([keyPath isKindOfClass:[NSString class]] && keyPath.length) {
+            keyPathComponents = @[keyPath];
+        }
     }
     
     // 默认处理
     return [self amk_objectForKeyPathWithComponents:keyPathComponents];
 }
+
+- (id _Nullable)amk_objectForKeyPathWithComponents:(NSArray<NSString *> *)keyPathComponents {
+    return nil;
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
+@implementation NSArray (_AMKObjectForKey)
+
+- (id _Nullable)amk_objectForKeyPathWithComponents:(NSArray<NSString *> *_Nullable)keyPathComponents {
+    __block NSMutableArray *objectsForKeyPathComponents = [NSMutableArray arrayWithCapacity:keyPathComponents.count];
+    [self enumerateObjectsUsingBlock:^(id _Nonnull object, NSUInteger objectIndex, BOOL * _Nonnull stop) {
+        if ([object isKindOfClass:NSDictionary.class] || [object isKindOfClass:NSArray.class]) {
+            id objectForKeyPathComponents = [object amk_objectForKeyPathWithComponents:keyPathComponents];
+            if (objectForKeyPathComponents) {
+                [objectsForKeyPathComponents addObject:objectForKeyPathComponents];
+            }
+        }
+    }];
+    return objectsForKeyPathComponents;
+}
+
+@end
+
+#pragma mark -
+#pragma mark -
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wincomplete-implementation"
+
+@implementation NSDictionary (_AMKObjectForKey)
 
 - (id _Nullable)amk_objectForKeyPathWithComponents:(NSArray<NSString *> *)keyPathComponents {
     // 无效参数，则直接系统方式返回
@@ -547,6 +473,7 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
         // 若当前节点是数组，则key须为有效数字 并取出对应元素
         else if ([objectForKeyPathComponents isKindOfClass:NSArray.class] && [NSPredicate.amk_unsignedIntegerPredicate evaluateWithObject:keyPathComponent]){
             NSInteger index = keyPathComponent.integerValue;
+//            NSInteger count = [(NSArray *)objectForKeyPathComponents count];
             objectForKeyPathComponents = (index>=0 && index<[(NSArray *)objectForKeyPathComponents count]) ? [(NSArray *)objectForKeyPathComponents objectAtIndex:index] : nil;
         }
         // 若当前节点是数组，且key不是有效数字，将数组中 每个字典 指定key取出，最终合并为数组返回
@@ -576,4 +503,4 @@ static amk_force_inline NSDate *_AMKNSDateFromString(__unsafe_unretained NSStrin
 
 @end
 
-
+#pragma clang diagnostic pop

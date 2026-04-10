@@ -239,6 +239,11 @@ Pod::Spec.new do |s|
         end
         # NSString 相关扩展
         foundation.subspec 'NSString' do |string|
+            # Date 相关
+            string.subspec 'Date' do |date|
+                date.source_files = 'AMKCategories/Classes/Foundation/NSString/Date/*.{h,m}'
+                date.public_header_files = 'AMKCategories/Classes/Foundation/NSString/Date/*.h'
+            end
             # Emoji 相关
             string.subspec 'Emoji' do |emoji|
                 emoji.source_files = 'AMKCategories/Classes/Foundation/NSString/Emoji/*.{h,m}'
